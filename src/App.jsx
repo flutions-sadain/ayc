@@ -37,6 +37,13 @@ function App() {
                 <nav role="navigation" className="nav-menu w-nav-menu">
                   <a href="#" onClick={() => scrollToSection(featureSectionRef)}
                      className="navbar-link w-nav-link">Features</a>
+
+                  <Link to="/aboutus" className="navbar-link w-nav-link">Platform</Link>
+                  <Link to="/aboutus" className="navbar-link w-nav-link">Solutions</Link>
+                  <Link to="/aboutus" className="navbar-link w-nav-link">Careers</Link>
+                  <Link to="/contact" className="navbar-link w-nav-link">Events</Link>
+                  <Link to="/contact" className="navbar-link w-nav-link">Pricing</Link>
+                  <Link to="/contact" className="navbar-link w-nav-link">Resources</Link>
                   <Link to="/aboutus" className="navbar-link w-nav-link">About us</Link>
                   <Link to="/contact" className="navbar-link w-nav-link">Contact</Link>
                 </nav>
@@ -61,9 +68,16 @@ function App() {
                   <div className="nav-menu-inner">
                     <a onClick={() => scrollToSection(featureSectionRef)}
                        className="navbar-link w-nav-link">Features</a>
+                    <Link to="/aboutus" className="navbar-link w-nav-link">Platform</Link>
+                    <Link to="/aboutus" className="navbar-link w-nav-link">Solutions</Link>
+                    <Link to="/aboutus" className="navbar-link w-nav-link">Careers</Link>
+                    <Link to="/contact" className="navbar-link w-nav-link">Events</Link>
+                    <Link to="/contact" className="navbar-link w-nav-link">Pricing</Link>
+                    <Link to="/contact" className="navbar-link w-nav-link">Resources</Link>
                     <Link to="/aboutus" className="navbar-link w-nav-link">About us</Link>
                     <Link to="/contact" className="navbar-link w-nav-link">Contact</Link>
                     <Link to="/register" className="navbar-link w-nav-link">Register</Link>
+
                   </div>
                 </nav>
               </div>
@@ -81,12 +95,12 @@ function App() {
                 <div className="w-layout-grid hero-grid">
                   <div className="layout-content">
                     <div className="margin-bottom">
-                      <div className="text-highlight">AI Powered CAREER ADVANCEMENT PLATFORM</div>
+                      <div className="text-highlight" style={{textTransform: "capitalize"}}>AI Powered Career Advancement Platform</div>
                     </div>
                     <div className="margin-bottom">
-                      <h1 className="heading">Prepare for tomorrow by mastering today&#x27;s technologies</h1>
+                      <h1 className="heading"> Prepare for tomorrow by mastering future technologies now</h1>
                     </div>
-                    <p className="text-size-medium">Supercharge your ambition: Blending AI innovation with human
+                    <p className="text-size-medium" style={{lineHeight: '1.5'}}>Supercharge your ambition: Blending AI innovation with human
                       creativity to your career journey</p>
                     <div className="margin-top margin-medium">
                       <div className="button-group">
@@ -94,12 +108,12 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  <div className="layout-wrapper-image"><img className="graphic-image" src="/images/Hero-Graphic.png"
+                  <div className="layout-wrapper-image"><img className="graphic-image" src="/images/Graphic-hero-xl.png"
                                                              width="813" alt=""
                                                              sizes="(max-width: 479px) 90vw, (max-width: 991px) 81vw, 51vw"
                                                              data-w-id="4c7cd897-4a59-aa91-60bc-09a2abf4fb54"
                                                              loading="lazy"
-                                                             srcSet="/images/Hero-Graphic-p-500.png 500w, /images/Hero-Graphic-p-800.png 800w, /images/Hero-Graphic-p-1080.png 1080w, /images/Hero-Graphic.png 1408w"/>
+                                                             srcSet="/images/Graphic-hero-xl.png 500w, /images/Graphic-hero-xl.png 800w, /images/Graphic-hero-xl.png 1080w, /images/Graphic-hero-xl.png 1408w"/>
                   </div>
 
                 </div>
@@ -257,16 +271,16 @@ function App() {
                           <h3 className="heading-style-h3 white">Personalized Guidance</h3>
                         </div>
                         <div className="margin-bottom">
-                          <p className="text-size-medium light-white">Leverage AI to map out personalized career paths
+                          <p className="text-size-medium light-white" style={{lineHeight: '1.5'}}>Leverage AI to map out personalized career paths
                             based on user profiles, skill sets, and career aspirations. Users receive tailored
                             recommendations for roles and industries where you are likely to excel</p>
                         </div>
                       </div>
                     </div>
-                    <div className="layout-image-wrapper"><img src="images/Graphic1.png" loading="lazy"
+                    <div className="layout-image-wrapper"><img src="images/pg.png" loading="lazy"
                                                                sizes="(max-width: 479px) 80vw, (max-width: 767px) 83vw, (max-width: 991px) 640px, 44vw"
                                                                alt="" width="306"
-                                                               srcSet="images/Graphic1-p-500.png 500w, images/Graphic1.png 888w"
+                                                               srcSet="images/pg.png 500w, images/pg.png 888w"
                                                                className="feature-image"/></div>
                   </div>
                 </motion.div>
@@ -283,14 +297,14 @@ function App() {
                         <h3 className="heading-style-h3">Skill Gap Analysis</h3>
                       </div>
                       <div className="margin-bottom">
-                        <p className="text-size-medium">Our cutting-edge AI analyzes your current skillset against
+                        <p className="text-size-medium" style={{lineHeight: '1.5'}}>Our cutting-edge AI analyzes your current skillset against
                           market demands, identifying gaps and recommending targeted learning to bridge them
                           efficiently.</p>
                       </div>
                     </div>
-                    <div className="graphic-layout-content"><img src="/images/Graphic2.png" loading="lazy" width="442"
+                    <div className="graphic-layout-content"><img src="/images/sg.png" loading="lazy" width="442"
                                                                  sizes="(max-width: 767px) 80vw, 442px" alt=""
-                                                                 srcSet="/images/Graphic2-p-500.png 500w, /images/Graphic2.png 1016w"/>
+                                                                 srcSet="/images/sg.png 500w, /images/sg.png 1016w"/>
                     </div>
                   </motion.div>
 
@@ -304,15 +318,15 @@ function App() {
                         <h3 className="heading-style-h3 white">Real-World Interview Simulation</h3>
                       </div>
                       <div className="margin-bottom">
-                        <p className="text-size-medium text-color-white">Whether it&#x27;s a technical interview, a
+                        <p className="text-size-medium text-color-white" style={{lineHeight: '1.5'}}>Whether it&#x27;s a technical interview, a
                           behavioral interview, or a case study, choose your interview type and customize your
                           practice sessions according to the job role you target. Get instant feedback on your
                           responses, body language, and presentation skills.</p>
                       </div>
                     </div>
-                    <div className="graphic-layout-content"><img src="images/Graphic3.png" loading="lazy" width="442"
+                    <div className="graphic-layout-content"><img src="images/interview.png" loading="lazy" width="442"
                                                                  sizes="(max-width: 767px) 80vw, 442px" alt=""
-                                                                 srcSet="images/Graphic3-p-500.png 500w, images/Graphic3.png 934w"/>
+                                                                 srcSet="images/interview.png 500w, images/interview.png 934w"/>
                     </div>
                   </motion.div>
                 </div>
@@ -331,8 +345,8 @@ function App() {
                           <h3 className="heading-style-h3">Smart Resume Optimization</h3>
                         </div>
                         <div className="margin-bottom">
-                          <p className="text-size-medium">Our platform suggests optimizations based on the job
-                            you&#x27;re applying for, ensuring your resume stands out to recruiters. <br/>Access a
+                          <p className="text-size-medium" style={{lineHeight: '1.5'}}>Our platform suggests optimizations based on the job
+                            you&#x27;re applying for, ensuring your resume stands out to recruiters. Access a
                             variety of templates that are optimized for different industries, ensuring your resume
                             matches the expectations and norms of your desired field.</p>
                         </div>
@@ -358,13 +372,13 @@ function App() {
                         <h3 className="heading-style-h3 white">Curated Learning Paths</h3>
                       </div>
                       <div className="margin-bottom">
-                        <p className="text-size-medium light-white">Explore courses designed to advance your career.
+                        <p className="text-size-medium light-white" style={{lineHeight: '1.5'}}>Explore courses designed to advance your career.
                           Engage with interactive content, including simulations, projects, and quizzes, to reinforce
                           learning and apply skills in real-world scenarios</p>
                       </div>
                     </div>
-                    <div className="graphic-layout-content"><img src="images/Graphic5.png" loading="lazy" alt=""
-                                                                 srcSet="images/Graphic5-p-500.png 500w, images/Graphic5.png 993w"
+                    <div className="graphic-layout-content"><img src="images/learning.png" loading="lazy" alt=""
+                                                                 srcSet="images/learning.png 500w, images/learning.png 993w"
                                                                  sizes="(max-width: 479px) 80vw, (max-width: 767px) 83vw, (max-width: 991px) 85vw, (max-width: 1256px) 79vw, 993px"/>
                     </div>
                   </motion.div>
@@ -383,13 +397,13 @@ function App() {
                         <h3 className="heading-style-h3">Comprehensive Career Overview</h3>
                       </div>
                       <div className="margin-bottom">
-                        <p className="text-size-medium">Get a bird&#x27;s eye view of your career development journey.
+                        <p className="text-size-medium" style={{lineHeight: '1.5'}}>Get a bird&#x27;s eye view of your career development journey.
                           Track your progress, set goals, and review personalized recommendations all from a single
                           dashboard.</p>
                       </div>
                     </div>
-                    <div className="graphic-layout-content"><img src="images/Graphic6.png" loading="lazy" alt=""
-                                                                 srcSet="images/Graphic6-p-500.png 500w, images/Graphic6.png 1016w"
+                    <div className="graphic-layout-content"><img src="images/career.png" loading="lazy" alt=""
+                                                                 srcSet="images/career0.png 500w, images/career.png 1016w"
                                                                  sizes="(max-width: 479px) 80vw, (max-width: 767px) 83vw, (max-width: 991px) 85vw, (max-width: 1270px) 80vw, 1016px"/>
                     </div>
                   </motion.div>
@@ -502,6 +516,13 @@ function App() {
                       </div>
                       <div className="margin-bottom margin-medium">
                         <div className="footer3-details-wrapper">
+                          <div className="text-size-small-2">‍<span className="text-weight-semibold">Address</span>
+                            <a href="#" className="link-2"><br/>P.O Box 2345, Bedford Dr, Kingston<br/>New York 12401</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="margin-bottom margin-medium">
+                        <div className="footer3-details-wrapper">
                           <div className="text-size-small-2">‍<span className="text-weight-semibold">Contact:</span>
                             <a href="#" className="link-2"><br/>business@aycyourself.com</a>
                           </div>
@@ -573,10 +594,28 @@ function App() {
                     </div>
                     <div className="w-layout-grid footer-menu-wrapper text-color-white">
                       <div className="footer-link-list">
-                        <Link to="/aboutus" className="navbar-link w-nav-link">About us</Link>
-                        <Link to="/contact" className="navbar-link w-nav-link">Contact</Link>
+                        <div className="text-size-medium-4" style={{paddingBottom: "20px", minWidth: "250px"}}>‍<span
+                            className="text-weight-semibold">Featured Services</span>
+                        </div>
+                        <a href="aboutus" className="footer-link">Blockchain</a>
+                        <a href="aboutus" className="footer-link">Cyber Security</a>
+                        <a href="aboutus" className="footer-link">AR-VR</a>
+                        <a href="aboutus" className="footer-link">AI & Machine Learning</a>
+                        <a href="aboutus" className="footer-link">Quantum Computing</a>
+                        <a href="aboutus" className="footer-link">Cloud & Edge Computing</a>
                       </div>
                       <div className="footer-link-list">
+                        <div className="text-size-medium-4 padding-bottom" style={{paddingBottom: "20px"}}>‍<span
+                            className="text-weight-semibold">Site Links</span>
+                        </div>
+                        <a href="aboutus" className="footer-link">Platform</a>
+                        <a href="aboutus" className="footer-link">Solutions</a>
+                        <a href="aboutus" className="footer-link">Career</a>
+                        <a href="aboutus" className="footer-link">Events</a>
+                        <a href="aboutus" className="footer-link">Pricing</a>
+                        <a href="aboutus" className="footer-link">Resources</a>
+                        <a href="aboutus" className="footer-link">About Us</a>
+                        <a href="contact-us.html" className="footer-link">Contact</a>
                         <a href="company/features.html" className="footer-link">Features</a>
                         <a href="account/sign-up.html" className="footer-link">Sign Up</a>
                       </div>
