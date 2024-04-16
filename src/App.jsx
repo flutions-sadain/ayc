@@ -5,6 +5,8 @@ import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 import AboutUs from "./components/AboutUs";
 import Contact from "./components/Contact.jsx";
 import Register from "./components/Register.jsx";
+import logo from '../public/images/logo.svg';
+import logoExplain from '../public/images/logoe.svg';
 
 
 
@@ -31,7 +33,7 @@ function App() {
             <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease"
                  data-easing2="ease" role="banner" className="navigation w-nav">
               <div className="navigation-container">
-                <h1 className="heading-35">AYC</h1>
+                <img src={logo} alt={"Advance Your Career"} className="brand logo-image"></img>
                 <div className="navigation-left"></div>
 
                 <nav role="navigation" className="nav-menu w-nav-menu">
@@ -128,7 +130,7 @@ function App() {
               <div className="margin-bottom-7 margin-medium">
                 <div className="align-center">
                   <div data-w-id="229ba167-8e34-3063-a11f-cb92af281397"
-                       className="text-highlight">Course Catalog
+                       className="text-highlight" style={{textTransform: "capitalize"}}>Course Catalog
                   </div>
                 </div>
               </div>
@@ -232,6 +234,42 @@ function App() {
                     </div>
                   </div>
                 </div>
+                <div className="card w-slide">
+                  <div data-w-id="8770342c-aad9-f1f6-985b-59c41ec7860c"
+                       className="box _1 layout-card-gray">
+                    <div className="div_1">
+                      <div className="div_1-2"><img alt="" loading="lazy" src="images/virtual-reality.png"
+                                                    className="icon-4 ic4"/>
+                        <div className="text-wrapper">
+                          <h2 className="text-weight-bold"><strong>AR-VR</strong></h2>
+                          <p className="text-size-medium"><strong>Future of Things</strong> Delve into an AR/VR course that equips participants with the skills to create engaging virtual environments, understand user interaction<strong><br/>
+                            <br/>3D Modeling Nuances </strong> Everything from 3D modeling and simulation to practical deployment strategies for interactive media and gaming.<br/><br/><br/><br/><br/><br/>‍</p>
+                        </div>
+                        <div className="button-group">
+                          <a href="#" className="button w-button">Enroll Now</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="card w-slide">
+                  <div data-w-id="8770342c-aad9-f1f6-985b-59c41ec7860c"
+                       className="box _1 layout-card-gray">
+                    <div className="div_1">
+                      <div className="div_1-2"><img alt="" loading="lazy" src="images/security.png"
+                                                    className="icon-4 ic4"/>
+                        <div className="text-wrapper">
+                          <h2 className="text-weight-bold"><strong>Cyber Security</strong></h2>
+                          <p className="text-size-medium"><strong>In-Depth exploration </strong>Principles and practices Tailored for both aspiring and current professionals as well as students.<strong><br/>
+                            <br/>Gain essential Cyber Security </strong>It aims to equip participants with the skills needed to protect computer systems, networks, and data from threats and attacks.<br/><br/><br/><br/><br/><br/>‍</p>
+                        </div>
+                        <div className="button-group">
+                          <a href="#" className="button w-button">Enroll Now</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="slide68_arrow left w-slider-arrow-left"><img src="images/left-arrow.svg" loading="lazy"
                                                                            alt="" className="arrow"/></div>
@@ -251,7 +289,7 @@ function App() {
               <div className="padding-section-large">
                 <div className="margin-bottom">
                   <div className="align-center">
-                    <div data-w-id="d44de844-0ea8-9efd-4483-5c9b677cc1c1" className="text-highlight">Features</div>
+                    <div data-w-id="d44de844-0ea8-9efd-4483-5c9b677cc1c1" className="text-highlight" style={{textTransform: "capitalize"}}>Features</div>
                   </div>
                 </div>
                 <div className="margin-bottom">
@@ -422,7 +460,7 @@ function App() {
               <div className="padding-section-large">
                 <div className="margin-bottom">
                   <div className="align-center">
-                    <div data-w-id="aec0b6d2-398a-fb3c-88c4-d4173188ea1f" className="text-highlight">Thoughtfulness
+                    <div data-w-id="aec0b6d2-398a-fb3c-88c4-d4173188ea1f" className="text-highlight" style={{textTransform: "capitalize"}}>Thoughtfulness
                       innovation together
                     </div>
                   </div>
@@ -512,7 +550,7 @@ function App() {
                     <div className="footer-left-wrapper text-color-white">
                       <div className="margin-bottom margin-medium">
                         <a href="#" className="footer3-logo-link w-nav-brand"></a>
-                        <h3 className="heading-36">AYC</h3>
+                        <img src={logoExplain} alt={"Accelerate Your Career"} className="brand logo-2" style={{minWidth: "200px", minHeight: "200px"}}></img>
                       </div>
                       <div className="margin-bottom margin-medium">
                         <div className="footer3-details-wrapper">
