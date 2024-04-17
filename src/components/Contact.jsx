@@ -2,6 +2,7 @@ import '../index.css'
 import {Link} from "react-router-dom";
 import {useRef} from "react";
 import { useState } from 'react';
+import logo from "../../public/images/logo.svg";
 
 
 function Contact() {
@@ -9,6 +10,12 @@ function Contact() {
     const featureSectionRef = useRef(null);
     const scrollToSection = (sectionRef) => {
         sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
     };
     return (
         <>
@@ -18,53 +25,74 @@ function Contact() {
                     <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease"
                          data-easing2="ease" role="banner" className="navigation w-nav">
                         <div className="navigation-container">
-                            <h1 className="heading-35">AYC</h1>
+                            <Link to="/">
+                                <img src={logo} alt={"Advance Your Career"} className="brand logo-image"></img>
+                            </Link>
                             <div className="navigation-left"></div>
 
                             <nav role="navigation" className="nav-menu w-nav-menu">
-                                <Link href="/" to="/"
-                                      className="navbar-link w-nav-link">Home</Link>
+                                <Link to="/" className="navbar-link w-nav-link">Home</Link>
+                                <a href="#" onClick={() => scrollToSection(featureSectionRef)}
+                                   className="navbar-link w-nav-link">Features</a>
+                                <Link to="/aboutus" className="navbar-link w-nav-link">Platform</Link>
+                                <Link to="/aboutus" className="navbar-link w-nav-link">Solutions</Link>
+                                <Link to="/aboutus" className="navbar-link w-nav-link">Careers</Link>
+                                <Link to="/contact" className="navbar-link w-nav-link">Events</Link>
+                                <Link to="/contact" className="navbar-link w-nav-link">Pricing</Link>
+                                <Link to="/contact" className="navbar-link w-nav-link">Resources</Link>
                                 <Link to="/aboutus" className="navbar-link w-nav-link">About us</Link>
                                 <Link to="/contact" className="navbar-link w-nav-link">Contact</Link>
                             </nav>
 
                             <div className="navigation-right">
-                                <a href="#" className="button w-button">Register</a>
+                                <Link to="/register" className="button w-button">Register</Link>
                             </div>
                         </div>
                     </div>
+
                     <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease-out"
-                         data-easing2="ease-out" role="banner" className="container navigation-mob w-nav">
+                         data-easing2="ease-out" role="banner" className="navigation-mob w-nav"
+                         style={{overflow: 'visible'}}>
                         <div className="navigation-container-mob">
-                            <h3>AYC</h3>
-                            <a href="#" className="brand w-nav-brand"></a>
+                            <a href="/" className="brand w-nav-brand">
+                                <img src={logo} alt={"Advance Your Career"} className="brand logo-2"
+                                     style={{minWidth: "100px", marginLeft: 0, paddingLeft: 0}}></img>
+                            </a>
                             <div className="nav-mobile-button-wrap">
-                                <div className="menu-mob w-nav-button">
+                                <div className="menu-mob w-nav-button" onClick={toggleMenu}>
                                     <div className="w-icon-nav-menu"></div>
                                 </div>
                             </div>
-                            <nav role="navigation" className="nav-menu w-nav-menu">
-                                <div className="nav-menu-inner">
-                                    <a href="#" onClick={() => scrollToSection(featureSectionRef)}
-                                       className="navbar-link w-nav-link">Features</a>
-                                    <a href="#" className="navbar-link w-nav-link">About us</a>
-                                    <a href="#" className="navbar-link w-nav-link">Contact</a>
-                                    <a href="#" className="navbar-link w-nav-link">Register</a>
-                                    <a href="#" className="button maxx-full-width w-inline-block">
-                                        <div>Join our Waitlist</div>
-                                        <div className="icon white w-embed">
-                                            <svg width="420" height="420" viewBox="0 0 24 24" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M16.172 10.9999L10.808 5.63592L12.222 4.22192L20 11.9999L12.222 19.7779L10.808 18.3639L16.172 12.9999H4V10.9999H16.172Z"
-                                                    fill="currentColor"></path>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                </div>
-                            </nav>
+                            {isOpen && (
+                                <nav role="navigation" className="nav-menu" style={{
+                                    overflow: 'visible',
+                                    display: "block",
+                                    justifyContent: "space-around",
+                                    position: "absolute",
+                                    float: "right",
+                                    left: 0,
+                                    width: "100%",
+                                    top: "100%",
+                                    cursor: "pointer"
+                                }}>
+                                    <div className="nav-menu-inner" style={{overflow: 'visible'}}>
+                                        <Link to="/" className="navbar-link w-nav-link">Home</Link>
+                                        <a href="#" onClick={() => scrollToSection(featureSectionRef)}
+                                           className="navbar-link w-nav-link">Features</a>
+                                        <Link to="/aboutus" className="navbar-link w-nav-link">Platform</Link>
+                                        <Link to="/aboutus" className="navbar-link w-nav-link">Solutions</Link>
+                                        <Link to="/aboutus" className="navbar-link w-nav-link">Careers</Link>
+                                        <Link to="/contact" className="navbar-link w-nav-link">Events</Link>
+                                        <Link to="/contact" className="navbar-link w-nav-link">Pricing</Link>
+                                        <Link to="/contact" className="navbar-link w-nav-link">Resources</Link>
+                                        <Link to="/aboutus" className="navbar-link w-nav-link">About us</Link>
+                                        <Link to="/contact" className="navbar-link w-nav-link">Contact</Link>
+                                    </div>
+                                </nav>
+                            )}
                         </div>
                     </div>
+
                 </nav>
             </div>
 

@@ -1,6 +1,6 @@
-import './index.css'
+import './index.css';
 import { motion } from 'framer-motion';
-import { useRef } from 'react';
+import {useRef, useState} from 'react';
 import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 import AboutUs from "./components/AboutUs";
 import Contact from "./components/Contact.jsx";
@@ -15,6 +15,14 @@ function App() {
   const scrollToSection = (sectionRef) => {
     sectionRef.current.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+
   return (
 
       <>
@@ -33,13 +41,15 @@ function App() {
             <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease"
                  data-easing2="ease" role="banner" className="navigation w-nav">
               <div className="navigation-container">
-                <img src={logo} alt={"Advance Your Career"} className="brand logo-image"></img>
+                <Link to="/">
+                  <img src={logo} alt={"Advance Your Career"} className="brand logo-image"></img>
+                </Link>
                 <div className="navigation-left"></div>
 
                 <nav role="navigation" className="nav-menu w-nav-menu">
+                  <Link to="/" className="navbar-link w-nav-link">Home</Link>
                   <a href="#" onClick={() => scrollToSection(featureSectionRef)}
                      className="navbar-link w-nav-link">Features</a>
-
                   <Link to="/aboutus" className="navbar-link w-nav-link">Platform</Link>
                   <Link to="/aboutus" className="navbar-link w-nav-link">Solutions</Link>
                   <Link to="/aboutus" className="navbar-link w-nav-link">Careers</Link>
@@ -56,19 +66,21 @@ function App() {
               </div>
             </div>
 
-            <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease-out"
-                 data-easing2="ease-out" role="banner" className="navigation-mob w-nav">
+            <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease-out" data-easing2="ease-out" role="banner" className="navigation-mob w-nav" style={{overflow: 'visible'}}>
               <div className="navigation-container-mob">
-                <h3>AYC</h3>
-                <a href="#" className="brand w-nav-brand"></a>
+                <a href="#" className="brand w-nav-brand">
+                  <img src={logo} alt={"Advance Your Career"} className="brand logo-2" style={{minWidth:"100px", marginLeft:0, paddingLeft:0}}></img>
+                </a>
                 <div className="nav-mobile-button-wrap">
-                  <div className="menu-mob w-nav-button">
+                <div className="menu-mob w-nav-button" onClick={toggleMenu}>
                     <div className="w-icon-nav-menu"></div>
                   </div>
                 </div>
-                <nav role="navigation" className="nav-menu w-nav-menu">
-                  <div className="nav-menu-inner">
-                    <a onClick={() => scrollToSection(featureSectionRef)}
+                {isOpen && (
+                <nav role="navigation" className="nav-menu" style={{ overflow: 'visible',display:"block", justifyContent: "space-around", position:"absolute", float:"right", left: 0, width: "100%",top: "100%", cursor: "pointer" }}>
+                  <div className="nav-menu-inner" style={{overflow: 'visible'}}>
+                    <Link to="/" className="navbar-link w-nav-link">Home</Link>
+                    <a href="#" onClick={() => scrollToSection(featureSectionRef)}
                        className="navbar-link w-nav-link">Features</a>
                     <Link to="/aboutus" className="navbar-link w-nav-link">Platform</Link>
                     <Link to="/aboutus" className="navbar-link w-nav-link">Solutions</Link>
@@ -78,12 +90,12 @@ function App() {
                     <Link to="/contact" className="navbar-link w-nav-link">Resources</Link>
                     <Link to="/aboutus" className="navbar-link w-nav-link">About us</Link>
                     <Link to="/contact" className="navbar-link w-nav-link">Contact</Link>
-                    <Link to="/register" className="navbar-link w-nav-link">Register</Link>
-
                   </div>
                 </nav>
+                )}
               </div>
             </div>
+
           </nav>
         </div>
         <motion.section whileInView={{opacity: 1, y: 0}} // Target animation
@@ -97,12 +109,15 @@ function App() {
                 <div className="w-layout-grid hero-grid">
                   <div className="layout-content">
                     <div className="margin-bottom">
-                      <div className="text-highlight" style={{textTransform: "capitalize"}}>AI Powered Career Advancement Platform</div>
+                      <div className="text-highlight" style={{textTransform: "capitalize"}}>AI Powered Career
+                        Advancement Platform
+                      </div>
                     </div>
                     <div className="margin-bottom">
                       <h1 className="heading"> Prepare for tomorrow by mastering future technologies now</h1>
                     </div>
-                    <p className="text-size-medium" style={{lineHeight: '1.5'}}>Supercharge your ambition: Blending AI innovation with human
+                    <p className="text-size-medium" style={{lineHeight: '1.5'}}>Supercharge your ambition: Blending AI
+                      innovation with human
                       creativity to your career journey</p>
                     <div className="margin-top margin-medium">
                       <div className="button-group">
@@ -550,7 +565,7 @@ function App() {
                     <div className="footer-left-wrapper text-color-white">
                       <div className="margin-bottom margin-medium">
                         <a href="#" className="footer3-logo-link w-nav-brand"></a>
-                        <img src={logoExplain} alt={"Accelerate Your Career"} className="brand logo-2" style={{minWidth: "200px", minHeight: "200px"}}></img>
+                        <img src={logoExplain} alt={"Accelerate Your Career"} className="brand logo-2" style={{minWidth: "50px", minHeight: "50px"}}></img>
                       </div>
                       <div className="margin-bottom margin-medium">
                         <div className="footer3-details-wrapper">
