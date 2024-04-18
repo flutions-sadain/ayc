@@ -7,6 +7,9 @@ import Contact from "./components/Contact.jsx";
 import Register from "./components/Register.jsx";
 import logo from '../public/images/logo.svg';
 import logoExplain from '../public/images/logoe.svg';
+import Apps from "./components/platform/Apps.jsx";
+import Assessment from "./components/platform/Assessment.jsx";
+import Dashboard from "./components/platform/Dashboard.jsx";
 
 
 
@@ -35,6 +38,15 @@ function App() {
         <Routes>
           <Route path="/register" element={<Register/>}/>
         </Routes>
+        <Routes>
+          <Route path="/apps" element={<Apps/>}/>
+        </Routes>
+        <Routes>
+          <Route path="/assessment" element={<Assessment/>}/>
+        </Routes>
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard/>}/>
+        </Routes>
         <div className="navigation-main">
           <nav className="navigation-wrap">
 
@@ -50,7 +62,7 @@ function App() {
                   <Link to="/" className="navbar-link w-nav-link">Home</Link>
                   <a href="#" onClick={() => scrollToSection(featureSectionRef)}
                      className="navbar-link w-nav-link">Features</a>
-                  <Link to="/aboutus" className="navbar-link w-nav-link">Platform</Link>
+                  <Link to="/apps" className="navbar-link w-nav-link">Platform</Link>
                   <Link to="/aboutus" className="navbar-link w-nav-link">Solutions</Link>
                   <Link to="/aboutus" className="navbar-link w-nav-link">Careers</Link>
                   <Link to="/contact" className="navbar-link w-nav-link">Events</Link>
@@ -82,7 +94,7 @@ function App() {
                     <Link to="/" className="navbar-link w-nav-link">Home</Link>
                     <a href="#" onClick={() => scrollToSection(featureSectionRef)}
                        className="navbar-link w-nav-link">Features</a>
-                    <Link to="/aboutus" className="navbar-link w-nav-link">Platform</Link>
+                    <Link to="/apps" className="navbar-link w-nav-link">Platform</Link>
                     <Link to="/aboutus" className="navbar-link w-nav-link">Solutions</Link>
                     <Link to="/aboutus" className="navbar-link w-nav-link">Careers</Link>
                     <Link to="/contact" className="navbar-link w-nav-link">Events</Link>
@@ -564,11 +576,14 @@ function App() {
                   <div className="w-layout-grid footer-top-wrapper">
                     <div className="footer-left-wrapper text-color-white">
                       <div className="margin-bottom margin-medium">
-                        <a href="#" className="footer3-logo-link w-nav-brand"></a>
-                        <img src={logoExplain} alt={"Accelerate Your Career"} className="brand logo-2" style={{minWidth: "50px", minHeight: "50px"}}></img>
+                        <a href="/" className="footer3-logo-link w-nav-brand">
+                          <img src={logoExplain} alt={"Accelerate Your Career"} className="brand logo-2"
+                               style={{minWidth: "50px", minHeight: "50px"}}></img>
+                        </a>
+
                       </div>
                       <div className="margin-bottom margin-medium">
-                        <div className="footer3-details-wrapper">
+                      <div className="footer3-details-wrapper">
                           <div className="text-size-small-2">‍<span className="text-weight-semibold">Address</span>
                             <a href="#" className="link-2"><br/>P.O Box 2345, Bedford Dr, Kingston<br/>New York 12401</a>
                           </div>

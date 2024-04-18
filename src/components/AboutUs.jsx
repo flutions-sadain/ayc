@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import {Link} from "react-router-dom";
 import {useRef, useState} from "react";
 import logo from "../../public/images/logo.svg";
+import logoLight from "../../public/images/logo_light.svg";
+import logoExplain from "../../public/images/logoe.svg";
 
 
 function AboutUs() {
@@ -32,7 +34,7 @@ function AboutUs() {
                                 <Link to="/" className="navbar-link w-nav-link">Home</Link>
                                 <a href="#" onClick={() => scrollToSection(featureSectionRef)}
                                    className="navbar-link w-nav-link">Features</a>
-                                <Link to="/aboutus" className="navbar-link w-nav-link">Platform</Link>
+                                <Link to="/app" className="navbar-link w-nav-link">Platform</Link>
                                 <Link to="/aboutus" className="navbar-link w-nav-link">Solutions</Link>
                                 <Link to="/aboutus" className="navbar-link w-nav-link">Careers</Link>
                                 <Link to="/contact" className="navbar-link w-nav-link">Events</Link>
@@ -53,7 +55,7 @@ function AboutUs() {
                          style={{overflow: 'visible'}}>
                         <div className="navigation-container-mob">
                             <a href="/" className="brand w-nav-brand">
-                                <img src={logo} alt={"Advance Your Career"} className="brand logo-2"
+                                <img src={logoLight} alt={"Advance Your Career"} className="brand logo-2"
                                      style={{minWidth: "100px", marginLeft: 0, paddingLeft: 0}}></img>
                             </a>
                             <div className="nav-mobile-button-wrap">
@@ -77,7 +79,7 @@ function AboutUs() {
                                         <Link to="/" className="navbar-link w-nav-link">Home</Link>
                                         <a href="#" onClick={() => scrollToSection(featureSectionRef)}
                                            className="navbar-link w-nav-link">Features</a>
-                                        <Link to="/aboutus" className="navbar-link w-nav-link">Platform</Link>
+                                        <Link to="/app" className="navbar-link w-nav-link">Platform</Link>
                                         <Link to="/aboutus" className="navbar-link w-nav-link">Solutions</Link>
                                         <Link to="/aboutus" className="navbar-link w-nav-link">Careers</Link>
                                         <Link to="/contact" className="navbar-link w-nav-link">Events</Link>
@@ -260,8 +262,11 @@ function AboutUs() {
                                 <div className="w-layout-grid footer-top-wrapper">
                                     <div className="footer-left-wrapper text-color-white">
                                         <div className="margin-bottom margin-medium">
-                                            <a href="#" className="footer3-logo-link w-nav-brand"></a>
-                                            <h3 className="heading-36">AYC</h3>
+                                            <a href="/" className="footer3-logo-link w-nav-brand">
+                                                <img src={logoExplain} alt={"Accelerate Your Career"}
+                                                     className="brand logo-2"
+                                                     style={{minWidth: "50px", minHeight: "50px"}}></img>
+                                            </a>
                                         </div>
                                         <div className="margin-bottom margin-medium">
                                             <div className="footer3-details-wrapper">
@@ -337,10 +342,30 @@ function AboutUs() {
                                     </div>
                                     <div className="w-layout-grid footer-menu-wrapper text-color-white">
                                         <div className="footer-link-list">
-                                            <Link to="/aboutus"  className="navbar-link w-nav-link">About us</Link>
-                                            <Link to="/contact"  className="navbar-link w-nav-link">Contact</Link>
+                                            <div className="text-size-medium-4"
+                                                 style={{paddingBottom: "20px", minWidth: "250px"}}>‍<span
+                                                className="text-weight-semibold">Featured Services</span>
+                                            </div>
+                                            <a href="aboutus" className="footer-link">Blockchain</a>
+                                            <a href="aboutus" className="footer-link">Cyber Security</a>
+                                            <a href="aboutus" className="footer-link">AR-VR</a>
+                                            <a href="aboutus" className="footer-link">AI & Machine Learning</a>
+                                            <a href="aboutus" className="footer-link">Quantum Computing</a>
+                                            <a href="aboutus" className="footer-link">Cloud & Edge Computing</a>
                                         </div>
                                         <div className="footer-link-list">
+                                            <div className="text-size-medium-4 padding-bottom"
+                                                 style={{paddingBottom: "20px"}}>‍<span
+                                                className="text-weight-semibold">Site Links</span>
+                                            </div>
+                                            <a href="aboutus" className="footer-link">Platform</a>
+                                            <a href="aboutus" className="footer-link">Solutions</a>
+                                            <a href="aboutus" className="footer-link">Career</a>
+                                            <a href="aboutus" className="footer-link">Events</a>
+                                            <a href="aboutus" className="footer-link">Pricing</a>
+                                            <a href="aboutus" className="footer-link">Resources</a>
+                                            <a href="aboutus" className="footer-link">About Us</a>
+                                            <a href="contact-us.html" className="footer-link">Contact</a>
                                             <a href="company/features.html" className="footer-link">Features</a>
                                             <a href="account/sign-up.html" className="footer-link">Sign Up</a>
                                         </div>

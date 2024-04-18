@@ -34,7 +34,7 @@ function Contact() {
                                 <Link to="/" className="navbar-link w-nav-link">Home</Link>
                                 <a href="#" onClick={() => scrollToSection(featureSectionRef)}
                                    className="navbar-link w-nav-link">Features</a>
-                                <Link to="/aboutus" className="navbar-link w-nav-link">Platform</Link>
+                                <Link to="/app" className="navbar-link w-nav-link">Platform</Link>
                                 <Link to="/aboutus" className="navbar-link w-nav-link">Solutions</Link>
                                 <Link to="/aboutus" className="navbar-link w-nav-link">Careers</Link>
                                 <Link to="/contact" className="navbar-link w-nav-link">Events</Link>
@@ -79,7 +79,7 @@ function Contact() {
                                         <Link to="/" className="navbar-link w-nav-link">Home</Link>
                                         <a href="#" onClick={() => scrollToSection(featureSectionRef)}
                                            className="navbar-link w-nav-link">Features</a>
-                                        <Link to="/aboutus" className="navbar-link w-nav-link">Platform</Link>
+                                        <Link to="/app" className="navbar-link w-nav-link">Platform</Link>
                                         <Link to="/aboutus" className="navbar-link w-nav-link">Solutions</Link>
                                         <Link to="/aboutus" className="navbar-link w-nav-link">Careers</Link>
                                         <Link to="/contact" className="navbar-link w-nav-link">Events</Link>

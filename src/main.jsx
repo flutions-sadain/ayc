@@ -6,6 +6,7 @@ import {createBrowserRouter, Link, RouterProvider} from "react-router-dom";
 import AboutUs from "./components/AboutUs.jsx";
 import Contact from "./components/Contact.jsx";
 import Register from "./components/Register.jsx";
+import Apps from "./components/platform/Apps.jsx";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
     {
         path: "register",
         element: <Register/>
+    },
+    {
+        path: "apps",
+        element: <Apps/>
     },
 ]);
 

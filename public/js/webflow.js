@@ -32761,7 +32761,7 @@ spurious results.`);
          *
          * This const is duplicated to @packages/systems/core/constants/SharedConfig.js
          * to avoid bundling this entire SharedConfig file in the webflow.js published
-         * site bundle. Once we have support for bundling for the Dashboard (this
+         * site bundle. Once we have support for bundling for the App (this
          * config is injected in to window.SharedConfig for angular), we should
          * be able to delete the const in SharedConfig and use the commerce/consts
          * package whenever `paypalCurrencyList` const is needed.
@@ -32822,7 +32822,7 @@ spurious results.`);
          *
          * This const is duplicated to @packages/systems/core/constants/SharedConfig.js
          * to avoid bundling this entire SharedConfig file in the webflow.js published
-         * site bundle. Once we have support for bundling for the Dashboard (this
+         * site bundle. Once we have support for bundling for the App (this
          * config is injected in to window.SharedConfig for angular), we should
          * be able to delete the const in SharedConfig and use the commerce/consts
          * package whenever `stripeCurrencyList` const is needed.
@@ -53881,10 +53881,10 @@ timm/lib/timm.js:
 tslib/tslib.es6.js:
   (*! *****************************************************************************
   Copyright (c) Microsoft Corporation.
-  
+
   Permission to use, copy, modify, and/or distribute this software for any
   purpose with or without fee is hereby granted.
-  
+
   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
   REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
   AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
@@ -53897,10 +53897,10 @@ tslib/tslib.es6.js:
 tslib/tslib.es6.js:
   (*! *****************************************************************************
   Copyright (c) Microsoft Corporation.
-  
+
   Permission to use, copy, modify, and/or distribute this software for any
   purpose with or without fee is hereby granted.
-  
+
   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
   REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
   AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
