@@ -7,6 +7,7 @@ import AboutUs from "./components/AboutUs.jsx";
 import Contact from "./components/Contact.jsx";
 import Register from "./components/Register.jsx";
 import Apps from "./components/platform/Apps.jsx";
+import {NextUIProvider} from "@nextui-org/react";
 
 const router = createBrowserRouter([
     {
@@ -35,11 +36,14 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
+        <NextUIProvider>
         <div className="page-wrapper">
             <div className="main-wrapper">
                 <RouterProvider router={router} />
             </div>
         </div>
+        </NextUIProvider>
     </React.StrictMode>
+
 ,
 )
