@@ -3,19 +3,142 @@ import {Link} from "react-router-dom";
 import {useRef, useState} from "react";
 import {Button, Chip} from "@nextui-org/react";
 import {Card, CardHeader, CardBody, CardFooter, Divider, Image} from "@nextui-org/react";
+import { ResponsivePie } from '@nivo/pie';
+
 
 
 
 function Dashboard() {
+    const data = [
+        {
+            "id": "POTD",
+            "label": "POTD Streak",
+            "value": 4,
+            "color": "#b9d941"
+        },
+        {
+            "id": "POTD",
+            "label": "POTD Streak",
+            "value": 4,
+            "color": "#b9d941"
+        },
+        {
+            "id": "POTD",
+            "label": "POTD Streak",
+            "value": 4,
+            "color": "#b9d941"
+        }
+    ];
+
+    const total = data.reduce((sum, item) => sum + item.value, 0);
+
+    function CenteredMetric() {
+        const totalValue = total.toFixed(2);
+        return (
+            <text
+                x="50%"
+                y="50%"
+                textAnchor="middle"
+                dominantBaseline="central"
+                style={{
+                    fontSize: '16px',
+                    fontWeight: '600',
+                }}
+            >
+               18 Days
+            </text>
+        );
+    }
+
 
     return (
         <>
-            <div className="bg-white h-screen">
+            <div className="bg-white">
                 <div className="max-w-7xl p-4 py-8 my-8 mb-8">
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                         Dashboard
                     </h2>
                 </div>
+
+                <div className="flex flex-col md:flex-row w-full">
+                    <Card className="w-full m-2">
+                        <CardHeader className="flex gap-3">
+                            <Image
+                                alt="nextui logo"
+                                height={40}
+                                radius="sm"
+                                src="./images/assessment.svg"
+                                width={40}
+                            />
+                            <div className="flex flex-col">
+                                <h2 className="text-base font-semibold leading-6 text-gray-900">Career - Key Metrics</h2>
+                                <p className="text-small text-default-500">POTD, Leaderboards and Career Stats</p>
+                            </div>
+                        </CardHeader>
+
+                        <CardBody>
+                            <div className="bg-white py-2 sm:py-12">
+                                <div className="max-w-7xl px-6 lg:px-8">
+                                    <div className="max-w-2xl lg:max-w-none">
+                                        <dl className="grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
+                                            <div className="flex flex-col bg-gray-400/5 p-8">
+                                                <dt className="text-md font-semibold leading-6 text-gray-600 mt-2">
+                                                    POTD Streak
+                                                </dt>
+                                                <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900" style={{height: '100px'}}>
+                                                    <ResponsivePie
+                                                        data={data}
+                                                        innerRadius={0.8}
+                                                        padAngle={5}
+                                                        cornerRadius={50}
+                                                        borderWidth={1}
+                                                        colors={{
+                                                            datum: 'data.color'
+                                                        }}
+                                                        radialLabelsSkipAngle={10}
+                                                        radialLabelsTextColor="#333333"
+                                                        radialLabelsLinkColor={{from: 'color'}}
+                                                        sliceLabelsSkipAngle={10}
+                                                        sliceLabelsTextColor="#333333"
+                                                        animate={true}
+                                                        motionStiffness={90}
+                                                        motionDamping={15}
+                                                        enableRadialLabels={false}
+                                                        enableSliceLabels={false}
+                                                        enableArcLabels={false}
+                                                        enableArcLinkLabels={false}
+                                                        layers={['arcs', 'arcLabels', 'arcLinkLabels', CenteredMetric]}
+                                                        datum={d => d.data.color}
+                                                        colorBy={d => d.data.color}
+                                                    />
+                                                </dd>
+
+                                            </div>
+                                            <div className="flex flex-col bg-gray-400/5 p-8">
+                                                <dt className="text-sm font-semibold leading-6 text-gray-600">Gross POTD
+                                                </dt>
+                                                <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">891</dd>
+                                            </div>
+                                            <div className="flex flex-col bg-gray-400/5 p-8">
+                                                <dt className="text-sm font-semibold leading-6 text-gray-600">Solved POTD
+                                                </dt>
+                                                <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">91.9%</dd>
+                                            </div>
+                                            <div className="flex flex-col bg-gray-400/5 p-8">
+                                                <dt className="text-sm font-semibold leading-6 text-gray-600">Leaderboard Rank
+                                                </dt>
+                                                <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">#312</dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </CardBody>
+
+
+                    </Card>
+                </div>
+
                 <div className="flex flex-col md:flex-row w-full">
                     <Card className="w-full max-width-small md:basis-3/10 m-2">
                         <CardHeader className="flex gap-3">
@@ -82,7 +205,8 @@ function Dashboard() {
                         </CardHeader>
 
                         <CardBody>
-                            <div className="mx-auto h-full flex flex-col sm:flex-row justify-center items-center text-center w-full">
+                            <div
+                                className="mx-auto h-full flex flex-col sm:flex-row justify-center items-center text-center w-full">
                                 <div className="flex-1 mx-4">
                                     <div className="text-8xl font-bold text-black">6</div>
                                     <div className="text-lg font-medium text-gray-600">Enrolled</div>
