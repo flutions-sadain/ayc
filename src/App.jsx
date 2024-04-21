@@ -10,6 +10,11 @@ import logoExplain from '../public/images/logoe.svg';
 import Apps from "./components/platform/Apps.jsx";
 import Assessment from "./components/platform/Assessment.jsx";
 import Dashboard from "./components/platform/Dashboard.jsx";
+import NewResumeUpload from './components/Dashboard/ResumeUpload';
+import ProfileForm from "./components/Dashboard/ProfileForm";
+import AssessmentScore from "./components/Dashboard/AssessmentScore";
+import NewDashboard from "./components/Dashboard/Dashboard";
+import CourseDetailsContent from "./components/Dashboard/CourseDetails";
 
 
 
@@ -46,6 +51,21 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/dashboard" element={<Dashboard/>}/>
+        </Routes>
+        <Routes>
+          <Route path="/newResume" element={<NewResumeUpload/>}/>
+        </Routes>
+        <Routes>
+          <Route path="/profileForm" element={<ProfileForm/>}/>
+        </Routes>
+        <Routes>
+          <Route path="/assessmentScore" element={<AssessmentScore/>}/>
+        </Routes>
+        <Routes>
+          <Route path="/newDashboard" element={<NewDashboard/>}/>
+        </Routes>
+        <Routes>
+          <Route path="/courseDetailsContent" element={<CourseDetailsContent/>}/>
         </Routes>
         <div className="navigation-main">
           <nav className="navigation-wrap">
