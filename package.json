@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.15",
     "@nextui-org/react": "^2.3.4",
     "@nivo/bar": "^0.85.1",

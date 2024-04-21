@@ -38,18 +38,19 @@ function AssesmentQuestions({ questions, category, hide }) {
 
   return (
     <div>
-      <section className="h-[200px]  bg-blue-600">
-        <div className="py-5 sm:px-6 lg:px-0 lg:py-5 ">
-          <h1 className="text-white text-center text-4xl mb-2 text-[gt-bold]">
-            Test your Knowledge
-          </h1>
-          <div className="absolute mx-10 sm:mx-20 lg:mx-52 inset-0 flex justify-center items-center transform translate-y-[5rem] sm:translate-y-[3rem] md:translate-y-[2rem] lg:-translate-y-20">
+      <section>
+        <div className="py-5 sm:px-6 lg:px-0 lg:py-5">
+          <div className="relative mx-5 my-10 sm:mx-10 lg:mx-40 z-10">
+            <h1 className="text-black text-center text-4xl mb-10">
+              Test your Knowledge
+            </h1>
             <AssessmentCard category={category} index={0} />
           </div>
         </div>
+        <span className="w-full h-60 bg-[#dbfe01] absolute inset-0"></span>
       </section>
 
-      <div className="xl:mx-40 sm:mx-10 mt-[30rem] sm:mt-[26rem] md:mt-[22rem] lg:mt-24 xl:mt-40 mb-10">
+      <div className="xl:mx-40 sm:mx-10 mb-10">
         <div className="lg:flex">
           <div className="lg:w-[60%] lg:border-r-2 flex max-sm:block">
             <div className="">
@@ -60,14 +61,12 @@ function AssesmentQuestions({ questions, category, hide }) {
                     <div
                       key={qindex}
                       className={`${
-                        qindex === index ? "bg-[#EC7A48]" : "bg-[#ec79484d]"
+                        qindex === index ? "bg-[#dbfe01]" : "bg-[#dcfe0143]"
                       } rounded-lg w-10 h-10 max-sm:mt-2 flex justify-center items-center cursor-pointer`}
                       onClick={() => setIndex(qindex)}
                     >
                       <p
-                        className={`${
-                          qindex === index ? "text-white" : "text-[#f9a14f]"
-                        }`}
+                        className="text-black"
                       >
                         {qindex + 1}
                       </p>
@@ -84,7 +83,7 @@ function AssesmentQuestions({ questions, category, hide }) {
           <div className="m-3 lg:w-[40%]">
             <div className="p-2 w-full">
               <div className="">
-                <p className="leading-7 text-lg font-[gt-regular] text-black">
+                <p className="leading-7 text-lg text-black">
                   Please Provide your answer
                 </p>
                 {category === "code_questions" ? (

@@ -6,10 +6,11 @@ import CircularProgress from "@mui/material/CircularProgress";
 // import { userData } from "../store/reducers/User";
 import "./resumeupload.css";
 import { useNavigate } from "react-router-dom";
+import fileImg from "../../assets/images/file.png";
 
 function ResumeUpload() {
   const [file, setfile] = useState([]);
-  const [loading, setloading] = useState(false);
+  // const [loading, setloading] = useState(false);
   const linkedin = useRef();
   const fileRef = useRef(null);
   // const user = useSelector(userData);
@@ -60,8 +61,8 @@ function ResumeUpload() {
     <div className="resume_box">
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={loading}
-        onClick={() => setloading(false)}
+        // open={loading}
+        // onClick={() => setloading(false)}
       >
         <CircularProgress style={{ color: "orange" }} />
       </Backdrop>
@@ -71,7 +72,7 @@ function ResumeUpload() {
           <h1 class="text-xl font-bold">Upload Your Resume</h1>
         </div>
         <div className="ml-auto">
-          <a class="flex items-center text-[#EC7A48] focus:outline-none ml-auto" href="/profileForm">
+          <a class="flex items-center text-secondary focus:outline-none ml-auto" href="/profileForm">
             Skip
             <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
           </a>
@@ -90,7 +91,7 @@ function ResumeUpload() {
               onClick={() => fileRef.current.click()}
             >
               <div className="flex justify-center items-center">
-                <img alt="file_Img" src="/word 1.png" width={50} height={50} />
+                <img alt="file_Img" src={fileImg} width={50} height={50} />
               </div>
               <div className="fileupload_text">
                 <h3>Drag and drop files here</h3>
@@ -112,7 +113,7 @@ function ResumeUpload() {
               className="linkedin_input"
               placeholder="LinkedIn Link"
             />
-            <button class="absolute right-0 top-0 mt-[13px] mr-2 px-3 py-2 rounded-md text-[#EC7A48] focus:outline-none">
+            <button class="absolute right-0 top-0 mt-[13px] mr-2 px-3 py-2 rounded-md text-secondary focus:outline-none">
               Paste
             </button>
             </div>
@@ -126,7 +127,7 @@ function ResumeUpload() {
             Help Center
           </button>
           <div className="buttons sm:justify-center">
-            <button className="cancel text-[#EC7A48]">Cancel</button>
+            <button className="cancel text-secondary">Cancel</button>
             <button className="continue" onClick={submit}>
               Continue
             </button>

@@ -1,20 +1,13 @@
 .resume_box {
   border: 1px;
   width: 800px;
-
   margin: 70px auto 0;
   border-radius: 10.6px;
-  box-shadow: 1.3248730897903442px 1.3248730897903442px 5.299492359161377px 0px
-      rgba(248, 102, 37, 0.08),
-    6.624365329742432px 6.624365329742432px 9.2741117477417px 0px
-      rgba(248, 102, 37, 0.07),
-    14.573603630065918px 14.573603630065918px 11.923857688903809px 0px
-      rgba(248, 102, 37, 0.04),
-    25.172588348388672px 25.172588348388672px 14.573603630065918px 0px
-      rgba(248, 102, 37, 0.01),
-    38.42131805419922px 38.42131805419922px 15.898477554321289px 0px
-      rgba(248, 102, 37, 0),
-    -5.299492359161377px 0px 5.299492359161377px 0px rgba(237, 105, 46, 0.18);
+  box-shadow: 
+  0 2px 4px rgba(0, 0, 0, 0.1), 
+  0 8px 16px rgba(0, 0, 0, 0.1),
+  0 16px 32px rgba(0, 0, 0, 0.1),
+  0 32px 64px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 640px) {
@@ -72,7 +65,7 @@ h3 {
   margin: 15px !important;
 }
 .browse {
-  color: rgba(236, 101, 43, 1);
+  color: #333334;
   margin-top: 10px;
   font-family: Inter;
   font-size: 24px;
@@ -141,7 +134,7 @@ h3 {
 }
 
 .continue {
-  background: #ec7a48;
-  color: white;
+  background: #dbfe01;
+  color: #333334;
   border: none;
 }

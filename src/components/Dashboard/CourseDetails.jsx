@@ -15,7 +15,7 @@ const CourseDetails = () => {
     const navigate = useNavigate();
 
     const submit = () => {
-        navigate("/dashboard");
+        navigate("/newDashboard");
     };
 
     const handlePlayClick = () => {
@@ -26,7 +26,7 @@ const CourseDetails = () => {
             <section className="max-sm:mx-4 lg:mx-10 xl:mx-28">
                 <div className="py-4 sm:px-6 lg:px-0 lg:py-5">
                     <h1 className="text-2xl font-bold">Course Details</h1>
-                    <div className="p-4 mt-2 grid lg:grid-cols-3 xl:grid-cols-5 gap-3 bg-[#EFEBF5] rounded-lg">
+                    <div className="p-4 mt-2 grid lg:grid-cols-3 xl:grid-cols-5 gap-3 bg-[#dcfe011f] rounded-lg">
                         <div className="lg:py-8 xl:col-span-2 items-center xl:mr-10">
                             <h5 className="text-xl font-bold">Beginning C++ Programming - From Beginner to Beyond</h5>
                             <p className="text-base font-normal text-gray-600">
@@ -66,18 +66,18 @@ const CourseDetails = () => {
                         <div className="xl:col-span-2 max-sm:order-first md:order-first lg:order-none">
                             <ol class="flex items-center whitespace-nowrap p-0 mb-4" aria-label="Breadcrumb">
                                 <li class="inline-flex items-center">
-                                    <a class="flex items-center text-sm text-gray-500 hover:text-[#9C4DF4] focus:outline-none focus:text-[#9C4DF4]" href="#">
+                                    <a class="flex items-center text-sm text-gray-500 hover:text-[#333334] focus:outline-none focus:text-[#333334]" href="#">
                                         Home
                                     </a>
                                     <svg class="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
                                 </li>
                                 <li class="inline-flex items-center">
-                                    <a class="flex items-center text-sm text-gray-500 hover:text-[#9C4DF4] focus:outline-none focus:text-[#9C4DF4]" href="#">
+                                    <a class="flex items-center text-sm text-gray-500 hover:text-[#333334] focus:outline-none focus:text-[#333334]" href="#">
                                         Course
                                         <svg class="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
                                     </a>
                                 </li>
-                                <li class="inline-flex items-center text-sm font-medium text-[#9C4DF4] truncate" aria-current="page">
+                                <li class="inline-flex items-center text-sm font-medium text-[#333334] truncate" aria-current="page">
                                     Course Details
                                 </li>
                             </ol>
@@ -86,7 +86,7 @@ const CourseDetails = () => {
                                 {!isPlaying && (
                                     <div className="absolute lg::mt-4 inset-0 flex items-center justify-center z-10">
                                         <button type="button" onClick={handlePlayClick} className="z-10 absolute inset-0 flex items-center justify-center focus:outline-none" >
-                                            <span className="rounded-full w-auto h-auto p-3 bg-[#9C4DF4]">
+                                            <span className="rounded-full w-auto h-auto p-3 bg-[#333334]">
                                                 <FaPlay className="text-white text-2xl" />
                                             </span>
                                         </button>
@@ -106,7 +106,7 @@ const CourseDetails = () => {
                                     </div>
                                     <div>
                                         <p className="text-base font-normal">About The course</p>
-                                        <p className="text-sm font-light text-[#FF6652]">1:57</p>
+                                        <p className="text-sm font-light text-[#333334]">1:57</p>
                                     </div>
                                 </div>
                                 <div className="mt-2 w-full flex items-center bg-white rounded-lg shadow-md">
@@ -115,7 +115,7 @@ const CourseDetails = () => {
                                     </div>
                                     <div>
                                         <p className="text-base font-normal">About The course</p>
-                                        <p className="text-sm font-light text-[#FF6652]">1:57</p>
+                                        <p className="text-sm font-light text-[#333334]">1:57</p>
                                     </div>
                                 </div>
                                 <div className="mt-2 w-full flex items-center bg-white rounded-lg shadow-md">
@@ -124,7 +124,7 @@ const CourseDetails = () => {
                                     </div>
                                     <div>
                                         <p className="text-base font-normal">About The course</p>
-                                        <p className="text-sm font-light text-[#FF6652]">1:57</p>
+                                        <p className="text-sm font-light text-[#333334]">1:57</p>
                                     </div>
                                 </div>
                                 <div className="mt-2 w-full flex items-center bg-white rounded-lg shadow-md">
@@ -133,7 +133,7 @@ const CourseDetails = () => {
                                     </div>
                                     <div>
                                         <p className="text-base font-normal">About The course</p>
-                                        <p className="text-sm font-light text-[#FF6652]">1:57</p>
+                                        <p className="text-sm font-light text-[#333334]">1:57</p>
                                     </div>
                                 </div>
                                 <div className="mt-2 w-full flex items-center bg-white rounded-lg shadow-md">
@@ -142,35 +142,35 @@ const CourseDetails = () => {
                                     </div>
                                     <div>
                                         <p className="text-base font-normal">About The course</p>
-                                        <p className="text-sm font-light text-[#FF6652]">1:57</p>
+                                        <p className="text-sm font-light text-[#333334]">1:57</p>
                                     </div>
                                 </div>
                                 <div className="mt-2 w-full flex items-center bg-white rounded-lg shadow-md opacity-60">
                                     <div className="relative flex items-center justify-center">
                                         <div className="z-10 absolute inset-0 flex items-center justify-center focus:outline-none" >
                                             <span className="rounded-full w-auto h-auto p-1 bg-white">
-                                                <CiLock className="text-[#9C4DF4] text-xs font-bold" />
+                                                <CiLock className="text-[#333334] text-xs font-bold" />
                                             </span>
                                         </div>
                                         <img src={courseList} alt="Course List" className="p-2 w-20 rounded-lg" />
                                     </div>
                                     <div>
                                         <p className="text-base font-normal">About The course</p>
-                                        <p className="text-sm font-light text-[#FF6652]">1:57</p>
+                                        <p className="text-sm font-light text-[#333334]">1:57</p>
                                     </div>
                                 </div>
                                 <div className="mt-2 w-full flex items-center bg-white rounded-lg shadow-md opacity-60">
                                     <div className="relative flex items-center justify-center">
                                         <div className="z-10 absolute inset-0 flex items-center justify-center focus:outline-none" >
                                             <span className="rounded-full w-auto h-auto p-1 bg-white">
-                                                <CiLock className="text-[#9C4DF4] text-xs font-bold" />
+                                                <CiLock className="text-[#333334] text-xs font-bold" />
                                             </span>
                                         </div>
                                         <img src={courseList} alt="Course List" className="p-2 w-20 rounded-lg" />
                                     </div>
                                     <div>
                                         <p className="text-base font-normal">About The course</p>
-                                        <p className="text-sm font-light text-[#FF6652]">1:57</p>
+                                        <p className="text-sm font-light text-[#333334]">1:57</p>
                                     </div>
                                 </div>
                             </div>
@@ -214,7 +214,7 @@ const CourseDetails = () => {
                             </p>
                         </div>
                         <div className="flex justify-center items-end">
-                            <button onClick={submit} className="continue w-full !bg-[#9C4DF4]">
+                            <button onClick={submit} className="continue w-full text-[333334] !bg-[#dbfe01]">
                                 Continue
                             </button>
                         </div>

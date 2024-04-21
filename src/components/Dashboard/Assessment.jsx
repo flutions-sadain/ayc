@@ -4,9 +4,9 @@ import AssessmentCard from "../../utils/AssessmentCard";
 import { useNavigate  } from 'react-router-dom';
 import "./assessment.css";
 import AssesmentQuestions from "./AssesmentQuestions";
-import profileImg1 from '../assets/images/profile-form-1.png';
-import profileImg2 from '../assets/images/profile-form-2.png';
-import profileImg3 from '../assets/images/profile-form-3.png';
+import profileImg1 from '../../assets/images/profile-form-1.png';
+import profileImg2 from '../../assets/images/profile-form-2.png';
+import profileImg3 from '../../assets/images/profile-form-3.png';
 
 const Assessmentdata = {
   behavioural_questions: [
@@ -66,17 +66,17 @@ function Assessment() {
   }
   return (
     <div>
-      <section class="overflow-hidden bg-blue-600">
+      <section class="overflow-hidden bg-[#dbfe01]">
           <div class="py-3 sm:px-6 lg:relative lg:px-0 lg:py-5">
               <div class="xl:mx-64 items-center px-4 xl:px-12">
                   <div class="relative z-10">
                       <div class="relative">
-                          <p class="inline text-white font-light font-[gt-light] text-4xl tracking-tight text-transparent">Hey! <span className="font-medium font-[gt-regular]">Khizer</span></p>
-                          <p class="mt-3 text-2xl font-light font-[gt-light] text-white">Welcome to AYC, your first step in creating impact</p>
+                          <p class="inline text-black font-light text-4xl tracking-tight">Hey! <span className="font-medium">Khizer</span></p>
+                          <p class="mt-3 text-2xl font-light text-black">Welcome to AYC, your first step in creating impact</p>
                       </div>
                       <div className="lg:mx-32 mt-5">
                           <div className="mb-0" >
-                              <ol className="relative z-10 pl-0 flex justify-between text-sm font-medium text-white">
+                              <ol className="relative z-10 pl-0 flex justify-between text-sm font-medium text-black">
                                   <li className="flex items-center gap-2 -ml-8 max-sm:-ml-3">
                                       <img className='w-full max-sm:w-14' src={profileImg1} alt="profileImg1" />
                                   </li>
@@ -92,14 +92,14 @@ function Assessment() {
                               </ol>
                           </div>
                           <div className="mt-2 mb-0">
-                              <div className="relative after:absolute after:inset-x-0 after:top-1/2 after:block after:h-0.5 after:-translate-y-1/2 after:rounded-lg after:bg-gradient-to-r from-orange-500 from-50% to-gray-100 to-50%" >
+                              <div className="relative after:absolute after:inset-x-0 after:top-1/2 after:block after:h-0.5 after:-translate-y-1/2 after:rounded-lg after:bg-gradient-to-r from-[#333334] from-50% to-white to-50%" >
                                   <ol className="relative z-10 pl-0 flex justify-between text-sm font-medium text-white">
                                       <li className="flex items-center gap-2 ">
-                                          <span className="size-6 rounded-full bg-orange-500 text-center text-[10px]/6 font-bold"> 1 </span>
+                                          <span className="size-6 rounded-full bg-[#333334] text-center text-[10px]/6 font-bold"> 1 </span>
                                       </li>
 
                                       <li className="flex items-center gap-2 ">
-                                          <span className="size-6 rounded-full bg-orange-500 text-center text-[10px]/6 font-bold" > 2 </span>
+                                          <span className="size-6 rounded-full bg-[#333334] text-center text-[10px]/6 font-bold" > 2 </span>
                                       </li>
 
                                       <li className="flex items-center gap-2 ">
@@ -109,7 +109,7 @@ function Assessment() {
                               </div>
                           </div>
                           <div className="mb-0" >
-                              <ol className="relative z-10 pl-0 flex justify-between text-base font-medium text-white">
+                              <ol className="relative z-10 pl-0 flex justify-between text-base font-medium text-black">
                                   <li className="flex items-center gap-2 -ml-8 max-sm:-ml-3">
                                       <span className="hidden sm:block"> Complete Profile </span>
                                   </li>
@@ -134,10 +134,10 @@ function Assessment() {
                 <div class="relative">
                   <div class="flex mt-3 flex-wrap items-center">
                       <div class="relative max-sm:text-center flex-grow">
-                          <p class=" text-2xl font-light font-[gt-bold] text-black">Test your Knowledge</p>
+                          <p class=" text-2xl font-light text-black">Test your Knowledge</p>
                       </div>
                       <div className="ml-auto max-sm:pt-4">
-                        <button class="flex items-center text-[#EC7A48] focus:outline-none ml-auto">
+                        <button class="flex items-center text-[#333334] focus:outline-none ml-auto">
                           View All
                           <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </button>
