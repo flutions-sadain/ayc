@@ -3,6 +3,7 @@ import { TbSettings } from "react-icons/tb";
 import { FaArrowRightLong } from "react-icons/fa6";
 import course1 from "../../assets/images/Course - 1.png";
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
+import Header from "../Header";
 
 const Dashboard = () => {
 
@@ -10,13 +11,14 @@ const Dashboard = () => {
 
     return (
         <div>
+            <Header />
             <section className="max-sm:mx-4 lg:mx-10 xl:mx-32">
                 <div className="py-4 sm:px-6 lg:px-0 lg:py-5">
                     <h1 className="text-2xl font-bold">Course Overview</h1>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:gap-2 ">
-                        <div className="w-full px-3 mt-3 bg-[#D8F2EE] rounded-lg border-1 border-[#43B3A0]">
+                        <div className="w-full px-3 mt-3 bg-[#dcfe011f] rounded-lg border-1 border-[#333334]">
                             <div className="flex justify-start py-4 items-center">
-                                <div className="text-3xl text-[#43B3A0] p-2 mr-5 rounded-lg border">
+                                <div className="text-3xl text-[#333334] p-2 mr-5 rounded-lg border border-[#333334]">
                                     <TbSettings />
                                 </div>
                                 <div className="justify-start">
@@ -24,14 +26,14 @@ const Dashboard = () => {
                                     <p className="text-base font-light">Total Course</p>
                                 </div>
                             </div>
-                            <div className="flex justify-between items-center py-2 font-medium text-[#43B3A0] border-t-[1px] border-[#43B3A0]">
+                            <div className="flex justify-between items-center py-2 font-medium text-[#333334] border-t-[1px] border-[#333334]">
                                 <p className="text-xl">See Details</p>
                                 <FaArrowRightLong className="text-xl w-6 cursor-pointer" />
                             </div>
                         </div>
-                        <div className="w-full px-3 mt-3 bg-[#F6EEFF] rounded-lg border-1 border-[#9C4DF4]">
+                        <div className="w-full px-3 mt-3 bg-[#dcfe011f] rounded-lg border-1 border-[#333334]">
                             <div className="flex justify-start py-4 items-center">
-                                <div className="text-3xl text-[#9C4DF4] p-2 mr-5 rounded-lg border">
+                                <div className="text-3xl text-[#333334] p-2 mr-5 rounded-lg border border-[#333334]">
                                     <TbSettings />
                                 </div>
                                 <div className="justify-start">
@@ -39,14 +41,14 @@ const Dashboard = () => {
                                     <p className="text-base font-light">Completed</p>
                                 </div>
                             </div>
-                            <div className="flex justify-between items-center py-2 font-medium text-[#9C4DF4] border-t-[1px] border-[#9C4DF4]">
+                            <div className="flex justify-between items-center py-2 font-medium text-[#333334] border-t-[1px] border-[#333334]">
                                 <p className="text-xl">See Details</p>
                                 <FaArrowRightLong className="text-xl w-6 cursor-pointer" />
                             </div>
                         </div>
-                        <div className="w-full px-3 mt-3 bg-[#FFF2ED] rounded-lg border-1 border-[#EC652B]">
+                        <div className="w-full px-3 mt-3 bg-[#dcfe011f] rounded-lg border-1 border-[#333334]">
                             <div className="flex justify-start py-4 items-center">
-                                <div className="text-3xl text-[#EC652B] p-2 mr-5 rounded-lg border">
+                                <div className="text-3xl text-[#333334] p-2 mr-5 rounded-lg border border-[#333334]">
                                     <TbSettings />
                                 </div>
                                 <div className="justify-start">
@@ -54,14 +56,14 @@ const Dashboard = () => {
                                     <p className="text-base font-light">Pending</p>
                                 </div>
                             </div>
-                            <div className="flex justify-between items-center py-2 font-medium text-[#EC652B] border-t-[1px] border-[#EC652B]">
+                            <div className="flex justify-between items-center py-2 font-medium text-[#333334] border-t-[1px] border-[#333334]">
                                 <p className="text-xl">See Details</p>
                                 <FaArrowRightLong className="text-xl w-6 cursor-pointer" />
                             </div>
                         </div>
-                        <div className="w-full px-3 mt-3 bg-[#E8E9FF] rounded-lg border-1 border-[#4E6DDA]">
+                        <div className="w-full px-3 mt-3 bg-[#dcfe011f] rounded-lg border-1 border-[#333334]">
                             <div className="flex justify-start py-4 items-center">
-                                <div className="text-3xl text-[#4E6DDA] p-2 mr-5 rounded-lg border">
+                                <div className="text-3xl text-[#333334] p-2 mr-5 rounded-lg border border-[#333334]">
                                     <TbSettings />
                                 </div>
                                 <div className="justify-start">
@@ -69,7 +71,7 @@ const Dashboard = () => {
                                     <p className="text-base font-light">Total Certification</p>
                                 </div>
                             </div>
-                            <div className="flex justify-between items-center py-2 font-medium text-[#4E6DDA] border-t-[1px] border-[#4E6DDA]">
+                            <div className="flex justify-between items-center py-2 font-medium text-[#333334] border-t-[1px] border-[#333334]">
                                 <p className="text-xl">See Details</p>
                                 <FaArrowRightLong className="text-xl w-6 cursor-pointer" />
                             </div>
@@ -105,7 +107,7 @@ const Dashboard = () => {
                                                 <p class="text-sm font-light text-gray-800"><span className="font-bold">2</span>/20 Lesson</p>
                                             </div>
                                             <div class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                <div class="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
+                                                <div class="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-[#333334] text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -118,7 +120,7 @@ const Dashboard = () => {
                                                 <p class="text-sm font-light text-gray-800"><span className="font-bold">2</span>/20 Lesson</p>
                                             </div>
                                             <div class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                <div class="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
+                                                <div class="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-[#333334] text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -131,7 +133,7 @@ const Dashboard = () => {
                                                 <p class="text-sm font-light text-gray-800"><span className="font-bold">2</span>/20 Lesson</p>
                                             </div>
                                             <div class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                <div class="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
+                                                <div class="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-[#333334] text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +146,7 @@ const Dashboard = () => {
                                                 <p class="text-sm font-light text-gray-800"><span className="font-bold">2</span>/20 Lesson</p>
                                             </div>
                                             <div class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                <div class="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
+                                                <div class="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-[#333334] text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
                                             </div>
                                         </div>
                                     </div>

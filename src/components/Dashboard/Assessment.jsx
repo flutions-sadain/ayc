@@ -7,6 +7,8 @@ import AssesmentQuestions from "./AssesmentQuestions";
 import profileImg1 from '../../assets/images/profile-form-1.png';
 import profileImg2 from '../../assets/images/profile-form-2.png';
 import profileImg3 from '../../assets/images/profile-form-3.png';
+import Header from "../Header";
+
 
 const Assessmentdata = {
   behavioural_questions: [
@@ -66,6 +68,7 @@ function Assessment() {
   }
   return (
     <div>
+      <Header />
       <section class="overflow-hidden bg-[#dbfe01]">
           <div class="py-3 sm:px-6 lg:relative lg:px-0 lg:py-5">
               <div class="xl:mx-64 items-center px-4 xl:px-12">

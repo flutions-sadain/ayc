@@ -7,6 +7,7 @@ import Assessment from "./Assessment.jsx";
 import Courses from "./Courses.jsx";
 import Resumes from "./Resumes.jsx";
 import logoExplain from "../../../public/images/logoe.svg";
+import ProfileForm from '../Dashboard/ProfileForm.jsx';
 
 
 
@@ -21,6 +22,10 @@ function Apps() {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => {
         setIsOpen(!isOpen);
+    };
+
+    const handleSkip = () => {
+        setComponent('account');
     };
 
     return (
@@ -50,7 +55,10 @@ function Apps() {
                                     <button onClick={() => switchComponent('courses')}
                                             className="navbar-link w-nav-link">Courses
                                     </button>
-                                    <Link to="/aboutus" className="navbar-link w-nav-link">Account</Link>
+                                    {/* <button onClick={() => switchComponent('account')}
+                                            className="navbar-link w-nav-link">Account
+                                    </button> */}
+                                    {/* <Link to="/aboutus" className="navbar-link w-nav-link">Account</Link> */}
                                 </nav>
                             </div>
 
@@ -147,12 +155,16 @@ function Apps() {
                 animate={{opacity: 1}}
                 exit={{opacity: 0}}
                 transition={{duration: 0.2}}>
-                <div className="container-large">
-                    {component === 'dashboard' && <Dashboard/>}
-                    {component === 'assessment' && <Assessment/>}
-                    {component === 'courses' && <Courses/>}
-                    {component === 'resumes' && <Resumes/>}
-                </div>
+                {component !== 'account' && (
+                    <div className="container-large">
+                        {/* Render different components based on 'component' state */}
+                        {component === 'dashboard' && <Dashboard />}
+                        {component === 'assessment' && <Assessment />}
+                        {component === 'courses' && <Courses />}
+                        {component === 'resumes' && <Resumes onSkip={handleSkip} />}
+                    </div>
+                )}
+                {component === 'account' && <ProfileForm />}
 
 
             </motion.div>

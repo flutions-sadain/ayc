@@ -2,11 +2,14 @@ import React from 'react';
 
 import course1 from "../../assets/images/Course - 1.png";
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
+import Header from "../Header";
+
 
 const AssessmentScore = () => {
     return (
         <div>
             <section>
+                <Header className="z-30" />
                 <div className="py-5 sm:px-6 lg:px-0 lg:py-5">
                     <div className="relative mx-5 my-10 sm:mx-10 lg:mx-40 z-10">
                         <h1 className="text-black text-center text-4xl mb-10">Assessment Score</h1>
@@ -99,11 +102,10 @@ const AssessmentScore = () => {
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
                     </div>
                 </div>
-                <span className="w-full h-80 bg-[#dbfe01] absolute inset-0"></span>
+                </div>
+                <span className="w-full h-80 bg-[#dbfe01] absolute top-[94px]"></span>
             </section >
             <div className="xl:mx-40 sm:mx-10 mb-10">
                 <div class="flex mt-3 flex-wrap items-center">

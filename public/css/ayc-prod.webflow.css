@@ -1354,7 +1354,7 @@ ol {
 li {
   margin-top: .25rem;
   margin-bottom: .25rem;
-  padding-left: .5rem;
+  /* padding-left: .5rem; */
 }
 
 img {
