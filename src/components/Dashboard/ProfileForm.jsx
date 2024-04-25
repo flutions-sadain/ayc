@@ -5,16 +5,17 @@ import profileImg3 from '../../assets/images/profile-form-3.png';
 import { useNavigate } from "react-router-dom";
 import Header from "../Header";
 
-const ProfileForm = () => {
+const ProfileForm = ({ onSubmit }) => {
   const navigate = useNavigate();
 
   const submit = () => {
       navigate("/newAssessment");
+    //   onSubmit();
   };
 
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <section class="overflow-hidden bg-[#dbfe01]">
                 <div class="py-16 sm:px-6 lg:relative lg:px-0 lg:py-5">
                     <div class="xl:mx-64 items-center px-4 xl:px-12">
@@ -87,7 +88,7 @@ const ProfileForm = () => {
                                 <p class="mt-3 text-2xl font-light text-black">Tell us more, so that we can find the <span className="font-medium">right curriculum & Mentor for you</span></p>
                             </div>
                             <div className="lg:mx-20 mt-5">
-                                <form onSubmit={submit}>
+                                <form>
                                     <div className="p-2 w-full">
                                         <div className="relative">
                                             <label htmlFor="Employer" className="leading-7 text-lg text-black">
@@ -142,7 +143,7 @@ const ProfileForm = () => {
                                     </div>
                                     <div className="p-2 w-full mt-2 mb-4">
                                         {/* <button className="cancel text-[#EC7A48]">Cancel</button> */}
-                                        <button type="submit" className="bg-[#dbfe01] text-black border-none rounded px-4 py-2 gap-3">
+                                        <button onClick={submit} className="bg-[#dbfe01] text-black border-none rounded px-4 py-2 gap-3">
                                             Continue
                                         </button>
                                     </div>

@@ -1,19 +1,19 @@
 import React from 'react';
 import { FaPlus, FaRegFileLines, FaRegEye } from "react-icons/fa6";
 import { MdOutlineCalendarMonth } from "react-icons/md";
-import assessmentCard1 from "../assets/images/assessmentcard1.png";
-import assessmentCard2 from "../assets/images/assessmentcard2.png";
-function AssessmentCard({ category, index, icon, click }) {
+// import Behavioural_Questions from "../assets/images/Behavioural_Questions.svg";
+function AssessmentCard({ category, index, icon, click, img }) {
   const selectAssessment = (key) => {
     //console.log(Assessmentdata[key])
   }
   // const imgSrc = index === 0 ? {assessmentCard1} : index === 1 ? {assessmentCard1} : index === 2 ? {assessmentCard2} : index === 3 && {assessmentCard2};
   return (
     <div className="lg:flex mb-6  bg-white shadow-md rounded-lg overflow-hidden border border-gray-300 p-2 z-10">
-      <img src={assessmentCard1} alt="img" className="w-[300px] mx-auto lg:w-[300px]" />
+      <img src={img} alt="img" className="w-[300px] h-[150px] mx-auto" />
       <div className="md:flex items-center">
         <div className=":md:py-0 px-3 max-sm:py-3 top-0">
-          <h5 className="text-2xl max-sm:text-xl">{category.replace('_', ' ')}</h5>
+          {/* <h5 className="text-2xl max-sm:text-xl">{category.replace('_', ' ')}</h5> */}
+          <h5 className="text-2xl max-sm:text-xl pb-2">{category.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h5>
           <p className="text-base text-gray-600">
             Behavioral questions are a common part of job interviews and are designed to assess how a candidate has behaved in specific situations in the past
           </p>

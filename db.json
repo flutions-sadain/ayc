@@ -1,0 +1,10 @@
+{
+    "uploadFile": {
+        "message": "uploaded to gcs successfully",
+        "status": "OK"
+    },
+    "profileQuestions": {
+        "message": "uploaded to gcs successfully",
+        "status": "OK"
+    }
+  }

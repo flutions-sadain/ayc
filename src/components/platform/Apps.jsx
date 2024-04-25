@@ -8,8 +8,7 @@ import Courses from "./Courses.jsx";
 import Resumes from "./Resumes.jsx";
 import logoExplain from "../../../public/images/logoe.svg";
 import ProfileForm from '../Dashboard/ProfileForm.jsx';
-
-
+import NewAssessment from '../Dashboard/Assessment.jsx';
 
 function Apps() {
 
@@ -18,6 +17,10 @@ function Apps() {
         setComponent(componentName);
     };
 
+    const [resumeSubmitted, setResumeSubmitted] = useState(false);
+    const handleResumeSubmit = () => {
+        setResumeSubmitted(true);
+    };
 
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => {
@@ -25,7 +28,7 @@ function Apps() {
     };
 
     const handleSkip = () => {
-        setComponent('account');
+        setComponent('profileForm');
     };
 
     return (
@@ -155,16 +158,17 @@ function Apps() {
                 animate={{opacity: 1}}
                 exit={{opacity: 0}}
                 transition={{duration: 0.2}}>
-                {component !== 'account' && (
+                {component !== 'profileForm' && (
                     <div className="container-large">
                         {/* Render different components based on 'component' state */}
                         {component === 'dashboard' && <Dashboard />}
                         {component === 'assessment' && <Assessment />}
                         {component === 'courses' && <Courses />}
-                        {component === 'resumes' && <Resumes onSkip={handleSkip} />}
+                        {component === 'resumes' && <Resumes onSkip={handleSkip} onSubmit={handleResumeSubmit} />}
                     </div>
                 )}
-                {component === 'account' && <ProfileForm />}
+                {component === 'profileForm' && <ProfileForm onSubmit={handleResumeSubmit} />}
+                {resumeSubmitted && <NewAssessment />}
 
 
             </motion.div>

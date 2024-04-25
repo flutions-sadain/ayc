@@ -7,8 +7,12 @@ import AssesmentQuestions from "./AssesmentQuestions";
 import profileImg1 from '../../assets/images/profile-form-1.png';
 import profileImg2 from '../../assets/images/profile-form-2.png';
 import profileImg3 from '../../assets/images/profile-form-3.png';
-import Header from "../Header";
 
+import behavioural_questions from "../../assets/images/behavioural_questions.svg";
+import technical_questions from "../../assets/images/technical_questions.svg";
+import past_industry_questions from "../../assets/images/past_industry_questions.svg";
+import code_questions from "../../assets/images/code_questions.svg";
+import Header from "../Header";
 
 const Assessmentdata = {
   behavioural_questions: [
@@ -35,20 +39,13 @@ const Assessmentdata = {
     "Write a function that multiplies two numbers.",
   ],
 };
-const data = [
-  {
-    img: "/Role model.png",
-    desc: "Complete Profile",
-  },
-  {
-    img: "/Coaching.png",
-    desc: "MCQ Test",
-  },
-  {
-    img: "/Learning.png",
-    desc: "Course Enroll",
-  },
-];
+
+const assessmentImage = {
+  behavioural_questions: behavioural_questions,
+  technical_questions: technical_questions,
+  past_industry_questions: past_industry_questions,
+  code_questions: code_questions,
+};
 
 function Assessment() {
   const navigate= useNavigate()
@@ -63,7 +60,9 @@ function Assessment() {
   }
   if(showQuestions){
     return(
-      <AssesmentQuestions  questions={Assessmentdata[category]} category={category} hide={setShowQuestions}/>
+      <>
+      <AssesmentQuestions questions={Assessmentdata[category]} category={category} img={assessmentImage[category]} hide={setShowQuestions} />
+      </>
     )
   }
   return (
@@ -137,7 +136,7 @@ function Assessment() {
                 <div class="relative">
                   <div class="flex mt-3 flex-wrap items-center">
                       <div class="relative max-sm:text-center flex-grow">
-                          <p class=" text-2xl font-light text-black">Test your Knowledge</p>
+                          <p class=" text-2xl font-medium text-black">Test your Knowledge</p>
                       </div>
                       <div className="ml-auto max-sm:pt-4">
                         <button class="flex items-center text-[#333334] focus:outline-none ml-auto">
@@ -151,7 +150,7 @@ function Assessment() {
                         {Object.keys(Assessmentdata).map((category,index)=>{
                           return(
                             <div key={index} >
-                            <AssessmentCard index={index} category={category} icon={true} click={selectAssessment} />
+                            <AssessmentCard index={index} category={category} icon={true} img={assessmentImage[category]} click={selectAssessment} />
                             </div>
                           )
                         })}

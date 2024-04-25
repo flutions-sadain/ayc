@@ -1,20 +1,51 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Divider from "@mui/material/Divider";
 import "./resumeupload.css";
 import { useNavigate } from "react-router-dom";
 import fileImg from "../../assets/images/file.png";
+import axios from 'axios';
 
 
-const Resumes = ({ onSkip }) => {
-    const [file, setfile] = useState([]);
+const Resumes = ({ onSkip, onSubmit }) => {
+    const [data, setData] = useState([]);
+    const [file, setFile] = useState(null);
+    // const [email, setEmail] = useState("san@gmail.com");
     const linkedin = useRef();
     const fileRef = useRef(null);
+ 
+    const handleSubmit = async () => {
+        const formData = new FormData();
+        formData.append("file", file);
+        // formData.append("email", email);
 
-    const navigate = useNavigate();
+        try {
+            const response = await axios.post('http://localhost:3001/uploadFile', formData, {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            });
+            console.log('Response:', response.data);
+          } catch (error) {
+            console.error('Error:', error);
+          }
+        
+        const data = await response.json();
+        setData(data);
+        onSubmit();
+    };
 
-    const submit = () => {
-        navigate("/newAssessment");
-    }
+    // const navigate = useNavigate();
+
+    // const submit = () => {
+    //     navigate("/newAssessment");
+    // }
+
+    const handleFileChange = (e) => {
+        // Set the file state to the selected file
+        const selectedFile = e.target.files[0];
+        console.log("Selected file:", selectedFile);
+        setFile(selectedFile);
+    };
 
     return (
         <div className="resume_box">
@@ -36,7 +67,7 @@ const Resumes = ({ onSkip }) => {
                             type="file"
                             hidden
                             ref={fileRef}
-                            onChange={(e) => setfile([...file, ...e.target.files])}
+                            onChange={handleFileChange}
                         />
                         <div
                             className="fileupload_content border-dashed border-2"
@@ -46,9 +77,15 @@ const Resumes = ({ onSkip }) => {
                                 <img alt="file_Img" src={fileImg} width={50} height={50} />
                             </div>
                             <div className="fileupload_text">
-                                <h3>Drag and drop files here</h3>
-                                <div>Or</div>
-                                <p className="browse">Browse Files</p>
+                            {file ? ( // Display file name if file is selected
+                                    <h3 className="text-wrap max-sm:text-base">{file.name}</h3>
+                                ) : (
+                                    <>
+                                        <h3>Drag and drop files here</h3>
+                                        <div>Or</div>
+                                        <p className="browse">Browse Files</p>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </form>
@@ -80,7 +117,7 @@ const Resumes = ({ onSkip }) => {
                     </button>
                     <div className="buttons sm:justify-center">
                         <button className="cancel text-secondary">Cancel</button>
-                        <button className="continue" onClick={submit}>
+                        <button onClick={handleSubmit} className="continue" >
                             Continue
                         </button>
                     </div>

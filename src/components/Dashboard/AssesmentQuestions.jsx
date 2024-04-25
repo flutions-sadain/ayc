@@ -14,7 +14,7 @@ import { loadLanguage } from "@uiw/codemirror-extensions-langs";
 import AssessmentCard from "../../utils/AssessmentCard";
 import { useNavigate } from "react-router-dom";
 
-function AssesmentQuestions({ questions, category, hide }) {
+function AssesmentQuestions({ questions, category, hide, img }) {
   const [index, setIndex] = useState(0);
   const [code, setCode] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("python"); // Default language
@@ -44,7 +44,7 @@ function AssesmentQuestions({ questions, category, hide }) {
             <h1 className="text-black text-center text-4xl mb-10">
               Test your Knowledge
             </h1>
-            <AssessmentCard category={category} index={0} />
+            <AssessmentCard category={category} img={img} />
           </div>
         </div>
         <span className="w-full h-60 bg-[#dbfe01] absolute inset-0"></span>
