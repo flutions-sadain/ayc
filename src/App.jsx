@@ -16,6 +16,7 @@ import AssessmentScreen from "./components/Dashboard/Assessment";
 import AssessmentScore from "./components/Dashboard/AssessmentScore";
 import NewDashboard from "./components/Dashboard/Dashboard";
 import CourseDetailsContent from "./components/Dashboard/CourseDetails";
+import Login from './components/Login.jsx';
 
 
 
@@ -45,6 +46,9 @@ function App() {
           <Route path="/register" element={<Register/>}/>
         </Routes>
         <Routes>
+          <Route  path="/login" element={<Login/>}/>
+        </Routes>
+        <Routes>
           <Route path="/apps" element={<Apps/>}/>
         </Routes>
         <Routes>
@@ -68,6 +72,7 @@ function App() {
         <Routes>
           <Route path="/courseDetailsContent" element={<CourseDetailsContent/>}/>
         </Routes>
+        
         <div className="navigation-main">
           <nav className="navigation-wrap">
 
