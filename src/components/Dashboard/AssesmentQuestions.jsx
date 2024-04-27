@@ -1,37 +1,57 @@
 import React, { useState } from "react";
-
+import axios from "axios";
 import CodeMirror from "@uiw/react-codemirror";
-import { dracula } from "@uiw/codemirror-theme-dracula"; // Dracula Theme
-// import { vscodeDark } from "@uiw/codemirror-theme-vscode"; // VSCode Dark Theme
-// import { monokai } from "@uiw/codemirror-theme-monokai"; // Monokai Theme
-// import { materialDark } from "@uiw/codemirror-theme-material"; // Material Dark Theme
-// import { javascript, javascriptLanguage } from "@codemirror/lang-javascript"; // JavaScript Language
-// import { python, pythonLanguage } from "@codemirror/lang-python"; // Python Language
-// import { cpp, cppLanguage } from "@codemirror/lang-cpp"; // C++ Language
-// import { java, javaLanguage } from "@codemirror/lang-java"; // Java Language
+import { dracula } from "@uiw/codemirror-theme-dracula";
 import { loadLanguage } from "@uiw/codemirror-extensions-langs";
-
 import AssessmentCard from "../../utils/AssessmentCard";
 import { useNavigate } from "react-router-dom";
 
 function AssesmentQuestions({ questions, category, hide, img }) {
   const [index, setIndex] = useState(0);
-  const [code, setCode] = useState("");
-  const [selectedLanguage, setSelectedLanguage] = useState("python"); // Default language
-
+  const [answers, setAnswers] = useState(Array(questions.length).fill(""));
+  const [selectedLanguage, setSelectedLanguage] = useState("python");
   const navigate = useNavigate();
 
-  const submit = () => {
-    if (index !== questions.length - 1) {
-      setIndex((prev) => prev + 1);
-    } else {
+  const submit = async () => {
+    const postData = answers.map((answer, i) => ({
+      Question: questions[i],
+      Answer: answer,
+    }));
+
+    try {
+      const response = await axios.get(
+        "http://localhost:3001/assesProfile",
+        postData
+      );
+      console.log("Response:", response.data);
       navigate("/assessmentScore");
+    } catch (error) {
+      console.error("Error posting answers:", error);
     }
   };
 
   const handleLanguageChange = (e) => {
     setSelectedLanguage(e.target.value);
-    setCode("");
+  };
+
+  const handleAnswerChange = (value) => {
+    const newAnswers = [...answers];
+    newAnswers[index] = value;
+    setAnswers(newAnswers);
+  };
+
+  const handleContinue = () => {
+    if (index !== questions.length - 1) {
+      setIndex((prev) => prev + 1);
+    } else {
+      submit();
+    }
+  };
+
+  const handlePrevious = () => {
+    if (index !== 0) {
+      setIndex((prev) => prev - 1);
+    }
   };
 
   const extensions = [loadLanguage(selectedLanguage)];
@@ -49,12 +69,11 @@ function AssesmentQuestions({ questions, category, hide, img }) {
         </div>
         <span className="w-full h-60 bg-[#dbfe01] absolute inset-0"></span>
       </section>
-
       <div className="xl:mx-40 sm:mx-10 mb-10">
         <div className="lg:flex">
           <div className="lg:w-[60%] lg:border-r-2 flex max-sm:block">
             <div className="">
-              <p className="text-center">Qtns</p>
+              <p className="text-center">Questions</p>
               <div className="flex flex-col max-sm:flex-row md:flex-col lg:flex-col justify-center gap-3">
                 {questions.map((ques, qindex) => {
                   return (
@@ -65,11 +84,7 @@ function AssesmentQuestions({ questions, category, hide, img }) {
                       } rounded-lg w-10 h-10 max-sm:mt-2 flex justify-center items-center cursor-pointer`}
                       onClick={() => setIndex(qindex)}
                     >
-                      <p
-                        className="text-black"
-                      >
-                        {qindex + 1}
-                      </p>
+                      <p className="text-black">{qindex + 1}</p>
                     </div>
                   );
                 })}
@@ -88,21 +103,23 @@ function AssesmentQuestions({ questions, category, hide, img }) {
                 </p>
                 {category === "code_questions" ? (
                   <>
-                  <div className="w-full relative bg-black z-20">
-                    <select
-                      className="text-white bg-gray-900 border-none z-50 p-2"
-                      value={selectedLanguage}
-                      onChange={handleLanguageChange}
-                    >
-                      <option value="python">Python</option>
-                      <option value="java">Java</option>
-                      <option value="cpp">C++</option>
-                      <option value="javascript">JavaScript</option>
-                    </select>
-                  </div>
+                    <div className="w-full relative bg-black z-20">
+                      <select
+                        className="text-white bg-gray-900 border-none z-50 p-2"
+                        value={selectedLanguage}
+                        onChange={handleLanguageChange}
+                      >
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="cpp">C++</option>
+                        <option value="javascript">JavaScript</option>
+                      </select>
+                    </div>
                     <CodeMirror
-                      value={code}
-                      onBeforeChange={(editor, data, value) => setCode(value)}
+                      value={answers[index]}
+                      onChange={(editor, data, value) =>
+                        handleAnswerChange(value)
+                      }
                       theme={dracula}
                       extensions={extensions}
                       height="300px"
@@ -115,8 +132,8 @@ function AssesmentQuestions({ questions, category, hide, img }) {
                     name="answer"
                     rows={6}
                     className="border-black w-full mt-3 rounded-lg border focus:border-black text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                    value={code}
-                    onChange={(e) => setCode(e.target.value)} // Update code state with entered code
+                    value={answers[index]}
+                    onChange={(e) => handleAnswerChange(e.target.value)}
                   ></textarea>
                 )}
               </div>
@@ -125,12 +142,12 @@ function AssesmentQuestions({ questions, category, hide, img }) {
               {index !== 0 && (
                 <button
                   className="cancel text-black"
-                  onClick={() => setIndex((prev) => prev - 1)}
+                  onClick={handlePrevious}
                 >
                   Previous
                 </button>
               )}
-              <button className="continue" onClick={submit} >
+              <button className="continue" onClick={handleContinue}>
                 {index === questions.length - 1 ? "Submit" : "Continue"}
               </button>
             </div>

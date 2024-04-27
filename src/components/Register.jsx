@@ -74,7 +74,7 @@ function Register() {
                     signInIP: ipAddress,
                 });
                 setTimeout(() => {
-                    navigate("/");
+                    navigate("/apps");
                 }, 3000);
             }
         } catch (error) {
@@ -112,7 +112,7 @@ function Register() {
                 });
                 setSuccess('Thank you! You have been successfully registered with us!');
                 setTimeout(() => {
-                    navigate("/");
+                    navigate("/apps");
                 }, 3000);
             }
         } catch (error) {

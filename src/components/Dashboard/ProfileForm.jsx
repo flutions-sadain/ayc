@@ -3,23 +3,12 @@ import profileImg1 from '../../assets/images/profile-form-1.png';
 import profileImg2 from '../../assets/images/profile-form-2.png';
 import profileImg3 from '../../assets/images/profile-form-3.png';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Header from "../Header";
 
-const ProfileForm = ({ onSubmit }) => {
+const ProfileForm = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({});
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
-
-    const handleSubmit = (e) => {
-        // e.preventDefault();
-        // onSubmit(formData);
-        navigate('/newAssessment');
-    };
-
     const userQuestions = [
         'What is your full name?',
         'Can you provide details about your academic background, including your degree and specialization?',
@@ -40,17 +29,35 @@ const ProfileForm = ({ onSubmit }) => {
         "E.g., Interested in roles related to data science and machine learning in the finance industry",
     ];
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const postData = Object.keys(formData).map((key, index) => ({
+            Question: userQuestions[index],
+            Answer: formData[key],
+        }));
+        try {
+            await axios.get("http://localhost:3001/summaryGeneration", postData);
+            navigate('/newAssessment');
+        } catch (error) {
+            console.error("Error posting data:", error);
+        }
+    };
+
     return (
         <div>
             {/* <Header /> */}
-            <section class="overflow-hidden bg-[#dbfe01]">
-                <div class="py-16 sm:px-6 lg:relative lg:px-0 lg:py-5">
-                    <div class="xl:mx-64 items-center px-4 xl:px-12">
-                        <div class="relative z-10">
-
-                            <div class="relative">
-                                <p class="inline text-black font-light text-4xl tracking-tight">Hey! <span className="font-medium">Khizer</span></p>
-                                <p class="mt-3 text-2xl font-light text-black">Welcome to AYC, your first step in creating impact</p>
+            <section className="overflow-hidden bg-[#dbfe01]">
+                <div className="py-16 sm:px-6 lg:relative lg:px-0 lg:py-5">
+                    <div className="xl:mx-64 items-center px-4 xl:px-12">
+                        <div className="relative z-10">
+                            <div className="relative">
+                                <p className="inline text-black font-light text-4xl tracking-tight">Hey! <span className="font-medium">Khizer</span></p>
+                                <p className="mt-3 text-2xl font-light text-black">Welcome to AYC, your first step in creating impact</p>
                             </div>
                             <div className="lg:mx-32 mt-5">
                                 <div className="mb-0" >
@@ -58,14 +65,11 @@ const ProfileForm = ({ onSubmit }) => {
                                         <li className="flex items-center gap-2 -ml-8 max-sm:-ml-3">
                                             <img className='w-full max-sm:w-14' src={profileImg1} alt="profileImg1" />
                                         </li>
-
                                         <li className="flex items-center gap-2 ">
                                             <img className='w-full max-sm:w-14' src={profileImg2} alt="profileImg2" />
                                         </li>
-
                                         <li className="flex items-center gap-2 -mr-8 max-sm:-mr-3">
                                             <img className='w-full max-sm:w-14' src={profileImg3} alt="profileImg3" />
-
                                         </li>
                                     </ol>
                                 </div>
@@ -75,11 +79,9 @@ const ProfileForm = ({ onSubmit }) => {
                                             <li className="flex items-center gap-2 ">
                                                 <span className="size-6 rounded-full bg-[#333334] text-center text-[10px]/6 font-bold"> 1 </span>
                                             </li>
-
                                             <li className="flex items-center gap-2 ">
                                                 <span className="size-6 rounded-full bg-white text-center text-[10px]/6 font-bold text-black" > 2 </span>
                                             </li>
-
                                             <li className="flex items-center gap-2 ">
                                                 <span className="size-6 rounded-full bg-white text-center text-[10px]/6 font-bold text-black"> 3 </span>
                                             </li>
@@ -91,11 +93,9 @@ const ProfileForm = ({ onSubmit }) => {
                                         <li className="flex items-center gap-2 -ml-8 max-sm:-ml-3">
                                             <span className="hidden sm:block"> Complete Profile </span>
                                         </li>
-
                                         <li className="flex items-center gap-2 ">
                                             <span className="hidden sm:block"> MCQ Test </span>
                                         </li>
-
                                         <li className="flex items-center gap-2 -mr-8 max-sm:-mr-3">
                                             <span className="hidden sm:block"> Course Enroll </span>
                                         </li>
@@ -145,4 +145,4 @@ const ProfileForm = ({ onSubmit }) => {
     )
 }
 
-export default ProfileForm
+export default ProfileForm;

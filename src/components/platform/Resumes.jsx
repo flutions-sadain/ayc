@@ -7,38 +7,48 @@ import axios from 'axios';
 
 
 const Resumes = ({ onSkip, onSubmit }) => {
-    const [data, setData] = useState([]);
     const [file, setFile] = useState(null);
-    // const [email, setEmail] = useState("san@gmail.com");
+    const [email, setEmail] = useState("san@gmail.com");
     const linkedin = useRef();
     const fileRef = useRef(null);
- 
-    // const handleSubmit = async () => {
-    //     const formData = new FormData();
-    //     formData.append("file", file);
-    //     // formData.append("email", email);
-
-    //     try {
-    //         const response = await axios.post('http://localhost:3001/uploadFile', formData, {
-    //           headers: {
-    //             'Content-Type': 'multipart/form-data'
-    //           }
-    //         });
-    //         console.log('Response:', response.data);
-    //       } catch (error) {
-    //         console.error('Error:', error);
-    //       }
-        
-    //     const data = await response.json();
-    //     setData(data);
-    //     onSubmit();
-    // };
-
     const navigate = useNavigate();
 
-    const handleSubmit = () => {
-        navigate("/newAssessment");
-    }
+    const handleSubmit = async () => {
+        if (linkedin.current.value.trim() !== "") {
+            const linkedinURL = linkedin.current.value.trim();
+            try {
+                const response = await axios.get('http://localhost:3001/linkedin', { linkedinURL });
+                console.log('LinkedIn API Response:', response.data);
+                navigate("/newAssessment");
+            } catch (error) {
+                console.error('Error calling LinkedIn API:', error);
+            }
+        } else if (file !== null) {
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("email", email);
+
+            try {
+                const response = await axios.get('http://localhost:3001/uploadFile', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+                console.log('Upload File API Response:', response.data);
+                navigate("/newAssessment");
+            } catch (error) {
+                console.error('Error uploading file:', error);
+            }
+        } else {
+            console.error('Neither LinkedIn URL nor file is provided.');
+        }
+    };
+
+    // const navigate = useNavigate();
+
+    // const handleSubmit = () => {
+    //     navigate("/newAssessment");
+    // }
 
     const handleFileChange = (e) => {
         // Set the file state to the selected file
