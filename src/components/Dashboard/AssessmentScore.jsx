@@ -1,16 +1,23 @@
 import React from 'react';
 
-import course1 from "../../assets/images/Course - 1.png";
+import DataScience from "../../assets/images/DataScience.png";
+import FullStackDevelopment from "../../assets/images/FullStackDevelopment.png";
+import FrontendDevelopment from "../../assets/images/FrontendDevelopment.png";
+import MachineLearning from "../../assets/images/MachineLearning.png";
+
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
+import Header from "../Header";
+
 
 const AssessmentScore = () => {
     return (
         <div>
             <section>
+                <Header />
                 <div className="py-5 sm:px-6 lg:px-0 lg:py-5">
-                    <div className="relative mx-5 my-10 sm:mx-10 lg:mx-40 z-10">
+                    <div className="relative mx-5 mt-10 mb-5 sm:mx-10 lg:mx-40 z-10">
                         <h1 className="text-black text-center text-4xl mb-10">Assessment Score</h1>
-                        <div className="lg:flex mb-6 bg-white shadow-md rounded-lg overflow-hidden border border-gray-300 p-2 z-10">
+                        <div className="lg:flex bg-white shadow-md rounded-lg overflow-hidden border border-gray-300 p-2 z-10">
                             <div class="p-2 text-center md:mx-auto md:w-[50%] lg:w-[30%]">
                                 <p className="text-2xl max-sm:text-xl">Element of Evaluation</p>
                                 <div className='relative'>
@@ -99,16 +106,15 @@ const AssessmentScore = () => {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <span className="w-full h-80 bg-[#dbfe01] absolute inset-0"></span>
+                <span className="w-full h-80 bg-[#dbfe01] absolute top-[132px] md:top-[110px] lg:top-[94px]"></span>
             </section >
             <div className="xl:mx-40 sm:mx-10 mb-10">
                 <div class="flex mt-3 flex-wrap items-center">
                     <div class="max-sm:text-center flex-grow">
-                        <p class=" text-2xl font-light text-black">Recommended Course</p>
+                        <p class=" text-2xl font-medium text-black">Recommended Course</p>
                     </div>
                     <div className="ml-auto max-sm:pt-4 max-sm:pr-5">
                         <button class="flex items-center text-[#333334] focus:outline-none ml-auto">
@@ -118,10 +124,10 @@ const AssessmentScore = () => {
                     </div>
                 </div>
                 <div className="mt-3 max-sm:mx-2 my-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-4">
-                    <div className="mb-6 p-2 w-full bg-white items-center shadow-md rounded-lg border border-gray-300 z-10">
-                        <img src={course1} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
+                    <div className="mb-6 p-2 w-full items-center shadow-md rounded-lg border border-gray-300 z-10">
+                        <img src={DataScience} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
                         <div className="md:py-0 max-sm:py-3 top-0 items-center">
-                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Beginning C++ Programming - From Beginner to Beyond</a>
+                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Data Science Essentials for Beginners</a>
                             <p className="text-base text-gray-600">
                                 Behavioral questions are a common part of job interviews...
                             </p>
@@ -142,9 +148,9 @@ const AssessmentScore = () => {
                         </div>
                     </div>
                     <div className="mb-6 p-2 w-full bg-white items-center shadow-md rounded-lg border border-gray-300 z-10">
-                        <img src={course1} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
+                        <img src={FullStackDevelopment} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
                         <div className="md:py-0 max-sm:py-3 top-0 items-center">
-                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Beginning C++ Programming - From Beginner to Beyond</a>
+                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Full-Stack Web Development Bootcamp</a>
                             <p className="text-base text-gray-600">
                                 Behavioral questions are a common part of job interviews...
                             </p>
@@ -165,9 +171,9 @@ const AssessmentScore = () => {
                         </div>
                     </div>
                     <div className="mb-6 p-2 w-full bg-white items-center shadow-md rounded-lg border border-gray-300 z-10">
-                        <img src={course1} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
+                        <img src={FrontendDevelopment} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
                         <div className="md:py-0 max-sm:py-3 top-0 items-center">
-                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Beginning C++ Programming - From Beginner to Beyond</a>
+                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Mastering Front-End Technologies</a>
                             <p className="text-base text-gray-600">
                                 Behavioral questions are a common part of job interviews...
                             </p>
@@ -188,9 +194,9 @@ const AssessmentScore = () => {
                         </div>
                     </div>
                     <div className="mb-6 p-2 w-full bg-white items-center shadow-md rounded-lg border border-gray-300 z-10">
-                        <img src={course1} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
+                        <img src={MachineLearning} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
                         <div className="md:py-0 max-sm:py-3 top-0 items-center">
-                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Beginning C++ Programming - From Beginner to Beyond</a>
+                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Machine Learning for Beginners</a>
                             <p className="text-base text-gray-600">
                                 Behavioral questions are a common part of job interviews...
                             </p>

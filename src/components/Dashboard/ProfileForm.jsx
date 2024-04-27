@@ -3,24 +3,61 @@ import profileImg1 from '../../assets/images/profile-form-1.png';
 import profileImg2 from '../../assets/images/profile-form-2.png';
 import profileImg3 from '../../assets/images/profile-form-3.png';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Header from "../Header";
 
 const ProfileForm = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({});
+    const userQuestions = [
+        'What is your full name?',
+        'Can you provide details about your academic background, including your degree and specialization?',
+        'Could you list some of the key skills you possess related to your field of study?',
+        'Are there specific software tools, languages, or technologies you are proficient in?',
+        'Can you share details about any research projects or significant coursework you\'ve undertaken?',
+        'Have you completed any internships or gained practical experience in your field of study?',
+        'Are there specific industries or roles you are targeting based on your skills and interests?',
+    ];
 
-  const submit = () => {
-      navigate("/newAssessment");
-  };
+    const placeholders = [
+        "Your full name",
+        "E.g., Bachelor's in Computer Science with a specialization in Artificial Intelligence",
+        "E.g., Data analysis, Machine learning, Python",
+        "E.g., Python, TensorFlow, SQL",
+        "E.g., Developed a sentiment analysis model using Python and NLTK",
+        "E.g., Internship at XYZ company as a data analyst",
+        "E.g., Interested in roles related to data science and machine learning in the finance industry",
+    ];
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const postData = Object.keys(formData).map((key, index) => ({
+            Question: userQuestions[index],
+            Answer: formData[key],
+        }));
+        try {
+            await axios.get("http://localhost:3001/summaryGeneration", postData);
+            navigate('/newAssessment');
+        } catch (error) {
+            console.error("Error posting data:", error);
+        }
+    };
 
     return (
         <div>
-            <section class="overflow-hidden bg-[#dbfe01]">
-                <div class="py-16 sm:px-6 lg:relative lg:px-0 lg:py-5">
-                    <div class="xl:mx-64 items-center px-4 xl:px-12">
-                        <div class="relative z-10">
-
-                            <div class="relative">
-                                <p class="inline text-black font-light text-4xl tracking-tight">Hey! <span className="font-medium">Khizer</span></p>
-                                <p class="mt-3 text-2xl font-light text-black">Welcome to AYC, your first step in creating impact</p>
+            {/* <Header /> */}
+            <section className="overflow-hidden bg-[#dbfe01]">
+                <div className="py-16 sm:px-6 lg:relative lg:px-0 lg:py-5">
+                    <div className="xl:mx-64 items-center px-4 xl:px-12">
+                        <div className="relative z-10">
+                            <div className="relative">
+                                <p className="inline text-black font-light text-4xl tracking-tight">Hey! <span className="font-medium">Khizer</span></p>
+                                <p className="mt-3 text-2xl font-light text-black">Welcome to AYC, your first step in creating impact</p>
                             </div>
                             <div className="lg:mx-32 mt-5">
                                 <div className="mb-0" >
@@ -28,14 +65,11 @@ const ProfileForm = () => {
                                         <li className="flex items-center gap-2 -ml-8 max-sm:-ml-3">
                                             <img className='w-full max-sm:w-14' src={profileImg1} alt="profileImg1" />
                                         </li>
-
                                         <li className="flex items-center gap-2 ">
                                             <img className='w-full max-sm:w-14' src={profileImg2} alt="profileImg2" />
                                         </li>
-
                                         <li className="flex items-center gap-2 -mr-8 max-sm:-mr-3">
                                             <img className='w-full max-sm:w-14' src={profileImg3} alt="profileImg3" />
-
                                         </li>
                                     </ol>
                                 </div>
@@ -45,11 +79,9 @@ const ProfileForm = () => {
                                             <li className="flex items-center gap-2 ">
                                                 <span className="size-6 rounded-full bg-[#333334] text-center text-[10px]/6 font-bold"> 1 </span>
                                             </li>
-
                                             <li className="flex items-center gap-2 ">
                                                 <span className="size-6 rounded-full bg-white text-center text-[10px]/6 font-bold text-black" > 2 </span>
                                             </li>
-
                                             <li className="flex items-center gap-2 ">
                                                 <span className="size-6 rounded-full bg-white text-center text-[10px]/6 font-bold text-black"> 3 </span>
                                             </li>
@@ -61,11 +93,9 @@ const ProfileForm = () => {
                                         <li className="flex items-center gap-2 -ml-8 max-sm:-ml-3">
                                             <span className="hidden sm:block"> Complete Profile </span>
                                         </li>
-
                                         <li className="flex items-center gap-2 ">
                                             <span className="hidden sm:block"> MCQ Test </span>
                                         </li>
-
                                         <li className="flex items-center gap-2 -mr-8 max-sm:-mr-3">
                                             <span className="hidden sm:block"> Course Enroll </span>
                                         </li>
@@ -76,70 +106,31 @@ const ProfileForm = () => {
                     </div>
                 </div>
             </section>
-            <section class="overflow-hidden">
-                <div class="py-16 sm:px-4 lg:relative lg:px-0 lg:py-5">
-                    <div class="xl:mx-64 items-center px-4 xl:px-12">
-                        <div class="relative z-10">
-
-                            <div class="relative">
-                                <p class="mt-3 text-2xl font-light text-black">Tell us more, so that we can find the <span className="font-medium">right curriculum & Mentor for you</span></p>
+            <section className="overflow-hidden">
+                <div className="py-16 sm:px-4 lg:relative lg:px-0 lg:py-5">
+                    <div className="xl:mx-64 items-center px-4 xl:px-12">
+                        <div className="relative z-10">
+                            <div className="relative">
+                                <p className="mt-3 text-2xl font-light text-black">Tell us more, so that we can find the <span className="font-medium">right curriculum & Mentor for you</span></p>
                             </div>
                             <div className="lg:mx-20 mt-5">
-                                <form onSubmit={submit}>
-                                    <div className="p-2 w-full">
-                                        <div className="relative">
-                                            <label htmlFor="Employer" className="leading-7 text-lg text-black">
-                                                Current Employer <span className="text-red-600">*</span>
-                                            </label>
-                                            <select id="Employer" name="Current Employer" className="w-full bg-gray-100 rounded border border-gray-300 focus:border-gray-500 text-base outline-none text-gray-700 py-2.5 px-3 leading-8 transition-colors duration-200 ease-in-out" >
-                                                <option value="">Choose</option>
-                                                <option value="1">Current Employer</option>
-                                                <option value="2">Current Employer</option>
-                                                <option value="3">Current Employer</option>
-                                            </select>
+                                <form onSubmit={handleSubmit}>
+                                    {userQuestions.map((question, index) => (
+                                        <div key={index} className="p-2 w-full">
+                                            <div className="relative">
+                                                <label htmlFor={`question_${index}`} className="leading-7 text-lg text-black">{question}</label>
+                                                <input
+                                                    type="text"
+                                                    id={`question_${index}`}
+                                                    name={`question_${index}`}
+                                                    placeholder={placeholders[index]}
+                                                    className="w-full bg-gray-100 rounded border border-gray-300 focus:border-gray-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="p-2 w-full">
-                                        <div className="relative">
-                                            <label htmlFor="role" className="leading-7 text-lg text-black">
-                                                Current Role <span className="text-red-600">*</span>
-                                            </label>
-                                            <select id="role" name="Current Role" className="w-full bg-gray-100 rounded border border-gray-300 focus:border-gray-500 text-base outline-none text-gray-700 py-2.5 px-3 leading-8 transition-colors duration-200 ease-in-out" >
-                                                <option value="">Choose</option>
-                                                <option value="1">Current Role</option>
-                                                <option value="2">Current Role</option>
-                                                <option value="3">Current Role</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="p-2 w-full">
-                                        <div className="relative">
-                                            <label htmlFor="ctc" className="leading-7 text-lg text-black" >
-                                                Current CTC (in Lakhs) <span className="text-red-600">*</span>
-                                            </label>
-                                            <input type="text" placeholder='0.0' id="ctc" name="ctc" className="w-full bg-gray-100 rounded border border-gray-300 focus:border-gray-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="p-2 w-full">
-                                        <div className="relative">
-                                            <label htmlFor="college" className="leading-7 text-lg text-black" >
-                                                College <span className="text-red-600">*</span>
-                                            </label>
-                                            <input type="text" placeholder='Enter Your College Name' id="college" name="college" className="w-full bg-gray-100 rounded border border-gray-300 focus:border-gray-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="p-2 w-full">
-                                        <div className="relative">
-                                            <label htmlFor="message" className="leading-7 text-lg text-black" >
-                                                Message
-                                            </label>
-                                            <textarea id="message" name="message" className="w-full bg-gray-100 rounded border border-gray-300 focus:border-gray-500 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" ></textarea>
-                                        </div>
-                                    </div>
+                                    ))}
                                     <div className="p-2 w-full mt-2 mb-4">
-                                        {/* <button className="cancel text-[#EC7A48]">Cancel</button> */}
                                         <button type="submit" className="bg-[#dbfe01] text-black border-none rounded px-4 py-2 gap-3">
                                             Continue
                                         </button>
@@ -154,4 +145,4 @@ const ProfileForm = () => {
     )
 }
 
-export default ProfileForm
+export default ProfileForm;

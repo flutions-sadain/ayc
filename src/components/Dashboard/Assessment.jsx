@@ -1,71 +1,69 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AssessmentCard from "../../utils/AssessmentCard";
-
-import { useNavigate  } from 'react-router-dom';
 import "./assessment.css";
 import AssesmentQuestions from "./AssesmentQuestions";
 import profileImg1 from '../../assets/images/profile-form-1.png';
 import profileImg2 from '../../assets/images/profile-form-2.png';
 import profileImg3 from '../../assets/images/profile-form-3.png';
+import behavioural_questions from "../../assets/images/behavioural_questions.svg";
+import technical_questions from "../../assets/images/technical_questions.svg";
+import past_industry_questions from "../../assets/images/past_industry_questions.svg";
+import scenario_questions from "../../assets/images/scenario_questions.svg";
+import project_questions from "../../assets/images/project_questions.svg";
+import code_questions from "../../assets/images/code_questions.svg";
+import Header from "../Header";
+import axios from 'axios';
 
-const Assessmentdata = {
-  behavioural_questions: [
-    "Can you describe a situation where you had to work under pressure and how you handled it?",
-    "How do you handle feedback and criticism from your superiors?",
-    "Can you provide an example of a time when you had to make a difficult decision at work? What was the outcome?",
-    "Describe a situation where you had to collaborate with a difficult team member.",
-  ],
-  technical_questions: [
-    "As a Programmer Analyst, what programming languages are you most proficient in?",
-    "Can you describe a complex project youve worked on and the steps you took to complete it?",
-    "How do you approach problem-solving when you encounter a bug or issue in your code?",
-    "Can you explain a time when you had to use your knowledge of databases in a project?",
-  ],
-  past_industry_questions: [
-    "What was your role in your previous team at Cognizant Technology Solutions?",
-    "Can you describe a project you completed at Cognizant that you are particularly proud of?",
-    "How did you contribute to the success of your previous team at Cognizant?",
-    "What were some challenges you faced in your previous role and how did you overcome them?",
-  ],
-  code_questions: [
-    "Given an N x M matrix A of non-negative integers representing the height of each unit cell in a continent, the 'Blue lake' touches the left and top edges of the matrix and the 'Red lake' touches the right and bottom edges. Water can only flow in four directions (up, down, left, or right) from a cell to another one with height equal or lower. Find the number of cells from where water can flow to both the Blue and Red lake.",
-    "Write a function that adds two numbers.",
-    "Write a function that multiplies two numbers.",
-  ],
+const Assessment = () => {
+  const[showQuestions,setShowQuestions] = useState(false)
+  const [assessmentData, setAssessmentData] = useState(null);
+  const[category,setCategory] = useState('')
+  const [currentIndex,setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const fetchAssessmentData = async () => {
+        try {
+            const response = await axios.get('http://localhost:3001/phaseQuestions');
+            setAssessmentData(response.data);
+        } catch (error) {
+            console.error('Error fetching assessment data:', error);
+        }
+    };
+
+    fetchAssessmentData();
+}, []);
+
+const selectAssessment = (key, i) => {
+    setShowQuestions(true);
+    setCategory(key);
+    setCurrentIndex(i);
+    console.log("assessment", assessmentData.length, currentIndex);
+}
+
+if (assessmentData === null) {
+  return <></>;
+}
+
+
+const assessmentImage = {
+  behavioural_questions: behavioural_questions,
+  technical_questions: technical_questions,
+  past_industry_questions: past_industry_questions,
+  code_questions: code_questions,
+  scenario_questions: scenario_questions,
+  project_questions: project_questions,
 };
-const data = [
-  {
-    img: "/Role model.png",
-    desc: "Complete Profile",
-  },
-  {
-    img: "/Coaching.png",
-    desc: "MCQ Test",
-  },
-  {
-    img: "/Learning.png",
-    desc: "Course Enroll",
-  },
-];
 
-function Assessment() {
-  const navigate= useNavigate()
-  const[showQuestions,setShowQuestions] = useState()
-  const[category,setcategory] = useState('')
-
-  const selectAssessment=(key)=>{
-    // console.log(Assessmentdata[key])
-    setShowQuestions(true)
-    setcategory(key)
-    //navigate('/assessmentQuestions',{ state: { questions: Assessmentdata[key],category:key} });
-  }
   if(showQuestions){
     return(
-      <AssesmentQuestions  questions={Assessmentdata[category]} category={category} hide={setShowQuestions}/>
+      <>
+      <AssesmentQuestions questions={assessmentData[category]} currentIndex={currentIndex} totalIndex={Object.keys(assessmentData).length - 1} setShowQuestions={setShowQuestions} category={category} img={assessmentImage[category]} hide={setShowQuestions} />
+      </>
     )
   }
   return (
     <div>
+      <Header />
       <section class="overflow-hidden bg-[#dbfe01]">
           <div class="py-3 sm:px-6 lg:relative lg:px-0 lg:py-5">
               <div class="xl:mx-64 items-center px-4 xl:px-12">
@@ -134,7 +132,7 @@ function Assessment() {
                 <div class="relative">
                   <div class="flex mt-3 flex-wrap items-center">
                       <div class="relative max-sm:text-center flex-grow">
-                          <p class=" text-2xl font-light text-black">Test your Knowledge</p>
+                          <p class=" text-2xl font-medium text-black">Test your Knowledge</p>
                       </div>
                       <div className="ml-auto max-sm:pt-4">
                         <button class="flex items-center text-[#333334] focus:outline-none ml-auto">
@@ -145,10 +143,10 @@ function Assessment() {
                     </div>
                     <div className="mt-3">
                       <div className="z-40">
-                        {Object.keys(Assessmentdata).map((category,index)=>{
+                        {Object.keys(assessmentData).map((category,index)=>{
                           return(
                             <div key={index} >
-                            <AssessmentCard index={index} category={category} icon={true} click={selectAssessment} />
+                            <AssessmentCard index={index} category={category} icon={true} img={assessmentImage[category]} click={() => selectAssessment(category, index)} />
                             </div>
                           )
                         })}

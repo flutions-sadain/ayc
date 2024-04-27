@@ -2,8 +2,6 @@ import React, { useRef, useState } from "react";
 import Divider from "@mui/material/Divider";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
-// import { useSelector } from "react-redux";
-// import { userData } from "../store/reducers/User";
 import "./resumeupload.css";
 import { useNavigate } from "react-router-dom";
 import fileImg from "../../assets/images/file.png";
@@ -18,7 +16,7 @@ function ResumeUpload() {
   const navigate = useNavigate();
 
   const submit = () => {
-    navigate("/profileForm");
+    navigate("/newAssessment");
   }
 
   // const submit = async () => {

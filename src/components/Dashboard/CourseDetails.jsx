@@ -8,6 +8,8 @@ import thumbnail from '../../assets/images/thumbnail.png';
 import courseList from '../../assets/images/course-list.png';
 import demoVideo from '../../assets/video/demo.mp4';
 import { useNavigate } from "react-router-dom";
+import Header from "../Header";
+
 
 
 const CourseDetails = () => {
@@ -23,6 +25,7 @@ const CourseDetails = () => {
     };
     return (
         <div>
+            <Header />
             <section className="max-sm:mx-4 lg:mx-10 xl:mx-28">
                 <div className="py-4 sm:px-6 lg:px-0 lg:py-5">
                     <h1 className="text-2xl font-bold">Course Details</h1>
