@@ -14,6 +14,7 @@ import AssessmentScreen from "./components/Dashboard/Assessment";
 import AssessmentScore from "./components/Dashboard/AssessmentScore";
 import NewDashboard from "./components/Dashboard/Dashboard";
 import CourseDetailsContent from "./components/Dashboard/CourseDetails";
+import Login from './components/Login.jsx';
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
     {
         path: "register",
         element: <Register />
+    },
+    {
+        path:'login',
+        element:<Login/>
     },
     {
         path: "apps",
