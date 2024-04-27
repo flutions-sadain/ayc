@@ -167,7 +167,7 @@ function Apps() {
                         {component === 'resumes' && <Resumes onSkip={handleSkip} onSubmit={handleResumeSubmit} />}
                     </div>
                 )}
-                {component === 'profileForm' && <ProfileForm onSubmit={handleResumeSubmit} />}
+                {component === 'profileForm' && !resumeSubmitted && <ProfileForm onSubmit={handleResumeSubmit} />}
                 {resumeSubmitted && <NewAssessment />}
 
 
