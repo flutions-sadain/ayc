@@ -1,5 +1,5 @@
 import './index.css';
-import { motion } from 'framer-motion';
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 import {useRef, useState} from 'react';
 import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 import AboutUs from "./components/AboutUs";
@@ -16,9 +16,11 @@ import AssessmentScreen from "./components/Dashboard/Assessment";
 import AssessmentScore from "./components/Dashboard/AssessmentScore";
 import NewDashboard from "./components/Dashboard/Dashboard";
 import CourseDetailsContent from "./components/Dashboard/CourseDetails";
+import {UserIcon} from "./components/icons/UserIcon.jsx";
+import {AIIcon} from "./components/icons/AIIcon.jsx";
+import { GridPattern } from './components/GridPattern'
+import { Button} from "@nextui-org/react";
 import Login from './components/Login.jsx';
-
-
 
 function App() {
 
