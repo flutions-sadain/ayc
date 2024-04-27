@@ -6,7 +6,7 @@ import { loadLanguage } from "@uiw/codemirror-extensions-langs";
 import AssessmentCard from "../../utils/AssessmentCard";
 import { useNavigate } from "react-router-dom";
 
-function AssesmentQuestions({ questions, category, hide, img }) {
+function AssesmentQuestions({ questions, category, currentIndex, totalIndex, setShowQuestions, hide, img }) {
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(""));
   const [selectedLanguage, setSelectedLanguage] = useState("python");
@@ -19,7 +19,7 @@ function AssesmentQuestions({ questions, category, hide, img }) {
     }));
 
     try {
-      const response = await axios.get(
+      const response = await axios.post(
         "http://localhost:3001/assesProfile",
         postData
       );
@@ -44,7 +44,12 @@ function AssesmentQuestions({ questions, category, hide, img }) {
     if (index !== questions.length - 1) {
       setIndex((prev) => prev + 1);
     } else {
-      submit();
+      if (currentIndex === totalIndex) {
+        submit();
+      }
+      else {
+        setShowQuestions(false);
+      }
     }
   };
 
@@ -148,7 +153,7 @@ function AssesmentQuestions({ questions, category, hide, img }) {
                 </button>
               )}
               <button className="continue" onClick={handleContinue}>
-                {index === questions.length - 1 ? "Submit" : "Continue"}
+                {index === questions.length - 1 ? currentIndex === totalIndex ? "Submit" : "Save & back to Assessment screen" : "Continue"}
               </button>
             </div>
           </div>

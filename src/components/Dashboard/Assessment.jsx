@@ -18,6 +18,7 @@ const Assessment = () => {
   const[showQuestions,setShowQuestions] = useState(false)
   const [assessmentData, setAssessmentData] = useState(null);
   const[category,setCategory] = useState('')
+  const [currentIndex,setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const fetchAssessmentData = async () => {
@@ -32,9 +33,11 @@ const Assessment = () => {
     fetchAssessmentData();
 }, []);
 
-const selectAssessment = (key) => {
+const selectAssessment = (key, i) => {
     setShowQuestions(true);
     setCategory(key);
+    setCurrentIndex(i);
+    console.log("assessment", assessmentData.length, currentIndex);
 }
 
 if (assessmentData === null) {
@@ -54,7 +57,7 @@ const assessmentImage = {
   if(showQuestions){
     return(
       <>
-      <AssesmentQuestions questions={assessmentData[category]} category={category} img={assessmentImage[category]} hide={setShowQuestions} />
+      <AssesmentQuestions questions={assessmentData[category]} currentIndex={currentIndex} totalIndex={Object.keys(assessmentData).length - 1} setShowQuestions={setShowQuestions} category={category} img={assessmentImage[category]} hide={setShowQuestions} />
       </>
     )
   }
@@ -143,7 +146,7 @@ const assessmentImage = {
                         {Object.keys(assessmentData).map((category,index)=>{
                           return(
                             <div key={index} >
-                            <AssessmentCard index={index} category={category} icon={true} img={assessmentImage[category]} click={selectAssessment} />
+                            <AssessmentCard index={index} category={category} icon={true} img={assessmentImage[category]} click={() => selectAssessment(category, index)} />
                             </div>
                           )
                         })}
