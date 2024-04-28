@@ -19,11 +19,18 @@ const Assessment = () => {
   const [assessmentData, setAssessmentData] = useState(null);
   const[category,setCategory] = useState('')
   const [currentIndex,setCurrentIndex] = useState(0);
-
+  
   useEffect(() => {
+    const formData = new FormData();
+  formData.append("complexity", "phase1");
     const fetchAssessmentData = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/phaseQuestions');
+            const response = await axios.get('http://localhost:3001/phaseQuestions',formData, {
+              headers: {
+                  'Content-Type': 'multipart/form-data'
+              }
+        });
+
             setAssessmentData(response.data);
         } catch (error) {
             console.error('Error fetching assessment data:', error);

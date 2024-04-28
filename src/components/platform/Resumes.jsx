@@ -17,7 +17,13 @@ const Resumes = ({ onSkip, onSubmit }) => {
         if (linkedin.current.value.trim() !== "") {
             const linkedinURL = linkedin.current.value.trim();
             try {
-                const response = await axios.get('http://localhost:3001/linkedin', { linkedinURL });
+                const formData = new FormData();
+                formData.append("key",linkedinURL);
+                const response = await axios.post('http://localhost:3001/linkedin', formData,{ 
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
                 console.log('LinkedIn API Response:', response.data);
                 navigate("/newAssessment");
             } catch (error) {
