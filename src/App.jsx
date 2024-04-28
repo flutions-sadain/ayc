@@ -283,7 +283,7 @@ function App() {
           <Route path="/newDashboard" element={<NewDashboard/>}/>
         </Routes>
         <Routes>
-          <Route path="/courseDetailsContent/:courseName" element={<CourseDetailsContent/>}/>
+          <Route path="/courseDetailsContent" element={<CourseDetailsContent/>}/>
         </Routes>
 
         <div className="navigation-main">

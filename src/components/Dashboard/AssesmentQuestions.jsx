@@ -25,7 +25,7 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
     try {
       const response = await axios.post(
         "http://localhost:3001/assesProfile",
-        questionAnswer.toString()
+        JSON.stringify(questionAnswer)
       );
       console.log("Response:", response.data);
       navigate("/assessmentScore");

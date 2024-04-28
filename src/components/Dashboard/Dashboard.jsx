@@ -17,24 +17,15 @@ import Header from "../Header";
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState(1);
     const [courses, setCourses] = useState([]);
-    const [recommendedCourses, setRecommendedCourses] = useState([]);
 
 
     useEffect(() => {
-        axios.get('http://localhost:3001/Course')
+        axios.get('http://localhost:3001/courseRecommended')
             .then(response => {
                 setCourses(response.data);
             })
             .catch(error => {
                 console.error('Error fetching course details:', error);
-            });
-
-        axios.get('http://localhost:3001/courseRecommended')
-            .then(response => {
-                setRecommendedCourses(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching recommended courses:', error);
             });
     }, []);
 
@@ -66,14 +57,6 @@ const Dashboard = () => {
 
         return stars;
     };
-
-    const recommendedCoursesWithDetails = recommendedCourses.map(recommendedCourse => {
-        const courseDetail = courses.find(course => course.name === recommendedCourse);
-        return {
-            ...recommendedCourse,
-            ...courseDetail
-        };
-    });
 
     const images = [DataScience, FullStackDevelopment, FrontendDevelopment, MachineLearning];
 
@@ -170,7 +153,7 @@ const Dashboard = () => {
                                     <div className="mb-6 p-2 w-full items-center shadow-md rounded-lg border border-gray-300 z-10">
                                         <img src={FrontendDevelopment} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
                                         <div className="md:py-0 max-sm:py-3 pb-4 top-0 items-center">
-                                            <a className="text-xl font-bold text-black" href="/courseDetailsContent">Mastering Front-End Technologies</a>
+                                            <a className="text-xl font-bold text-black" href="/courseDetailsContent?courseName=Data Science Essentials for Beginners">Mastering Front-End Technologies</a>
                                             <div className='flex pt-2 justify-between items-center'>
                                                 <span class="text-base text-gray-800">25%</span>
                                                 <p class="text-sm font-light text-gray-800"><span className="font-bold">2</span>/20 Lesson</p>
@@ -183,7 +166,7 @@ const Dashboard = () => {
                                     <div className="mb-6 p-2 w-full items-center shadow-md rounded-lg border border-gray-300 z-10">
                                         <img src={DataScience} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
                                         <div className="md:py-0 max-sm:py-3 pb-4 top-0 items-center">
-                                            <a className="text-xl font-bold text-black" href="/courseDetailsContent">Data Science Essentials for Beginners</a>
+                                            <a className="text-xl font-bold text-black" href="/courseDetailsContent?courseName=Data Science Essentials for Beginners">Data Science Essentials for Beginners</a>
                                             <div className='flex pt-2 justify-between items-center'>
                                                 <span class="text-base text-gray-800">25%</span>
                                                 <p class="text-sm font-light text-gray-800"><span className="font-bold">2</span>/20 Lesson</p>
@@ -196,7 +179,7 @@ const Dashboard = () => {
                                     <div className="mb-6 p-2 w-full items-center shadow-md rounded-lg border border-gray-300 z-10">
                                         <img src={MachineLearning} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
                                         <div className="md:py-0 max-sm:py-3 pb-4 top-0 items-center">
-                                            <a className="text-xl font-bold text-black" href="/courseDetailsContent">Machine Learning for Beginners</a>
+                                            <a className="text-xl font-bold text-black" href="/courseDetailsContent?courseName=Data Science Essentials for Beginners">Machine Learning for Beginners</a>
                                             <div className='flex pt-2 justify-between items-center'>
                                                 <span class="text-base text-gray-800">25%</span>
                                                 <p class="text-sm font-light text-gray-800"><span className="font-bold">2</span>/20 Lesson</p>
@@ -213,7 +196,7 @@ const Dashboard = () => {
                                     <div className="mb-6 p-2 w-full items-center shadow-md rounded-lg border border-gray-300 z-10">
                                         <img src={FullStackDevelopment} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
                                         <div className="md:py-0 max-sm:py-3 pb-4 top-0 items-center">
-                                            <a className="text-xl font-bold text-black" href="/courseDetailsContent">Full-Stack Web Development Bootcamp</a>
+                                            <a className="text-xl font-bold text-black" href="/courseDetailsContent?courseName=Data Science Essentials for Beginners">Full-Stack Web Development Bootcamp</a>
                                             <div className='flex pt-2 justify-between items-center'>
                                                 <span class="text-base text-gray-800">100%</span>
                                                 <p class="text-sm font-light text-gray-800"><span className="font-bold">20</span>/20 Lesson</p>
@@ -230,7 +213,7 @@ const Dashboard = () => {
                                     <div className="mb-6 p-2 w-full items-center shadow-md rounded-lg border border-gray-300 z-10">
                                         <img src={DataScience} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
                                         <div className="md:py-0 max-sm:py-3 top-0 items-center">
-                                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Data Science Essentials for Beginners</a>
+                                            <a className="text-lg font-bold text-black" href="/courseDetailsContent?courseName=Data Science Essentials for Beginners">Data Science Essentials for Beginners</a>
                                             <p className="text-base text-gray-600">
                                                 Behavioral questions are a common part of job interviews...
                                             </p>
@@ -253,7 +236,7 @@ const Dashboard = () => {
                                     <div className="mb-6 p-2 w-full bg-white items-center shadow-md rounded-lg border border-gray-300 z-10">
                                         <img src={FullStackDevelopment} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
                                         <div className="md:py-0 max-sm:py-3 top-0 items-center">
-                                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Full-Stack Web Development Bootcamp</a>
+                                            <a className="text-lg font-bold text-black" href="/courseDetailsContent?courseName=Data Science Essentials for Beginners">Full-Stack Web Development Bootcamp</a>
                                             <p className="text-base text-gray-600">
                                                 Behavioral questions are a common part of job interviews...
                                             </p>
@@ -292,14 +275,14 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div className="mt-3 max-sm:mx-2 my-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-4">
-                    {recommendedCoursesWithDetails.map((course, index) => (
+                    {courses.map((course, index) => (
                         <div key={index} className="mb-6 p-2 w-full items-center shadow-md rounded-lg border border-gray-300 z-10">
                             <img src={images[index % images.length]} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
                             <div className="md:py-0 max-sm:py-3 top-0 items-center">
-                                <a className="text-lg font-bold text-black" href="/courseDetailsContent">{course.name}</a>
-                                {/* <Link to={`/course/${course.name}`} className="cursor-pointer">
+                                {/* <a className="text-lg font-bold text-black" href="/courseDetailsContent?courseName=Data Science Essentials for Beginners">{course.name}</a> */}
+                                <Link to={`/courseDetailsContent?courseName=${course.name}`} className="cursor-pointer">
                                     <p className="text-lg font-bold text-black">{course.name}</p>
-                                </Link> */}
+                                </Link>
                                 <p className="text-base text-gray-600">
                                     {limitWords(course.description, 10)}
                                 </p>

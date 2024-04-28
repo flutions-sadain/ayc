@@ -61,12 +61,6 @@
         "status": "data fetched"
     },
     "courseRecommended": [
-        "Data Science Essentials for Beginners",
-        "Full-Stack Web Development Bootcamp",
-        "Mastering Front-End Technologies",
-        "Machine Learning for Beginners"
-    ],
-    "Course": [
         {
             "name": "Data Science Essentials for Beginners",
             "description": "Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. Topics covered include data analysis, machine learning, statistical modeling, and data visualization. Participants will gain practical skills through hands-on exercises and projects using popular data science tools and libraries.",
@@ -79,14 +73,14 @@
             "description": "Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. Topics covered include data analysis, machine learning, statistical modeling, and data visualization. Participants will gain practical skills through hands-on exercises and projects using popular data science tools and libraries.",
             "price": "$129",
             "reviews": "600",
-            "rating": "4.7"
+            "rating": "3.5"
         },
         {
             "name": "Mastering Front-End Technologies",
             "description": "Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. Topics covered include data analysis, machine learning, statistical modeling, and data visualization. Participants will gain practical skills through hands-on exercises and projects using popular data science tools and libraries.",
             "price": "$129",
             "reviews": "600",
-            "rating": "4.7"
+            "rating": "2.3"
         },
         {
             "name": "Machine Learning for Beginners",
@@ -95,5 +89,16 @@
             "reviews": "500",
             "rating": "4.5"
         }
-    ]
+    ],
+    "getCourseDetails":{
+        "name": "Data Science Essentials for Beginners",
+        "description": "Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. Topics covered include data analysis, machine learning, statistical modeling, and data visualization. Participants will gain practical skills through hands-on exercises and projects using popular data science tools and libraries.",
+        "price": "$129",
+        "duration": "8 weeks",
+        "rating": "4.7",
+        "languages": [
+            "English"
+        ],
+        "reviews": "600"
+    }
 }
