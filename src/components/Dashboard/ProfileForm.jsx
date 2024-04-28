@@ -41,7 +41,13 @@ const ProfileForm = () => {
             Answer: formData[key],
         }));
         try {
-            await axios.get("http://localhost:3001/summaryGeneration", postData);
+            const formData = new FormData();
+            formData.append("questions", postData.toString());
+            await axios.post("http://localhost:8000/summaryGeneration", formData,{
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
             navigate('/newAssessment');
         } catch (error) {
             console.error("Error posting data:", error);
