@@ -1,41 +1,41 @@
 import '../index.css'
-import {Link} from "react-router-dom";
-import {useRef} from "react";
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail, updateProfile} from "firebase/auth";
+import {  GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail, updateProfile} from "firebase/auth";
 import { auth, db } from '../firebase';
-import {color} from "framer-motion";
 import {
-    collection,
-    getDocs,
-    addDoc,
-    updateDoc,
-    deleteDoc,
+   
     doc,
-    getFirestore,
+   
     setDoc,
     getDoc,
-    query,
-    where,
-    orderBy,
-    limit,
-    startAfter,
-    onSnapshot,
+   
     serverTimestamp,
-    increment,
-    arrayUnion,
-    arrayRemove,
-    runTransaction,
-    deleteField
+   
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
 
+const retrieveUserData = async (userId) => {
+    try {
+      const userDocRef = doc(db, "usrmain", userId);
+      const userDocSnapshot = await getDoc(userDocRef);
+  
+      if (userDocSnapshot.exists()) {
+        const userData = userDocSnapshot.data();
+        console.log("User Data: from retrieve", userData);
+        return userData;
+      } else {
+        console.log("User not found");
+      }
+    } catch (error) {
+      console.error("Error retrieving user data:", error.message);
+    }
+  };
 
 
 
-
-function Register() {
+function Login() {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
     const navigate = useNavigate();
@@ -50,31 +50,18 @@ function Register() {
         event.preventDefault();
         setIsSubmitting(true); // disable the button
         try {
-            const userCredential =   await createUserWithEmailAndPassword(auth, event.target.email.value, event.target.password.value);
-            console.log(userCredential);
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                event.target.email.value, event.target.password.value
+              );
+              console.log(userCredential);
             if (userCredential.user) {
-                const ipAddress = await getIPAddress();
-                setSuccess('Thank you! You have been successfully registered with us!');
-                await setDoc(doc(db, "usrmain", userCredential.user.uid), {
-                    fullName: event.target.fullName.value,
-                    email: event.target.email.value,
-                    category: event.target.category.value,
-                    emailVerified: false,
-                    photoURL: null,
-                    phoneNumber: null,
-                    providerData: null,
-                    displayName: null,
-                    uid: userCredential.user.uid,
-                    createdAt: userCredential.user.metadata.createdAt,
-                    creationTime: userCredential.user.metadata.creationTime,
-                    updatedAt: serverTimestamp(),
-                    lastLoginAt: userCredential.user.metadata.lastSignInTime,
-                    lastSignInTime: userCredential.user.metadata.lastSignInTime,
-                    isActive: true,
-                    signInIP: ipAddress,
-                });
+                const data = await retrieveUserData(userCredential.user.uid);
+                console.log("data after login", data);
+                setSuccess('Login Successfully!');
+              
                 setTimeout(() => {
-                    navigate("/apps");
+                    navigate("/");
                 }, 3000);
             }
         } catch (error) {
@@ -112,7 +99,7 @@ function Register() {
                 });
                 setSuccess('Thank you! You have been successfully registered with us!');
                 setTimeout(() => {
-                    navigate("/apps");
+                    navigate("/");
                 }, 3000);
             }
         } catch (error) {
@@ -135,9 +122,9 @@ function Register() {
                                 <div className="text-align-center-2">
                                     <div className="max-width-large align-center">
                                         <div className="margin-bottom margin-small">
-                                            <h1 className="heading-style-h3-2 text-align-left">Register with AYC</h1>
+                                            <h1 className="heading-style-h3-2 text-align-left">Sign In  with AYC</h1>
                                         </div>
-                                        <p className="text-size-medium text-align-left">Sign up and start your career journey</p>
+                                        {/* <p className="text-size-medium text-align-left">Sign up and start your career journey</p> */}
                                     </div>
                                 </div>
                             </div>
@@ -146,33 +133,14 @@ function Register() {
                                       data-name="Log in Form 14" method="get" className="login-form"
                                       data-wf-page-id="65f90f061c8a0b111feb9fb7"
                                       data-wf-element-id="297f275c-c970-4b99-5b1d-a5f8dee44de4">
-                                    <div className="form-field-wrapper">
-                                        <div className="field-label">Full name*</div>
-                                        <input className="input-form w-input" style={{color:"black"}} maxLength="256" name="fullName"
-                                               data-name="Full Name" placeholder="Enter your full name" type="text"
-                                               id="fullName" required=""/>
-                                    </div>
+                                    
                                     <div className="form-field-wrapper">
                                         <div className="field-label">Email*</div>
                                         <input className="input-form w-input" style={{color:"black"}} maxLength="256" name="email"
                                                data-name="Email Address" placeholder="Enter your email" type="email"
                                                id="email" required=""/>
                                     </div>
-                                    <div className="form-field-wrapper">
-                                        <div className="field-label-wrapper">
-                                            <div className="field-label">Category*</div>
-                                        </div>
-                                        <select id="category" name="category" data-name="category" required=""
-                                                className="input-form w-select">
-                                            <option value="default">Select Category</option>
-                                            <option value="student">Student</option>
-                                            <option value="job_applicant">Job applicant</option>
-                                            <option value="professional">Professional</option>
-                                            <option value="corporate">Corporate</option>
-                                            <option value="tutor">Tutor</option>
-                                            <option value="investor">Investor/Partner</option>
-                                        </select>
-                                    </div>
+                                    
                                     <div id="w-node-d5e8df2b-dbe5-8ae7-ab1f-fb953280c3e0-1feb9fb7"
                                          className="form-field-wrapper">
                                         <div className="field-label-wrapper">
@@ -188,7 +156,7 @@ function Register() {
                                                                                               data-wait="Please wait..."
                                                                                               id="w-node-_297f275c-c970-4b99-5b1d-a5f8dee44df5-1feb9fb7"
                                                                                               className="button maxx-full-width w-button"
-                                                                                              value="Sign Up"
+                                                                                              value="Sign In"
                                                                                               disabled={isSubmitting}/>
                                         <a onClick={signInWithGoogle}  disabled={isSubmitting} id="w-node-_297f275c-c970-4b99-5b1d-a5f8dee44df6-1feb9fb7" href="#"
                                            className="button is-secondary w-inline-block"><img alt="" loading="lazy"
@@ -217,9 +185,9 @@ function Register() {
                                 </div>
                                 <hr className="margin-top margin-small margin-bottom" style={{color:"afb7b7"}}/>
                                 <div className="margin-top margin-small">
-                                    <div className="text-align-center-2">Already have an account? <Link to={'/login'}
+                                    <div className="text-align-center-2">Already have an account? <Link to={'/register'}
                                                                                                      className="text-style-link-2">Sign
-                                        In</Link>
+                                        Up</Link>
                                     </div>
                                 </div>
                             </div>
@@ -268,4 +236,4 @@ function Register() {
 }
 
 
-export default Register;
+export default Login;

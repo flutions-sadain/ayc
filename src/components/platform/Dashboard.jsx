@@ -1,14 +1,15 @@
-import { motion } from 'framer-motion';
 import {Link} from "react-router-dom";
 import {useRef, useState} from "react";
 import {Button, Chip} from "@nextui-org/react";
 import {Card, CardHeader, CardBody, CardFooter, Divider, Image} from "@nextui-org/react";
 import { ResponsivePie } from '@nivo/pie';
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 
 
 
 
 function Dashboard() {
+
     const data = [
         {
             "id": "POTD",
@@ -71,7 +72,8 @@ function Dashboard() {
                                 width={40}
                             />
                             <div className="flex flex-col">
-                                <h2 className="text-base font-semibold leading-6 text-gray-900">Career - Key Metrics</h2>
+                                <h2 className="text-base font-semibold leading-6 text-gray-900">Career - Key
+                                    Metrics</h2>
                                 <p className="text-small text-default-500">POTD, Leaderboards and Career Stats</p>
                             </div>
                         </CardHeader>
@@ -85,7 +87,8 @@ function Dashboard() {
                                                 <dt className="text-md font-semibold leading-6 text-gray-600 mt-2">
                                                     POTD Streak
                                                 </dt>
-                                                <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900" style={{height: '100px'}}>
+                                                <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900"
+                                                    style={{height: '100px'}}>
                                                     <ResponsivePie
                                                         data={data}
                                                         innerRadius={0.8}
@@ -120,12 +123,14 @@ function Dashboard() {
                                                 <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">891</dd>
                                             </div>
                                             <div className="flex flex-col bg-gray-400/5 p-8">
-                                                <dt className="text-sm font-semibold leading-6 text-gray-600">Solved POTD
+                                                <dt className="text-sm font-semibold leading-6 text-gray-600">Solved
+                                                    POTD
                                                 </dt>
                                                 <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">91.9%</dd>
                                             </div>
                                             <div className="flex flex-col bg-gray-400/5 p-8">
-                                                <dt className="text-sm font-semibold leading-6 text-gray-600">Leaderboard Rank
+                                                <dt className="text-sm font-semibold leading-6 text-gray-600">Leaderboard
+                                                    Rank
                                                 </dt>
                                                 <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">#312</dd>
                                             </div>
@@ -225,6 +230,45 @@ function Dashboard() {
                         </CardFooter>
                     </Card>
                 </div>
+
+                <div className="flex flex-col md:flex-row w-full">
+                    <Card className="w-full md:basis-3/10 m-2">
+                        <CardBody>
+
+                        </CardBody>
+
+                    </Card>
+                    <Card className="w-full max-width-small md:basis-7/10 m-2">
+                        <CardBody className="flex justify-center items-center">
+                            <div className="block rounded-lg bg-white text-center text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
+                                <div className="p-6">
+                                    <div className="flex justify-center items-center mb-4">
+                                        <Image
+                                            alt="nextui logo"
+                                            height={40}
+                                            radius="sm"
+                                            src="./images/linkedin.svg"
+                                            width={40}
+                                        />
+                                    </div>
+                                    <p className="mb-4 text-md">
+                                        Profile not connected with LinkedIn. Please connect to get more customized recommendations.
+                                    </p>
+                                    <button
+                                        type="button"
+                                        className="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                                        data-twe-ripple-init
+                                        data-twe-ripple-color="light"
+                                        style={{ background: '#2D64BC' }}
+                                    >
+                                        Connect with LinkedIn
+                                    </button>
+                                </div>
+                            </div>
+                        </CardBody>
+                    </Card>
+                </div>
+
 
                 <div className="flex flex-col md:flex-row w-full m-4">
                     <div className="text-center w-full">
