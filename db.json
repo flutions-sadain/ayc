@@ -59,5 +59,41 @@
     },
     "summaryGeneration": {
         "status": "data fetched"
-    }
-  }
+    },
+    "courseRecommended": [
+        "Data Science Essentials for Beginners",
+        "Full-Stack Web Development Bootcamp",
+        "Mastering Front-End Technologies",
+        "Machine Learning for Beginners"
+    ],
+    "Course": [
+        {
+            "name": "Data Science Essentials for Beginners",
+            "description": "Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. Topics covered include data analysis, machine learning, statistical modeling, and data visualization. Participants will gain practical skills through hands-on exercises and projects using popular data science tools and libraries.",
+            "price": "$129",
+            "reviews": "600",
+            "rating": "4.7"
+        },
+        {
+            "name": "Full-Stack Web Development Bootcamp",
+            "description": "Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. Topics covered include data analysis, machine learning, statistical modeling, and data visualization. Participants will gain practical skills through hands-on exercises and projects using popular data science tools and libraries.",
+            "price": "$129",
+            "reviews": "600",
+            "rating": "4.7"
+        },
+        {
+            "name": "Mastering Front-End Technologies",
+            "description": "Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. Topics covered include data analysis, machine learning, statistical modeling, and data visualization. Participants will gain practical skills through hands-on exercises and projects using popular data science tools and libraries.",
+            "price": "$129",
+            "reviews": "600",
+            "rating": "4.7"
+        },
+        {
+            "name": "Machine Learning for Beginners",
+            "description": "This course provides a comprehensive introduction to the fundamentals of artificial intelligence (AI). Students will learn about key concepts such as machine learning, neural networks, natural language processing, and computer vision. Through hands-on projects and real-world examples, participants will gain a deep understanding of AI techniques and their applications in various industries.",
+            "price": "$99",
+            "reviews": "500",
+            "rating": "4.5"
+        }
+    ]
+}

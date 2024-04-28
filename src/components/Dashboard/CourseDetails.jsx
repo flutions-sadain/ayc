@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import { FaRegFileLines, FaRegEye } from "react-icons/fa6";
 import { FaPlay } from "react-icons/fa";
@@ -7,14 +7,33 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 import thumbnail from '../../assets/images/thumbnail.png';
 import courseList from '../../assets/images/course-list.png';
 import demoVideo from '../../assets/video/demo.mp4';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../Header";
-
-
+import axios from 'axios';
 
 const CourseDetails = () => {
+    // const [courseDetails, setCourseDetails] = useState({});
     const [isPlaying, setIsPlaying] = useState(false);
     const navigate = useNavigate();
+    // const { courseName } = useParams();
+    // const [isLoading, setIsLoading] = useState(true);
+
+    // useEffect(() => {
+    //     axios.get("http://localhost:3001/Course")
+    //         .then(response => {
+    //             const course = response.data.find(course => course.name === courseName);
+    //             if (course) {
+    //                 setCourseDetails(course);
+    //             } else {
+    //                 console.error(`Course "${courseName}" not found.`);
+    //             }
+    //             setIsLoading(false);
+    //         })
+    //         .catch(error => {
+    //             console.error('Error fetching course list:', error);
+    //             setIsLoading(false);
+    //         });
+    // }, [courseName]);
 
     const submit = () => {
         navigate("/newDashboard");
@@ -23,6 +42,32 @@ const CourseDetails = () => {
     const handlePlayClick = () => {
         setIsPlaying(true);
     };
+
+    // const renderStars = (rating) => {
+    //     const stars = [];
+    //     const fullStars = Math.floor(rating);
+    //     const hasHalfStar = rating % 1 !== 0;
+
+    //     for (let i = 0; i < fullStars; i++) {
+    //         stars.push(<IoIosStar key={i} className="text-yellow-400 text-lg" />);
+    //     }
+
+    //     if (hasHalfStar) {
+    //         stars.push(<IoIosStarHalf key={stars.length} className="text-yellow-400 text-lg" />);
+    //     }
+
+    //     const remainingStars = 5 - stars.length;
+    //     for (let i = 0; i < remainingStars; i++) {
+    //         stars.push(<IoIosStarOutline key={stars.length} className="text-yellow-400 text-lg" />);
+    //     }
+
+    //     return stars;
+    // };
+
+    // if (isLoading) {
+    //     return <div></div>;
+    // }
+
     return (
         <div>
             <Header />
@@ -31,9 +76,9 @@ const CourseDetails = () => {
                     <h1 className="text-2xl font-bold">Course Details</h1>
                     <div className="p-4 mt-2 grid lg:grid-cols-3 xl:grid-cols-5 gap-3 bg-[#dcfe011f] rounded-lg">
                         <div className="lg:py-8 xl:col-span-2 items-center xl:mr-10">
-                            <h5 className="text-xl font-bold">Beginning C++ Programming - From Beginner to Beyond</h5>
+                        <h5 className="text-xl font-bold">Data Science Essentials for Beginners</h5>
                             <p className="text-base font-normal text-gray-600">
-                                Obtain Modern C++ Object-Oriented Programming (OOP) and STL skills. C++14 and C++17 covered. C++20 info see below.
+                            Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. 
                             </p>
                             <div className="flex justify-between pt-2">
                                 <div className="flex items-center">
@@ -48,6 +93,21 @@ const CourseDetails = () => {
                                     <p className="text-sm font-normal pr-1">(22 Reviews)</p>
                                 </div>
                             </div>
+                            {/* {courseDetails.map((course, index) => (
+                                <>
+                                    <h5 className="text-xl font-bold">{course.name}</h5>
+                                    <p className="text-base font-normal text-gray-600">
+                                        {course.description}
+                                    </p>
+                                    <div className="flex justify-between pt-2">
+                                        <div className="flex items-center">
+                                            <h5 className="text-sm font-bold pr-1">{course.rating}</h5>
+                                            <div className='flex'>{renderStars(course.rating)}</div>
+                                            <p className="text-sm font-normal pr-1">({course.reviews} Reviews)</p>
+                                        </div>
+                                    </div>
+                                </>
+                            ))} */}
                             <div className='flex flex-wrap max-sm:block items-center justify-start mt-2 gap-3'>
                                 <div className="flex items-center text-lg text-[gt-light] text-gray-500 gap-1">
                                     <FaRegFileLines />
@@ -191,7 +251,7 @@ const CourseDetails = () => {
                     </div>
                     <div className="bg-white drop-shadow-lg rounded-lg -mt-12 h-fit max-sm:order-first md:order-first lg:order-none">
                         <div className="flex flex-wrap justify-between p-4 pb-0">
-                            <h5 className="text-2xl font-bold">₹449</h5>
+                            <h5 className="text-2xl font-bold">$449</h5>
                             <div className="flex items-center">
                                 <h5 className="text-sm font-bold pr-1">3.5</h5>
                                 <div className='flex'>
@@ -205,9 +265,9 @@ const CourseDetails = () => {
                             </div>
                         </div>
                         <div className="p-4 pt-2">
-                            <h5 className="text-xl font-bold">Beginning C++ Programming - From Beginner to Beyond</h5>
+                            <h5 className="text-xl font-bold">Data Science Essentials for Beginners</h5>
                             <p className="text-base font-normal text-gray-600">
-                                Classroom and Hands-on sessions- Features of C++ 11 , Exception Handling and STL - for Both Academics and Industry
+                            Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. 
                             </p>
                             <p className="text-base font-normal text-gray-600">
                                 Rating: 4.6 out of 54.6(25,238 ratings)

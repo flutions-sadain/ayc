@@ -1,15 +1,76 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from 'react-icons/io';
+import Header from '../Header';
+import { Link } from 'react-router-dom';
 import DataScience from "../../assets/images/DataScience.png";
 import FullStackDevelopment from "../../assets/images/FullStackDevelopment.png";
 import FrontendDevelopment from "../../assets/images/FrontendDevelopment.png";
 import MachineLearning from "../../assets/images/MachineLearning.png";
 
-import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
-import Header from "../Header";
 
 
 const AssessmentScore = () => {
+    const [courses, setCourses] = useState([]);
+    const [recommendedCourses, setRecommendedCourses] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/Course')
+            .then(response => {
+                setCourses(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching course details:', error);
+            });
+
+        axios.get('http://localhost:3001/courseRecommended')
+            .then(response => {
+                setRecommendedCourses(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching recommended courses:', error);
+            });
+    }, []);
+
+    const limitWords = (str, count) => {
+        const words = str.split(' ');
+        if (words.length > count) {
+            return words.slice(0, count).join(' ') + '...';
+        }
+        return str;
+    };
+
+    const renderStars = (rating) => {
+        const stars = [];
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 !== 0;
+
+        for (let i = 0; i < fullStars; i++) {
+            stars.push(<IoIosStar key={i} className="text-yellow-400 text-lg" />);
+        }
+
+        if (hasHalfStar) {
+            stars.push(<IoIosStarHalf key={stars.length} className="text-yellow-400 text-lg" />);
+        }
+
+        const remainingStars = 5 - stars.length;
+        for (let i = 0; i < remainingStars; i++) {
+            stars.push(<IoIosStarOutline key={stars.length} className="text-yellow-400 text-lg" />);
+        }
+
+        return stars;
+    };
+    
+    const recommendedCoursesWithDetails = recommendedCourses.map(recommendedCourse => {
+        const courseDetail = courses.find(course => course.name === recommendedCourse);
+        return {
+            ...recommendedCourse,
+            ...courseDetail
+        };
+    });
+
+    const images = [DataScience, FullStackDevelopment, FrontendDevelopment, MachineLearning];
+
     return (
         <div>
             <section>
@@ -112,112 +173,44 @@ const AssessmentScore = () => {
                 <span className="w-full h-80 bg-[#dbfe01] absolute top-[132px] md:top-[110px] lg:top-[94px]"></span>
             </section >
             <div className="xl:mx-40 sm:mx-10 mb-10">
-                <div class="flex mt-3 flex-wrap items-center">
-                    <div class="max-sm:text-center flex-grow">
-                        <p class=" text-2xl font-medium text-black">Recommended Course</p>
+                <div className="flex mt-3 flex-wrap items-center">
+                    <div className="max-sm:text-center flex-grow">
+                        <p className="text-2xl font-medium text-black">Recommended Course</p>
                     </div>
                     <div className="ml-auto max-sm:pt-4 max-sm:pr-5">
-                        <button class="flex items-center text-[#333334] focus:outline-none ml-auto">
+                        <button className="flex items-center text-[#333334] focus:outline-none ml-auto">
                             View All
-                            <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            <svg className="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
                         </button>
                     </div>
                 </div>
                 <div className="mt-3 max-sm:mx-2 my-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-4">
-                    <div className="mb-6 p-2 w-full items-center shadow-md rounded-lg border border-gray-300 z-10">
-                        <img src={DataScience} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
-                        <div className="md:py-0 max-sm:py-3 top-0 items-center">
-                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Data Science Essentials for Beginners</a>
-                            <p className="text-base text-gray-600">
-                                Behavioral questions are a common part of job interviews...
-                            </p>
-                            <div className="flex justify-between pt-2">
-                                <div className="flex items-center">
-                                    <h5 className="text-sm font-bold pr-1">3.5</h5>
-                                    <div className='flex'>
-                                        <IoIosStar className="text-yellow-400 text-lg " />
-                                        <IoIosStar className="text-yellow-400 text-lg " />
-                                        <IoIosStar className="text-yellow-400 text-lg " />
-                                        <IoIosStarHalf className="text-yellow-400 text-lg " />
-                                        <IoIosStarOutline className="text-yellow-400 text-lg " />
-                                    </div>
-                                    <p className="text-sm font-normal pr-1">(22 Reviews)</p>
-                                </div>
-                                <h5 className="text-lg font-bold">₹449</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mb-6 p-2 w-full bg-white items-center shadow-md rounded-lg border border-gray-300 z-10">
-                        <img src={FullStackDevelopment} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
-                        <div className="md:py-0 max-sm:py-3 top-0 items-center">
-                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Full-Stack Web Development Bootcamp</a>
-                            <p className="text-base text-gray-600">
-                                Behavioral questions are a common part of job interviews...
-                            </p>
-                            <div className="flex justify-between pt-2">
-                                <div className="flex items-center">
-                                    <h5 className="text-sm font-bold pr-1">3.5</h5>
-                                    <div className='flex'>
-                                        <IoIosStar className="text-yellow-400 text-lg " />
-                                        <IoIosStar className="text-yellow-400 text-lg " />
-                                        <IoIosStar className="text-yellow-400 text-lg " />
-                                        <IoIosStarHalf className="text-yellow-400 text-lg " />
-                                        <IoIosStarOutline className="text-yellow-400 text-lg " />
-                                    </div>
-                                    <p className="text-sm font-normal pr-1">(22 Reviews)</p>
-                                </div>
-                                <h5 className="text-lg font-bold">₹449</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mb-6 p-2 w-full bg-white items-center shadow-md rounded-lg border border-gray-300 z-10">
-                        <img src={FrontendDevelopment} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
-                        <div className="md:py-0 max-sm:py-3 top-0 items-center">
-                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Mastering Front-End Technologies</a>
-                            <p className="text-base text-gray-600">
-                                Behavioral questions are a common part of job interviews...
-                            </p>
-                            <div className="flex justify-between pt-2">
-                                <div className="flex items-center">
-                                    <h5 className="text-sm font-bold pr-1">3.5</h5>
-                                    <div className='flex'>
-                                        <IoIosStar className="text-yellow-400 text-lg " />
-                                        <IoIosStar className="text-yellow-400 text-lg " />
-                                        <IoIosStar className="text-yellow-400 text-lg " />
-                                        <IoIosStarHalf className="text-yellow-400 text-lg " />
-                                        <IoIosStarOutline className="text-yellow-400 text-lg " />
-                                    </div>
-                                    <p className="text-sm font-normal pr-1">(22 Reviews)</p>
-                                </div>
-                                <h5 className="text-lg font-bold">₹449</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mb-6 p-2 w-full bg-white items-center shadow-md rounded-lg border border-gray-300 z-10">
-                        <img src={MachineLearning} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
-                        <div className="md:py-0 max-sm:py-3 top-0 items-center">
-                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">Machine Learning for Beginners</a>
-                            <p className="text-base text-gray-600">
-                                Behavioral questions are a common part of job interviews...
-                            </p>
-                            <div className="flex justify-between pt-2">
-                                <div className="flex items-center">
-                                    <h5 className="text-sm font-bold pr-1">3.5</h5>
-                                    <div className='flex'>
-                                        <IoIosStar className="text-yellow-400 text-lg " />
-                                        <IoIosStar className="text-yellow-400 text-lg " />
-                                        <IoIosStar className="text-yellow-400 text-lg " />
-                                        <IoIosStarHalf className="text-yellow-400 text-lg " />
-                                        <IoIosStarOutline className="text-yellow-400 text-lg " />
-                                    </div>
-                                    <p className="text-sm font-normal pr-1">(22 Reviews)</p>
-                                </div>
-                                <h5 className="text-lg font-bold">₹449</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    {recommendedCoursesWithDetails.map((course, index) => (
+                        <div key={index} className="mb-6 p-2 w-full items-center shadow-md rounded-lg border border-gray-300 z-10">
+                            <img src={images[index % images.length]} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
+                            <div className="md:py-0 max-sm:py-3 top-0 items-center">
+                            <a className="text-lg font-bold text-black" href="/courseDetailsContent">{course.name}</a>
 
+                            {/* <Link to={`/course/${course.name}`} className="cursor-pointer">
+                                    <p className="text-lg font-bold text-black">{course.name}</p>
+                                </Link> */}
+                                <p className="text-base text-gray-600">
+                                    {limitWords(course.description, 10)}
+                                </p>
+                                <div className="flex justify-between pt-2">
+                                    <div className="flex items-center">
+                                        <h5 className="text-sm font-bold pr-1">{course.rating}</h5>
+                                        <div className='flex'>{renderStars(course.rating)}</div>
+                                        <p className="text-sm font-normal pr-1">({course.reviews} Reviews)</p>
+                                    </div>
+                                    <h5 className="text-lg font-bold">{course.price}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
 
         </div >
