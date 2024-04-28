@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const Resumes = ({ onSkip, onSubmit }) => {
     const [file, setFile] = useState(null);
-    const [email, setEmail] = useState("san@gmail.com");
+    const [email, setEmail] = useState(window.localStorage.getItem('email'));
     const linkedin = useRef();
     const fileRef = useRef(null);
     const navigate = useNavigate();

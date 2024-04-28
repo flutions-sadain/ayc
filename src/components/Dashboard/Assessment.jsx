@@ -15,27 +15,31 @@ import Header from "../Header";
 import axios from 'axios';
 
 const Assessment = () => {
-  const[showQuestions,setShowQuestions] = useState(false)
+  const [showQuestions, setShowQuestions] = useState(false)
   const [assessmentData, setAssessmentData] = useState(null);
-  const[category,setCategory] = useState('')
-  const [currentIndex,setCurrentIndex] = useState(0);
-  
-  useEffect(() => {
-    const formData = new FormData();
-  formData.append("complexity", "phase1");
-    const fetchAssessmentData = async () => {
-        try {
-            const response = await axios.get('http://localhost:3001/phaseQuestions',formData, {
-              headers: {
-                  'Content-Type': 'multipart/form-data'
-              }
-        });
+  const [category, setCategory] = useState('')
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [questionAnswer, setQuestionAnswer] = useState([]);
+  const [categoryIndex, setCategoryIndex] = useState([]);
 
-            setAssessmentData(response.data);
-        } catch (error) {
-            console.error('Error fetching assessment data:', error);
-        }
-    };
+  const fetchAssessmentData = async () => {
+      try {
+          const response = await axios.get('http://localhost:3001/phaseQuestions');
+          setAssessmentData(response.data);
+          {Object.keys(response.data).map((category,index)=>{
+            setCategoryIndex(prevData => [...prevData, response.data[category].length])
+            response.data[category].map((data) => {
+              setQuestionAnswer(prevData => [...prevData, {
+                question: data,
+                answer: "",
+              }])
+            })
+          })}
+      } catch (error) {
+          console.error('Error fetching assessment data:', error);
+      }
+  };
+  useEffect(() => {
 
     fetchAssessmentData();
 }, []);
@@ -44,11 +48,10 @@ const selectAssessment = (key, i) => {
     setShowQuestions(true);
     setCategory(key);
     setCurrentIndex(i);
-    console.log("assessment", assessmentData.length, currentIndex);
 }
 
 if (assessmentData === null) {
-  return <></>;
+  return null;
 }
 
 
@@ -64,7 +67,7 @@ const assessmentImage = {
   if(showQuestions){
     return(
       <>
-      <AssesmentQuestions questions={assessmentData[category]} currentIndex={currentIndex} totalIndex={Object.keys(assessmentData).length - 1} setShowQuestions={setShowQuestions} category={category} img={assessmentImage[category]} hide={setShowQuestions} />
+      <AssesmentQuestions questions={assessmentData[category]} currentIndex={currentIndex} totalIndex={Object.keys(assessmentData).length - 1} setShowQuestions={setShowQuestions} categoryIndex={categoryIndex} questionAnswer={questionAnswer} setQuestionAnswer={setQuestionAnswer} category={category} img={assessmentImage[category]} hide={setShowQuestions} />
       </>
     )
   }
