@@ -21,16 +21,11 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
     //   question: questions[i],
     //   answer: answer,
     // }));
-    const formData = new FormData();
-            formData.append("examine_str", questionAnswer.toString());
+
     try {
       const response = await axios.post(
-        "http://localhost:8000/assesProfile",formData,{
-          headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-        }
-        
+        "http://localhost:3001/assesProfile",
+        questionAnswer.toString()
       );
       console.log("Response:", response.data);
       navigate("/assessmentScore");

@@ -24,13 +24,7 @@ const Assessment = () => {
 
   const fetchAssessmentData = async () => {
       try {
-        const formData = new FormData();
-        formData.append("complexity", "phase1");
-          const response = await axios.post('http://localhost:8000/phaseQuestions',formData,{
-            headers: {
-              'Content-Type': 'multipart/form-data'
-          }
-          });
+          const response = await axios.get('http://localhost:3001/phaseQuestions');
           setAssessmentData(response.data);
           {Object.keys(response.data).map((category,index)=>{
             setCategoryIndex(prevData => [...prevData, response.data[category].length])
