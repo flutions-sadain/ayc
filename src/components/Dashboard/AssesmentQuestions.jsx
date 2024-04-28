@@ -6,22 +6,26 @@ import { loadLanguage } from "@uiw/codemirror-extensions-langs";
 import AssessmentCard from "../../utils/AssessmentCard";
 import { useNavigate } from "react-router-dom";
 
-function AssesmentQuestions({ questions, category, currentIndex, totalIndex, setShowQuestions, hide, img }) {
+function AssesmentQuestions({ questions, category, currentIndex, totalIndex, setShowQuestions, questionAnswer, setQuestionAnswer, categoryIndex, hide, img }) {
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(""));
   const [selectedLanguage, setSelectedLanguage] = useState("python");
   const navigate = useNavigate();
 
+  const prevIndex = () => {
+    return categoryIndex.slice(0, currentIndex + 1).reduce((acc, curr) => acc + curr, 0);
+  }
+
   const submit = async () => {
-    const postData = answers.map((answer, i) => ({
-      Question: questions[i],
-      Answer: answer,
-    }));
+    // const postData = answers.map((answer, i) => ({
+    //   question: questions[i],
+    //   answer: answer,
+    // }));
 
     try {
-      const response = await axios.get(
+      const response = await axios.post(
         "http://localhost:3001/assesProfile",
-        postData
+        questionAnswer.toString()
       );
       console.log("Response:", response.data);
       navigate("/assessmentScore");
@@ -38,6 +42,11 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
     const newAnswers = [...answers];
     newAnswers[index] = value;
     setAnswers(newAnswers);
+    setQuestionAnswer(prevData => {
+      const newData = [...prevData];
+      newData[index + prevIndex()].answer = value;
+      return newData;
+    });
   };
 
   const handleContinue = () => {
@@ -121,7 +130,7 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
                       </select>
                     </div>
                     <CodeMirror
-                      value={answers[index]}
+                      value={questionAnswer[prevIndex() + index].answer}
                       onChange={(editor, data, value) =>
                         handleAnswerChange(value)
                       }
@@ -137,7 +146,7 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
                     name="answer"
                     rows={6}
                     className="border-black w-full mt-3 rounded-lg border focus:border-black text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                    value={answers[index]}
+                    value={questionAnswer[prevIndex() + index].answer}
                     onChange={(e) => handleAnswerChange(e.target.value)}
                   ></textarea>
                 )}

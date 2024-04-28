@@ -49,6 +49,7 @@ function Register() {
     const signInWithEmail = async (event) => {
         event.preventDefault();
         setIsSubmitting(true); // disable the button
+        window.localStorage.setItem('email', event.target.email.value);
         try {
             const userCredential =   await createUserWithEmailAndPassword(auth, event.target.email.value, event.target.password.value);
             console.log(userCredential);
