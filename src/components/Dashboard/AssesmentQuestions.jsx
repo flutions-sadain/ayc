@@ -10,6 +10,7 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(""));
   const [selectedLanguage, setSelectedLanguage] = useState("python");
+  const [showBackButton, setShowBackButton] = useState("true");
   const navigate = useNavigate();
 
   const prevIndex = () => {
@@ -78,7 +79,7 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
             <h1 className="text-black text-center text-4xl mb-10">
               Test your Knowledge
             </h1>
-            <AssessmentCard category={category} img={img} />
+            <AssessmentCard category={category} img={img} hide={hide} showBackButton={showBackButton} />
           </div>
         </div>
         <span className="w-full h-60 bg-[#dbfe01] absolute inset-0"></span>
@@ -145,7 +146,7 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
                     id="answer"
                     name="answer"
                     rows={6}
-                    className="border-black w-full mt-3 rounded-lg border focus:border-black text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                    className="border-black bg-white w-full mt-3 rounded-lg border focus:border-black text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                     value={questionAnswer[prevIndex() + index].answer}
                     onChange={(e) => handleAnswerChange(e.target.value)}
                   ></textarea>

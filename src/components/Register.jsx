@@ -109,9 +109,11 @@ function Register() {
                     isActive: true,
                     signInIP: ipAddress,
                 });
+                
+                window.localStorage.setItem('email', result.user.email);
                 setSuccess('Thank you! You have been successfully registered with us!');
                 setTimeout(() => {
-                    navigate("/apps");
+                    navigate("/apps?component=resumes");
                 }, 3000);
             }
         } catch (error) {
