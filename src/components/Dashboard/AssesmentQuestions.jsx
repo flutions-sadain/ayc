@@ -9,7 +9,18 @@ import AssessmentCard from "../../utils/AssessmentCard";
 import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-function AssesmentQuestions({ questions, category, currentIndex, totalIndex, setShowQuestions, questionAnswer, setQuestionAnswer, categoryIndex, hide, img }) {
+function AssesmentQuestions({
+  questions,
+  category,
+  currentIndex,
+  totalIndex,
+  setShowQuestions,
+  questionAnswer,
+  setQuestionAnswer,
+  categoryIndex,
+  hide,
+  img,
+}) {
   const [index, setIndex] = useState(0);
   // eslint-disable-next-line react/prop-types
   const [answers, setAnswers] = useState(Array(questions.length).fill(""));
@@ -19,8 +30,10 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
 
   const prevIndex = () => {
     // eslint-disable-next-line react/prop-types
-    return categoryIndex.slice(0, currentIndex + 1).reduce((acc, curr) => acc + curr, 0);
-  }
+    return categoryIndex
+      .slice(0, currentIndex)
+      .reduce((acc, curr) => acc + curr, 0);
+  };
 
   const submit = async () => {
     // const postData = answers.map((answer, i) => ({
@@ -48,7 +61,7 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
     const newAnswers = [...answers];
     newAnswers[index] = value;
     setAnswers(newAnswers);
-    setQuestionAnswer(prevData => {
+    setQuestionAnswer((prevData) => {
       const newData = [...prevData];
       newData[index + prevIndex()].answer = value;
       return newData;
@@ -61,8 +74,7 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
     } else {
       if (currentIndex === totalIndex) {
         submit();
-      }
-      else {
+      } else {
         setShowQuestions(false);
       }
     }
@@ -84,7 +96,12 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
             <h1 className="text-black text-center text-4xl mb-10">
               Test your Knowledge
             </h1>
-            <AssessmentCard category={category} img={img} hide={hide} showBackButton={showBackButton} />
+            <AssessmentCard
+              category={category}
+              img={img}
+              hide={hide}
+              showBackButton={showBackButton}
+            />
           </div>
         </div>
         <span className="w-full h-60 bg-[#dbfe01] absolute inset-0"></span>
@@ -136,9 +153,12 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
                       </select>
                     </div>
                     <CodeMirror
+                      key={prevIndex() + index}
                       value={questionAnswer[prevIndex() + index].answer}
-                      onChange={(editor, data, value) =>
+                      onChange={(value) => {
                         handleAnswerChange(value)
+                        console.log("value", value);
+                      }
                       }
                       theme={dracula}
                       extensions={extensions}
@@ -160,15 +180,16 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
             </div>
             <div className="flex gap-2 items-center justify-end max-sm:justify-start mt-3">
               {index !== 0 && (
-                <button
-                  className="cancel text-black"
-                  onClick={handlePrevious}
-                >
+                <button className="cancel text-black" onClick={handlePrevious}>
                   Previous
                 </button>
               )}
               <button className="continue" onClick={handleContinue}>
-                {index === questions.length - 1 ? currentIndex === totalIndex ? "Submit" : "Save & back to Assessment screen" : "Continue"}
+                {index === questions.length - 1
+                  ? currentIndex === totalIndex
+                    ? "Submit"
+                    : "Save & back to Assessment screen"
+                  : "Continue"}
               </button>
             </div>
           </div>
