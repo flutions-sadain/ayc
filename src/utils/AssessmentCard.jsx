@@ -9,7 +9,7 @@ function AssessmentCard({ category, index, icon, click, img }) {
   // const imgSrc = index === 0 ? {assessmentCard1} : index === 1 ? {assessmentCard1} : index === 2 ? {assessmentCard2} : index === 3 && {assessmentCard2};
   return (
     <div className="lg:flex mb-6  bg-white shadow-md rounded-lg overflow-hidden border border-gray-300 p-2 z-10">
-      <img src={img} alt="img" className="w-[300px] h-[150px] mx-auto" />
+      <img src={img} alt="img" style={{objectFit: 'contain'}} className="w-[200px] h-[150px]" />
       <div className="md:flex items-center">
         <div className=":md:py-0 px-3 max-sm:py-3 top-0">
           {/* <h5 className="text-2xl max-sm:text-xl">{category.replace('_', ' ')}</h5> */}

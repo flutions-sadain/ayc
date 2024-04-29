@@ -62,13 +62,13 @@ const ProfileForm = () => {
                             <div className="lg:mx-32 mt-5">
                                 <div className="mb-0" >
                                     <ol className="relative z-10 pl-0 flex justify-between text-sm font-medium text-black">
-                                        <li className="flex items-center gap-2 -ml-8 max-sm:-ml-3">
+                                        <li style={{ width: '65px'}} className="flex items-center gap-2 -ml-8 max-sm:-ml-3">
                                             <img className='w-full max-sm:w-14' src={profileImg1} alt="profileImg1" />
                                         </li>
-                                        <li className="flex items-center gap-2 ">
+                                        <li style={{ width: '65px'}} className="flex items-center gap-2 ">
                                             <img className='w-full max-sm:w-14' src={profileImg2} alt="profileImg2" />
                                         </li>
-                                        <li className="flex items-center gap-2 -mr-8 max-sm:-mr-3">
+                                        <li style={{ width: '65px'}} className="flex items-center gap-2 -mr-8 max-sm:-mr-3">
                                             <img className='w-full max-sm:w-14' src={profileImg3} alt="profileImg3" />
                                         </li>
                                     </ol>

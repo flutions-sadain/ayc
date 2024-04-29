@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import AssessmentCard from "../../utils/AssessmentCard";
 import "./assessment.css";
@@ -74,26 +75,26 @@ const assessmentImage = {
   return (
     <div>
       <Header />
-      <section class="overflow-hidden bg-[#dbfe01]">
-          <div class="py-3 sm:px-6 lg:relative lg:px-0 lg:py-5">
-              <div class="xl:mx-64 items-center px-4 xl:px-12">
-                  <div class="relative z-10">
-                      <div class="relative">
-                          <p class="inline text-black font-light text-4xl tracking-tight">Hey! <span className="font-medium">Khizer</span></p>
-                          <p class="mt-3 text-2xl font-light text-black">Welcome to AYC, your first step in creating impact</p>
+      <section className="overflow-hidden bg-[#dbfe01]">
+          <div className="py-3 sm:px-6 lg:relative lg:px-0 lg:py-5">
+              <div className="xl:mx-64 items-center px-4 xl:px-12">
+                  <div className="relative z-10">
+                      <div className="relative">
+                          <p className="inline text-black font-light text-4xl tracking-tight">Hey! <span className="font-medium">Khizer</span></p>
+                          <p className="mt-3 text-2xl font-light text-black">Welcome to AYC, your first step in creating impact</p>
                       </div>
                       <div className="lg:mx-32 mt-5">
                           <div className="mb-0" >
                               <ol className="relative z-10 pl-0 flex justify-between text-sm font-medium text-black">
-                                  <li className="flex items-center gap-2 -ml-8 max-sm:-ml-3">
+                                  <li style={{ width: '65px'}} className="flex items-center gap-2 -ml-8 max-sm:-ml-3">
                                       <img className='w-full max-sm:w-14' src={profileImg1} alt="profileImg1" />
                                   </li>
 
-                                  <li className="flex items-center gap-2 ">
+                                  <li style={{ width: '65px'}} className="flex items-center gap-2 ">
                                       <img className='w-full max-sm:w-14' src={profileImg2} alt="profileImg2" />
                                   </li>
 
-                                  <li className="flex items-center gap-2 -mr-8 max-sm:-mr-3">
+                                  <li style={{ width: '65px'}} className="flex items-center gap-2 -mr-8 max-sm:-mr-3">
                                       <img className='w-full max-sm:w-14' src={profileImg3} alt="profileImg3" />
 
                                   </li>
@@ -136,18 +137,18 @@ const assessmentImage = {
               </div>
           </div>
       </section>
-      <section class="overflow-hidden">
-        <div class="py-3 sm:px-4 lg:relative lg:px-0 lg:py-5">
-            <div class="xl:mx-64 items-center px-4 xl:px-12">
-                <div class="relative">
-                  <div class="flex mt-3 flex-wrap items-center">
-                      <div class="relative max-sm:text-center flex-grow">
-                          <p class=" text-2xl font-medium text-black">Test your Knowledge</p>
+      <section className="overflow-hidden">
+        <div className="py-3 sm:px-4 lg:relative lg:px-0 lg:py-5">
+            <div className="xl:mx-64 items-center px-4 xl:px-12">
+                <div className="relative">
+                  <div className="flex mt-3 flex-wrap items-center">
+                      <div className="relative max-sm:text-center flex-grow">
+                          <p className=" text-2xl font-medium text-black">Test your Knowledge</p>
                       </div>
                       <div className="ml-auto max-sm:pt-4">
-                        <button class="flex items-center text-[#333334] focus:outline-none ml-auto">
+                        <button className="flex items-center text-[#333334] focus:outline-none ml-auto">
                           View All
-                          <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                          <svg className="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
                         </button>
                       </div>
                     </div>
