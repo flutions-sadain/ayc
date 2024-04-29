@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { TbSettings } from "react-icons/tb";
 import { FaArrowRightLong } from "react-icons/fa6";
 import DataScience from "../../assets/images/DataScience.png";
@@ -17,9 +17,16 @@ import Header from "../Header";
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState(1);
     const [courses, setCourses] = useState([]);
-
+    const isMounted = useRef(true);
 
     useEffect(() => {
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!isMounted.current) return;
         axios.get('http://localhost:3001/courseRecommended')
             .then(response => {
                 setCourses(response.data);
@@ -275,28 +282,28 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div className="mt-3 max-sm:mx-2 my-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-4">
-                    {courses.map((course, index) => (
-                        <div key={index} className="mb-6 p-2 w-full items-center shadow-md rounded-lg border border-gray-300 z-10">
-                            <img src={images[index % images.length]} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
-                            <div className="md:py-0 max-sm:py-3 top-0 items-center">
-                                {/* <a className="text-lg font-bold text-black" href="/courseDetailsContent?courseName=Data Science Essentials for Beginners">{course.name}</a> */}
-                                <Link to={`/courseDetailsContent?courseName=${course.name}`} className="cursor-pointer">
-                                    <p className="text-lg font-bold text-black">{course.name}</p>
-                                </Link>
-                                <p className="text-base text-gray-600">
-                                    {limitWords(course.description, 10)}
-                                </p>
-                                <div className="flex justify-between pt-2">
-                                    <div className="flex items-center">
-                                        <h5 className="text-sm font-bold pr-1">{course.rating}</h5>
-                                        <div className='flex'>{renderStars(course.rating)}</div>
-                                        <p className="text-sm font-normal pr-1">({course.reviews} Reviews)</p>
+                        {courses.map((course, index) => (
+                            <div key={index} className="mb-6 p-2 w-full items-center shadow-md rounded-lg border border-gray-300 z-10">
+                                <img src={images[index % images.length]} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
+                                <div className="md:py-0 max-sm:py-3 top-0 items-center">
+                                    {/* <a className="text-lg font-bold text-black" href="/courseDetailsContent?courseName=Data Science Essentials for Beginners">{course.name}</a> */}
+                                    <Link to={`/courseDetailsContent?courseName=${course.name}`} className="cursor-pointer">
+                                        <p className="text-lg font-bold text-black">{course.name}</p>
+                                    </Link>
+                                    <p className="text-base text-gray-600">
+                                        {limitWords(course.description, 10)}
+                                    </p>
+                                    <div className="flex justify-between pt-2">
+                                        <div className="flex items-center">
+                                            <h5 className="text-sm font-bold pr-1">{course.rating}</h5>
+                                            <div className='flex'>{renderStars(course.rating)}</div>
+                                            <p className="text-sm font-normal pr-1">({course.reviews} Reviews)</p>
+                                        </div>
+                                        <h5 className="text-lg font-bold">{course.price}</h5>
                                     </div>
-                                    <h5 className="text-lg font-bold">{course.price}</h5>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                     </div>
                 </div>
             </section>

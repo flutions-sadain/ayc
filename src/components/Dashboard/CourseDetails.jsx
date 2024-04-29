@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import { FaRegFileLines, FaRegEye } from "react-icons/fa6";
 import { FaPlay } from "react-icons/fa";
@@ -15,14 +15,25 @@ const CourseDetails = () => {
     const [courseDetails, setCourseDetails] = useState([]);
     const [isPlaying, setIsPlaying] = useState(false);
     const navigate = useNavigate();
+    const isMounted = useRef(true);
 
     useEffect(() => {
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!isMounted.current) return;
         const fetchCourseDetails = async () => {
             try {
                 const params = new URLSearchParams(window.location.search);
                 const courseName = params.get('courseName');
-                console.log('Course Name:', courseName);
-                const response = await axios.get('http://localhost:3001/getCourseDetails', { courseName });
+                const response = await axios.get('http://localhost:3001/getCourseDetails', { courseName }, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
                 setCourseDetails(response.data);
             } catch (error) {
                 console.error('Error fetching course details:', error);

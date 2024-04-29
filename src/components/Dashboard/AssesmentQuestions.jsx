@@ -40,12 +40,16 @@ function AssesmentQuestions({
     //   question: questions[i],
     //   answer: answer,
     // }));
+    const formData = new FormData();
+    formData.append("examine_str", JSON.stringify(questionAnswer));
 
     try {
       const response = await axios.get(
-        "http://localhost:3001/assesProfile",
-        JSON.stringify(questionAnswer)
-      );
+        "http://localhost:3001/assesProfile", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
       console.log("Response:", response.data);
       navigate("/assessmentScore");
     } catch (error) {
@@ -116,9 +120,8 @@ function AssesmentQuestions({
                   return (
                     <div
                       key={qindex}
-                      className={`${
-                        qindex === index ? "bg-[#dbfe01]" : "bg-[#dcfe0143]"
-                      } rounded-lg w-10 h-10 max-sm:mt-2 flex justify-center items-center cursor-pointer`}
+                      className={`${qindex === index ? "bg-[#dbfe01]" : "bg-[#dcfe0143]"
+                        } rounded-lg w-10 h-10 max-sm:mt-2 flex justify-center items-center cursor-pointer`}
                       onClick={() => setIndex(qindex)}
                     >
                       <p className="text-black">{qindex + 1}</p>

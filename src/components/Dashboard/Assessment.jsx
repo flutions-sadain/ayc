@@ -36,10 +36,15 @@ const Assessment = () => {
   
   useEffect(() => {
     if (!isMounted.current) return;
+    const formData = new FormData();
+    formData.append("complexity", "phase1");
 
     if (assessmentData === null) {
-      axios
-      .get("http://localhost:3001/phaseQuestions")
+      axios.get("http://localhost:3001/phaseQuestions", formData,{ 
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+      })
       .then((res) => {
           setAssessmentData(res.data);
           Object.keys(res.data).map((category, index) => {
