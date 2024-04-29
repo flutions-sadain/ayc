@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import '../index.css'
 import {Link} from "react-router-dom";
 import {useRef} from "react";
@@ -49,6 +50,7 @@ function Register() {
     const signInWithEmail = async (event) => {
         event.preventDefault();
         setIsSubmitting(true); // disable the button
+        window.localStorage.setItem('email', event.target.email.value);
         try {
             const userCredential =   await createUserWithEmailAndPassword(auth, event.target.email.value, event.target.password.value);
             console.log(userCredential);
@@ -73,9 +75,7 @@ function Register() {
                     isActive: true,
                     signInIP: ipAddress,
                 });
-                setTimeout(() => {
-                    navigate("/apps");
-                }, 3000);
+                navigate("/apps?component=resumes");
             }
         } catch (error) {
             setError(error.message);
@@ -110,9 +110,11 @@ function Register() {
                     isActive: true,
                     signInIP: ipAddress,
                 });
+                
+                window.localStorage.setItem('email', result.user.email);
                 setSuccess('Thank you! You have been successfully registered with us!');
                 setTimeout(() => {
-                    navigate("/apps");
+                    navigate("/apps?component=resumes");
                 }, 3000);
             }
         } catch (error) {

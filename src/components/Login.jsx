@@ -61,9 +61,10 @@ function Login() {
                 setSuccess('Login Successfully!');
               
                 setTimeout(() => {
-                    navigate("/");
+                    navigate("/apps");
                 }, 3000);
             }
+            window.localStorage.setItem("email", event.target.email.value);
         } catch (error) {
             setError(error.message);
         }finally {
@@ -98,8 +99,9 @@ function Login() {
                     signInIP: ipAddress,
                 });
                 setSuccess('Thank you! You have been successfully registered with us!');
+                window.localStorage.setItem("email", result.user.email);
                 setTimeout(() => {
-                    navigate("/");
+                    navigate("/apps");
                 }, 3000);
             }
         } catch (error) {

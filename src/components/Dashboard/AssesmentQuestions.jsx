@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import axios from "axios";
 import CodeMirror from "@uiw/react-codemirror";
@@ -6,23 +8,48 @@ import { loadLanguage } from "@uiw/codemirror-extensions-langs";
 import AssessmentCard from "../../utils/AssessmentCard";
 import { useNavigate } from "react-router-dom";
 
-function AssesmentQuestions({ questions, category, currentIndex, totalIndex, setShowQuestions, hide, img }) {
+// eslint-disable-next-line react/prop-types
+function AssesmentQuestions({
+  questions,
+  category,
+  currentIndex,
+  totalIndex,
+  setShowQuestions,
+  questionAnswer,
+  setQuestionAnswer,
+  categoryIndex,
+  hide,
+  img,
+}) {
   const [index, setIndex] = useState(0);
+  // eslint-disable-next-line react/prop-types
   const [answers, setAnswers] = useState(Array(questions.length).fill(""));
   const [selectedLanguage, setSelectedLanguage] = useState("python");
+  const [showBackButton, setShowBackButton] = useState("true");
   const navigate = useNavigate();
 
+  const prevIndex = () => {
+    // eslint-disable-next-line react/prop-types
+    return categoryIndex
+      .slice(0, currentIndex)
+      .reduce((acc, curr) => acc + curr, 0);
+  };
+
   const submit = async () => {
-    const postData = answers.map((answer, i) => ({
-      Question: questions[i],
-      Answer: answer,
-    }));
+    // const postData = answers.map((answer, i) => ({
+    //   question: questions[i],
+    //   answer: answer,
+    // }));
+    const formData = new FormData();
+    formData.append("examine_str", JSON.stringify(questionAnswer));
 
     try {
-      const response = await axios.post(
-        "http://localhost:3001/assesProfile",
-        postData
-      );
+      const response = await axios.get(
+        "http://localhost:3001/assesProfile", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
       console.log("Response:", response.data);
       navigate("/assessmentScore");
     } catch (error) {
@@ -38,6 +65,11 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
     const newAnswers = [...answers];
     newAnswers[index] = value;
     setAnswers(newAnswers);
+    setQuestionAnswer((prevData) => {
+      const newData = [...prevData];
+      newData[index + prevIndex()].answer = value;
+      return newData;
+    });
   };
 
   const handleContinue = () => {
@@ -46,8 +78,7 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
     } else {
       if (currentIndex === totalIndex) {
         submit();
-      }
-      else {
+      } else {
         setShowQuestions(false);
       }
     }
@@ -69,7 +100,12 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
             <h1 className="text-black text-center text-4xl mb-10">
               Test your Knowledge
             </h1>
-            <AssessmentCard category={category} img={img} />
+            <AssessmentCard
+              category={category}
+              img={img}
+              hide={hide}
+              showBackButton={showBackButton}
+            />
           </div>
         </div>
         <span className="w-full h-60 bg-[#dbfe01] absolute inset-0"></span>
@@ -84,9 +120,8 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
                   return (
                     <div
                       key={qindex}
-                      className={`${
-                        qindex === index ? "bg-[#dbfe01]" : "bg-[#dcfe0143]"
-                      } rounded-lg w-10 h-10 max-sm:mt-2 flex justify-center items-center cursor-pointer`}
+                      className={`${qindex === index ? "bg-[#dbfe01]" : "bg-[#dcfe0143]"
+                        } rounded-lg w-10 h-10 max-sm:mt-2 flex justify-center items-center cursor-pointer`}
                       onClick={() => setIndex(qindex)}
                     >
                       <p className="text-black">{qindex + 1}</p>
@@ -121,9 +156,12 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
                       </select>
                     </div>
                     <CodeMirror
-                      value={answers[index]}
-                      onChange={(editor, data, value) =>
+                      key={prevIndex() + index}
+                      value={questionAnswer[prevIndex() + index].answer}
+                      onChange={(value) => {
                         handleAnswerChange(value)
+                        console.log("value", value);
+                      }
                       }
                       theme={dracula}
                       extensions={extensions}
@@ -136,8 +174,8 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
                     id="answer"
                     name="answer"
                     rows={6}
-                    className="border-black w-full mt-3 rounded-lg border focus:border-black text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                    value={answers[index]}
+                    className="border-black bg-white w-full mt-3 rounded-lg border focus:border-black text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                    value={questionAnswer[prevIndex() + index].answer}
                     onChange={(e) => handleAnswerChange(e.target.value)}
                   ></textarea>
                 )}
@@ -145,15 +183,16 @@ function AssesmentQuestions({ questions, category, currentIndex, totalIndex, set
             </div>
             <div className="flex gap-2 items-center justify-end max-sm:justify-start mt-3">
               {index !== 0 && (
-                <button
-                  className="cancel text-black"
-                  onClick={handlePrevious}
-                >
+                <button className="cancel text-black" onClick={handlePrevious}>
                   Previous
                 </button>
               )}
               <button className="continue" onClick={handleContinue}>
-                {index === questions.length - 1 ? currentIndex === totalIndex ? "Submit" : "Save & back to Assessment screen" : "Continue"}
+                {index === questions.length - 1
+                  ? currentIndex === totalIndex
+                    ? "Submit"
+                    : "Save & back to Assessment screen"
+                  : "Continue"}
               </button>
             </div>
           </div>

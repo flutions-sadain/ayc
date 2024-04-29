@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const Resumes = ({ onSkip, onSubmit }) => {
     const [file, setFile] = useState(null);
-    const [email, setEmail] = useState("san@gmail.com");
+    const [email, setEmail] = useState(window.localStorage.getItem('email'));
     const linkedin = useRef();
     const fileRef = useRef(null);
     const navigate = useNavigate();
@@ -17,7 +17,13 @@ const Resumes = ({ onSkip, onSubmit }) => {
         if (linkedin.current.value.trim() !== "") {
             const linkedinURL = linkedin.current.value.trim();
             try {
-                const response = await axios.get('http://localhost:3001/linkedin', { linkedinURL });
+                const formData = new FormData();
+                formData.append("key",linkedinURL);
+                const response = await axios.get('http://localhost:3001/linkedin', formData,{ 
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
                 console.log('LinkedIn API Response:', response.data);
                 navigate("/newAssessment");
             } catch (error) {
@@ -25,7 +31,7 @@ const Resumes = ({ onSkip, onSubmit }) => {
             }
         } else if (file !== null) {
             const formData = new FormData();
-            formData.append("file", file);
+            formData.append("files", file);
             formData.append("email", email);
 
             try {
