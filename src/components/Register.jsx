@@ -226,8 +226,8 @@ function Register() {
                         </div>
                     </figure>
                     <div id="w-node-_297f275c-c970-4b99-5b1d-a5f8dee44e05-1feb9fb7" className="login-image-wrapper"><img
-                        src="../images/Hero-BG.png" loading="lazy" width="Auto" height="Auto" alt=""
-                        srcSet="../images/Hero-BG.png 500w, ../images/Hero-BG.png 800w, ../images/Hero-BG.png 1080w, ../images/Hero-BG.png 1438w"
+                        src="../images/registration-graphic.png" loading="lazy" width="Auto" height="Auto" alt=""
+                        srcSet="../images/registration-graphic.png 500w, ../images/registration-graphic.png 800w, ../images/registration-graphic.png 1080w, ../images/registration-graphic.png 1438w"
                         sizes="(max-width: 479px) 91vw, (max-width: 767px) 95vw, (max-width: 991px) 96vw, (max-width: 3059px) 47vw, 1438px"/>
                     </div>
                     <div className="login-footer">
