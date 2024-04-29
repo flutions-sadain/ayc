@@ -20,7 +20,7 @@ function AssessmentCard({ category, index, icon, click, hide, img, showBackButto
           <FaArrowLeft />
         </button>
       )}
-      <img src={img} alt="img" className="w-[300px] h-[150px] mx-auto" />
+      <img src={img} alt="img" style={{objectFit: 'contain'}} className="w-[200px] h-[150px]" />
       <div className="md:flex items-center">
         <div className=":md:py-0 px-3 max-sm:py-3 top-0">
           {/* <h5 className="text-2xl max-sm:text-xl">{category.replace('_', ' ')}</h5> */}

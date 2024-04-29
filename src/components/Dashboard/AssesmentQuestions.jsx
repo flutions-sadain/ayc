@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import axios from "axios";
 import CodeMirror from "@uiw/react-codemirror";
@@ -6,14 +8,17 @@ import { loadLanguage } from "@uiw/codemirror-extensions-langs";
 import AssessmentCard from "../../utils/AssessmentCard";
 import { useNavigate } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 function AssesmentQuestions({ questions, category, currentIndex, totalIndex, setShowQuestions, questionAnswer, setQuestionAnswer, categoryIndex, hide, img }) {
   const [index, setIndex] = useState(0);
+  // eslint-disable-next-line react/prop-types
   const [answers, setAnswers] = useState(Array(questions.length).fill(""));
   const [selectedLanguage, setSelectedLanguage] = useState("python");
   const [showBackButton, setShowBackButton] = useState("true");
   const navigate = useNavigate();
 
   const prevIndex = () => {
+    // eslint-disable-next-line react/prop-types
     return categoryIndex.slice(0, currentIndex + 1).reduce((acc, curr) => acc + curr, 0);
   }
 
