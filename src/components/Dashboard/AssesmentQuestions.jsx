@@ -42,7 +42,7 @@ function AssesmentQuestions({
     // }));
 
     try {
-      const response = await axios.post(
+      const response = await axios.get(
         "http://localhost:3001/assesProfile",
         JSON.stringify(questionAnswer)
       );
