@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import {Link} from "react-router-dom";
-import {useRef, useState} from "react";
+import {Link, useLocation} from "react-router-dom";
+import {useEffect, useState} from "react";
 import logo from "../../../public/images/logo.svg";
 import Dashboard from "./Dashboard.jsx";
 import Assessment from "./Assessment.jsx";
@@ -17,7 +17,21 @@ function Apps() {
         setComponent(componentName);
     };
 
+
     const [resumeSubmitted, setResumeSubmitted] = useState(false);
+
+    const location = useLocation();
+
+    useEffect(() => {
+        // Get the query parameter from the URL
+        const searchParams = new URLSearchParams(location.search);
+        const componentParam = searchParams.get('component');
+
+        // Set the component state based on the query parameter
+        if (componentParam) {
+            setComponent(componentParam);
+        }
+    }, [location.search]);
     const handleResumeSubmit = () => {
         setResumeSubmitted(true);
     };

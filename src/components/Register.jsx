@@ -74,9 +74,7 @@ function Register() {
                     isActive: true,
                     signInIP: ipAddress,
                 });
-                setTimeout(() => {
-                    navigate("/apps");
-                }, 3000);
+                navigate("/apps?component=resumes");
             }
         } catch (error) {
             setError(error.message);
