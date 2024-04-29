@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import { FaRegFileLines, FaRegEye } from "react-icons/fa6";
 import { FaPlay } from "react-icons/fa";
@@ -7,14 +7,41 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 import thumbnail from '../../assets/images/thumbnail.png';
 import courseList from '../../assets/images/course-list.png';
 import demoVideo from '../../assets/video/demo.mp4';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../Header";
-
-
+import axios from 'axios';
 
 const CourseDetails = () => {
+    const [courseDetails, setCourseDetails] = useState([]);
     const [isPlaying, setIsPlaying] = useState(false);
     const navigate = useNavigate();
+    const isMounted = useRef(true);
+
+    useEffect(() => {
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!isMounted.current) return;
+        const fetchCourseDetails = async () => {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const courseName = params.get('courseName');
+                const response = await axios.get('http://localhost:3001/getCourseDetails', { courseName }, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+                setCourseDetails(response.data);
+            } catch (error) {
+                console.error('Error fetching course details:', error);
+            }
+        };
+
+        fetchCourseDetails();
+    }, []);
 
     const submit = () => {
         navigate("/newDashboard");
@@ -23,6 +50,28 @@ const CourseDetails = () => {
     const handlePlayClick = () => {
         setIsPlaying(true);
     };
+
+    const renderStars = (rating) => {
+        const stars = [];
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 !== 0;
+
+        for (let i = 0; i < fullStars; i++) {
+            stars.push(<IoIosStar key={i} className="text-yellow-400 text-lg" />);
+        }
+
+        if (hasHalfStar) {
+            stars.push(<IoIosStarHalf key={stars.length} className="text-yellow-400 text-lg" />);
+        }
+
+        const remainingStars = 5 - stars.length;
+        for (let i = 0; i < remainingStars; i++) {
+            stars.push(<IoIosStarOutline key={stars.length} className="text-yellow-400 text-lg" />);
+        }
+
+        return stars;
+    };
+
     return (
         <div>
             <Header />
@@ -31,9 +80,9 @@ const CourseDetails = () => {
                     <h1 className="text-2xl font-bold">Course Details</h1>
                     <div className="p-4 mt-2 grid lg:grid-cols-3 xl:grid-cols-5 gap-3 bg-[#dcfe011f] rounded-lg">
                         <div className="lg:py-8 xl:col-span-2 items-center xl:mr-10">
-                            <h5 className="text-xl font-bold">Beginning C++ Programming - From Beginner to Beyond</h5>
+                        {/* <h5 className="text-xl font-bold">Data Science Essentials for Beginners</h5>
                             <p className="text-base font-normal text-gray-600">
-                                Obtain Modern C++ Object-Oriented Programming (OOP) and STL skills. C++14 and C++17 covered. C++20 info see below.
+                            Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. 
                             </p>
                             <div className="flex justify-between pt-2">
                                 <div className="flex items-center">
@@ -47,7 +96,18 @@ const CourseDetails = () => {
                                     </div>
                                     <p className="text-sm font-normal pr-1">(22 Reviews)</p>
                                 </div>
-                            </div>
+                            </div> */}
+                                    <h5 className="text-xl font-bold">{courseDetails.name}</h5>
+                                    <p className="text-base font-normal text-gray-600">
+                                        {courseDetails.description}
+                                    </p>
+                                    <div className="flex justify-between pt-2">
+                                        <div className="flex items-center">
+                                            <h5 className="text-sm font-bold pr-1">{courseDetails.rating}</h5>
+                                            <div className='flex'>{renderStars(courseDetails.rating)}</div>
+                                            <p className="text-sm font-normal pr-1">({courseDetails.reviews} Reviews)</p>
+                                        </div>
+                                    </div>
                             <div className='flex flex-wrap max-sm:block items-center justify-start mt-2 gap-3'>
                                 <div className="flex items-center text-lg text-[gt-light] text-gray-500 gap-1">
                                     <FaRegFileLines />
@@ -189,28 +249,23 @@ const CourseDetails = () => {
                         <h1 className="text-2xl font-bold">Certification</h1>
                         <p className="text-base font-light py-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis consectetur adipiscing elit.</p>
                     </div>
-                    <div className="bg-white drop-shadow-lg rounded-lg -mt-12 h-fit max-sm:order-first md:order-first lg:order-none">
+                    <div className="bg-white drop-shadow-lg rounded-lg -mt-10 h-fit max-sm:order-first md:order-first lg:order-none">
                         <div className="flex flex-wrap justify-between p-4 pb-0">
-                            <h5 className="text-2xl font-bold">₹449</h5>
+                            <h5 className="text-2xl font-bold">{courseDetails.price}</h5>
                             <div className="flex items-center">
-                                <h5 className="text-sm font-bold pr-1">3.5</h5>
-                                <div className='flex'>
-                                    <IoIosStar className="text-yellow-400 text-lg " />
-                                    <IoIosStar className="text-yellow-400 text-lg " />
-                                    <IoIosStar className="text-yellow-400 text-lg " />
-                                    <IoIosStarHalf className="text-yellow-400 text-lg " />
-                                    <IoIosStarOutline className="text-yellow-400 text-lg " />
+                                <h5 className="text-sm font-bold pr-1">{courseDetails.rating}</h5>
+                                <div className='flex'>{renderStars(courseDetails.rating)}
                                 </div>
-                                <p className="text-sm font-normal pr-1">(22 Reviews)</p>
+                                <p className="text-sm font-normal pr-1">{courseDetails.reviews}</p>
                             </div>
                         </div>
                         <div className="p-4 pt-2">
-                            <h5 className="text-xl font-bold">Beginning C++ Programming - From Beginner to Beyond</h5>
+                            <h5 className="text-xl font-bold">{courseDetails.name}</h5>
                             <p className="text-base font-normal text-gray-600">
-                                Classroom and Hands-on sessions- Features of C++ 11 , Exception Handling and STL - for Both Academics and Industry
+                            {courseDetails.description}
                             </p>
-                            <p className="text-base font-normal text-gray-600">
-                                Rating: 4.6 out of 54.6(25,238 ratings)
+                            <p className="text-base font-normal text-gray-600 pt-2">
+                                <span className="font-semibold ">Languages: </span>{courseDetails.languages?.join(', ')}
                             </p>
                             <p className="text-base font-normal text-gray-600">
                                 82,652 students

@@ -1992,7 +1992,7 @@ figcaption {
 }
 
 .input-form:focus {
-  color: #fff;
+  color: #000;
   border-color: #000;
 }
 
