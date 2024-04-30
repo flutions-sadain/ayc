@@ -18,9 +18,17 @@ import NewDashboard from "./components/Dashboard/Dashboard";
 import CourseDetailsContent from "./components/Dashboard/CourseDetails";
 import {UserIcon} from "./components/icons/UserIcon.jsx";
 import {AIIcon} from "./components/icons/AIIcon.jsx";
+import {CloudComputingIcon} from "./components/icons/CloudComputingIcon.jsx";
 import { GridPattern } from './components/GridPattern'
 import { Button} from "@nextui-org/react";
 import Login from './components/Login.jsx';
+import {BlockchainIcon} from "./components/icons/BlockchainIcon.jsx";
+import {QuantumIcon} from "./components/icons/QuantumIcon.jsx";
+import {QCIcon} from "./components/icons/QCIcon.jsx";
+import {ARIcon} from "./components/icons/ARIcon.jsx";
+import {CybersecurityIcon} from "./components/icons/CybersecurityIcon.jsx";
+import {DatascienceIcon} from "./components/icons/DatascienceIcon.jsx";
+import {LeadershipIcon} from "./components/icons/LeadershipIcon.jsx";
 
 function App() {
 
@@ -57,22 +65,7 @@ function App() {
           "                            analytics.",
       description2: "Industry Guidelines: Adhere to best practices ensuring\n" +
           "                            optimal, secure, and cost-effective cloud solutions for your enterprise.",
-      icon: UserIcon,
-      pattern: {
-        y: 16,
-        squares: [
-          [0, 1],
-          [1, 3],
-        ],
-      },
-    },
-    {
-      href: '/courses',
-      name: 'AI & Machine Learning',
-      description:
-          "Personalized Learning Adapt AI to cater to  unique learning curves, ensuring knowledge retention and application.",
-      description2: "AI & Human Assist: Combine human intuition with AI efficiency to enable enhanced decision-making and problem-solving Industry Guideline Keep up with best practices, ensuring that AI integrates seamlessly and ethically into your enterprise.",
-      icon: AIIcon,
+      icon: CloudComputingIcon,
       pattern: {
         y: 16,
         squares: [
@@ -85,9 +78,13 @@ function App() {
       href: '/courses',
       name: 'Blockchain',
       description:
-          "Personalized Learning Adapt AI to cater to  unique learning curves, ensuring knowledge retention and application.",
-      description2: "AI & Human Assist: Combine human intuition with AI efficiency to enable enhanced decision-making and problem-solving Industry Guideline Keep up with best practices, ensuring that AI integrates seamlessly and ethically into your enterprise.",
-      icon: UserIcon,
+          "Trust & Transparency Understand how\n" +
+          "                            decentralization is building trust in business processes, particularly in finance and supply\n" +
+          "                            chain.",
+      description2: "Industry Guideline: Navigate the complex world of blockchain\n" +
+          "                            with up-to-date standards and applications relevant to your\n" +
+          "                            industry",
+      icon: BlockchainIcon,
       pattern: {
         y: 16,
         squares: [
@@ -98,11 +95,15 @@ function App() {
     },
     {
       href: '/courses',
-      name: 'AI & Machine Learning',
+      name: 'Quantum Computing',
       description:
-          "Personalized Learning Adapt AI to cater to  unique learning curves, ensuring knowledge retention and application.",
-      description2: "AI & Human Assist: Combine human intuition with AI efficiency to enable enhanced decision-making and problem-solving Industry Guideline Keep up with best practices, ensuring that AI integrates seamlessly and ethically into your enterprise.",
-      icon: AIIcon,
+          "Beyond traditional computing grasp how\n" +
+          "                            quantum mechanics is setting the stage for a new era of computing, potentially\n" +
+          "                            revolutionizing fields like cryptography",
+      description2: "Personalized learning Tailor\n" +
+          "                            your quantum learning journey to match your goals and\n" +
+          "                            background.",
+      icon: QCIcon,
       pattern: {
         y: 16,
         squares: [
@@ -113,11 +114,11 @@ function App() {
     },
     {
       href: '/courses',
-      name: 'Blockchain',
+      name: 'Augmented-Virtual Reality',
       description:
-          "Personalized Learning Adapt AI to cater to  unique learning curves, ensuring knowledge retention and application.",
-      description2: "AI & Human Assist: Combine human intuition with AI efficiency to enable enhanced decision-making and problem-solving Industry Guideline Keep up with best practices, ensuring that AI integrates seamlessly and ethically into your enterprise.",
-      icon: UserIcon,
+          "Future of Things Delve into an AR/VR course that equips participants with the skills to create engaging virtual environments, understand user interaction",
+      description2: "Everything from 3D modeling and simulation to practical deployment strategies for interactive media and gaming.",
+      icon: ARIcon,
       pattern: {
         y: 16,
         squares: [
@@ -128,11 +129,11 @@ function App() {
     },
     {
       href: '/courses',
-      name: 'AI & Machine Learning',
+      name: 'Cyber Security',
       description:
-          "Personalized Learning Adapt AI to cater to  unique learning curves, ensuring knowledge retention and application.",
-      description2: "AI & Human Assist: Combine human intuition with AI efficiency to enable enhanced decision-making and problem-solving Industry Guideline Keep up with best practices, ensuring that AI integrates seamlessly and ethically into your enterprise.",
-      icon: AIIcon,
+          "In-Depth exploration Principles and practices Tailored for both aspiring and current professionals as well as students.",
+      description2: "Gain essential Cyber Security It aims to equip participants with the skills needed to protect computer systems, networks, and data from threats and attacks.",
+      icon: CybersecurityIcon,
       pattern: {
         y: 16,
         squares: [
@@ -143,11 +144,26 @@ function App() {
     },
     {
       href: '/courses',
-      name: 'Blockchain',
+      name: 'Data Science & Analytics',
       description:
-          "Personalized Learning Adapt AI to cater to  unique learning curves, ensuring knowledge retention and application.",
-      description2: "AI & Human Assist: Combine human intuition with AI efficiency to enable enhanced decision-making and problem-solving Industry Guideline Keep up with best practices, ensuring that AI integrates seamlessly and ethically into your enterprise.",
-      icon: UserIcon,
+          "Harnessing insights from the digital universe to drive innovation, optimize decisions, and transform industries.",
+      description2: "Unleashing the power of analytics to solve complex challenges and ignite business growth.",
+      icon: DatascienceIcon,
+      pattern: {
+        y: 16,
+        squares: [
+          [0, 1],
+          [1, 3],
+        ],
+      },
+    },
+    {
+      href: '/courses',
+      name: 'Leadership & Management',
+      description:
+          "Lead with Confidence, Manage with Skill: Elevate Your Leadership and Management Capabilities. Transform Challenges into Opportunities through Strategic Decision-Making. Inspire Teams, Drive Success, and Cultivate a Legacy of Excellence.",
+      description2: "Navigate Change with Vision and Strategy, Guiding Your Organization to New Heights. Elevate Your Impact with Proven Leadership Techniques.",
+      icon: LeadershipIcon,
       pattern: {
         y: 16,
         squares: [
