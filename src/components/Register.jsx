@@ -110,7 +110,7 @@ function Register() {
                     isActive: true,
                     signInIP: ipAddress,
                 });
-                
+
                 window.localStorage.setItem('email', result.user.email);
                 setSuccess('Thank you! You have been successfully registered with us!');
                 setTimeout(() => {
@@ -127,10 +127,6 @@ function Register() {
         <>
             <section className="section-login">
                 <div className="login-component">
-                    <div className="login-navbar">
-                        <h4>AYC</h4>
-                        <a href="#" className="login-logo-link w-nav-brand"></a>
-                    </div>
                     <figure id="w-node-_297f275c-c970-4b99-5b1d-a5f8dee44dd9-1feb9fb7" className="login-content-left">
                         <div className="max-width-small align-center">
                             <div className="margin-bottom">
@@ -139,7 +135,11 @@ function Register() {
                                         <div className="margin-bottom margin-small">
                                             <h1 className="heading-style-h3-2 text-align-left">Register with AYC</h1>
                                         </div>
-                                        <p className="text-size-medium text-align-left">Sign up and start your career journey</p>
+                                        <div className="margin-bottom margin-small">
+                                            <img src="./images/logo.svg" width="100" height="100"
+                                                    loading="lazy" alt=""/>
+                                        </div>
+                                        <p className="text-size-large text-block text-align-left">Sign up and start your career journey</p>
                                     </div>
                                 </div>
                             </div>
@@ -227,42 +227,13 @@ function Register() {
                             </div>
                         </div>
                     </figure>
-                    <div id="w-node-_297f275c-c970-4b99-5b1d-a5f8dee44e05-1feb9fb7" className="login-image-wrapper"><img
-                        src="../images/Hero-BG.png" loading="lazy" width="Auto" height="Auto" alt=""
-                        srcSet="../images/Hero-BG.png 500w, ../images/Hero-BG.png 800w, ../images/Hero-BG.png 1080w, ../images/Hero-BG.png 1438w"
-                        sizes="(max-width: 479px) 91vw, (max-width: 767px) 95vw, (max-width: 991px) 96vw, (max-width: 3059px) 47vw, 1438px"/>
-                    </div>
-                    <div className="login-footer">
-                        <div className="text-size-small-2">© AYC</div>
+                    <div id="w-node-_297f275c-c970-4b99-5b1d-a5f8dee44e05-1feb9fb7"><img
+                        src="../images/registration-graphic.png" loading="lazy" alt=""
+                        srcSet="../images/registration-graphic.png 500w, ../images/registration-graphic.png 800w, ../images/registration-graphic.png 1080w, ../images/registration-graphic.png 1438w"
+                        sizes="(max-width: 479px) 91vw, (max-width: 767px) 95vw, (max-width: 991px) 96vw, (max-width: 3059px), 1438px"/>
                     </div>
                 </div>
             </section>
-            <div className="extras-cta">
-                <div className="hire-us">
-                    <div className="hire-us-wrapper">
-                        <div className="hire-us-text">Hire us to build a website using this template. Get unlimited
-                            design &amp; dev.
-                        </div>
-                        <div className="hire-us-buttons">
-                            <a href="http://designup.net" target="_blank" className="hire-us-button w-inline-block">
-                                <div className="hire-us-button-text">View pricing</div>
-                            </a>
-                        </div>
-                        <div data-w-id="3e1d66bb-f76c-c42f-076a-789b7baa5b0f" className="hire-us-close-icon"><img
-                            src="../images/X.svg" loading="lazy" alt="" className="image-7"/></div>
-                    </div>
-                </div>
-                <a href="https://webflow.com/templates/html/offdata-saas-website-template" target="_blank"
-                   className="buy-template w-inline-block"><img src="../images/Webflow-Logo.svg" loading="lazy" alt=""
-                                                                className="dup-icon"/>
-                    <div className="buy-template-label">Buy this Template</div>
-                </a>
-                <a href="https://webflow.com/templates/designers/designup" target="_blank"
-                   className="all-templates w-inline-block"><img src="../images/DesignUp.svg" loading="lazy" alt=""
-                                                                 className="dup-icon"/>
-                    <div className="all-templates-label">All Templates</div>
-                </a>
-            </div>
 
         </>
     )
