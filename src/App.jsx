@@ -278,7 +278,7 @@ function App() {
           <Route  path="/login" element={<Login/>}/>
         </Routes>
         <Routes>
-          <Route path="/apps" element={<Apps/>}/>
+          <Route path="/register" element={<Apps/>}/>
         </Routes>
         <Routes>
           <Route path="/dashboard" element={<Dashboard/>}/>
