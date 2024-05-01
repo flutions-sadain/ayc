@@ -29,7 +29,7 @@ const CourseDetails = () => {
             try {
                 const params = new URLSearchParams(window.location.search);
                 const courseName = params.get('courseName');
-                const response = await axios.get('http://localhost:3001/getCourseDetails', { courseName }, {
+                const response = await axios.post('http://localhost:8000/getCourseDetails', { courseName }, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
