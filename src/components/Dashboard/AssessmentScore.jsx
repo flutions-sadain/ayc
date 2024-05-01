@@ -23,7 +23,7 @@ const AssessmentScore = () => {
 
     useEffect(() => {
         if (!isMounted.current) return;
-        axios.get('http://localhost:3001/courseRecommended')
+        axios.post('http://localhost:8000/courseRecommended')
             .then(response => {
                 setCourses(response.data);
             })
@@ -31,7 +31,7 @@ const AssessmentScore = () => {
                 console.error('Error fetching course details:', error);
             });
 
-        axios.get('http://localhost:3001/assesProfile')
+        axios.post('http://localhost:8000/assesProfile')
             .then(response => {
                 setPositiveFeedback(response.data.positive_feedback);
                 setNegativeFeedback(response.data.negative_feedback);

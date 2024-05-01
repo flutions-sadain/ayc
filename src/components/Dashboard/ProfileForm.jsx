@@ -43,7 +43,7 @@ const ProfileForm = () => {
         try {
             const formData = new FormData();
             formData.append("questions", JSON.stringify(postData));
-            await axios.get("http://localhost:8000/summaryGeneration", formData,{
+            await axios.post("http://localhost:8000/summaryGeneration", formData,{
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

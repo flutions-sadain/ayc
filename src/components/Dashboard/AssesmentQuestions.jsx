@@ -44,8 +44,8 @@ function AssesmentQuestions({
     formData.append("examine_str", JSON.stringify(questionAnswer));
 
     try {
-      const response = await axios.get(
-        "http://localhost:3001/assesProfile", formData, {
+      const response = await axios.post(
+        "http://localhost:8000/assesProfile", formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
