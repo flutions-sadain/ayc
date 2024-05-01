@@ -1,0 +1,9 @@
+{
+  "Template": {
+    "TemplateName": "WelcomeTemplate",
+    "SubjectPart": "Welcome to AYC",
+    "HtmlPart": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome to AYC</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n        }\n        .container {\n            width: 80%;\n            margin: auto;\n            padding: 20px;\n            border: 1px solid #ddd;\n            border-radius: 5px;\n        }\n        .logo {\n            display: block;\n            margin: auto;\n            width: 200px;\n        }\n        .content {\n            margin-top: 20px;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <img class=\"logo\" src=\"https://phost.s3.amazonaws.com/logo.png\" alt=\"AYC\">\n        <div class=\"content\">\n            <h1>Welcome to Our Service</h1>\n            <p>Thank you for signing up for our service. We're excited to have you on board.</p>\n        </div>\n    </div>\n</body>\n</html>",
+    "TextPart": "Welcome to AYC. Registration Successful! Please verify your email."
+  }
+}
+
