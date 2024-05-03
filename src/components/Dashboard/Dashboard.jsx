@@ -27,7 +27,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         if (!isMounted.current) return;
-        axios.get('http://localhost:3001/courseRecommended')
+        axios.post('http://localhost:8000/courseRecommended')
             .then(response => {
                 setCourses(response.data);
             })
