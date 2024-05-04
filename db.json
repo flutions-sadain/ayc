@@ -54,7 +54,7 @@
             "Correctly stated the year the Titanic sank.",
             "Correctly named the tallest mountain in the world."
         ],
-        "negative_feedback": [],
+        "negative_feedback": ["Need to Imporove alot"],
         "score": "100%"
     },
     "summaryGeneration": {
