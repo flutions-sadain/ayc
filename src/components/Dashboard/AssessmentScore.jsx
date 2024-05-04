@@ -2,43 +2,30 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from 'react-icons/io';
 import Header from '../Header';
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import DataScience from "../../assets/images/DataScience.png";
 import FullStackDevelopment from "../../assets/images/FullStackDevelopment.png";
 import FrontendDevelopment from "../../assets/images/FrontendDevelopment.png";
 import MachineLearning from "../../assets/images/MachineLearning.png";
 
 const AssessmentScore = () => {
+    const location=useLocation();
+    console.log(location)
+    const  data  = location.state;
     const [courses, setCourses] = useState([]);
     const isMounted = useRef(true);
-    const [positiveFeedback, setPositiveFeedback] = useState([]);
-    const [negativeFeedback, setNegativeFeedback] = useState([]);
-    const [score, setScore] = useState("0%");
+    console.log(data)
+    const positiveFeedback=data.positive_feedback
+    const negativeFeedback=data.negative_feedback
+    const score=data.scores
 
     useEffect(() => {
-        return () => {
-            isMounted.current = false;
-        };
-    }, []);
-
-    useEffect(() => {
-        if (!isMounted.current) return;
         axios.post('http://localhost:8000/courseRecommended')
             .then(response => {
                 setCourses(response.data);
             })
             .catch(error => {
                 console.error('Error fetching course details:', error);
-            });
-
-        axios.post('http://localhost:8000/assesProfile')
-            .then(response => {
-                setPositiveFeedback(response.data.positive_feedback);
-                setNegativeFeedback(response.data.negative_feedback);
-                setScore(response.data.score);
-            })
-            .catch(error => {
-                console.error('Error fetching assessment score:', error);
             });
     }, []);
 
@@ -141,7 +128,8 @@ const AssessmentScore = () => {
                     </div>
                 </div>
                 <div className="mt-3 max-sm:mx-2 my-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-4">
-                    {courses.map((course, index) => (
+                    {console.log(courses)}
+                    {courses.length!==0 && courses.courseRecommended.map((course, index) => (
                         <div key={index} className="mb-6 p-2 w-full items-center shadow-md rounded-lg border border-gray-300 z-10">
                             <img src={images[index % images.length]} alt="img" className="w-2/5 md:w-full max-sm:w-full" />
                             <div className="md:py-0 max-sm:py-3 top-0 items-center">

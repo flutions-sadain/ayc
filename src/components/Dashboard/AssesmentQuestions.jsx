@@ -7,6 +7,7 @@ import { dracula } from "@uiw/codemirror-theme-dracula";
 import { loadLanguage } from "@uiw/codemirror-extensions-langs";
 import AssessmentCard from "../../utils/AssessmentCard";
 import { useNavigate } from "react-router-dom";
+import AssessmentScore from "./AssessmentScore";
 
 // eslint-disable-next-line react/prop-types
 function AssesmentQuestions({
@@ -26,6 +27,7 @@ function AssesmentQuestions({
   const [answers, setAnswers] = useState(Array(questions.length).fill(""));
   const [selectedLanguage, setSelectedLanguage] = useState("python");
   const [showBackButton, setShowBackButton] = useState("true");
+  const [data,setData]=useState("")
   const navigate = useNavigate();
 
   const prevIndex = () => {
@@ -36,10 +38,6 @@ function AssesmentQuestions({
   };
 
   const submit = async () => {
-    // const postData = answers.map((answer, i) => ({
-    //   question: questions[i],
-    //   answer: answer,
-    // }));
     const formData = new FormData();
     formData.append("examine_str", JSON.stringify(questionAnswer));
 
@@ -51,7 +49,9 @@ function AssesmentQuestions({
         }
       });
       console.log("Response:", response.data);
-      navigate("/assessmentScore");
+      setData(response.data)
+
+      navigate('/assessmentScore', { state: response.data });
     } catch (error) {
       console.error("Error posting answers:", error);
     }
