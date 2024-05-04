@@ -40,7 +40,7 @@ const Assessment = () => {
     formData.append("complexity", "phase1");
 
     if (assessmentData === null) {
-      axios.get("http://localhost:8000/phaseQuestions", formData,{ 
+      axios.post("http://localhost:8000/phaseQuestions", formData,{ 
         headers: {
             'Content-Type': 'multipart/form-data'
         }
