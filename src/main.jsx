@@ -15,6 +15,7 @@ import AssessmentScore from "./components/Dashboard/AssessmentScore";
 import NewDashboard from "./components/Dashboard/Dashboard";
 import CourseDetailsContent from "./components/Dashboard/CourseDetails";
 import Login from './components/Login.jsx';
+import Home from "./components/Dashboardv2/Home.jsx";
 
 const router = createBrowserRouter([
     {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
     {
         path: "/courseDetailsContent",
         element: <CourseDetailsContent />
+    },
+    {
+        path: "/home",
+        element: <Home />
     },
 ]);
 
