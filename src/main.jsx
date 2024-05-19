@@ -16,6 +16,8 @@ import NewDashboard from "./components/Dashboard/Dashboard";
 import CourseDetailsContent from "./components/Dashboard/CourseDetails";
 import Login from './components/Login.jsx';
 import Home from "./components/Dashboardv2/Home.jsx";
+import { Provider } from 'react-redux';
+import store from './store';
 
 const router = createBrowserRouter([
     {
@@ -35,8 +37,8 @@ const router = createBrowserRouter([
         element: <Register />
     },
     {
-        path:'login',
-        element:<Login/>
+        path: 'login',
+        element: <Login />
     },
     {
         path: "apps",
@@ -51,8 +53,8 @@ const router = createBrowserRouter([
         element: <ProfileForm />
     },
     {
-        path:"/newAssessment",
-        element:<AssessmentScreen/>
+        path: "/newAssessment",
+        element: <AssessmentScreen />
     },
     {
         path: "/assessmentScore",
@@ -76,11 +78,13 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <NextUIProvider>
-            <div className="page-wrapper">
-                <div className="main-wrapper">
-                    <RouterProvider router={router} />
+            <Provider store={store}>
+                <div className="page-wrapper">
+                    <div className="main-wrapper">
+                        <RouterProvider router={router} />
+                    </div>
                 </div>
-            </div>
+            </Provider>
         </NextUIProvider>
     </React.StrictMode>
 
