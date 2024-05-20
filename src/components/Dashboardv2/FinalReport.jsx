@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 const FinalReport = ({ setPageNo, wizard }) => {
   const skillTestReportData = useSelector((state) => state.skillTest.skillTestData);
 
-console.log("skillTestReportData", skillTestReportData);
+// console.log("skillTestReportData", skillTestReportData);
 
     return (
         <div className="mx-auto min-w-full lg:mr-0">

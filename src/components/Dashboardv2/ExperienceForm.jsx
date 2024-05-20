@@ -15,7 +15,7 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
     const resumeData = useSelector((state) => state.resume.resumeData);
     const { skills: skillsString = "", previous_company_details } = resumeData?.summary || {};
 
-    console.log("resume data", resumeData);
+    // console.log("resume data", resumeData);
     let formatter = useDateFormatter();
 
     const [experienceDetails, setExperienceDetails] = useState({
