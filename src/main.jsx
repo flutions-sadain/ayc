@@ -1,88 +1,99 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
 import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import AboutUs from "./components/AboutUs.jsx";
 import Contact from "./components/Contact.jsx";
 import Register from "./components/Register.jsx";
 import Apps from "./components/platform/Apps.jsx";
 import { NextUIProvider } from "@nextui-org/react";
-import NewResumeUpload from './components/Dashboard/ResumeUpload';
+import NewResumeUpload from "./components/Dashboard/ResumeUpload";
 import ProfileForm from "./components/Dashboard/ProfileForm";
 import AssessmentScreen from "./components/Dashboard/Assessment";
 import AssessmentScore from "./components/Dashboard/AssessmentScore";
 import NewDashboard from "./components/Dashboard/Dashboard";
 import CourseDetailsContent from "./components/Dashboard/CourseDetails";
-import Login from './components/Login.jsx';
+import Login from "./components/Login.jsx";
 import Home from "./components/Dashboardv2/Home.jsx";
+import { BrowserRouter as Router, Route, Navigate } from "react-router-dom";
+import { auth } from "./firebase.js";
+
+
+
+const ProtectedRoute = ({  Component, ...rest }) => {
+    //const { isAuthenticated } = useAuth(); // Replace with your authentication logic
+
+    const userToken = localStorage.getItem('userToken')
+    
+    return userToken ? <Component {...rest} /> : <Navigate to="/login" />;
+  };
+  
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <App />
-    },
-    {
-        path: "aboutUs",
-        element: <AboutUs />
-    },
-    {
-        path: "contact",
-        element: <Contact />
-    },
-    {
-        path: "register",
-        element: <Register />
-    },
-    {
-        path:'login',
-        element:<Login/>
-    },
-    {
-        path: "apps",
-        element: <Apps />
-    },
-    {
-        path: "/newResume",
-        element: <NewResumeUpload />
-    },
-    {
-        path: "/profileForm",
-        element: <ProfileForm />
-    },
-    {
-        path:"/newAssessment",
-        element:<AssessmentScreen/>
-    },
-    {
-        path: "/assessmentScore",
-        element: <AssessmentScore />
-    },
-    {
-        path: "/newDashboard",
-        element: <NewDashboard />
-    },
-    {
-        path: "/courseDetailsContent",
-        element: <CourseDetailsContent />
-    },
-    {
-        path: "/home",
-        element: <Home />
-    },
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "aboutUs",
+    element: <AboutUs />,
+  },
+  {
+    path: "contact",
+    element: <Contact />,
+  },
+  {
+    path: "register",
+    element: <Register />,
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "apps",
+    element: <ProtectedRoute Component={Apps} />,
+  },
+  {
+    path: "/newResume",
+    element: <ProtectedRoute Component={NewResumeUpload} />,
+  },
+  {
+    path: "/profileForm",
+    element: <ProtectedRoute Component={ProfileForm} />,
+  },
+  {
+    path: "/newAssessment",
+    element: <ProtectedRoute Component={AssessmentScore} />,
+  },
+  {
+    path: "/assessmentScore",
+    element: <ProtectedRoute Component={AssessmentScore} />,
+  },
+  {
+    path: "/newDashboard",
+    element: <ProtectedRoute Component={NewDashboard} />,
+  },
+  {
+    path: "/courseDetailsContent",
+    element: <ProtectedRoute Component={CourseDetailsContent} />,
+  },
+  {
+    path: "/home",
+    element: <Home />,
+  },
 ]);
 
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-        <NextUIProvider>
-            <div className="page-wrapper">
-                <div className="main-wrapper">
-                    <RouterProvider router={router} />
-                </div>
-            </div>
-        </NextUIProvider>
-    </React.StrictMode>
-
-    ,
-)
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <NextUIProvider>
+      <div className="page-wrapper">
+        <div className="main-wrapper">
+          <RouterProvider router={router} />
+        </div>
+      </div>
+    </NextUIProvider>
+  </React.StrictMode>
+);

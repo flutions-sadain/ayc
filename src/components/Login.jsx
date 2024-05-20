@@ -59,10 +59,11 @@ function Login() {
                 const data = await retrieveUserData(userCredential.user.uid);
                 console.log("data after login", data);
                 setSuccess('Login Successfully!');
-
-                setTimeout(() => {
+                const token = await userCredential.user.getIdToken();
+                localStorage.setItem('userToken', token);
+                
                     navigate("/apps");
-                }, 3000);
+                
             }
             window.localStorage.setItem("email", event.target.email.value);
         } catch (error) {
