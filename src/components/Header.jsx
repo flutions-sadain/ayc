@@ -12,13 +12,13 @@ const Header = () => {
                 <div className="flex justify-between items-center">
                     <div className="flex justify-between items-center">
                         <img className="w-20 pt-2 pb-2" src={Logo} alt="Selma" />
-                        <form class="pl-20">
-                            <div class="relative">
-                                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <form className="pl-20">
+                            <div className="relative">
+                                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                     <IoIosSearch className="text-xl text-gray-500" />
                                 </div>
-                                <input type="search" id="default-search" class="block w-96   p-2 ps-10 text-sm text-[#333334] bg-[#EEEEEE] border border-gray-300 rounded-sm focus:border-none" placeholder="Search Mockups, Logos..." required />
-                                {/* <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> */}
+                                <input type="search" id="default-search" className="block w-96   p-2 ps-10 text-sm text-[#333334] bg-[#EEEEEE] border border-gray-300 rounded-sm focus:border-none" placeholder="Search Mockups, Logos..." required />
+                                {/* <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> */}
                             </div>
                         </form>
                     </div>

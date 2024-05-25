@@ -162,11 +162,11 @@ const Dashboard = () => {
                                         <div className="md:py-0 max-sm:py-3 pb-4 top-0 items-center">
                                             <a className="text-xl font-bold text-black" href="/courseDetailsContent?courseName=Data Science Essentials for Beginners">Mastering Front-End Technologies</a>
                                             <div className='flex pt-2 justify-between items-center'>
-                                                <span class="text-base text-gray-800">25%</span>
-                                                <p class="text-sm font-light text-gray-800"><span className="font-bold">2</span>/20 Lesson</p>
+                                                <span className="text-base text-gray-800">25%</span>
+                                                <p className="text-sm font-light text-gray-800"><span className="font-bold">2</span>/20 Lesson</p>
                                             </div>
-                                            <div class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                <div class="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-[#333334] text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
+                                            <div className="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                <div className="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-[#333334] text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -175,11 +175,11 @@ const Dashboard = () => {
                                         <div className="md:py-0 max-sm:py-3 pb-4 top-0 items-center">
                                             <a className="text-xl font-bold text-black" href="/courseDetailsContent?courseName=Data Science Essentials for Beginners">Data Science Essentials for Beginners</a>
                                             <div className='flex pt-2 justify-between items-center'>
-                                                <span class="text-base text-gray-800">25%</span>
-                                                <p class="text-sm font-light text-gray-800"><span className="font-bold">2</span>/20 Lesson</p>
+                                                <span className="text-base text-gray-800">25%</span>
+                                                <p className="text-sm font-light text-gray-800"><span className="font-bold">2</span>/20 Lesson</p>
                                             </div>
-                                            <div class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                <div class="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-[#333334] text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
+                                            <div className="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                <div className="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-[#333334] text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -188,11 +188,11 @@ const Dashboard = () => {
                                         <div className="md:py-0 max-sm:py-3 pb-4 top-0 items-center">
                                             <a className="text-xl font-bold text-black" href="/courseDetailsContent?courseName=Data Science Essentials for Beginners">Machine Learning for Beginners</a>
                                             <div className='flex pt-2 justify-between items-center'>
-                                                <span class="text-base text-gray-800">25%</span>
-                                                <p class="text-sm font-light text-gray-800"><span className="font-bold">2</span>/20 Lesson</p>
+                                                <span className="text-base text-gray-800">25%</span>
+                                                <p className="text-sm font-light text-gray-800"><span className="font-bold">2</span>/20 Lesson</p>
                                             </div>
-                                            <div class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                <div class="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-[#333334] text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
+                                            <div className="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                <div className="flex flex-col w-[25%] justify-center rounded-full overflow-hidden bg-[#333334] text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -205,11 +205,11 @@ const Dashboard = () => {
                                         <div className="md:py-0 max-sm:py-3 pb-4 top-0 items-center">
                                             <a className="text-xl font-bold text-black" href="/courseDetailsContent?courseName=Data Science Essentials for Beginners">Full-Stack Web Development Bootcamp</a>
                                             <div className='flex pt-2 justify-between items-center'>
-                                                <span class="text-base text-gray-800">100%</span>
-                                                <p class="text-sm font-light text-gray-800"><span className="font-bold">20</span>/20 Lesson</p>
+                                                <span className="text-base text-gray-800">100%</span>
+                                                <p className="text-sm font-light text-gray-800"><span className="font-bold">20</span>/20 Lesson</p>
                                             </div>
-                                            <div class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                                                <div class="flex flex-col w-[100%] justify-center rounded-full overflow-hidden bg-[#333334] text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
+                                            <div className="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                <div className="flex flex-col w-[100%] justify-center rounded-full overflow-hidden bg-[#333334] text-xs text-white text-center whitespace-nowrap transition duration-500"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -270,14 +270,14 @@ const Dashboard = () => {
                 </div>
                 {/* Recommended Course */}
                 <div className="py-2 sm:px-6 lg:px-0 lg:py-3">
-                    <div class="flex flex-wrap items-center">
-                        <div class="max-sm:text-center flex-grow">
-                            <p class=" text-2xl font-medium text-black">Recommended Course</p>
+                    <div className="flex flex-wrap items-center">
+                        <div className="max-sm:text-center flex-grow">
+                            <p className=" text-2xl font-medium text-black">Recommended Course</p>
                         </div>
                         <div className="ml-auto max-sm:pt-4 max-sm:pr-5">
-                            <button class="flex items-center text-[#33334] focus:outline-none ml-auto">
+                            <button className="flex items-center text-[#33334] focus:outline-none ml-auto">
                                 View All
-                                <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg className="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                         </div>
                     </div>

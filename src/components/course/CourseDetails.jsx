@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Header from '../Dashboardv2/Header'
-import { Accordion, AccordionItem, BreadcrumbItem, Breadcrumbs, Spinner } from '@nextui-org/react'
+import { Accordion, AccordionItem, Spinner } from '@nextui-org/react'
 import demoVideo from '../../assets/video/demo.mp4';
 import thumbnail from '../../assets/images/thumbnail.png';
 import { FaPlay } from "react-icons/fa";
@@ -74,7 +74,6 @@ const CourseDetails = () => {
     //     return <div>Loading...</div>;
     // }
 
-    const defaultContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
     const handlePlayClick = () => {
         setIsPlaying(true);
@@ -134,58 +133,58 @@ const CourseDetails = () => {
             <Header />
             {!isLoading ? <>
                 <div className="w-full py-2 px-10 border bg-white">
-                    <ol class="flex items-center whitespace-nowrap">
-                        <li class="inline-flex items-center">
-                            <a class="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="/">
+                    <ol className="flex items-center whitespace-nowrap">
+                        <li className="inline-flex items-center">
+                            <a className="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="#">
                                 Home
                             </a>
-                            <svg class="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg className="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="m9 18 6-6-6-6"></path>
                             </svg>
                         </li>
-                        <li class="inline-flex items-center">
-                            <a class="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="/recommendedCourse">
+                        <li className="inline-flex items-center">
+                            <a className="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="/recommendedCourse">
                                 Courses
-                                <svg class="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg className="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="m9 18 6-6-6-6"></path>
                                 </svg>
                             </a>
                         </li>
-                        <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate" aria-current="page">
-                            {courseDetails.name}
+                        <li className="inline-flex items-center text-sm font-semibold text-gray-800 truncate" aria-current="page">
+                            Application
                         </li>
                     </ol>
                 </div>
-                <div className="w-full bg-gray-200 h-screen">
-                    <div class="py-20 px-10 sm:px-6 lg:px-20 grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
+                <div className="w-full bg-gray-200 h-auto">
+                    <div className="py-20 px-10 sm:px-6 lg:px-20 grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
                         <div>
-                            <h1 class="block text-3xl font-medium text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight">{courseDetails.name}</h1>
-                            <p class="mt-3 text-lg text-gray-800">{courseDetails.description}</p>
+                            <h1 className="block text-3xl font-medium text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight">{courseDetails.name}</h1>
+                            <p className="mt-3 text-lg text-gray-800">{courseDetails.description}</p>
 
                             <div className="grid lg:grid-cols-2">
-                                <div class="mt-3 lg:mt-5 grid grid-cols-2 gap-x-5">
-                                    <div class="">
-                                        <div class="flex space-x-1">
+                                <div className="mt-3 lg:mt-5 grid grid-cols-2 gap-x-5">
+                                    <div className="">
+                                        <div className="flex space-x-1">
                                             {renderStars(courseDetails.rating)}
-                                            {/* <svg class="size-4 text-gray-800" width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            {/* <svg className="size-4 text-gray-800" width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z" fill="currentColor" />
                                         </svg>
-                                        <svg class="size-4 text-gray-800" width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg className="size-4 text-gray-800" width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z" fill="currentColor" />
                                         </svg>
-                                        <svg class="size-4 text-gray-800" width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg className="size-4 text-gray-800" width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z" fill="currentColor" />
                                         </svg>
-                                        <svg class="size-4 text-gray-800" width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg className="size-4 text-gray-800" width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z" fill="currentColor" />
                                         </svg>
-                                        <svg class="size-4 text-gray-800" width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg className="size-4 text-gray-800" width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z" fill="currentColor" />
                                         </svg> */}
                                         </div>
 
-                                        <p class="mt-3 text-sm text-gray-800">
-                                            <span class="font-bold">{courseDetails.rating}</span> /5 - from {courseDetails.reviews} reviews
+                                        <p className="mt-3 text-sm text-gray-800">
+                                            <span className="font-bold">{courseDetails.rating}</span> /5 - from {courseDetails.reviews} reviews
                                         </p>
                                     </div>
                                 </div>
@@ -199,15 +198,15 @@ const CourseDetails = () => {
                             </div>
 
 
-                            <div class="mt-5 grid gap-3 w-full sm:inline-flex">
-                                <a class="py-4 px-6 inline-flex w-full justify-center items-center gap-x-2 text-md font-semibold rounded-lg border border-transparent bg-gray-900 text-white disabled:opacity-50 disabled:pointer-events-none" href="#">
+                            <div className="mt-5 grid gap-3 w-full sm:inline-flex">
+                                <a className="py-4 px-6 inline-flex w-full justify-center items-center gap-x-2 text-md font-semibold rounded-lg border border-transparent bg-gray-900 text-white disabled:opacity-50 disabled:pointer-events-none" href="#">
                                     Enroll Now
                                 </a>
                             </div>
 
                         </div>
 
-                        <div class="relative">
+                        <div className="relative">
                             <div className="relative xl:mr-14">
                                 <video className={`w-full h-full rounded-lg shadow isPlaying ? '' : 'opacity-0' `} src={demoVideo} controls={isPlaying} autoPlay={isPlaying} muted={!isPlaying} />
                                 {!isPlaying && (
@@ -221,7 +220,7 @@ const CourseDetails = () => {
                                     </div>
                                 )}
                             </div>
-                            {/* <img class="w-full rounded-md" src="https://images.unsplash.com/photo-1665686377065-08ba896d16fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&h=800&q=80" alt="Image Description" /> */}
+                            {/* <img className="w-full rounded-md" src="https://images.unsplash.com/photo-1665686377065-08ba896d16fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&h=800&q=80" alt="Image Description" /> */}
                         </div>
                     </div>
                 </div>
@@ -233,7 +232,7 @@ const CourseDetails = () => {
                                 <p className="text-md">Drill down into the course structure of {courseDetails.name} </p>
                             </div>
                             <div className="border my-10 rounded-lg p-5">
-                                <Accordion>
+                                <Accordion style={{ fontWeight: 'bold'}}>
                                     {generateAccordionItems(courseDetails)}
                                 </Accordion>
                             </div>
