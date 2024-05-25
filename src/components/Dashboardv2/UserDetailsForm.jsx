@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Input, AutocompleteItem, Autocomplete, Select, SelectItem } from "@nextui-org/react";
 import { FrontArrowIcon } from "../icons/FrontArrowIcon.jsx";
 import makeRequest from '../../api/useApi.js';
+import axios from 'axios';
 
-const UserDetailsForm = ({setPageNo}) => {
+const UserDetailsForm = ({ setPageNo }) => {
     // const email = useSelector((state) => state.user.email);
     // const fullName = useSelector((state) => state.user.name);
 
     const email = localStorage.getItem('email');
     const fullName = localStorage.getItem('fullName');
 
+    const isMounted = useRef(true);
     const [userDetails, setUserDetails] = useState({
         firstName: '',
         lastName: '',
@@ -23,11 +25,51 @@ const UserDetailsForm = ({setPageNo}) => {
         phoneNumber: '',
     });
 
+    const [countries, setCountries] = useState([]);
+    const [states, setStates] = useState([]);
+    const [loadingCountries, setLoadingCountries] = useState(true);
+
+    useEffect(() => {
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
+
+    useEffect(() => {
+        fetchCountries();
+    }, []);
+
+    const fetchCountries = async () => {
+        if (!isMounted.current) return;
+        try {
+            const response = await axios.get('https://countriesnow.space/api/v0.1/countries/states');
+            if (!response.data.error) {
+                setCountries(response.data.data);
+            }
+        } catch (error) {
+            console.error('Error fetching country data:', error);
+        } finally {
+            setLoadingCountries(false);
+        }
+    };
+
+    const handleCountryChange = (countryName) => {
+        
+        handleChange('country', countryName);
+        const selectedCountry = countries.find(country => country.name === countryName);
+        if (selectedCountry) {
+            setStates(selectedCountry.states);
+        } else {
+            setStates([]);
+        }
+    };
+
     const handleChange = (name, value) => {
         setUserDetails((prevData) => ({
             ...prevData,
             [name]: value,
         }));
+        console.log("changed", value)
     };
 
     const handleUserDetailSubmit = async (event) => {
@@ -53,24 +95,7 @@ const UserDetailsForm = ({setPageNo}) => {
             ...prevData,
             phoneNumber: formattedNumber,
         }));
-        // setPhone(formattedNumber);
     };
-
-    const animals = [
-        { label: "Cat", value: "cat", description: "The second most popular pet in the world" },
-        { label: "Dog", value: "dog", description: "The most popular pet in the world" },
-        { label: "Elephant", value: "elephant", description: "The largest land animal" },
-        { label: "Lion", value: "lion", description: "The king of the jungle" },
-        { label: "Tiger", value: "tiger", description: "The largest cat species" },
-        { label: "Giraffe", value: "giraffe", description: "The tallest land animal" },
-        { label: "Dolphin", value: "dolphin", description: "A widely distributed and diverse group of aquatic mammals" },
-        { label: "Penguin", value: "penguin", description: "A group of aquatic flightless birds" },
-        { label: "Zebra", value: "zebra", description: "A several species of African equids" },
-        { label: "Shark", value: "shark", description: "A group of elasmobranch fish characterized by a cartilaginous skeleton" },
-        { label: "Whale", value: "whale", description: "Diverse group of fully aquatic placental marine mammals" },
-        { label: "Otter", value: "otter", description: "A carnivorous mammal in the subfamily Lutrinae" },
-        { label: "Crocodile", value: "crocodile", description: "A large semiaquatic reptile" },
-    ];
 
     const gender = [
         { label: "Male", value: "male" },
@@ -80,7 +105,7 @@ const UserDetailsForm = ({setPageNo}) => {
 
     return (
         <div className="mx-auto min-w-full lg:mr-0">
-            <div className="relative min-w-full place-items-center p-40">
+            <div className="relative min-w-full place-items-center p-5 md:p-20 lg:p-10 xl:py-10 xl:px-40">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Personal Information</h2>
                 <p className="mt-2 text-lg leading-8 text-gray-600">Please provide your contact information</p>
                 <div className="mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16"></div>
@@ -153,20 +178,45 @@ const UserDetailsForm = ({setPageNo}) => {
                             <Select
                                 label="Country"
                                 placeholder="Select your Country"
-                                onSelectionChange={(value) => handleChange('country', value.currentKey)}
+                                onChange={(e) => handleCountryChange(e.target.value.split('-')[0])}
                             >
-                                {animals.map((item) => (
-                                    <SelectItem key={item.value} value={item.value}>
-                                        {item.label}
+                                {loadingCountries ? (
+                                    <SelectItem disabled key="loading" value="loading">
+                                        Loading countries...
                                     </SelectItem>
-                                ))}
+                                ) : (
+                                    countries.map((country, index) => (
+                                        <SelectItem key={`${country.name}-${index}`} value={country.name}>
+                                            {country.name}
+                                        </SelectItem>
+                                    ))
+                                )}
                             </Select>
-                            <Input
-                                type="text"
+                            <Select
                                 label="State"
-                                placeholder="Enter Your State"
-                                onChange={(e) => handleChange('state', e.target.value)}
-                            />
+                                placeholder="Select your State"
+                                onChange={(e) => handleChange('state', e.target.value.split('-')[0])}
+                                isDisabled={!userDetails.country}
+                            >
+                                {
+                                    userDetails.country ? (
+                                        states.length ? (
+                                            states.map((state, index) => (
+                                                <SelectItem key={`${state.name}-${index}`} value={state.name}>
+                                                    {state.name}
+                                                </SelectItem>
+                                            ))
+                                        ) : (
+                                            <SelectItem disabled key="no-states" value="no-states">
+                                                No states available
+                                            </SelectItem>
+                                        )
+                                    ) : (
+                                        <SelectItem disabled key="select-country" value="select-country">
+                                            Select Country
+                                        </SelectItem>
+                                    )}
+                            </Select>
                         </div>
                         <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
                             <Input
@@ -180,11 +230,11 @@ const UserDetailsForm = ({setPageNo}) => {
                                 status={userDetails.phoneNumber.length === 12 ? 'success' : 'default'}
                             />
                         </div>
-                        <div className="flex gap-4 mt-10 items-center">
+                        <div className="flex gap-2 sm:gap-4 mt-10 items-center">
                             <button type="submit" className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" >
                                 Save and Continue
                             </button>
-                            <button type="button" onClick={() => setPageNo((prevPageNo) => prevPageNo + 1)} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" >
+                            <button type="button" onClick={() => setPageNo((prevPageNo) => prevPageNo + 1)} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" >
                                 <FrontArrowIcon />
                             </button>
                         </div>

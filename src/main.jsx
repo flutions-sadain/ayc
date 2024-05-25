@@ -14,6 +14,8 @@ import AssessmentScreen from "./components/Dashboard/Assessment";
 import AssessmentScore from "./components/Dashboard/AssessmentScore";
 import NewDashboard from "./components/Dashboard/Dashboard";
 import CourseDetailsContent from "./components/Dashboard/CourseDetails";
+import RecommendedCourse from "./components/course/RecommendedCourse";
+import CourseDetails from './components/course/CourseDetails';
 import Login from './components/Login.jsx';
 import Home from "./components/Dashboardv2/Home.jsx";
 import { Provider } from 'react-redux';
@@ -71,6 +73,14 @@ const router = createBrowserRouter([
     {
         path: "/home",
         element: <Home />
+    },
+    {
+        path: "/recommendedCourse",
+        element: <RecommendedCourse />
+    },
+    {
+        path: "/courseDetails",
+        element: <CourseDetails />
     },
 ]);
 

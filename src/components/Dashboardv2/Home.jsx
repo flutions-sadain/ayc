@@ -64,7 +64,7 @@ function Home() {
             case 'skillTest':
                 return '-400px';
             case 'finish':
-                return '-600px';
+                return '-500px';
             default:
                 return '0';
         }
@@ -93,12 +93,12 @@ function Home() {
             <div className="bg-white">
                 <Header />
 
-                <div className="relative isolate bg-white" style={{ height: 'calc(100vh - 4rem)' }}>
+                <div className="relative isolate bg-white" style={{ height: 'calc(100vh - 65px)' }}>
                     <div className="mx-auto grid max-w-full grid-cols-1 lg:grid-cols-2">
-                        <div className="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
+                        <div className="max-lg:hidden relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
                             <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
                                 <div className="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-100 ring-1 ring-gray-900/10 lg:w-1/2" style={{ top: calculateTopPosition(wizard) }}>
-                                    <div className="py-24 sm:py-32 p-40">
+                                    <div className="my-24 md:my-10 mx-10 md:mx-10 xl:mx-40">
                                         <div className="flow-root">
                                             <ul role="list" className="-mb-8">
                                                 <motion.div

@@ -137,7 +137,7 @@ const SkillTest = ({ setPageNo, pageNo }) => {
 
     return (
         <div className="mx-auto min-w-full lg:mr-0">
-            <div className="relative min-w-full place-items-center p-40">
+            <div className="relative min-w-full place-items-center p-5 md:p-20 lg:p-10 xl:py-10 xl:px-40">
 
                 {showQuestions && assessmentData && (
                     <>
@@ -231,21 +231,21 @@ const SkillTest = ({ setPageNo, pageNo }) => {
                                         </div>
                                     </div>
                                 ))}
-                                <div className="flex gap-4 mt-10 items-center">
-                                    <button type="button" onClick={handlePreviousQuestion} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" ><BackArrowIcon /></button>
-                                    <button type="submit" isDisabled={pageNo === 6 && categoryIndex < Object.keys(assessmentData).length - 1} className={`flex w-full justify-center rounded-md px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${pageNo === 6 && categoryIndex < Object.keys(assessmentData).length - 1 ? 'opacity-100 bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-black text-white'}`} >
+                                <div className="flex gap-2 sm:gap-4 mt-10 items-center">
+                                    <button type="button" onClick={handlePreviousQuestion} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" ><BackArrowIcon /></button>
+                                    <button type="submit" isdisabled={(pageNo === 6 && categoryIndex < Object.keys(assessmentData).length - 1).toString()} className={`flex w-full justify-center rounded-md px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${pageNo === 6 && categoryIndex < Object.keys(assessmentData).length - 1 ? 'opacity-100 bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-black text-white'}`} >
                                         {isLoading ? (
                                             <>
                                                 <Spinner className="pr-2" color="current" size="sm" /> Submitting...
                                             </>
                                         ) : "Save and Continue"} </button>
-                                    <button type="button" onClick={handleNextQuestion} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" ><FrontArrowIcon /></button>
+                                    <button type="button" onClick={handleNextQuestion} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" ><FrontArrowIcon /></button>
                                 </div>
                             </form>
                         </div>
                     </>
                 )}
-                {!showQuestions && <div className='flex justify-center items-center w-full h-60 '><Spinner color="secondary" size="lg" /></div>}
+                {!showQuestions && <div className='flex justify-center items-center w-full h-screen md:h-96 '><Spinner color="secondary" size="lg" /></div>}
             </div>
         </div>
     );

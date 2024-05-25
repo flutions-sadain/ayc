@@ -118,7 +118,7 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
             <form onSubmit={handleExperienceSubmit}>
                 <motion.div className={(wizard === 'professionalProfile' && pageNo === 3) ? "visible" : "hidden"}>
                     <div className="mx-auto min-w-full lg:mr-0">
-                        <div className="relative min-w-full place-items-center p-40">
+                        <div className="relative min-w-full place-items-center p-5 md:p-20 lg:p-10 xl:py-10 xl:px-40">
                             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                                 Educational Experience
                             </h2>
@@ -168,14 +168,14 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                                 <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
                                     <Textarea label="Description" placeholder="Tell More about your Educational Experience" onChange={(e) => handleChange('description', e.target.value)} />
                                 </div>
-                                <div className="flex gap-4 mt-10 items-center">
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                <div className="flex gap-2 sm:gap-4 mt-10 items-center">
+                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                                         <BackArrowIcon />
                                     </button>
                                     <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                                         Save and Continue
                                     </button>
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                                         <FrontArrowIcon />
                                     </button>
                                 </div>
@@ -186,7 +186,7 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
 
                 <motion.div className={(wizard === 'professionalProfile' && pageNo === 4) ? "visible" : "hidden"}>
                     <div className="mx-auto min-w-full lg:mr-0">
-                        <div className="relative min-w-full place-items-center p-40">
+                        <div className="relative min-w-full place-items-center p-5 md:p-20 lg:p-10 xl:py-10 xl:px-40">
                             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                                 Professional Experience</h2>
                             <p className="mt-2 text-lg leading-8 text-gray-600">Update Your Work Experience</p>
@@ -287,14 +287,14 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                                         }}
                                     />
                                 </div>
-                                <div className="flex gap-4 mt-10 items-center">
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                <div className="flex gap-2 sm:gap-4 mt-10 items-center">
+                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                                         <BackArrowIcon />
                                     </button>
                                     <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                                         Save and Continue
                                     </button>
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                                         <FrontArrowIcon />
                                     </button>
                                 </div>
@@ -305,7 +305,7 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
 
                 <motion.div className={(wizard === 'professionalProfile' && pageNo === 5) ? "visible" : "hidden"}>
                     <div className="mx-auto min-w-full lg:mr-0">
-                        <div className="relative min-w-full place-items-center p-40">
+                        <div className="relative min-w-full place-items-center p-5 md:p-20 lg:p-10 xl:py-10 xl:px-40">
                             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Skillset</h2>
                             <p className="mt-2 text-lg leading-8 text-gray-600">Choose all relevant skills
                                 applies to your profile</p>
@@ -374,14 +374,14 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                                     </figure>
                                 </div>
 
-                                <div className="flex gap-4 mt-10 items-center">
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                <div className="flex gap-2 sm:gap-4 mt-10 items-center">
+                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                                         <BackArrowIcon />
                                     </button>
                                     <button type="submit" className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                                         Save and Continue
                                     </button>
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                                         <FrontArrowIcon />
                                     </button>
                                 </div>

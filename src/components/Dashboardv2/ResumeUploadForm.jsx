@@ -61,7 +61,7 @@ const ResumeUploadForm = ({ setPageNo }) => {
   return (
     <div className="mx-auto min-w-full lg:mr-0">
       <div className="mx-auto min-w-full lg:mr-0">
-        <div className="relative min-w-full place-items-center p-40">
+        <div className="relative min-w-full place-items-center p-5 md:p-20 lg:p-10 xl:py-10 xl:px-40">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Resume</h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">Upload your Resume or a
             curriculum Vitae</p>
@@ -123,8 +123,8 @@ const ResumeUploadForm = ({ setPageNo }) => {
                 <input id="resume" type="file" className="sr-only" onChange={handleFileChange} />
               </label>
             </div>
-            <div className="flex gap-4 mt-10 items-center">
-              <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+            <div className="flex gap-2 sm:gap-4 mt-10 items-center">
+              <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                 <BackArrowIcon />
               </button>
               <button type="submit" className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
@@ -133,7 +133,7 @@ const ResumeUploadForm = ({ setPageNo }) => {
                     <Spinner className="pr-2" color="current" size="sm" /> Uploading...
                   </>
                 ) : "Save and Continue"} </button>
-              <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+              <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                 <FrontArrowIcon />
               </button>
             </div>
