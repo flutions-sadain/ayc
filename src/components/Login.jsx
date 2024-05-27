@@ -54,7 +54,8 @@ function Login() {
                 setSuccess('Login Successfully!');
                 window.localStorage.setItem("email", data.email);
                 window.localStorage.setItem("fullName", data.fullName);
-
+                const token = await userCredential.user.getIdToken();
+                localStorage.setItem('userToken', token);
                 setTimeout(() => {
                     navigate("/Home");
                 }, 3000);

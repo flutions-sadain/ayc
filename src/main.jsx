@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Link, Navigate, RouterProvider } from "react-router-dom";
 import AboutUs from "./components/AboutUs.jsx";
 import Contact from "./components/Contact.jsx";
 import Register from "./components/Register.jsx";
@@ -20,6 +20,14 @@ import Login from './components/Login.jsx';
 import Home from "./components/Dashboardv2/Home.jsx";
 import { Provider } from 'react-redux';
 import store from './store';
+
+const ProtectedRoute = ({ Component, ...rest }) => {
+    //const { isAuthenticated } = useAuth(); // Replace with your authentication logic
+
+    const userToken = localStorage.getItem('userToken')
+
+    return userToken ? <Component {...rest} /> : <Navigate to="/login" />;
+};
 
 const router = createBrowserRouter([
     {
@@ -44,43 +52,43 @@ const router = createBrowserRouter([
     },
     {
         path: "apps",
-        element: <Apps />
+        element: <ProtectedRoute Component={Apps} />,
     },
     {
         path: "/newResume",
-        element: <NewResumeUpload />
+        element: <ProtectedRoute Component={NewResumeUpload} />,
     },
     {
         path: "/profileForm",
-        element: <ProfileForm />
+        element: <ProtectedRoute Component={ProfileForm} />,
     },
     {
         path: "/newAssessment",
-        element: <AssessmentScreen />
+        element: <ProtectedRoute Component={AssessmentScore} />,
     },
     {
         path: "/assessmentScore",
-        element: <AssessmentScore />
+        element: <ProtectedRoute Component={AssessmentScore} />,
     },
     {
         path: "/newDashboard",
-        element: <NewDashboard />
+        element: <ProtectedRoute Component={NewDashboard} />,
     },
     {
         path: "/courseDetailsContent",
-        element: <CourseDetailsContent />
+        element: <ProtectedRoute Component={CourseDetailsContent} />,
     },
     {
         path: "/home",
-        element: <Home />
+        element: <ProtectedRoute Component={Home} />
     },
     {
         path: "/recommendedCourse",
-        element: <RecommendedCourse />
+        element: <ProtectedRoute Component={RecommendedCourse} />
     },
     {
         path: "/courseDetails",
-        element: <CourseDetails />
+        element: <ProtectedRoute Component={CourseDetails} />
     },
 ]);
 
@@ -97,6 +105,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             </Provider>
         </NextUIProvider>
     </React.StrictMode>
-
-    ,
-)
+);
