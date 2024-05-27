@@ -133,25 +133,25 @@ const CourseDetails = () => {
             <Header />
             {!isLoading ? <>
                 <div className="w-full py-2 px-10 border bg-white">
-                    <ol className="flex items-center whitespace-nowrap">
-                        <li className="inline-flex items-center">
-                            <a className="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="#">
+                    <ol class="flex items-center whitespace-nowrap">
+                        <li class="inline-flex items-center">
+                            <a class="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="/">
                                 Home
                             </a>
-                            <svg className="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <svg class="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="m9 18 6-6-6-6"></path>
                             </svg>
                         </li>
-                        <li className="inline-flex items-center">
-                            <a className="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="/recommendedCourse">
+                        <li class="inline-flex items-center">
+                            <a class="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="/recommendedCourse">
                                 Courses
-                                <svg className="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <svg class="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="m9 18 6-6-6-6"></path>
                                 </svg>
                             </a>
                         </li>
-                        <li className="inline-flex items-center text-sm font-semibold text-gray-800 truncate" aria-current="page">
-                            Application
+                        <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate" aria-current="page">
+                            {courseDetails.name}
                         </li>
                     </ol>
                 </div>
