@@ -68,23 +68,23 @@ const AssessmentScore = () => {
                     <div className="relative mx-5 mt-10 mb-5 sm:mx-10 lg:mx-40 z-10">
                         <h1 className="text-black text-center text-4xl mb-10">Assessment Score</h1>
                         <div className="lg:flex bg-white shadow-md rounded-lg overflow-hidden border border-gray-300 p-2 z-10">
-                            <div class="p-2 text-center md:mx-auto md:w-[50%] lg:w-[30%]">
+                            <div className="p-2 text-center md:mx-auto md:w-[50%] lg:w-[30%]">
                                 <p className="text-2xl max-sm:text-xl">Element of Evaluation</p>
                                 <div className='relative'>
-                                    <svg class="size-full mx-auto mt-3 w-3/4 h-3/4" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-[#333334]" stroke-width="3"></circle>
-                                        <g class="origin-center -rotate-90 transform">
-                                            <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-gray-200 rounded-md" stroke-width="3" stroke-dasharray="100" stroke-dashoffset={(parseInt(score))}></circle>
+                                    <svg className="size-full mx-auto mt-3 w-3/4 h-3/4" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="18" cy="18" r="16" fill="none" className="stroke-current text-[#333334]" stroke-width="3"></circle>
+                                        <g className="origin-center -rotate-90 transform">
+                                            <circle cx="18" cy="18" r="16" fill="none" className="stroke-current text-gray-200 rounded-md" stroke-width="3" stroke-dasharray="100" stroke-dashoffset={(parseInt(score))}></circle>
                                         </g>
                                     </svg>
-                                    <div class="absolute inset-0 flex justify-center items-center">
-                                        <span class="text-center text-2xl font-bold text-gray-800">{score}</span>
+                                    <div className="absolute inset-0 flex justify-center items-center">
+                                        <span className="text-center text-2xl font-bold text-gray-800">{score}</span>
                                     </div>
                                 </div>
                             </div>
                             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 md:gap-2 my-auto p-2 justify-between items-start'>
                                 <div className="mr-1 mt-3 w-full p-2 bg-white items-center shadow-md rounded-lg border border-gray-300 z-10">
-                                    <p class="mb-2 text-base font-semibold text-black">Positive Feedback</p>
+                                    <p className="mb-2 text-base font-semibold text-black">Positive Feedback</p>
                                     <ul className='pl-4 list-disc'>
                                     {positiveFeedback.length > 0 ? (
                                         positiveFeedback.map((feedback, index) => (
@@ -96,7 +96,7 @@ const AssessmentScore = () => {
                                     </ul>
                                 </div>
                                 <div className="mr-1 mt-3 w-full p-2 bg-white items-center shadow-md rounded-lg border border-gray-300 z-10">
-                                    <p class="mb-2 text-base font-semibold text-black">Negative Feedback</p>
+                                    <p className="mb-2 text-base font-semibold text-black">Negative Feedback</p>
                                     <ul className='pl-4 list-disc'>
                                     {negativeFeedback.length > 0 ? (
                                         negativeFeedback.map((feedback, index) => (

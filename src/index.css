@@ -8,3 +8,7 @@
         --color-secondary: #232320;
     }
 }
+
+.custom-autocomplete-field button {
+    display: none;
+}

@@ -127,20 +127,20 @@ const CourseDetails = () => {
                             </div>
                         </div>
                         <div className="xl:col-span-2 max-sm:order-first md:order-first lg:order-none">
-                            <ol class="flex items-center whitespace-nowrap p-0 mb-4" aria-label="Breadcrumb">
-                                <li class="inline-flex items-center">
-                                    <a class="flex items-center text-sm text-gray-500 hover:text-[#333334] focus:outline-none focus:text-[#333334]" href="#">
+                            <ol className="flex items-center whitespace-nowrap p-0 mb-4" aria-label="Breadcrumb">
+                                <li className="inline-flex items-center">
+                                    <a className="flex items-center text-sm text-gray-500 hover:text-[#333334] focus:outline-none focus:text-[#333334]" href="#">
                                         Home
                                     </a>
-                                    <svg class="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                                    <svg className="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
                                 </li>
-                                <li class="inline-flex items-center">
-                                    <a class="flex items-center text-sm text-gray-500 hover:text-[#333334] focus:outline-none focus:text-[#333334]" href="#">
+                                <li className="inline-flex items-center">
+                                    <a className="flex items-center text-sm text-gray-500 hover:text-[#333334] focus:outline-none focus:text-[#333334]" href="#">
                                         Course
-                                        <svg class="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                                        <svg className="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
                                     </a>
                                 </li>
-                                <li class="inline-flex items-center text-sm font-medium text-[#333334] truncate" aria-current="page">
+                                <li className="inline-flex items-center text-sm font-medium text-[#333334] truncate" aria-current="page">
                                     Course Details
                                 </li>
                             </ol>

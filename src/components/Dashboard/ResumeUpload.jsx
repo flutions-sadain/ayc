@@ -65,14 +65,14 @@ function ResumeUpload() {
         <CircularProgress style={{ color: "orange" }} />
       </Backdrop>
       <div className="resume_box_content">
-      <div class="flex flex-wrap-reverse items-center pb-4">
+      <div className="flex flex-wrap-reverse items-center pb-4">
         <div className="text-center flex-grow lg:pl-10 md:pl-8">
-          <h1 class="text-xl font-bold">Upload Your Resume</h1>
+          <h1 className="text-xl font-bold">Upload Your Resume</h1>
         </div>
         <div className="ml-auto">
-          <a class="flex items-center text-secondary focus:outline-none ml-auto" href="/profileForm">
+          <a className="flex items-center text-secondary focus:outline-none ml-auto" href="/profileForm">
             Skip
-            <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            <svg className="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
           </a>
         </div>
       </div>
@@ -111,14 +111,14 @@ function ResumeUpload() {
               className="linkedin_input"
               placeholder="LinkedIn Link"
             />
-            <button class="absolute right-0 top-0 mt-[13px] mr-2 px-3 py-2 rounded-md text-secondary focus:outline-none">
+            <button className="absolute right-0 top-0 mt-[13px] mr-2 px-3 py-2 rounded-md text-secondary focus:outline-none">
               Paste
             </button>
             </div>
           </form>
         </div>
         <div className="buttons-container mt-5 mb-4">
-          <button class="flex items-center text-gray-600 focus:outline-none">
+          <button className="flex items-center text-gray-600 focus:outline-none">
             <span className="flex items-center border-2 border-gray-600 rounded-full px-2 mr-2">
               ?
             </span>
