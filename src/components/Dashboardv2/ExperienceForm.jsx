@@ -6,8 +6,8 @@ import { FrontArrowIcon } from "../icons/FrontArrowIcon.jsx";
 import autoCompleteData from "../../data/autocompleteData.js"
 import makeRequest from '../../api/useApi.js';
 import { useSelector } from 'react-redux';
-import {parseDate, getLocalTimeZone} from "@internationalized/date";
-import {useDateFormatter} from "@react-aria/i18n";
+import { parseDate, getLocalTimeZone } from "@internationalized/date";
+import { useDateFormatter } from "@react-aria/i18n";
 
 const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
     // const email = useSelector((state) => state.user.email);
@@ -67,7 +67,7 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
         if (!skillsString) return [];
         const skillCategories = skillsString.split('**');
         const skills = [];
-    
+
         skillCategories.forEach((category) => {
             const lines = category.split('\n');
             lines.forEach((line) => {
@@ -80,10 +80,10 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                 }
             });
         });
-    
+
         return skills;
     };
-    
+
 
     const skills = parseSkills(skillsString);
 
@@ -116,275 +116,264 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
     return (
         <>
             <form onSubmit={handleExperienceSubmit}>
-                <motion.div className={(wizard === 'professionalProfile' && pageNo === 3) ? "visible" : "hidden"}>
-                    <div className="mx-auto min-w-full lg:mr-0">
-                        <div className="relative min-w-full place-items-center p-5 md:p-20 lg:p-10 xl:py-10 xl:px-40">
-                            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                                Educational Experience
-                            </h2>
-                            <p className="mt-2 text-lg leading-8 text-gray-600">
-                                Update your Highest degrees, specialization and institution
-                            </p>
-                            <div className="flex gap-2 mt-4">
-                                <span className="mb-2 h-[15px] flex-1 rounded-xl bg-primary"></span>
-                                <span className="mb-2 h-[15px] flex-1 rounded-xl bg-primary"></span>
-                                <span className="mb-2 h-[15px] flex-1 rounded-xl bg-black"></span>
-                                <span className="mb-2 h-[15px] flex-1 rounded-xl bg-black"></span>
+                <motion.div className={(wizard === 'professionalProfile' && pageNo === 3) ? "visible" : "hidden"} aria-label="Professional Profile Educational component">
+                    <div>
+                        <div className="flex gap-2 mt-2">
+                            <span className="mb-2 h-[7px] flex-1 rounded-xl bg-primary"></span>
+                            <span className="mb-2 h-[7px] flex-1 rounded-xl bg-primary"></span>
+                            <span className="mb-2 h-[7px] flex-1 rounded-xl bg-black"></span>
+                            <span className="mb-2 h-[7px] flex-1 rounded-xl bg-black"></span>
+                        </div>
+                        <small>2 remaining to complete</small>
+                        <div className="mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-4 sm:pt-4"></div>
+                        <h2 className="text-lg font-bold tracking-tight text-gray-900 sm:text-2xl pb-5">Educational Experience</h2>
+                        <div className="flex flex-col gap-4">
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Input type="text" label="School/College" aria-label="School/College" placeholder="Please Enter Name of School or College" onChange={(e) => handleChange('college', e.target.value)} />
                             </div>
-                            <small>2 remaining to complete</small>
-                            <div
-                                className="mt-2 space-y-16 border-t border-gray-200 pt-10 sm:mt-2 sm:pt-16">
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Input type="text" label="University" aria-label="University" placeholder="Please Enter Name of University" onChange={(e) => handleChange('university', e.target.value)} />
                             </div>
-                            <div className="flex flex-col gap-4">
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Input type="text" label="School/College" placeholder="Please Enter Name of School or College" onChange={(e) => handleChange('college', e.target.value)} />
-                                </div>
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Input type="text" label="University" placeholder="Please Enter Name of University" onChange={(e) => handleChange('university', e.target.value)} />
-                                </div>
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Select
-                                        label="Degree"
-                                        placeholder="Select Your Degree"
-                                        onSelectionChange={(value) => handleChange('degree', value.currentKey)}
-                                    >
-                                        {degree.map((degree) => (
-                                            <SelectItem key={degree.value} value={degree.value}>
-                                                {degree.label}
-                                            </SelectItem>
-                                        ))}
-                                    </Select>
-                                </div>
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <DatePicker label="Degree Start date" onChange={(value) => handleChange('degreeStDate', value ? formatter.format(value.toDate(getLocalTimeZone())) : "--")} />
-                                    <DatePicker label="Degree End date" onChange={(value) => handleChange('degreeEdDate', value ? formatter.format(value.toDate(getLocalTimeZone())) : "--")} />
-                                </div>
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Input type="text" label="Grade" placeholder="Enter your Grade or Score" onChange={(e) => handleChange('degreeGrade', e.target.value)} />
-                                </div>
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Input type="text" label="Activities and Societies" placeholder="Ex. Sports Team, Groups, Accolades etc." onChange={(e) => handleChange('activities', e.target.value)} />
-                                </div>
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Textarea label="Description" placeholder="Tell More about your Educational Experience" onChange={(e) => handleChange('description', e.target.value)} />
-                                </div>
-                                <div className="flex gap-2 sm:gap-4 mt-10 items-center">
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                                        <BackArrowIcon />
-                                    </button>
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                                        Save and Continue
-                                    </button>
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                                        <FrontArrowIcon />
-                                    </button>
-                                </div>
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Select
+                                    label="Degree"
+                                    aria-label="Degree"
+                                    placeholder="Select Your Degree"
+                                    onSelectionChange={(value) => handleChange('degree', value.currentKey)}
+                                >
+                                    {degree.map((degree) => (
+                                        <SelectItem key={degree.value} value={degree.value}>
+                                            {degree.label}
+                                        </SelectItem>
+                                    ))}
+                                </Select>
+                            </div>
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <DatePicker label="Degree Start date" aria-label="Degree Start date" onChange={(value) => handleChange('degreeStDate', value ? formatter.format(value.toDate(getLocalTimeZone())) : "--")} />
+                                <DatePicker label="Degree End date" aria-label="Degree End date" onChange={(value) => handleChange('degreeEdDate', value ? formatter.format(value.toDate(getLocalTimeZone())) : "--")} />
+                            </div>
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Input type="text" label="Grade" aria-label="Grade" placeholder="Enter your Grade or Score" onChange={(e) => handleChange('degreeGrade', e.target.value)} />
+                            </div>
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Input type="text" label="Activities and Societies" aria-label="Activities and Societies" placeholder="Ex. Sports Team, Groups, Accolades etc." onChange={(e) => handleChange('activities', e.target.value)} />
+                            </div>
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Textarea label="Description" aria-label="Description" placeholder="Tell More about your Educational Experience" onChange={(e) => handleChange('description', e.target.value)} />
+                            </div>
+                            <div className="flex gap-2 sm:gap-4 mt-10 items-center">
+                                <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                    <BackArrowIcon />
+                                </button>
+                                <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                    Save and Continue
+                                </button>
+                                <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                    <FrontArrowIcon />
+                                </button>
                             </div>
                         </div>
                     </div>
                 </motion.div>
 
-                <motion.div className={(wizard === 'professionalProfile' && pageNo === 4) ? "visible" : "hidden"}>
-                    <div className="mx-auto min-w-full lg:mr-0">
-                        <div className="relative min-w-full place-items-center p-5 md:p-20 lg:p-10 xl:py-10 xl:px-40">
-                            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                                Professional Experience</h2>
-                            <p className="mt-2 text-lg leading-8 text-gray-600">Update Your Work Experience</p>
-                            <div className="flex gap-2 mt-4">
-                                <span className="mb-2 h-[15px] flex-1 rounded-xl bg-primary"></span>
-                                <span className="mb-2 h-[15px] flex-1 rounded-xl bg-primary"></span>
-                                <span className="mb-2 h-[15px] flex-1 rounded-xl bg-primary"></span>
-                                <span className="mb-2 h-[15px] flex-1 rounded-xl bg-black"></span>
+                <motion.div className={(wizard === 'professionalProfile' && pageNo === 4) ? "visible" : "hidden"} aria-label="Professional Profile Experience component">
+                    <div>
+                        <div className="flex gap-2 mt-2">
+                            <span className="mb-2 h-[7px] flex-1 rounded-xl bg-primary"></span>
+                            <span className="mb-2 h-[7px] flex-1 rounded-xl bg-primary"></span>
+                            <span className="mb-2 h-[7px] flex-1 rounded-xl bg-primary"></span>
+                            <span className="mb-2 h-[7px] flex-1 rounded-xl bg-black"></span>
+                        </div>
+                        <small>1 remaining to complete</small>
+                        <div className="mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-4 sm:pt-4"></div>
+                        <h2 className="text-lg font-bold tracking-tight text-gray-900 sm:text-2xl pb-5">Professional Experience</h2>
+                        <div className="flex flex-col gap-4">
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Autocomplete
+                                    allowsCustomValue
+                                    label="Title"
+                                    aria-label="Title"
+                                    defaultItems={previous_company_details?.map(role => role['Role'])}
+                                    placeholder="Enter your Designation/Role"
+                                    className="custom-autocomplete-field"
+                                    onInputChange={(value) => handleChange('designation', value)}
+                                >
+                                    {previous_company_details && previous_company_details?.map((role, index) => <AutocompleteItem key={index}>{role['Role']}</AutocompleteItem>)}
+                                </Autocomplete>
                             </div>
-                            <small>1 remaining to complete</small>
-                            <div className="mt-2 space-y-16 border-t border-gray-200 pt-10 sm:mt-2 sm:pt-16"></div>
-                            <div className="flex flex-col gap-4">
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Autocomplete
-                                        allowsCustomValue
-                                        label="Title"
-                                        defaultItems={previous_company_details?.map(role => role['Role'])}
-                                        placeholder="Enter your Designation/Role"
-                                        className="custom-autocomplete-field"
-                                        onInputChange={(value) => handleChange('designation', value)}
-                                    >
-                                        {previous_company_details && previous_company_details?.map((role, index) => <AutocompleteItem key={index}>{role['Role']}</AutocompleteItem>)}
-                                    </Autocomplete>
-                                </div>
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Input type="text" label="Employment Type" placeholder="Please Enter Employment Type" onChange={(e) => handleChange('empType', e.target.value)} />
-                                </div>
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Autocomplete
-                                        allowsCustomValue
-                                        label="Previous Company"
-                                        defaultItems={previous_company_details?.map(company => company['Company Name'])}
-                                        placeholder="Enter your Previous Company"
-                                        className="custom-autocomplete-field"
-                                        onInputChange={(value) => handleChange('companyName', value)}
-                                    >
-                                        {previous_company_details && previous_company_details?.map((company, index) => <AutocompleteItem key={index}>{company['Company Name']}</AutocompleteItem>)}
-                                    </Autocomplete>
-                                </div>
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <DatePicker label="Position Start date" onChange={(value) => handleChange('posStDate', value ? formatter.format(value.toDate(getLocalTimeZone())) : "--")} />
-                                    <DatePicker label="Position End date" onChange={(value) => handleChange('posEdDate', value ? formatter.format(value.toDate(getLocalTimeZone())) : "--")} />
-                                </div>
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Autocomplete   
-                                        allowsCustomValue
-                                        label="Location"
-                                        defaultItems={previous_company_details?.map(location => location['Location'])}
-                                        placeholder="Enter work Location"
-                                        className="custom-autocomplete-field"
-                                        onInputChange={(value) => handleChange('location', value)}
-                                    >
-                                        {previous_company_details && previous_company_details?.map((location, index) => <AutocompleteItem key={index}>{location['Location']}</AutocompleteItem>)}
-                                    </Autocomplete>
-                                </div>
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Input type="text" label="Location Type" placeholder="Enter your current Location Type" onChange={(e) => handleChange('locationType', e.target.value)} />
-                                </div>
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Slider
-                                        label="Total Years of Experience"
-                                        step={1}
-                                        maxValue={25}
-                                        minValue={0}
-                                        defaultValue={0}
-                                        showSteps={true}
-                                        showTooltip={true}
-                                        showOutline={true}
-                                        disableThumbScale={true}
-                                        onChange={(value) => handleChange('totalExperience', value)}
-                                        classNames={{
-                                            base: "max-w-full",
-                                            filler: "bg-gradient-to-r from-primary to-slate-400",
-                                            labelWrapper: "mb-2",
-                                            label: "font-medium text-default-700 text-medium",
-                                            value: "font-medium text-default-500 text-small",
-                                            thumb: [
-                                                "transition-size",
-                                                "bg-gradient-to-r from-slate-900 to-primary",
-                                                "data-[dragging=true]:shadow-lg data-[dragging=true]:shadow-black/20",
-                                                "data-[dragging=true]:w-7 data-[dragging=true]:h-7 data-[dragging=true]:after:h-6 data-[dragging=true]:after:w-6"
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Input type="text" label="Employment Type" aria-label="Employment Type" placeholder="Please Enter Employment Type" onChange={(e) => handleChange('empType', e.target.value)} />
+                            </div>
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Autocomplete
+                                    allowsCustomValue
+                                    label="Previous Company"
+                                    aria-label="Previous Company"
+                                    defaultItems={previous_company_details?.map(company => company['Company Name'])}
+                                    placeholder="Enter your Previous Company"
+                                    className="custom-autocomplete-field"
+                                    onInputChange={(value) => handleChange('companyName', value)}
+                                >
+                                    {previous_company_details && previous_company_details?.map((company, index) => <AutocompleteItem key={index}>{company['Company Name']}</AutocompleteItem>)}
+                                </Autocomplete>
+                            </div>
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <DatePicker label="Position Start date" aria-label="Position Start date" onChange={(value) => handleChange('posStDate', value ? formatter.format(value.toDate(getLocalTimeZone())) : "--")} />
+                                <DatePicker label="Position End date" aria-label="Position End date" onChange={(value) => handleChange('posEdDate', value ? formatter.format(value.toDate(getLocalTimeZone())) : "--")} />
+                            </div>
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Autocomplete
+                                    allowsCustomValue
+                                    label="Location"
+                                    aria-label="Location"
+                                    defaultItems={previous_company_details?.map(location => location['Location'])}
+                                    placeholder="Enter work Location"
+                                    className="custom-autocomplete-field"
+                                    onInputChange={(value) => handleChange('location', value)}
+                                >
+                                    {previous_company_details && previous_company_details?.map((location, index) => <AutocompleteItem key={index}>{location['Location']}</AutocompleteItem>)}
+                                </Autocomplete>
+                            </div>
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Input type="text" label="Location Type" aria-label="Location Type" placeholder="Enter your current Location Type" onChange={(e) => handleChange('locationType', e.target.value)} />
+                            </div>
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Slider
+                                    label="Total Years of Experience"
+                                    aria-label="Total Years of Experience"
+                                    step={1}
+                                    maxValue={25}
+                                    minValue={0}
+                                    defaultValue={0}
+                                    showSteps={true}
+                                    showTooltip={true}
+                                    showOutline={true}
+                                    disableThumbScale={true}
+                                    onChange={(value) => handleChange('totalExperience', value)}
+                                    classNames={{
+                                        base: "max-w-full",
+                                        filler: "bg-gradient-to-r from-primary to-slate-400",
+                                        labelWrapper: "mb-2",
+                                        label: "font-medium text-default-700 text-medium",
+                                        value: "font-medium text-default-500 text-small",
+                                        thumb: [
+                                            "transition-size",
+                                            "bg-gradient-to-r from-slate-900 to-primary",
+                                            "data-[dragging=true]:shadow-lg data-[dragging=true]:shadow-black/20",
+                                            "data-[dragging=true]:w-7 data-[dragging=true]:h-7 data-[dragging=true]:after:h-6 data-[dragging=true]:after:w-6"
+                                        ],
+                                        step: "data-[in-range=true]:bg-black/30 dark:data-[in-range=true]:bg-white/50"
+                                    }}
+                                    tooltipProps={{
+                                        offset: 10,
+                                        placement: "bottom",
+                                        classNames: {
+                                            base: [
+                                                // arrow color
+                                                "before:bg-gradient-to-r before:from-secondary-400 before:to-primary-500",
                                             ],
-                                            step: "data-[in-range=true]:bg-black/30 dark:data-[in-range=true]:bg-white/50"
-                                        }}
-                                        tooltipProps={{
-                                            offset: 10,
-                                            placement: "bottom",
-                                            classNames: {
-                                                base: [
-                                                    // arrow color
-                                                    "before:bg-gradient-to-r before:from-secondary-400 before:to-primary-500",
-                                                ],
-                                                content: [
-                                                    "py-2 shadow-xl",
-                                                    "text-white bg-black",
-                                                ],
-                                            },
-                                        }}
-                                    />
-                                </div>
-                                <div className="flex gap-2 sm:gap-4 mt-10 items-center">
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                                        <BackArrowIcon />
-                                    </button>
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                                        Save and Continue
-                                    </button>
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                                        <FrontArrowIcon />
-                                    </button>
-                                </div>
+                                            content: [
+                                                "py-2 shadow-xl",
+                                                "text-white bg-black",
+                                            ],
+                                        },
+                                    }}
+                                />
+                            </div>
+                            <div className="flex gap-2 sm:gap-4 mt-10 items-center">
+                                <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                    <BackArrowIcon />
+                                </button>
+                                <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                    Save and Continue
+                                </button>
+                                <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                    <FrontArrowIcon />
+                                </button>
                             </div>
                         </div>
                     </div>
                 </motion.div>
 
-                <motion.div className={(wizard === 'professionalProfile' && pageNo === 5) ? "visible" : "hidden"}>
-                    <div className="mx-auto min-w-full lg:mr-0">
-                        <div className="relative min-w-full place-items-center p-5 md:p-20 lg:p-10 xl:py-10 xl:px-40">
-                            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Skillset</h2>
-                            <p className="mt-2 text-lg leading-8 text-gray-600">Choose all relevant skills
-                                applies to your profile</p>
-                            <div className="flex gap-2 mt-4">
-                                <span className="mb-2 h-[15px] flex-1 rounded-xl bg-primary"></span>
-                                <span className="mb-2 h-[15px] flex-1 rounded-xl bg-primary"></span>
-                                <span className="mb-2 h-[15px] flex-1 rounded-xl bg-primary"></span>
-                                <span className="mb-2 h-[15px] flex-1 rounded-xl bg-primary"></span>
+                <motion.div className={(wizard === 'professionalProfile' && pageNo === 5) ? "visible" : "hidden"} aria-label="Professional Profile skillset component">
+                    <div>
+                        <div className="flex gap-2 mt-2">
+                            <span className="mb-2 h-[7px] flex-1 rounded-xl bg-primary"></span>
+                            <span className="mb-2 h-[7px] flex-1 rounded-xl bg-primary"></span>
+                            <span className="mb-2 h-[7px] flex-1 rounded-xl bg-primary"></span>
+                            <span className="mb-2 h-[7px] flex-1 rounded-xl bg-primary"></span>
+                        </div>
+                        <small>Completed</small>
+                        <div className="mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-4 sm:pt-4"></div>
+                        <h2 className="text-lg font-bold tracking-tight text-gray-900 sm:text-2xl pb-5">Skillset</h2>
+                        <div className="flex flex-col gap-4">
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Select
+                                    label="Technology Profile"
+                                    aria-label="Technology Profile"
+                                    selectionMode="multiple"
+                                    placeholder="Enter all Applicable Technology"
+                                    selectedKeys={Array.from(techSkillValues)}
+                                    onSelectionChange={setTechSkillValues}
+                                >
+                                    {allTechSkills?.map((skill) => (
+                                        <SelectItem key={skill} value={skill}>
+                                            {skill}
+                                        </SelectItem>
+                                    ))}
+                                </Select>
                             </div>
-                            <div
-                                className="mt-2 space-y-16 border-t border-gray-200 pt-10 sm:mt-2 sm:pt-16">
+                            <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                                <Select
+                                    label="Skills"
+                                    aria-label="Skills"
+                                    selectionMode="multiple"
+                                    placeholder="Enter all Applicable Skills"
+                                    selectedKeys={Array.from(skillValues)}
+                                    onSelectionChange={setSkillValues}
+                                >
+                                    {allSkills?.map((skill) => (
+                                        <SelectItem key={skill} value={skill}>
+                                            {skill}
+                                        </SelectItem>
+                                    ))}
+                                    {unmatchedSkills?.map((skill) => (
+                                        <SelectItem key={skill} value={skill}>
+                                            {skill}
+                                        </SelectItem>
+                                    ))}
+                                </Select>
                             </div>
-                            <div className="flex flex-col gap-4">
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Select
-                                        label="Technology Profile"
-                                        selectionMode="multiple"
-                                        placeholder="Enter all Applicable Technology"
-                                        selectedKeys={Array.from(techSkillValues)}
-                                        onSelectionChange={setTechSkillValues}
-                                    >
-                                        {allTechSkills?.map((skill) => (
-                                            <SelectItem key={skill} value={skill}>
-                                                {skill}
-                                            </SelectItem>
-                                        ))}
-                                    </Select>
-                                </div>
-                                <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                    <Select
-                                        label="Skills"
-                                        selectionMode="multiple"
-                                        placeholder="Enter all Applicable Skills"
-                                        selectedKeys={Array.from(skillValues)}
-                                        onSelectionChange={setSkillValues}
-                                    >
-                                        {allSkills?.map((skill) => (
-                                            <SelectItem key={skill} value={skill}>
-                                                {skill}
-                                            </SelectItem>
-                                        ))}
-                                        {unmatchedSkills?.map((skill) => (
-                                            <SelectItem key={skill} value={skill}>
-                                                {skill}
-                                            </SelectItem>
-                                        ))}
-                                    </Select>
-                                </div>
-                                <div className="relative mb-6 mt-0">
-                                    <figure className="w-full">
-                                        <section className="text-md rounded-xl bg-gray-100 p-4 border-l-0 leading-8 tracking-tight text-gray-800">
-                                            <div className="flex flex-wrap gap-2">
-                                                {skillValues.size === 0 ? (
-                                                    <p className="text-md text-gray-600">No Skills Selected</p>
-                                                ) : (
-                                                    <>
-                                                        {[...skillValues]?.map((value) => (
-                                                            <Chip key={value} variant="flat" onClose={() => handleChipRemove(value)}>
-                                                                {value}
-                                                            </Chip>
-                                                        ))}
-                                                    </>
-                                                )}
-                                            </div>
-                                        </section>
-                                    </figure>
-                                </div>
+                            <div className="relative mb-6 mt-0">
+                                <figure className="w-full">
+                                    <section className="text-md rounded-xl bg-gray-100 p-4 border-l-0 leading-8 tracking-tight text-gray-800">
+                                        <div className="flex flex-wrap gap-2">
+                                            {skillValues.size === 0 ? (
+                                                <p className="text-md text-gray-600">No Skills Selected</p>
+                                            ) : (
+                                                <>
+                                                    {[...skillValues]?.map((value) => (
+                                                        <Chip key={value} variant="flat" onClose={() => handleChipRemove(value)}>
+                                                            {value}
+                                                        </Chip>
+                                                    ))}
+                                                </>
+                                            )}
+                                        </div>
+                                    </section>
+                                </figure>
+                            </div>
 
-                                <div className="flex gap-2 sm:gap-4 mt-10 items-center">
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                                        <BackArrowIcon />
-                                    </button>
-                                    <button type="submit" className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                                        Save and Continue
-                                    </button>
-                                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                                        <FrontArrowIcon />
-                                    </button>
-                                </div>
+                            <div className="flex gap-2 sm:gap-4 mt-10 items-center">
+                                <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                    <BackArrowIcon />
+                                </button>
+                                <button type="submit" className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                    Save and Continue
+                                </button>
+                                <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                    <FrontArrowIcon />
+                                </button>
                             </div>
                         </div>
                     </div>
