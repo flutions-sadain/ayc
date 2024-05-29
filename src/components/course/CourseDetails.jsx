@@ -74,91 +74,91 @@ const CourseDetails = () => {
     //     return <div>Loading...</div>;
     // }
 
-    const aiCourseData = {
-        "name": "Introduction to Artificial Intelligence Fundamentals",
-        "description": "This course provides a comprehensive introduction to the fundamentals of artificial intelligence (AI). Students will learn about key concepts such as machine learning, neural networks, natural language processing, and computer vision. Through hands-on projects and real-world examples, participants will gain a deep understanding of AI techniques and their applications in various industries.",
-        "price": "$99",
-        "duration": "6 weeks",
-        "rating": "4.5",
-        "languages": [
-            "English"
-        ],
-        "reviews": "500",
-        "phases": [
-            {
-                "phase": "Phase 1",
-                "modules": {
-                    "Module 1": "Welcome to AI - General Information",
-                    "topics": [
-                        "AYC Welcome Notes",
-                        "Connect with Industry giants.",
-                        "How AI rules the world"
-                    ]
-                }
-            },
-            {
-                "phase": "Phase 2",
-                "modules": {
-                    "Module 2": "Evolution of AI",
-                    "topics": [
-                        "Current industry Challenges",
-                        "How different industry operate today",
-                        "How technology solved the different industry fallback"
-                    ]
-                }
-            },
-            {
-                "phase": "Phase 3",
-                "modules": {
-                    "Module 3": "AI building blocks",
-                    "topics": [
-                        "Introduction to Artificial Intelligence",
-                        "Programming for AI",
-                        "Data Science and Analytics",
-                        "Machine Learning"
-                    ]
-                }
-            },
-            {
-                "phase": "Phase 4",
-                "modules": {
-                    "Module 4": "AI deep dive",
-                    "topics": [
-                        "Natural Language Processing (NLP)",
-                        "Computer Vision",
-                        "Reinforcement Learning",
-                        "Generative AI"
-                    ]
-                }
-            },
-            {
-                "phase": "Phase 5",
-                "modules": {
-                    "Module 5": "How to operationalize in Cloud",
-                    "topics": [
-                        "Basics of cloud computing",
-                        "Pricing models in cloud services",
-                        "Different AI services and infrastructure offerings",
-                        "Comparative analysis of major cloud service providers (AWS, Azure, Google Cloud, IBM Cloud)",
-                        "Containerization with Docker and orchestration with Kubernetes"
-                    ]
-                }
-            },
-            {
-                "phase": "Phase 6",
-                "modules": {
-                    "Module 6": "Scaling and monitoring of hosted AI for business value",
-                    "topics": [
-                        "Efficient AI model development",
-                        "Advanced data pipelines for large-scale AI systems",
-                        "Infrastructure scalability (cloud, on-premises, hybrid)",
-                        "Real-time monitoring and altering",
-                        "Measuring ROI from AI-driven customer initiatives"
-                    ]
-                }
-            }
-        ]
-    };
+    // const aiCourseData = {
+    //     "name": "Introduction to Artificial Intelligence Fundamentals",
+    //     "description": "This course provides a comprehensive introduction to the fundamentals of artificial intelligence (AI). Students will learn about key concepts such as machine learning, neural networks, natural language processing, and computer vision. Through hands-on projects and real-world examples, participants will gain a deep understanding of AI techniques and their applications in various industries.",
+    //     "price": "$99",
+    //     "duration": "6 weeks",
+    //     "rating": "4.5",
+    //     "languages": [
+    //         "English"
+    //     ],
+    //     "reviews": "500",
+    //     "phases": [
+    //         {
+    //             "phase": "Phase 1",
+    //             "modules": {
+    //                 "Module 1": "Welcome to AI - General Information",
+    //                 "topics": [
+    //                     "AYC Welcome Notes",
+    //                     "Connect with Industry giants.",
+    //                     "How AI rules the world"
+    //                 ]
+    //             }
+    //         },
+    //         {
+    //             "phase": "Phase 2",
+    //             "modules": {
+    //                 "Module 2": "Evolution of AI",
+    //                 "topics": [
+    //                     "Current industry Challenges",
+    //                     "How different industry operate today",
+    //                     "How technology solved the different industry fallback"
+    //                 ]
+    //             }
+    //         },
+    //         {
+    //             "phase": "Phase 3",
+    //             "modules": {
+    //                 "Module 3": "AI building blocks",
+    //                 "topics": [
+    //                     "Introduction to Artificial Intelligence",
+    //                     "Programming for AI",
+    //                     "Data Science and Analytics",
+    //                     "Machine Learning"
+    //                 ]
+    //             }
+    //         },
+    //         {
+    //             "phase": "Phase 4",
+    //             "modules": {
+    //                 "Module 4": "AI deep dive",
+    //                 "topics": [
+    //                     "Natural Language Processing (NLP)",
+    //                     "Computer Vision",
+    //                     "Reinforcement Learning",
+    //                     "Generative AI"
+    //                 ]
+    //             }
+    //         },
+    //         {
+    //             "phase": "Phase 5",
+    //             "modules": {
+    //                 "Module 5": "How to operationalize in Cloud",
+    //                 "topics": [
+    //                     "Basics of cloud computing",
+    //                     "Pricing models in cloud services",
+    //                     "Different AI services and infrastructure offerings",
+    //                     "Comparative analysis of major cloud service providers (AWS, Azure, Google Cloud, IBM Cloud)",
+    //                     "Containerization with Docker and orchestration with Kubernetes"
+    //                 ]
+    //             }
+    //         },
+    //         {
+    //             "phase": "Phase 6",
+    //             "modules": {
+    //                 "Module 6": "Scaling and monitoring of hosted AI for business value",
+    //                 "topics": [
+    //                     "Efficient AI model development",
+    //                     "Advanced data pipelines for large-scale AI systems",
+    //                     "Infrastructure scalability (cloud, on-premises, hybrid)",
+    //                     "Real-time monitoring and altering",
+    //                     "Measuring ROI from AI-driven customer initiatives"
+    //                 ]
+    //             }
+    //         }
+    //     ]
+    // };
 
 
     const handlePlayClick = () => {
@@ -219,24 +219,24 @@ const CourseDetails = () => {
             <Header />
             {!isLoading ? <>
                 <div className="w-full py-2 px-10 border bg-white">
-                    <ol class="flex items-center whitespace-nowrap">
-                        <li class="inline-flex items-center">
-                            <a class="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="/">
+                    <ol className="flex items-center whitespace-nowrap">
+                        <li className="inline-flex items-center">
+                            <a className="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="/">
                                 Home
                             </a>
-                            <svg class="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg className="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="m9 18 6-6-6-6"></path>
                             </svg>
                         </li>
-                        <li class="inline-flex items-center">
-                            <a class="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="/recommendedCourse">
+                        <li className="inline-flex items-center">
+                            <a className="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="/recommendedCourse">
                                 Courses
-                                <svg class="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg className="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="m9 18 6-6-6-6"></path>
                                 </svg>
                             </a>
                         </li>
-                        <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate" aria-current="page">
+                        <li className="inline-flex items-center text-sm font-semibold text-gray-800 truncate" aria-current="page">
                             {courseDetails.name}
                         </li>
                     </ol>
