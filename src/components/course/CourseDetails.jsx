@@ -74,6 +74,92 @@ const CourseDetails = () => {
     //     return <div>Loading...</div>;
     // }
 
+    const aiCourseData = {
+        "name": "Introduction to Artificial Intelligence Fundamentals",
+        "description": "This course provides a comprehensive introduction to the fundamentals of artificial intelligence (AI). Students will learn about key concepts such as machine learning, neural networks, natural language processing, and computer vision. Through hands-on projects and real-world examples, participants will gain a deep understanding of AI techniques and their applications in various industries.",
+        "price": "$99",
+        "duration": "6 weeks",
+        "rating": "4.5",
+        "languages": [
+            "English"
+        ],
+        "reviews": "500",
+        "phases": [
+            {
+                "phase": "Phase 1",
+                "modules": {
+                    "Module 1": "Welcome to AI - General Information",
+                    "topics": [
+                        "AYC Welcome Notes",
+                        "Connect with Industry giants.",
+                        "How AI rules the world"
+                    ]
+                }
+            },
+            {
+                "phase": "Phase 2",
+                "modules": {
+                    "Module 2": "Evolution of AI",
+                    "topics": [
+                        "Current industry Challenges",
+                        "How different industry operate today",
+                        "How technology solved the different industry fallback"
+                    ]
+                }
+            },
+            {
+                "phase": "Phase 3",
+                "modules": {
+                    "Module 3": "AI building blocks",
+                    "topics": [
+                        "Introduction to Artificial Intelligence",
+                        "Programming for AI",
+                        "Data Science and Analytics",
+                        "Machine Learning"
+                    ]
+                }
+            },
+            {
+                "phase": "Phase 4",
+                "modules": {
+                    "Module 4": "AI deep dive",
+                    "topics": [
+                        "Natural Language Processing (NLP)",
+                        "Computer Vision",
+                        "Reinforcement Learning",
+                        "Generative AI"
+                    ]
+                }
+            },
+            {
+                "phase": "Phase 5",
+                "modules": {
+                    "Module 5": "How to operationalize in Cloud",
+                    "topics": [
+                        "Basics of cloud computing",
+                        "Pricing models in cloud services",
+                        "Different AI services and infrastructure offerings",
+                        "Comparative analysis of major cloud service providers (AWS, Azure, Google Cloud, IBM Cloud)",
+                        "Containerization with Docker and orchestration with Kubernetes"
+                    ]
+                }
+            },
+            {
+                "phase": "Phase 6",
+                "modules": {
+                    "Module 6": "Scaling and monitoring of hosted AI for business value",
+                    "topics": [
+                        "Efficient AI model development",
+                        "Advanced data pipelines for large-scale AI systems",
+                        "Infrastructure scalability (cloud, on-premises, hybrid)",
+                        "Real-time monitoring and altering",
+                        "Measuring ROI from AI-driven customer initiatives"
+                    ]
+                }
+            }
+        ]
+    };
+
 
     const handlePlayClick = () => {
         setIsPlaying(true);
@@ -232,9 +318,28 @@ const CourseDetails = () => {
                                 <p className="text-md">Drill down into the course structure of {courseDetails.name} </p>
                             </div>
                             <div className="border my-10 rounded-lg p-5">
-                                <Accordion style={{ fontWeight: 'bold'}}>
+                                <Accordion style={{ fontWeight: 'bold' }}>
                                     {generateAccordionItems(courseDetails)}
                                 </Accordion>
+                                {/* <Accordion>
+                                    {aiCourseData.phases.map((phase, phaseIndex) => (
+                                        <AccordionItem
+                                            key={phaseIndex}
+                                            aria-label={`Module ${phaseIndex + 1} - ${phase.modules[`Module ${phaseIndex + 1}`]}`}
+                                            subtitle={phase.phase}
+                                            title={`Module ${phaseIndex + 1} - ${phase.modules[`Module ${phaseIndex + 1}`]}`}
+                                            className="font-bold"
+                                        >
+                                            <div key={`module-${phaseIndex + 1}`}>
+                                                <ul style={{ listStyleType: "disc", marginLeft: "20px" }}>
+                                                    {phase.modules.topics.map((topic, topicIndex) => (
+                                                        <li className="font-normal" key={topicIndex}>{topic}</li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </AccordionItem>
+                                    ))}
+                                </Accordion> */}
                             </div>
                         </div>
                         <div className="bg-white drop-shadow-lg rounded-lg max-sm:order-first md:order-first lg:order-none">
