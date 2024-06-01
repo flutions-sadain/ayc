@@ -106,9 +106,9 @@ const FinalReport = ({ setPageNo, wizard }) => {
                     </ul>
                 </div>
                 <div className="flex gap-2 sm:gap-4 mt-2 items-center">
-                    <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                    {/* <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                         <BackArrowIcon />
-                    </button>
+                    </button> */}
                     <a href="/recommendedCourse" className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                         <button type="button" >
                             Get Recommended Course
