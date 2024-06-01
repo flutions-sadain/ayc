@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Input, AutocompleteItem, Autocomplete, Select, SelectItem } from "@nextui-org/react";
+import { Input, AutocompleteItem, Autocomplete, Select, SelectItem, Spinner } from "@nextui-org/react";
 import { FrontArrowIcon } from "../icons/FrontArrowIcon.jsx";
 import makeRequest from '../../api/useApi.js';
 import axios from 'axios';

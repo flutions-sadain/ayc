@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react';
-import { Input, AutocompleteItem, Autocomplete, DatePicker, Textarea, Select, SelectItem, Slider, Chip } from "@nextui-org/react";
+import { Input, AutocompleteItem, Autocomplete, DatePicker, Textarea, Select, SelectItem, Slider, Chip, Spinner } from "@nextui-org/react";
 import { BackArrowIcon } from "../icons/BackArrowIcon.jsx";
 import { FrontArrowIcon } from "../icons/FrontArrowIcon.jsx";
 import autoCompleteData from "../../data/autocompleteData.js"
@@ -49,6 +49,7 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
     const handleExperienceSubmit = async (event) => {
         event.preventDefault();
         try {
+            setIsLoading(true);
             var combinedSkills = [...skillValues, ...techSkillValues].join(', ');
             // setExperienceDetails((prevData) => ({
             //     ...prevData,
@@ -59,7 +60,6 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
             const response = await makeRequest('post', 'saveDeatils/3', { ...experienceDetails, skills: combinedSkills, totalExperience: String(experienceDetails.totalExperience) });
             setPageNo((prevPageNo) => prevPageNo + 1)
             console.log('Response:', response);
-            setIsLoading(true);
         } catch (error) {
             console.error('Error:', error);
         } finally {
