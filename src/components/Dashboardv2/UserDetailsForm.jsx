@@ -29,6 +29,7 @@ const UserDetailsForm = ({ setPageNo }) => {
     const [countries, setCountries] = useState([]);
     const [states, setStates] = useState([]);
     const [loadingCountries, setLoadingCountries] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         return () => {
@@ -76,11 +77,14 @@ const UserDetailsForm = ({ setPageNo }) => {
     const handleUserDetailSubmit = async (event) => {
         event.preventDefault();
         try {
+            setIsLoading(true);
             const response = await makeRequest('post', 'saveDeatils/1', userDetails);
             setPageNo((prevPageNo) => prevPageNo + 1)
             console.log('Response:', response);
         } catch (error) {
             console.error('Error:', error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -251,9 +255,12 @@ const UserDetailsForm = ({ setPageNo }) => {
                         <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                             <BackArrowIcon />
                         </button>
-                        <button type="submit" className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" >
-                            Save and Continue
-                        </button>
+                        <button type="submit" className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                            {isLoading ? (
+                                <>
+                                    <Spinner className="pr-2" color="current" size="sm" /> Submitting...
+                                </>
+                            ) : "Save and Continue"} </button>
                         {/* <button type="button" onClick={() => setPageNo((prevPageNo) => prevPageNo + 1)} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" >
                             <FrontArrowIcon />
                         </button> */}

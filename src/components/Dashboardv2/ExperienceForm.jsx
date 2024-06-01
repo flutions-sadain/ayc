@@ -12,6 +12,7 @@ import { useDateFormatter } from "@react-aria/i18n";
 const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
     // const email = useSelector((state) => state.user.email);
     const email = localStorage.getItem('email');
+    const [isLoading, setIsLoading] = useState(false);
     // const resumeData = useSelector((state) => state.resume.resumeData);
     // const { skills: skillsString = "", previous_company_details } = resumeData?.summary || {};
 
@@ -54,12 +55,15 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
             //     skills: combinedSkills,
             //     totalExperience: String(experienceDetails.totalExperience),
             // }));
-            console.log("experienceDetailse", {...experienceDetails, skills: combinedSkills, totalExperience: String(experienceDetails.totalExperience),});
-            const response = await makeRequest('post', 'saveDeatils/3', {...experienceDetails, skills: combinedSkills, totalExperience: String(experienceDetails.totalExperience)});
+            console.log("experienceDetailse", { ...experienceDetails, skills: combinedSkills, totalExperience: String(experienceDetails.totalExperience), });
+            const response = await makeRequest('post', 'saveDeatils/3', { ...experienceDetails, skills: combinedSkills, totalExperience: String(experienceDetails.totalExperience) });
             setPageNo((prevPageNo) => prevPageNo + 1)
             console.log('Response:', response);
+            setIsLoading(true);
         } catch (error) {
             console.error('Error:', error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -90,10 +94,10 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
     const allSkills = ["Python", "Java", "React", "Angular", "Rust", "LLM", "Gen AI", "Django", "Fast API", "MySQL", "Data analysis", "Pandas", "Numpy", "GCP", "Github"];
     const allTechSkills = ["Mobile App", "Data science", "Deep Learning", "Machine Learning", "Data analysis", "Github"];
 
-    
+
     const [skillValues, setSkillValues] = useState(new Set([]));
     const [techSkillValues, setTechSkillValues] = useState(new Set([]));
-    
+
     // const unmatchedSkills = skills?.filter(skill => !allSkills?.includes(skill));
 
     // useEffect(() => {
@@ -163,9 +167,9 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                                 <Textarea label="Description" aria-label="Description" placeholder="Tell More about your Educational Experience" onChange={(e) => handleChange('description', e.target.value)} />
                             </div>
                             <div className="flex gap-2 sm:gap-4 mt-10 items-center">
-                                <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                {/* <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                                     <BackArrowIcon />
-                                </button>
+                                </button> */}
                                 <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                                     Save and Continue
                                 </button>
@@ -373,11 +377,14 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                                     <BackArrowIcon />
                                 </button>
                                 <button type="submit" className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                                    Save and Continue
-                                </button>
-                                <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                    {isLoading ? (
+                                        <>
+                                            <Spinner className="pr-2" color="current" size="sm" /> Submitting...
+                                        </>
+                                    ) : "Save and Continue"} </button>
+                                {/* <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                                     <FrontArrowIcon />
-                                </button>
+                                </button> */}
                             </div>
                         </div>
                     </div>

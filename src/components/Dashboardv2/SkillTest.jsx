@@ -32,66 +32,12 @@ const SkillTest = ({ setPageNo, pageNo }) => {
 
     const fetchQuestions = async () => {
         try {
-            // const formData = new URLSearchParams();
-            // formData.append("complexity", "phase1");
-            // formData.append("email", email);
-            // setQuestionAnswer([])
-            // const response = await makeRequest('post', 'phaseQuestions', formData);
-            const response =[
-                {
-                  "category": "code_questions",
-                  "questions": [
-                    "Write a Java function that takes an integer array as input and returns the length of the longest increasing subsequence. For example, if the input array is [10, 22, 9, 33, 21, 50, 41, 60, 80], the output should be 6, as the longest increasing subsequence is [10, 22, 33, 50, 60, 80].",
-                    "Implement a Python function to merge two sorted linked lists into a single sorted linked list. The input linked lists are represented as head nodes, and the output should be the head node of the merged linked list. For example, if the input linked lists are 1 -> 2 -> 4 and 1 -> 3 -> 4, the output should be 1 -> 1 -> 2 -> 3 -> 4.",
-                    "Given a binary tree, write a Python function to perform a level-order traversal (breadth-first search) and return the values of the nodes in a list. For example, if the binary tree is:\n\n        1\n       / \\\n      2   3\n     / \\   /\n    4   5 6\n\nThe output should be [1, 2, 3, 4, 5, 6]."
-                  ]
-                },
-                {
-                  "category": "behavioural_questions",
-                  "questions": [
-                    "Describe a situation where you had to lead a team through a difficult project. What strategies did you use to motivate and guide your team?",
-                    "Tell me about a time when you faced a significant setback at work. How did you handle it, and what did you learn from the experience?",
-                    "Can you provide an example of how you managed conflict within your team? What was the outcome?",
-                    "Describe a time when you had to adapt to a major change in your workplace. How did you manage the transition and support your colleagues?"
-                  ]
-                },
-                {
-                  "category": "technical_questions",
-                  "questions": [
-                    "Explain how you would optimize a SQL query that is running slowly. What steps would you take to identify and resolve the performance issues?",
-                    "Describe the differences between microservices architecture and monolithic architecture. What are the advantages and disadvantages of each?",
-                    "How do you handle version control in your projects? Can you explain the process and tools you use?",
-                    "Discuss the principles of responsive web design. How do you ensure that a web application works well on both desktop and mobile devices?"
-                  ]
-                },
-                {
-                  "category": "past_industry_questions",
-                  "questions": [
-                    "What specific challenges did you face while working in the [industry or company name]? How did you overcome them?",
-                    "Can you describe a project where you had to manage multiple stakeholders with differing priorities? How did you ensure alignment and successful project completion?",
-                    "How did your role at [previous company] prepare you for this position? What skills or experiences do you think are most transferable?",
-                    "Describe a time when you had to implement a new process or technology in your previous industry. How did you manage the change and ensure its success?"
-                  ]
-                },
-                {
-                  "category": "scenario_questions",
-                  "questions": [
-                    "Youâ€™re assigned to lead a project with tight deadlines and limited resources. How would you prioritize tasks and ensure timely delivery?",
-                    "Imagine your team is experiencing low morale due to a series of challenging projects. What steps would you take to boost team morale and maintain productivity?",
-                    "A critical bug is discovered in your application just before a major release. What immediate actions would you take to address the issue and communicate with stakeholders?",
-                    "You need to integrate a third-party service into your application, but the service has compatibility issues with your existing system. How would you approach resolving these compatibility issues?"
-                  ]
-                },
-                {
-                  "category": "project_questions",
-                  "questions": [
-                    "Describe a project where you were responsible for the entire software development lifecycle. What were the key challenges, and how did you address them?",
-                    "Can you walk me through the architecture of a major project you worked on? How did you ensure scalability and performance?",
-                    "Discuss a project where you had to collaborate with cross-functional teams. How did you ensure effective communication and coordination?",
-                    "What was the most technically challenging project you have worked on? What were the specific obstacles, and how did you overcome them?"
-                  ]
-                }
-              ]
+            const formData = new URLSearchParams();
+            formData.append("complexity", "phase1");
+            formData.append("email", email);
+            setQuestionAnswer([])
+            const response = await makeRequest('post', 'phaseQuestions', formData);
+
             response?.map((data) => {
                 data?.questions.map((question) => {
                     setQuestionAnswer(prev => [...prev, {question, answer: '' }])
