@@ -40,47 +40,10 @@ const SkillTest = ({ setPageNo, pageNo }) => {
     const fetchQuestions = async () => {
         // if (!isMounted.current) return;
         try {
-            // const formData = new URLSearchParams();
-            // formData.append("complexity", "phase1");
-            // formData.append("email", email);
-            // const response = await makeRequest('post', 'phaseQuestions', formData);
-            const response = {
-                "code_questions": [
-                    "Design a function that takes an array of integers and returns the maximum sum of any contiguous subarray within the array.",
-                    "Given a binary tree, write a function to find the maximum depth of the tree.",
-                    "Implement a hash table in JavaScript that supports the following operations: insert, delete, and search.",
-                    "Write a function that takes a string and returns the longest palindromic substring within the string."
-                ],
-                "behavioural_questions": [
-                    "Describe a time when you had to work on a project with a difficult team member. How did you handle the situation?",
-                    "Tell me about a time when you had to make a difficult decision. How did you approach the decision-making process?",
-                    "Give me an example of a time when you had to go above and beyond to meet a customers needs.",
-                    "Describe a time when you failed to meet a deadline. What did you learn from the experience?"
-                ],
-                "technical_questions": [
-                    "Explain the difference between a class and an interface in Java.",
-                    "What is the difference between a linked list and an array?",
-                    "What is the difference between a GET and a POST request?",
-                    "What is the difference between a primary key and a foreign key?"
-                ],  
-                "past_industry_questions": [
-                    "What were some of the challenges you faced while working at TFLEX?",
-                    "What were some of the most successful projects you worked on at Safpro Technology Solutions?",
-                    "What were some of the key technologies you used at TFLEX?",
-                    "What were some of the key technologies you used at Safpro Technology Solutions?"
-                ],
-                "scenario_questions": [
-                    "You are working on a project and you discover a critical bug. The deadline is approaching and you are under a lot of pressure to fix the bug. What do you do?",
-                    "You are working on a project with a team of developers. One of the developers is not pulling their weight and is causing the project to fall behind schedule. What do you do?",
-                    "You are working on a project and you realize that the requirements have changed. The changes will require a significant amount of work and will delay the project. What do you do?",
-                    "You are working on a project and you discover that a third-party library you are using has a security vulnerability. What do you do?"
-                ],
-                "project_questions": [
-                    "Tell me about the Inventory Management System you developed. What were the challenges you faced and how did you overcome them?",
-                    "Tell me about the Socio-Ai Based Discourse for Banking Industry you developed. What were the challenges you faced and how did you overcome them?",
-                    "Tell me about your personal website sadainabdullah.netlify.app (v2). What were the challenges you faced and how did you overcome them?"
-                ]
-            }
+            const formData = new URLSearchParams();
+            formData.append("complexity", "phase1");
+            formData.append("email", email);
+            const response = await makeRequest('post', 'phaseQuestions', formData);
             setAssessmentData(response);
             let newQuestionAnswer = [];
             Object.keys(response).forEach((category) => {
