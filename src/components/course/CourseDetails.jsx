@@ -318,11 +318,11 @@ const CourseDetails = () => {
                                 <p className="text-md">Drill down into the course structure of {courseDetails.name} </p>
                             </div>
                             <div className="border my-10 rounded-lg p-5">
-                                <Accordion style={{ fontWeight: 'bold' }}>
+                                {/* <Accordion style={{ fontWeight: 'bold' }}>
                                     {generateAccordionItems(courseDetails)}
-                                </Accordion>
-                                {/* <Accordion>
-                                    {aiCourseData.phases.map((phase, phaseIndex) => (
+                                </Accordion> */}
+                                <Accordion>
+                                    {courseDetails.phases.map((phase, phaseIndex) => (
                                         <AccordionItem
                                             key={phaseIndex}
                                             aria-label={`Module ${phaseIndex + 1} - ${phase.modules[`Module ${phaseIndex + 1}`]}`}
@@ -339,7 +339,7 @@ const CourseDetails = () => {
                                             </div>
                                         </AccordionItem>
                                     ))}
-                                </Accordion> */}
+                                </Accordion>
                             </div>
                         </div>
                         <div className="bg-white drop-shadow-lg rounded-lg max-sm:order-first md:order-first lg:order-none">

@@ -59,8 +59,14 @@ const RecommendedCourse = () => {
     const isMounted = useRef(true);
     const fullName = localStorage.getItem('fullName');
 
+        useEffect(() => {
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
+
     const fetchRecommendedCourse = async () => {
-        isMounted.current = true;
+        if (!isMounted.current) return;
         const formData = new FormData();
         formData.append('email', email);
     
@@ -76,9 +82,6 @@ const RecommendedCourse = () => {
 
       useEffect(() => {
         fetchRecommendedCourse();
-        return () => {
-            isMounted.current = false;
-        };
       }, [email]);
 
     // useEffect(async() => {

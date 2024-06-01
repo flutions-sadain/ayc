@@ -41,7 +41,7 @@ const SkillTest = ({ setPageNo, pageNo }) => {
         // if (!isMounted.current) return;
         try {
             const formData = new URLSearchParams();
-            formData.append("complexity", "phase2");
+            formData.append("complexity", "phase1");
             formData.append("email", email);
             const response = await makeRequest('post', 'phaseQuestions', formData);
             setAssessmentData(response);
@@ -62,19 +62,26 @@ const SkillTest = ({ setPageNo, pageNo }) => {
 
     const handleAnswerChange = (index, value) => {
         const newQuestionAnswer = [...questionAnswer];
-        newQuestionAnswer[index].answer = value;
-        setQuestionAnswer(newQuestionAnswer);
+        if (newQuestionAnswer[index]) {
+            newQuestionAnswer[index].answer = value;
+            setQuestionAnswer(newQuestionAnswer);
+        }
     };
 
     const handleLanguageChange = (index, value) => {
         const newSelectedLanguages = [...selectedLanguages];
-        newSelectedLanguages[index] = value;
-        setSelectedLanguages(newSelectedLanguages);
+        if (newSelectedLanguages[index]) {
+            newSelectedLanguages[index] = value;
+            setSelectedLanguages(newSelectedLanguages);
 
-        const newQuestionAnswer = [...questionAnswer];
-        newQuestionAnswer[index].language = value;
-        setQuestionAnswer(newQuestionAnswer);
+            const newQuestionAnswer = [...questionAnswer];
+            if (newQuestionAnswer[index]) {
+                newQuestionAnswer[index].language = value;
+                setQuestionAnswer(newQuestionAnswer);
+            }
+        }
     };
+
 
     const handlePreviousQuestion = () => {
         if (categoryIndex === 0) {
