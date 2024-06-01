@@ -12,8 +12,8 @@ import { useDateFormatter } from "@react-aria/i18n";
 const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
     // const email = useSelector((state) => state.user.email);
     const email = localStorage.getItem('email');
-    const resumeData = useSelector((state) => state.resume.resumeData);
-    const { skills: skillsString = "", previous_company_details } = resumeData?.summary || {};
+    // const resumeData = useSelector((state) => state.resume.resumeData);
+    // const { skills: skillsString = "", previous_company_details } = resumeData?.summary || {};
 
     // console.log("resume data", resumeData);
     let formatter = useDateFormatter();
@@ -48,14 +48,14 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
     const handleExperienceSubmit = async (event) => {
         event.preventDefault();
         try {
-            const combinedSkills = [...skillValues, ...techSkillValues].join(', ');
-            setExperienceDetails((prevData) => ({
-                ...prevData,
-                skills: combinedSkills,
-                totalExperience: String(experienceDetails.totalExperience),
-            }));
-            console.log("experienceDetailse", experienceDetails);
-            const response = await makeRequest('post', 'saveDeatils/3', experienceDetails);
+            var combinedSkills = [...skillValues, ...techSkillValues].join(', ');
+            // setExperienceDetails((prevData) => ({
+            //     ...prevData,
+            //     skills: combinedSkills,
+            //     totalExperience: String(experienceDetails.totalExperience),
+            // }));
+            console.log("experienceDetailse", {...experienceDetails, skills: combinedSkills, totalExperience: String(experienceDetails.totalExperience),});
+            const response = await makeRequest('post', 'saveDeatils/3', {...experienceDetails, skills: combinedSkills, totalExperience: String(experienceDetails.totalExperience)});
             setPageNo((prevPageNo) => prevPageNo + 1)
             console.log('Response:', response);
         } catch (error) {
@@ -63,45 +63,46 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
         }
     };
 
-    const parseSkills = (skillsString) => {
-        if (!skillsString) return [];
-        const skillCategories = skillsString.split('**');
-        const skills = [];
+    // const parseSkills = (skillsString) => {
+    //     if (!skillsString) return [];
+    //     const skillCategories = skillsString?.split('**');
+    //     const skills = [];
 
-        skillCategories.forEach((category) => {
-            const lines = category.split('\n');
-            lines.forEach((line) => {
-                if (line.startsWith('- ')) {
-                    let skill = line.slice(2).split(':')[0].trim(); // Extract skill name before the colon
-                    if (skill.includes('(')) {
-                        skill = skill.split('(')[0].trim(); // Remove proficiency level if present
-                    }
-                    skills.push(skill);
-                }
-            });
-        });
+    //     skillCategories?.forEach((category) => {
+    //         const lines = category?.split('\n');
+    //         lines?.forEach((line) => {
+    //             if (line?.startsWith('- ')) {
+    //                 let skill = line?.slice(2)?.split(':')[0]?.trim(); // Extract skill name before the colon
+    //                 if (skill?.includes('(')) {
+    //                     skill = skill.split('(')[0]?.trim(); // Remove proficiency level if present
+    //                 }
+    //                 skills?.push(skill);
+    //             }
+    //         });
+    //     });
 
-        return skills;
-    };
+    //     return skills;
+    // };
 
 
-    const skills = parseSkills(skillsString);
+    // const skills = parseSkills(skillsString);
 
     const allSkills = ["Python", "Java", "React", "Angular", "Rust", "LLM", "Gen AI", "Django", "Fast API", "MySQL", "Data analysis", "Pandas", "Numpy", "GCP", "Github"];
     const allTechSkills = ["Mobile App", "Data science", "Deep Learning", "Machine Learning", "Data analysis", "Github"];
 
-    const unmatchedSkills = skills.filter(skill => !allSkills.includes(skill));
+    
+    const [skillValues, setSkillValues] = useState(new Set([]));
+    const [techSkillValues, setTechSkillValues] = useState(new Set([]));
+    
+    // const unmatchedSkills = skills?.filter(skill => !allSkills?.includes(skill));
 
-    const [skillValues, setSkillValues] = useState(new Set(skills));
-    const [techSkillValues, setTechSkillValues] = useState(new Set());
-
-    useEffect(() => {
-        setSkillValues(new Set(skills));
-    }, [skillsString]);
+    // useEffect(() => {
+    //     setSkillValues(new Set(skills));
+    // }, [skillsString]);
 
     const handleChipRemove = (valueToRemove) => {
         const updatedSkillValues = new Set(skillValues);
-        updatedSkillValues.delete(valueToRemove);
+        updatedSkillValues?.delete(valueToRemove);
         setSkillValues(updatedSkillValues);
     };
 
@@ -141,7 +142,7 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                                     placeholder="Select Your Degree"
                                     onSelectionChange={(value) => handleChange('degree', value.currentKey)}
                                 >
-                                    {degree.map((degree) => (
+                                    {degree?.map((degree) => (
                                         <SelectItem key={degree.value} value={degree.value}>
                                             {degree.label}
                                         </SelectItem>
@@ -149,8 +150,8 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                                 </Select>
                             </div>
                             <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                <DatePicker label="Degree Start date" aria-label="Degree Start date" onChange={(value) => handleChange('degreeStDate', value ? formatter.format(value.toDate(getLocalTimeZone())) : "--")} />
-                                <DatePicker label="Degree End date" aria-label="Degree End date" onChange={(value) => handleChange('degreeEdDate', value ? formatter.format(value.toDate(getLocalTimeZone())) : "--")} />
+                                <DatePicker label="Degree Start date" aria-label="Degree Start date" onChange={(value) => handleChange('degreeStDate', value ? formatter?.format(value.toDate(getLocalTimeZone())) : "--")} />
+                                <DatePicker label="Degree End date" aria-label="Degree End date" onChange={(value) => handleChange('degreeEdDate', value ? formatter?.format(value.toDate(getLocalTimeZone())) : "--")} />
                             </div>
                             <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
                                 <Input type="text" label="Grade" aria-label="Grade" placeholder="Enter your Grade or Score" onChange={(e) => handleChange('degreeGrade', e.target.value)} />
@@ -189,7 +190,8 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                         <h2 className="text-lg font-bold tracking-tight text-gray-900 sm:text-2xl pb-5">Professional Experience</h2>
                         <div className="flex flex-col gap-4">
                             <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                <Autocomplete
+                                <Input type="text" label="Title" aria-label="Title" placeholder="Enter your Designation/Role" onChange={(e) => handleChange('designation', e.target.value)} />
+                                {/* <Autocomplete
                                     allowsCustomValue
                                     label="Title"
                                     aria-label="Title"
@@ -199,13 +201,14 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                                     onInputChange={(value) => handleChange('designation', value)}
                                 >
                                     {previous_company_details && previous_company_details?.map((role, index) => <AutocompleteItem key={index}>{role['Role']}</AutocompleteItem>)}
-                                </Autocomplete>
+                                </Autocomplete> */}
                             </div>
                             <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
                                 <Input type="text" label="Employment Type" aria-label="Employment Type" placeholder="Please Enter Employment Type" onChange={(e) => handleChange('empType', e.target.value)} />
                             </div>
                             <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                <Autocomplete
+                                <Input type="text" label="Previous Company" aria-label="Previous Company" placeholder="Enter your Previous Company" onChange={(e) => handleChange('companyName', e.target.value)} />
+                                {/* <Autocomplete
                                     allowsCustomValue
                                     label="Previous Company"
                                     aria-label="Previous Company"
@@ -215,14 +218,15 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                                     onInputChange={(value) => handleChange('companyName', value)}
                                 >
                                     {previous_company_details && previous_company_details?.map((company, index) => <AutocompleteItem key={index}>{company['Company Name']}</AutocompleteItem>)}
-                                </Autocomplete>
+                                </Autocomplete> */}
                             </div>
                             <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                <DatePicker label="Position Start date" aria-label="Position Start date" onChange={(value) => handleChange('posStDate', value ? formatter.format(value.toDate(getLocalTimeZone())) : "--")} />
-                                <DatePicker label="Position End date" aria-label="Position End date" onChange={(value) => handleChange('posEdDate', value ? formatter.format(value.toDate(getLocalTimeZone())) : "--")} />
+                                <DatePicker label="Position Start date" aria-label="Position Start date" onChange={(value) => handleChange('posStDate', value ? formatter?.format(value.toDate(getLocalTimeZone())) : "--")} />
+                                <DatePicker label="Position End date" aria-label="Position End date" onChange={(value) => handleChange('posEdDate', value ? formatter?.format(value.toDate(getLocalTimeZone())) : "--")} />
                             </div>
                             <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                                <Autocomplete
+                                <Input type="text" label="Location" aria-label="Location" placeholder="Enter work Location" onChange={(e) => handleChange('location', e.target.value)} />
+                                {/* <Autocomplete
                                     allowsCustomValue
                                     label="Location"
                                     aria-label="Location"
@@ -232,7 +236,7 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                                     onInputChange={(value) => handleChange('location', value)}
                                 >
                                     {previous_company_details && previous_company_details?.map((location, index) => <AutocompleteItem key={index}>{location['Location']}</AutocompleteItem>)}
-                                </Autocomplete>
+                                </Autocomplete> */}
                             </div>
                             <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
                                 <Input type="text" label="Location Type" aria-label="Location Type" placeholder="Enter your current Location Type" onChange={(e) => handleChange('locationType', e.target.value)} />
@@ -313,7 +317,7 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                                     aria-label="Technology Profile"
                                     selectionMode="multiple"
                                     placeholder="Enter all Applicable Technology"
-                                    selectedKeys={Array.from(techSkillValues)}
+                                    selectedKeys={techSkillValues}
                                     onSelectionChange={setTechSkillValues}
                                 >
                                     {allTechSkills?.map((skill) => (
@@ -329,7 +333,7 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                                     aria-label="Skills"
                                     selectionMode="multiple"
                                     placeholder="Enter all Applicable Skills"
-                                    selectedKeys={Array.from(skillValues)}
+                                    selectedKeys={skillValues}
                                     onSelectionChange={setSkillValues}
                                 >
                                     {allSkills?.map((skill) => (
@@ -337,18 +341,18 @@ const ExperienceForm = ({ wizard, pageNo, setPageNo }) => {
                                             {skill}
                                         </SelectItem>
                                     ))}
-                                    {unmatchedSkills?.map((skill) => (
+                                    {/* {unmatchedSkills?.map((skill) => (
                                         <SelectItem key={skill} value={skill}>
                                             {skill}
                                         </SelectItem>
-                                    ))}
+                                    ))} */}
                                 </Select>
                             </div>
                             <div className="relative mb-6 mt-0">
                                 <figure className="w-full">
                                     <section className="text-md rounded-xl bg-gray-100 p-4 border-l-0 leading-8 tracking-tight text-gray-800">
                                         <div className="flex flex-wrap gap-2">
-                                            {skillValues.size === 0 ? (
+                                            {skillValues?.size === 0 ? (
                                                 <p className="text-md text-gray-600">No Skills Selected</p>
                                             ) : (
                                                 <>
