@@ -74,8 +74,8 @@ const Header = () => {
                             Resumes
                         </Link>
                     </NavbarItem>
-                    <NavbarItem className="text-white" isActive={location.pathname === '/Interview'}>
-                        <Link className="text-white" aria-current="Interview" href="#">
+                    <NavbarItem className="text-white" isActive={location.pathname === '/interview'}>
+                        <Link className="text-white" aria-current="Interview" href="interview">
                             Interview
                         </Link>
                     </NavbarItem>
@@ -153,38 +153,38 @@ const Header = () => {
                             type="search"
                         />
                     </NavbarMenuItem>
-                    <NavbarMenuItem className="text-white" isActive>
+                    <NavbarMenuItem className="text-white" isActive={location.pathname === '/home'}>
                         <Link aria-current="Home" href="#" className="text-white">
                             Home
                         </Link>
                     </NavbarMenuItem>
-                    <NavbarMenuItem className="text-white">
-                        <Link href="#" aria-current="Resumes" className="text-white">
+                    <NavbarMenuItem className="text-white" isActive={location.pathname === '/recommendedCourse'}>
+                        <Link href="recommendedCourse" aria-current="recommendedCourse" className="text-white">
                             Courses
                         </Link>
                     </NavbarMenuItem>
-                    <NavbarMenuItem className="text-white">
+                    <NavbarMenuItem className="text-white" isActive={location.pathname === '/Resumes'}>
                         <Link href="#" aria-current="Resumes" className="text-white">
                             Resumes
                         </Link>
                     </NavbarMenuItem>
-                    <NavbarMenuItem className="text-white">
-                        <Link className="text-white" href="#">
+                    <NavbarMenuItem className="text-white" isActive={location.pathname === '/interview'}>
+                        <Link className="text-white" aria-current="Interview" href="interview">
                             Interview
                         </Link>
                     </NavbarMenuItem>
-                    <NavbarMenuItem className="text-white">
-                        <Link className="text-white" href="#">
+                    <NavbarMenuItem className="text-white" isActive={location.pathname === '/Assessments'}>
+                        <Link className="text-white" aria-current="Assessments" href="#">
                             Assessments
                         </Link>
                     </NavbarMenuItem>
-                    <NavbarMenuItem className="text-white">
-                        <Link className="text-white" href="#">
+                    <NavbarMenuItem className="text-white" isActive={location.pathname === '/Workshop'}>
+                        <Link className="text-white" aria-current="Workshop" href="#">
                             Workshop
                         </Link>
                     </NavbarMenuItem>
-                    <NavbarMenuItem className="text-white">
-                        <Link className="text-white" href="#">
+                    <NavbarMenuItem className="text-white" isActive={location.pathname === '/Contest'}>
+                        <Link className="text-white" aria-current="Contest" href="#">
                             Contest
                         </Link>
                     </NavbarMenuItem>
