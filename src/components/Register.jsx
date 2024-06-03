@@ -77,6 +77,8 @@ function Register() {
                 dispatch(setUser({ name: event.target.fullName.value, email: event.target.email.value }));
                 window.localStorage.setItem("email", event.target.email.value);
                 window.localStorage.setItem("fullName", event.target.fullName.value);
+                const token = await userCredential.user.getIdToken();
+                localStorage.setItem('userToken', token);
                 navigate("/Home");
             }
         } catch (error) {
@@ -115,6 +117,8 @@ function Register() {
                 dispatch(setUser({ name: result.user.displayName, email: result.user.email }));
                 window.localStorage.setItem('email', result.user.email);
                 window.localStorage.setItem("fullName", result.user.displayName);
+                const token = await result.user.getIdToken();
+                localStorage.setItem('userToken', token);
                 setSuccess('Thank you! You have been successfully registered with us!');
                 setTimeout(() => {
                     navigate("/Home");

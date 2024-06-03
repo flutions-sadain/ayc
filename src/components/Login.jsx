@@ -15,7 +15,7 @@ const retrieveUserData = async (userId) => {
 
         if (userDocSnapshot.exists()) {
             const userData = userDocSnapshot.data();
-            console.log("User Data: from retrieve", userData);
+            // console.log("User Data: from retrieve", userData);
             return userData;
         } else {
             console.log("User not found");
@@ -46,10 +46,10 @@ function Login() {
                 auth,
                 event.target.email.value, event.target.password.value
             );
-            console.log(userCredential);
+            // console.log(userCredential);
             if (userCredential.user) {
                 const data = await retrieveUserData(userCredential.user.uid);
-                console.log("data after login", data);
+                // console.log("data after login", data);
                 dispatch(setUser({ name: data.fullName, email: data.email }));
                 setSuccess('Login Successfully!');
                 window.localStorage.setItem("email", data.email);
@@ -93,6 +93,9 @@ function Login() {
                     isActive: true,
                     signInIP: ipAddress,
                 });
+                // console.log("login", result);
+                const token = await result.user.getIdToken();
+                localStorage.setItem('userToken', token);
                 dispatch(setUser({ name: result.user.displayName, email: result.user.email }));
                 setSuccess('Thank you! You have been successfully registered with us!');
                 window.localStorage.setItem("fullName", result.user.displayName);
