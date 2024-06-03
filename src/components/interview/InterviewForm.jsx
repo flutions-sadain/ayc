@@ -4,7 +4,7 @@ import { BackArrowIcon } from '../icons/BackArrowIcon';
 import { FrontArrowIcon } from '../icons/FrontArrowIcon';
 import { useNavigate } from "react-router-dom";
 
-const InterviewForm = ({ setPageNo }) => {
+const InterviewForm = () => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const [interviewFormDetails, setInterviewFormDetails] = useState({
