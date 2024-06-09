@@ -6,6 +6,9 @@ import { IoShareSocial } from "react-icons/io5";
 
 const InterviewReport = () => {
 
+    const email = localStorage.getItem('email');
+    const fullName = localStorage.getItem('fullName');
+
     const getColor = (value) => {
         if (value < 33) {
           return 'danger';
@@ -28,8 +31,8 @@ const InterviewReport = () => {
                                 <div className="flex items-center gap-5">
                                     <img src="https://i.pravatar.cc/150?u=a04258a2462d826712d" alt="Profile Photo" className="w-32 h-32 rounded-lg" />
                                     <div>
-                                        <h2 className="text-lg font-semibold text-white">Sadain Abdullah</h2>
-                                        <h2 className="text-lg font-semibold text-white">nsasadain@gmail.com</h2>
+                                        <h2 className="text-lg font-semibold text-white">{fullName}</h2>
+                                        <h2 className="text-lg font-semibold text-white">{email}</h2>
                                     </div>
                                 </div>
                                 <div className="flex gap-2">

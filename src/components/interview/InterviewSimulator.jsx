@@ -7,6 +7,7 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import { IoMicOutline } from "react-icons/io5";
 import { FaRegStopCircle } from "react-icons/fa";
 import { Spinner } from '@nextui-org/react';
+import { useNavigate } from 'react-router-dom';
 
 const InterviewSimulator = () => {
     const [messages, setMessages] = useState([]);
@@ -18,6 +19,8 @@ const InterviewSimulator = () => {
     const [animation, setAnimation] = useState("Idle");
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
+    const [interviewEnded, setInterviewEnded] = useState(false);
 
     console.log("name", fullName);
     const scrollToBottom = () => {
@@ -38,6 +41,10 @@ const InterviewSimulator = () => {
             setMessages(prevMessages => [...prevMessages, { sender: 'AI', text: serverMessage }]);
             speak(serverMessage);
             console.log("data", serverMessage);
+
+            if (serverMessage === "Interview has ended. Thank you!") {
+                setInterviewEnded(true);
+            }
         };
 
         return () => {
@@ -82,6 +89,10 @@ const InterviewSimulator = () => {
             setIsSpeaking(false);
         };
         synth.speak(utterance);
+    };
+
+    const handleProceedToReport = () => {
+        navigate("/interviewReport");
     };
 
     if (loading) {
@@ -134,7 +145,7 @@ const InterviewSimulator = () => {
                 </div>
 
                 <footer className="max-w-4xl mx-auto sticky bottom-0 z-10 bg-white border-t border-gray-200 pt-2 pb-4 sm:mt-20 sm:pt-8 sm:pb-6 px-4 sm:px-6 lg:px-0">
-                    <div className="flex justify-center items-center mb-3">
+                    <div className="flex justify-end items-center mb-3 gap-52 mr-4">
                         <button
                             type="button"
                             className="p-4 inline-flex justify-center items-center gap-x-1 rounded-lg bg-primary border border-transparent font-medium text-gray-900 focus:outline-none focus:ring-2 ring-offset-secondary focus:ring-white focus:ring-offset-2 text-xs"
@@ -142,6 +153,13 @@ const InterviewSimulator = () => {
                         >
                             {listening ? <FaRegStopCircle className="flex-shrink-0 size-5" /> : <IoMicOutline className="flex-shrink-0 size-5" />}
                             {listening ? 'Stop Answering' : 'Start Answering'}
+                        </button>
+                        <button
+                            type="button"
+                            className="p-4 inline-flex justify-center items-center gap-x-1 rounded-lg bg-gray-900 border border-transparent font-medium text-white focus:outline-none focus:ring-2 ring-offset-secondary focus:ring-white focus:ring-offset-2 text-xs"
+                            onClick={handleProceedToReport}
+                        >
+                            {interviewEnded ? 'Proceed to report' : 'End Interview'}
                         </button>
                     </div>
                 </footer>
