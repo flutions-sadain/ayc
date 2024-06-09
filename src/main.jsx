@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
@@ -23,6 +24,8 @@ import Login from './components/Login.jsx';
 import Home from "./components/Dashboardv2/Home.jsx";
 import { Provider } from 'react-redux';
 import store from './store';
+
+
 
 const ProtectedRoute = ({ Component, ...rest }) => {
     //const { isAuthenticated } = useAuth(); // Replace with your authentication logic

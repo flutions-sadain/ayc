@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Canvas } from "@react-three/fiber";
 import Experience from './Experience';
 import { motion, useAnimation } from 'framer-motion';
+import 'regenerator-runtime/runtime'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 const InterviewSimulator = () => {
@@ -9,6 +10,7 @@ const InterviewSimulator = () => {
     const websocketRef = useRef(null);
     const email = localStorage.getItem('email');
     const { transcript, listening, resetTranscript } = useSpeechRecognition();
+    const messagesEndRef = useRef();
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
