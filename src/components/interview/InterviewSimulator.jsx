@@ -4,20 +4,34 @@ import Experience from './Experience';
 import { motion, useAnimation } from 'framer-motion';
 import 'regenerator-runtime/runtime'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { IoMicOutline } from "react-icons/io5";
+import { FaRegStopCircle } from "react-icons/fa";
+import { Spinner } from '@nextui-org/react';
 
 const InterviewSimulator = () => {
     const [messages, setMessages] = useState([]);
     const websocketRef = useRef(null);
     const email = localStorage.getItem('email');
+    const fullName = localStorage.getItem('fullName');
     const { transcript, listening, resetTranscript } = useSpeechRecognition();
     const messagesEndRef = useRef();
+    const [animation, setAnimation] = useState("Idle");
+    const [isSpeaking, setIsSpeaking] = useState(false);
+    const [loading, setLoading] = useState(true);
 
+    console.log("name", fullName);
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
     useEffect(() => {
-        websocketRef.current = new WebSocket(`ws://ayc-be.onrender.com/ws/${email}`);
+        // websocketRef.current = new WebSocket(`ws://127.0.0.1:8000/ws/${email}`);
+        websocketRef.current = new WebSocket(`wss://ayc-be.onrender.com/ws/${email}`);
+
+        websocketRef.current.onopen = () => {
+            console.log("connected");
+            setLoading(false);
+        };
 
         websocketRef.current.onmessage = (event) => {
             const serverMessage = event.data;
@@ -25,24 +39,35 @@ const InterviewSimulator = () => {
             speak(serverMessage);
             console.log("data", serverMessage);
         };
-        websocketRef.current.onopen = () => {
-            console.log("connected");
-        };
+
         return () => {
             websocketRef.current.close();
         };
     }, [email]);
 
+    console.log("message", messages);
+
     useEffect(() => {
         scrollToBottom();
+        if (messages.length > 0 && messages[messages.length - 1].sender === 'AI') {
+            setAnimation("Talking");
+            setIsSpeaking(true);
+        }
     }, [messages]);
+
+    useEffect(() => {
+        if (!isSpeaking) {
+            setAnimation("Idle");
+        }
+    }, [isSpeaking]);
+
 
     const startListening = () => {
         SpeechRecognition.startListening({ continuous: true });
     };
 
     const stopListening = () => {
-        SpeechRecognition.stopListening();
+        SpeechRecognition.abortListening();
         const userMessage = transcript;
         setMessages(prevMessages => [...prevMessages, { sender: 'User', text: userMessage }]);
         websocketRef.current.send(userMessage);
@@ -53,20 +78,31 @@ const InterviewSimulator = () => {
     const speak = (text) => {
         const synth = window.speechSynthesis;
         const utterance = new SpeechSynthesisUtterance(text);
+        utterance.onend = () => {
+            setIsSpeaking(false);
+        };
         synth.speak(utterance);
     };
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <Spinner color="secondary" size="lg" />
+            </div>
+        );
+    }
 
     return (
         <div className="items-center grid grid-cols-2 gap-0 h-screen">
             <Canvas shadows camera={{ position: [0, 0, 8], fov: 42 }} className='' >
                 <color attach="background" args={["#ffffff"]} />
-                <Experience />
+                <Experience animation={animation} />
             </Canvas>
             <div className="relative h-screen overflow-auto">
                 <div className="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                     <div className="text-center">
                         <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl">
-                            Hello, Sadain
+                            Hello, {fullName}
                         </h1>
                         <p className="mt-3 text-gray-600">
                             We are delighted to have you join this AI-powered interview.
@@ -104,11 +140,7 @@ const InterviewSimulator = () => {
                             className="p-4 inline-flex justify-center items-center gap-x-1 rounded-lg bg-primary border border-transparent font-medium text-gray-900 focus:outline-none focus:ring-2 ring-offset-secondary focus:ring-white focus:ring-offset-2 text-xs"
                             onClick={listening ? stopListening : startListening}
                         >
-                            <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
-                                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                                <line x1="12" x2="12" y1="19" y2="22" />
-                            </svg>
+                            {listening ? <FaRegStopCircle className="flex-shrink-0 size-5" /> : <IoMicOutline className="flex-shrink-0 size-5" />}
                             {listening ? 'Stop Answering' : 'Start Answering'}
                         </button>
                     </div>

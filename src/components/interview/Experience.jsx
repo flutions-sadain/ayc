@@ -4,19 +4,27 @@ import { Avatar } from './Avatar'
 import { useThree } from 'react-three-fiber';
 import { useControls } from 'leva';
 
-const Experience = () => {
+const Experience = (props) => {
+  const { animation } = props;
+
 
     // const texture = useTexture("images/Hero-BG-Top.png")
     // const viewport = useThree((state) => state.viewport);
 
     // const { animation } = useControls({
     //     animation: {
-    //         value: "Idle",
+    //         value: `${talking !== "" ? "Talking" : "Idle"}`,
     //         options: ["Idle", "Greeting", "Talking"],
     //     }
     // })
 
-    const [animation, setAnimation] = useState("Idle");
+    // const [animation, setAnimation] = useState("Idle");
+
+    // if (talking){
+    //     setAnimation("Talking");
+    // } else {
+    //     setAnimation("Idle");
+    // }
 
 
     return (

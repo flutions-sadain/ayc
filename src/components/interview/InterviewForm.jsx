@@ -3,16 +3,19 @@ import React, { useState } from 'react'
 import { BackArrowIcon } from '../icons/BackArrowIcon';
 import { FrontArrowIcon } from '../icons/FrontArrowIcon';
 import { useNavigate } from "react-router-dom";
+import makeRequest from '../../api/useApi';
 
 const InterviewForm = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const email = localStorage.getItem('email');
     const navigate = useNavigate();
     const [interviewFormDetails, setInterviewFormDetails] = useState({
-        crrCompanyDomain: "",
-        crrCompanyTechStack: "",
-        totalExperience: "",
-        desiredCompanyDomain: "",
-        desiredCompanyTechStack: "",
+        current_company: "",
+        current_tech_stack: "",
+        // totalExperience: "",
+        desired_domain: "",
+        desired_tech_stack: "",
+        email: email,
     })
 
     const techStack = [
@@ -45,8 +48,9 @@ const InterviewForm = () => {
         event.preventDefault();
         try {
             setIsLoading(true);
+            const formData = new URLSearchParams(interviewFormDetails);
+            const response = await makeRequest('post', 'userInterviewInfo', formData);
             navigate("/interviewSimulator");
-            // const response = await makeRequest('post', '', { ...interviewFormDetails, totalExperience: String(experienceDetails.totalExperience)});
             // setPageNo((prevPageNo) => prevPageNo + 1)
             // console.log('Response:', response);
         } catch (error) {
@@ -70,7 +74,7 @@ const InterviewForm = () => {
                             aria-label="Current company domain"
                             placeholder="Enter your current company domain"
                             className="custom-autocomplete-field"
-                            onInputChange={(value) => handleChange('crrCompanyDomain', value)}
+                            onInputChange={(value) => handleChange('current_company', value)}
                         >
                             {domains?.map((domain, index) => <AutocompleteItem key={index}>{domain}</AutocompleteItem>)}
                         </Autocomplete>
@@ -82,7 +86,7 @@ const InterviewForm = () => {
                             aria-label="Current company tech stack"
                             placeholder="Enter your current company tech stack"
                             className="custom-autocomplete-field"
-                            onInputChange={(value) => handleChange('crrCompanyTechStack', value)}
+                            onInputChange={(value) => handleChange('current_tech_stack', value)}
                         >
                             {techStack?.map((techStack, index) => <AutocompleteItem key={index}>{techStack}</AutocompleteItem>)}
                         </Autocomplete>
@@ -137,7 +141,7 @@ const InterviewForm = () => {
                             aria-label="Desired interview domain"
                             placeholder="Enter your desired interview domain"
                             className="custom-autocomplete-field"
-                            onInputChange={(value) => handleChange('desiredCompanyDomain', value)}
+                            onInputChange={(value) => handleChange('desired_domain', value)}
                         >
                             {domains?.map((domain, index) => <AutocompleteItem key={index}>{domain}</AutocompleteItem>)}
                         </Autocomplete>
@@ -149,7 +153,7 @@ const InterviewForm = () => {
                             aria-label="Desired interview tech stack"
                             placeholder="Enter your desired interview tech stack"
                             className="custom-autocomplete-field"
-                            onInputChange={(value) => handleChange('desiredCompanyTechStack', value)}
+                            onInputChange={(value) => handleChange('desired_tech_stack', value)}
                         >
                             {techStack?.map((techStack, index) => <AutocompleteItem key={index}>{techStack}</AutocompleteItem>)}
                         </Autocomplete>
