@@ -1,0 +1,51 @@
+.banner{
+    background-color: #5a5afd;;
+}
+.banner_content{
+    width: 75%;
+    margin: auto;
+    padding-top: 20px;
+}
+.greet{
+    font-family: Inter;
+font-size: 36px;
+font-weight: 600;
+line-height: 44px;
+letter-spacing: 0em;
+text-align: left;
+
+color: rgba(255, 255, 255, 1);
+
+
+}
+.sub_greet{
+    font-family: Inter;
+font-size: 20px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0em;
+text-align: left;
+color: rgba(255, 255, 255, 1);
+
+
+}
+.stepper{
+    position: relative
+}
+.step:not(:first-child):before{
+
+content: "";
+background-color: white;
+width: 350%;
+height: 3px;
+position: absolute;
+right: 10px;
+}
+.one .step::before{
+    content: "";
+    
+width: 0;
+height: 0;
+
+
+}
