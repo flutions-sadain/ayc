@@ -99,6 +99,7 @@ const SkillTest = ({ setPageNo, pageNo }) => {
                 setIsLoading(true);
                 const formData = new FormData();
                 formData.append("examine_str", JSON.stringify(questionAnswer));
+                formData.append("email", email);
                 const response = await makeRequest('post', 'assesProfile', formData);
                 dispatch(setSkillTestData(response));
                 setPageNo(prevPageNo => prevPageNo + 1);

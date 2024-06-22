@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const baseUrl = "https://ayc-be.onrender.com/";
-// const baseUrl = "http://127.0.0.1:8000/";
+// const baseUrl = "https://ayc-be.onrender.com/";
+const baseUrl = "http://127.0.0.1:8000/";
 
 const makeRequest = async (method, url, reqBody, params) => {
   let config = {
