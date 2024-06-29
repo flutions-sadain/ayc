@@ -92,7 +92,7 @@ const InterviewSimulator = () => {
     };
 
     const handleProceedToReport = () => {
-        navigate("/interviewReport");
+        navigate("/interview?id=new");
     };
 
     if (loading) {

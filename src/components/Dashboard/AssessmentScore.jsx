@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from 'react-icons/io';
-import Header from '../Header';
+import Header from './Header';
 import { Link,useLocation } from 'react-router-dom';
 import DataScience from "../../assets/images/DataScience.png";
 import FullStackDevelopment from "../../assets/images/FullStackDevelopment.png";

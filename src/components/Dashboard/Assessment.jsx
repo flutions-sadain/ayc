@@ -12,7 +12,7 @@ import past_industry_questions from "../../assets/images/past_industry_questions
 import scenario_questions from "../../assets/images/scenario_questions.svg";
 import project_questions from "../../assets/images/project_questions.svg";
 import code_questions from "../../assets/images/code_questions.svg";
-import Header from "../Header";
+import Header from "./Header";
 import axios from "axios";
 
 const Assessment = () => {

@@ -11,7 +11,7 @@ const Certificate = ({fullName, skillTestReportData}) => {
             <text fill="#DBFE01" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Inter" fontSize="9" letterSpacing="0em"><tspan x="160" y="467.773">President</tspan></text>
             <path d="M240.781 453.873H121V454.717H240.781V453.873Z" fill="#DBFE01" />
             <text fill="white" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Inter" fontSize="10" letterSpacing="0em"><tspan x="145" y="447.636">Leona Bridges</tspan></text>
-            <text fill="#DBFE01" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Inter" fontSize="9" letterSpacing="0em"><tspan x="475" y="467.773">Event Organizer</tspan></text>
+            <text fill="#DBFE01" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Inter" fontSize="9" letterSpacing="0em"><tspan x="475" y="467.773">Organizer</tspan></text>
             <path d="M569.781 453.873H450V454.717H569.781V453.873Z" fill="#DBFE01" />
             <text fill="white" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Inter" fontSize="10" letterSpacing="0em"><tspan x="467" y="446.636">Joanne Alvarez</tspan></text>
             <text fill="white" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Inter" fontSize="11" letterSpacing="0em"><tspan x="122" y="322.5">"This certificate acknowledges the recipient&#39;s commitment to excellence and proficiency demonstrated </tspan><tspan x="122" y="335.5">during the onboarding process and assessment. By achieving a score of {skillTestReportData?.overallScore}%, {fullName} has </tspan><tspan x="122" y="348.5">has demonstrated a {skillTestReportData?.skillLevel} level of proficiency and understanding."</tspan></text>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Header from '../Dashboardv2/Header';
 import { Button, CircularProgress, Progress, Spinner } from '@nextui-org/react';
 import { FiDownload } from "react-icons/fi";
 import { IoShareSocial } from "react-icons/io5";
@@ -7,22 +6,46 @@ import makeRequest from '../../api/useApi';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
-const InterviewReport = () => {
+const InterviewReport = ({ interviewId }) => {
     const [reportData, setReportData] = useState(null);
     const email = localStorage.getItem('email');
     const fullName = localStorage.getItem('fullName');
     const [isLoading, setIsLoading] = useState(false);
-    const isMounted = useRef(false);
+    const isMounted = useRef(true);
 
     useEffect(() => {
-        if (!isMounted.current) {
-            const fetchData = async () => {
-                try {
-                    setIsLoading(true);
-                    const formData = new URLSearchParams();
-                    formData.append("email", email);
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
 
-                    const response = await makeRequest('post', 'getInterviewReport', formData);
+    useEffect(() => {
+        if (!isMounted.current) return;
+
+        const fetchData = async () => {
+            setIsLoading(true);
+            try {
+                const formData = new URLSearchParams();
+                formData.append("interviewId", interviewId);
+
+                const response = await makeRequest('POST', 'getInterviewReportDetailsById', formData);
+
+                setReportData(response);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        if (interviewId !== 'new') {
+            fetchData();
+        } else {
+            const fetchNewReport = async () => {
+                setIsLoading(true);
+                try {
+                    const formData = new URLSearchParams({ email });
+                    const response = await makeRequest('POST', 'getInterviewReport', formData);
 
                     setReportData(response);
                 } catch (error) {
@@ -31,10 +54,9 @@ const InterviewReport = () => {
                     setIsLoading(false);
                 }
             };
-            fetchData();
-            isMounted.current = true;
+            fetchNewReport();
         }
-    }, [email]);
+    }, [email, interviewId]);
 
     const getColor = (value) => {
         if (value < 33) {
@@ -114,7 +136,29 @@ const InterviewReport = () => {
 
     return (
         <div>
-            <Header />
+            <div className="w-full py-2 px-10 border bg-white">
+                <ol className="flex items-center whitespace-nowrap">
+                    <li className="inline-flex items-center">
+                        <a className="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="/">
+                            Home
+                        </a>
+                        <svg className="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="m9 18 6-6-6-6"></path>
+                        </svg>
+                    </li>
+                    <li className="inline-flex items-center">
+                        <a className="flex items-center text-sm text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900" href="/interview">
+                            Interview
+                            <svg className="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li className="inline-flex items-center text-sm font-semibold text-gray-800 truncate" aria-current="page">
+                        Report
+                    </li>
+                </ol>
+            </div>
             {isLoading ? (
                 <div className='flex justify-center items-center h-[80vh] w-full pt-10'>
                     <div className="w-full text-center">
@@ -129,7 +173,7 @@ const InterviewReport = () => {
                                 <div className="relative min-w-full place-items-center py-5 sm:py-5 lg:py-5 px-5 md:px-10">
                                     <div className="flex justify-between items-center">
                                         <div className="flex items-center gap-5">
-                                            <img src="https://i.pravatar.cc/150?u=a04258a2462d826712d" alt="Profile Photo" className="w-32 h-32 rounded-lg" />
+                                            <img src="https://img.freepik.com/free-photo/smiley-handsome-man-posing_23-2148911841.jpg" alt="Profile Photo" className="w-32 h-32 rounded-lg" />
                                             <div>
                                                 <h2 className="text-lg font-semibold text-white">{fullName}</h2>
                                                 <h2 className="text-lg font-semibold text-white">{email}</h2>

@@ -3,8 +3,8 @@ import { motion, useAnimation } from 'framer-motion';
 import { CircularProgress, Textarea, Spinner, Select, SelectItem } from "@nextui-org/react";
 import { Editor } from '@monaco-editor/react';
 import makeRequest from '../../api/useApi.js';
-import { BackArrowIcon } from "../icons/BackArrowIcon.jsx";
-import { FrontArrowIcon } from "../icons/FrontArrowIcon.jsx";
+import { BackArrowIcon } from "../../components/icons/BackArrowIcon.jsx";
+import { FrontArrowIcon } from "../../components/icons/FrontArrowIcon.jsx";
 import { useDispatch, useSelector } from 'react-redux';
 import { setSkillTestData } from "../../store/slices/skillTestSlice.js";
 
@@ -232,7 +232,7 @@ const SkillTest = ({ setPageNo, pageNo }) => {
                             ))}
                             <div className="flex gap-2 sm:gap-4 mt-10 items-center">
                                 {categoryIndex === 0 ? "" : <button type="button" onClick={handlePreviousQuestion} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" ><BackArrowIcon /></button>}
-                                <button type="submit" isdisabled={(pageNo === 6 && categoryIndex < assessmentData.length - 1).toString()} className={`flex w-full justify-center rounded-md px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${pageNo === 6 && categoryIndex < assessmentData.length - 1 ? 'opacity-100 bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-black text-white'}`} >
+                                <button type="submit" isdisabled={(pageNo === 6 && categoryIndex < assessmentData.length - 1)} className={`flex w-full justify-center rounded-md px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${pageNo === 6 && categoryIndex < assessmentData.length - 1 ? 'bg-gray-300 text-gray-600 !cursor-not-allowed' : 'bg-black text-white'}`} >
                                     {isLoading ? (
                                         <>
                                             <Spinner className="pr-2" color="current" size="sm" /> Submitting...

@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Input, Spinner } from "@nextui-org/react";
 import { setResumeData } from "../../store/slices/resumeSlice.js";
-import { BackArrowIcon } from "../icons/BackArrowIcon.jsx";
-import { FrontArrowIcon } from "../icons/FrontArrowIcon.jsx";
+import { BackArrowIcon } from "../../components/icons/BackArrowIcon.jsx";
+import { FrontArrowIcon } from "../../components/icons/FrontArrowIcon.jsx";
 import makeRequest from '../../api/useApi.js';
 
 const ResumeUploadForm = ({ setPageNo }) => {
@@ -164,20 +164,20 @@ const ResumeUploadForm = ({ setPageNo }) => {
           onChange={handleLinkedInChange}
         />
         <div className="flex gap-2 sm:gap-4 mt-10 items-center">
-          {/* <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                <BackArrowIcon />
-              </button> */}
+          <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+            <BackArrowIcon />
+          </button>
           {file || linkedInUrl ?
             (<button type="submit" className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
               {isLoading ? (
                 <>
                   <Spinner className="pr-2" color="current" size="sm" /> Uploading...
                 </>
-              ) : `${file ? "Upload" : "Fetch" } and Continue`}
+              ) : `${file ? "Upload" : "Fetch"} and Continue`}
             </button>
             ) : (
-              <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo + 1); }} className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                Skip and Continue
+              <button type="button" disabled={!file || !linkedInUrl} className={`flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${!file || !linkedInUrl ? "opacity-100 bg-gray-400 text-gray-600" : ""}`} style={{cursor: "not-allowed"}} >
+                Continue
               </button>
             )}
           {/* <button type="submit" className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">

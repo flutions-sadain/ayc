@@ -57,7 +57,7 @@ function Login() {
                 const token = await userCredential.user.getIdToken();
                 localStorage.setItem('userToken', token);
                 setTimeout(() => {
-                    navigate("/Home");
+                    navigate("/onboarding");
                 }, 3000);
             }
         } catch (error) {
@@ -101,7 +101,7 @@ function Login() {
                 window.localStorage.setItem("fullName", result.user.displayName);
                 window.localStorage.setItem("email", result.user.email);
                 setTimeout(() => {
-                    navigate("/Home");
+                    navigate("/onboarding");
                 }, 3000);
             }
         } catch (error) {

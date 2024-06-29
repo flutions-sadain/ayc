@@ -1,52 +1,205 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { IoIosArrowDown, IoIosSearch } from "react-icons/io";
-import Logo from "../../public/images/logo.svg";
-import Profile from "../assets/images/Profile.jpg";
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, NavbarMenuItem, NavbarMenuToggle, NavbarMenu } from "@nextui-org/react";
+import { SearchIcon } from "./icons/SearchIcon.jsx";
+import logo from "/images/logo-white.svg";
 
-const Header = () => {
+const Header = ({ children }) => {
+    // const email = useSelector((state) => state.user.email);
+    const email = localStorage.getItem('email');
+    const fullName = useSelector((state) => state.user.name);
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('userToken');
+        navigate('/login');
+    };
+
     return (
-        <>
-        <nav className="bg-white px-10">
-            <div className="mx-auto">
-                <div className="flex justify-between items-center">
-                    <div className="flex justify-between items-center">
-                        <img className="w-20 pt-2 pb-2" src={Logo} alt="Selma" />
-                        <form className="pl-20">
-                            <div className="relative">
-                                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                    <IoIosSearch className="text-xl text-gray-500" />
-                                </div>
-                                <input type="search" id="default-search" className="block w-96   p-2 ps-10 text-sm text-[#333334] bg-[#EEEEEE] border border-gray-300 rounded-sm focus:border-none" placeholder="Search Mockups, Logos..." required />
-                                {/* <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> */}
-                            </div>
-                        </form>
-                    </div>
+        <motion.div>
+            <Navbar
+                isBordered
+                isMenuOpen={isMenuOpen}
+                onMenuOpenChange={setIsMenuOpen}
+                shouldHideOnScroll
+                classNames={{
+                    item: [
+                        "flex",
+                        "relative",
+                        "h-full",
+                        "items-center",
+                        "data-[active=true]:after:content-['']",
+                        "data-[active=true]:after:absolute",
+                        "data-[active=true]:after:bottom-0",
+                        "data-[active=true]:after:left-0",
+                        "data-[active=true]:after:right-0",
+                        "data-[active=true]:after:h-[2px]",
+                        "data-[active=true]:after:rounded-[2px]",
+                        "data-[active=true]:after:bg-primary",
+                    ],
+                }}
+                maxWidth='full'
+                style={{ backgroundColor: "#000", color: "#fff", zIndex: "10" }}
+            >
+                <NavbarContent className="lg:hidden" justify="center">
+                    <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
+                </NavbarContent>
 
-                    <div className="flex items-center pt-3 pb-2">
-                        <div className="relative">
-                            <div className="flex items-center focus:outline-none">
-                                <img src={Profile} alt="Profile" className="w-8 h-8 rounded-full" />
-                                <div className="text-start flex items-center justify-center">
-                                    <span className="text-Black text-start font-semibold text-md ml-2">Evans Marcus</span>
-                                    <span className="text-Black text-sm ml-2"><IoIosArrowDown /></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <nav className="bg-slate-600 px-10">
-            <ul className="flex space-x-6 py-2 pb-0">
-                <Link to="/" className="text-white pb-2font-medium  active:text-[#dbfe01] hover:text-[#dbfe01] cursor-pointer">Home</Link>
-                <Link to="/newDashboard" className="text-[#dbfe01] pb-2 font-medium border-b-[3px] border-[#dbfe01] active:text-[#dbfe01] hover:text-[#dbfe01] cursor-pointer">Dashboard</Link>
-                <Link to="#" className="text-white pb-2 font-medium active:text-[#dbfe01] hover:text-[#dbfe01] cursor-pointer">Courses</Link>
-                <Link to="#" className="text-white pb-2 font-medium active:text-[#dbfe01] hover:text-[#dbfe01] cursor-pointer">Explore Workshops</Link>
-                <Link to="#" className="text-white pb-2 font-medium active:text-[#dbfe01] hover:text-[#dbfe01] cursor-pointer">Contests</Link>
-            </ul>
-        </nav>
-        </>
+                <NavbarContent className="lg:hidden flex pr-3" justify="start">
+                    <NavbarBrand>
+                        <Link href="/">
+                            <img src={logo} alt="Advance Your Career" className="brand h-[100px] w-[100px]" />
+                        </Link>
+                    </NavbarBrand>
+                </NavbarContent>
+
+                <NavbarContent className="hidden lg:flex gap-4" justify="center">
+                    <NavbarBrand>
+                        <Link href="/">
+                            <img src={logo} alt={"Advance Your Career"}
+                                className="brand h-[100px] w-[100px]" />
+                        </Link>
+                    </NavbarBrand>
+                    <NavbarItem className="text-white" isActive={location.pathname === '/home'}>
+                        <Link aria-current="Home" href="/home" className="text-white">
+                            Home
+                        </Link>
+                    </NavbarItem>
+                    <NavbarItem className="text-white" isActive={location.pathname === '/recommendedCourse'}>
+                        <Link href="recommendedCourse" aria-current="RecommendedCourse" className="text-white">
+                            Courses
+                        </Link>
+                    </NavbarItem>
+                    {/* <NavbarItem className="text-white" isActive={location.pathname === '/resume'}>
+                        <Link href="/resume" aria-current="Resumes" className="text-white">
+                            Resumes
+                        </Link>
+                    </NavbarItem> */}
+                    <NavbarItem className="text-white" isActive={location.pathname === '/interview'}>
+                        <Link className="text-white" aria-current="Interview" href="interview">
+                            Interview
+                        </Link>
+                    </NavbarItem>
+                    <NavbarItem className="text-white" isActive={location.pathname === '/assessment'}>
+                        <Link className="text-white" aria-current="Assessment" href="assessment">
+                            Assessment
+                        </Link>
+                    </NavbarItem>
+                    <NavbarItem className="text-white" isActive={location.pathname === '/Workshop'}>
+                        <Link className="text-white" aria-current="workshop" href="#">
+                            Workshop
+                        </Link>
+                    </NavbarItem>
+                    <NavbarItem className="text-white" isActive={location.pathname === '/Contest'}>
+                        <Link className="text-white" aria-current="Contest" href="#">
+                            Contest
+                        </Link>
+                    </NavbarItem>
+                </NavbarContent>
+
+                <NavbarContent as="div" className="items-center" justify="end">
+                    <NavbarItem className="hidden lg:flex items-center">
+                        <Input
+                            classNames={{
+                                base: "max-w-full h-10",
+                                mainWrapper: "h-full",
+                                input: "text-small",
+                                inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+                            }}
+                            placeholder="Type to search..."
+                            size="sm"
+                            startContent={<SearchIcon size={18} />}
+                            type="search"
+                        />
+                    </NavbarItem>
+                    <Dropdown placement="bottom-end">
+                        <DropdownTrigger>
+                            <Avatar
+                                isBordered
+                                as="button"
+                                className="transition-transform"
+                                color="default"
+                                name="Jason Hughes"
+                                size="sm"
+                                src="https://img.freepik.com/free-photo/smiley-handsome-man-posing_23-2148911841.jpg"
+                            />
+                        </DropdownTrigger>
+                        <DropdownMenu aria-label="Profile Actions" variant="flat">
+                            <DropdownItem key="profile" className="h-14 gap-2">
+                                <p className="font-semibold">Signed in as</p>
+                                <p className="font-semibold">{email}</p>
+                            </DropdownItem>
+                            <DropdownItem key="profile" href="/profile">Profile</DropdownItem>
+                            <DropdownItem key="subscriptions">Subscriptions</DropdownItem>
+                            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+                            <DropdownItem key="logout" color="danger" onClick={handleLogout}>
+                                Log Out
+                            </DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
+                </NavbarContent>
+
+                <NavbarMenu className="bg-black">
+                    <NavbarMenuItem>
+                        <Input
+                            classNames={{
+                                base: "max-w-full h-10",
+                                mainWrapper: "h-full",
+                                input: "text-small",
+                                inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+                            }}
+                            placeholder="Type to search..."
+                            size="sm"
+                            startContent={<SearchIcon size={18} />}
+                            type="search"
+                        />
+                    </NavbarMenuItem>
+                    <NavbarMenuItem className="text-white" isActive={location.pathname === '/home'}>
+                        <Link aria-current="Home" href="#" className="text-white">
+                            Home
+                        </Link>
+                    </NavbarMenuItem>
+                    <NavbarMenuItem className="text-white" isActive={location.pathname === '/recommendedCourse'}>
+                        <Link href="recommendedCourse" aria-current="recommendedCourse" className="text-white">
+                            Courses
+                        </Link>
+                    </NavbarMenuItem>
+                    {/* <NavbarMenuItem className="text-white" isActive={location.pathname === '/Resumes'}>
+                        <Link href="#" aria-current="Resumes" className="text-white">
+                            Resumes
+                        </Link>
+                    </NavbarMenuItem> */}
+                    <NavbarMenuItem className="text-white" isActive={location.pathname === '/interview'}>
+                        <Link className="text-white" aria-current="Interview" href="interview">
+                            Interview
+                        </Link>
+                    </NavbarMenuItem>
+                    <NavbarMenuItem className="text-white" isActive={location.pathname === '/assessments'}>
+                        <Link className="text-white" aria-current="Assessments" href="assessment">
+                            Assessments
+                        </Link>
+                    </NavbarMenuItem>
+                    <NavbarMenuItem className="text-white" isActive={location.pathname === '/Workshop'}>
+                        <Link className="text-white" aria-current="Workshop" href="#">
+                            Workshop
+                        </Link>
+                    </NavbarMenuItem>
+                    <NavbarMenuItem className="text-white" isActive={location.pathname === '/Contest'}>
+                        <Link className="text-white" aria-current="Contest" href="#">
+                            Contest
+                        </Link>
+                    </NavbarMenuItem>
+                </NavbarMenu>
+            </Navbar>
+            <main>
+                {children}
+            </main>
+        </motion.div>
     )
 }
 

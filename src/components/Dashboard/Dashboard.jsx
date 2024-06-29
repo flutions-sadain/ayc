@@ -12,7 +12,7 @@ import { PiClockCountdown, PiCertificate } from "react-icons/pi";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import Header from "../Header";
+import Header from "./Header";
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState(1);

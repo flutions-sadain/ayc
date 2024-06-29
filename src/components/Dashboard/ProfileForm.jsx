@@ -4,7 +4,7 @@ import profileImg2 from '../../assets/images/profile-form-2.png';
 import profileImg3 from '../../assets/images/profile-form-3.png';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Header from "../Header";
+import Header from "./Header";
 
 const ProfileForm = () => {
     const navigate = useNavigate();

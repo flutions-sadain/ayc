@@ -79,7 +79,7 @@ function Register() {
                 window.localStorage.setItem("fullName", event.target.fullName.value);
                 const token = await userCredential.user.getIdToken();
                 localStorage.setItem('userToken', token);
-                navigate("/Home");
+                navigate("/onboarding");
             }
         } catch (error) {
             setError(error.message);
@@ -121,7 +121,7 @@ function Register() {
                 localStorage.setItem('userToken', token);
                 setSuccess('Thank you! You have been successfully registered with us!');
                 setTimeout(() => {
-                    navigate("/Home");
+                    navigate("/onboarding");
                 }, 3000);
             }
         } catch (error) {

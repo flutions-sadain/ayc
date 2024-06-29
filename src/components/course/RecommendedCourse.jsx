@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Pagination, Spinner } from '@nextui-org/react';
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import { HiFilter } from "react-icons/hi";
-import Header from '../Dashboardv2/Header';
+import Header from '../Header';
 import { Link, useLocation } from 'react-router-dom';
 import DataScience from "../../assets/images/DataScience.png";
 import FullStackDevelopment from "../../assets/images/FullStackDevelopment.png";
@@ -124,7 +124,7 @@ const RecommendedCourse = () => {
     return (
         <div className="">
             <Header />
-            <div className="mx-10 my-10 flex flex-col lg:flex-row">
+            <div className="sm:mx-10 mx-2 my-10 flex flex-col lg:flex-row">
                 <div className="lg:w-1/5 w-full h-auto mx-5 lg:bg-gray-100 rounded-lg lg:pr-4 mb-4 lg:mb-0">
                     <div className="lg:block hidden">
                         <FilterSidebar />
@@ -136,24 +136,24 @@ const RecommendedCourse = () => {
                     </div>
                 </div>
                 <div className="lg:w-4/5 w-full">
-                    <div className="relative flex flex-col break-words min-w-0 bg-clip-border rounded-xl bg-black mb-5 draggable" draggable="true">
+                    <div className=" relative flex flex-col break-words min-w-0 bg-clip-border rounded-xl bg-black mb-5">
                         <div className="flex-auto block py-8 px-9">
                             <div className="m-0 z-20 relative">
-                                <div className="relative z-20 text-3xl font-semibold text-white w-3/4">
+                                <div className="relative z-20 text-3xl font-semibold text-white sm:w-3/4">
                                     Hello {fullName}
                                 </div>
                                 <p className="mb-7 text-white">We are recommended to enroll this courses.</p>
                                 <div className="flex flex-col gap-2 xl:gap-4 sm:flex-row">
-                                    <a href="javascript:void(0)" className="shrink-0 inline-block text-base font-medium leading-normal text-center align-middle cursor-pointer rounded-[.95rem] transition-colors duration-150 ease-in-out text-dark bg-white border-white shadow-none [border:_0]  px-5 py-3.5 hover:bg-white/90 active:bg-white focus:bg-white">My Courses</a>
-                                    <a href="javascript:void(0)" className="inline-block shrink-0 text-base font-medium leading-normal text-center align-middle cursor-pointer rounded-[.95rem] transition-colors duration-150 ease-in-out text-white bg-white/[.15] shadow-none [border:_0]  px-5 py-3.5 hover:bg-white/25 active:bg-white/25 focus:bg-white/25">What's new</a>
+                                    <a href="#" className="shrink-0 inline-block text-base font-medium leading-normal text-center align-middle cursor-pointer rounded-[.95rem] transition-colors duration-150 ease-in-out text-dark bg-white border-white shadow-none [border:_0]  px-5 py-3.5 hover:bg-white/90 active:bg-white focus:bg-white">My Courses</a>
+                                    <a href="#" className="inline-block shrink-0 text-base font-medium leading-normal text-center align-middle cursor-pointer rounded-[.95rem] transition-colors duration-150 ease-in-out text-white bg-white/[.15] shadow-none [border:_0]  px-5 py-3.5 hover:bg-white/25 active:bg-white/25 focus:bg-white/25">What's new</a>
                                 </div>
                             </div>
-                            <img src="images/bg-abs-1.png" className="bottom-0 top-0 absolute mr-3 end-0 w-[200px] md:w-[400px] h-[320px] md:h-[200px] z-10" alt="" />
+                            <img src="images/bg-abs-1.png" className="bottom-0 top-0 absolute mr-3 end-0 w-1/2 h-full z-10" alt="" />
                         </div>
                     </div>
-                    <div className=" sm:px-6 mx-auto">
+                    <div className="sm:px-6">
                         <h2 className="text-2xl font-semibold py-5 text-gray-900">Recommended Courses</h2>
-                        {!isLoading ? <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        {!isLoading ? <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                             {courses.map((course, index) => (
                                 <Link to={`/courseDetails?courseName=${course.name}`} className="cursor-pointer">
                                     <div className="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-xl transition-all duration-300 rounded-xl">

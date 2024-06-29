@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import Header from '../Dashboardv2/Header'
+import Header from '../Header'
 import { Accordion, AccordionItem, Spinner } from '@nextui-org/react'
 import demoVideo from '../../assets/video/demo.mp4';
 import thumbnail from '../../assets/images/thumbnail.png';
@@ -322,7 +322,7 @@ const CourseDetails = () => {
                                     {generateAccordionItems(courseDetails)}
                                 </Accordion> */}
                                 <Accordion>
-                                    {courseDetails.phases.map((phase, phaseIndex) => (
+                                    {courseDetails?.phases?.map((phase, phaseIndex) => (
                                         <AccordionItem
                                             key={phaseIndex}
                                             aria-label={`Module ${phaseIndex + 1} - ${phase.modules[`Module ${phaseIndex + 1}`]}`}

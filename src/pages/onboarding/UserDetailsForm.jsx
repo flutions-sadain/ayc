@@ -1,17 +1,17 @@
 import { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Input, AutocompleteItem, Autocomplete, Select, SelectItem, Spinner } from "@nextui-org/react";
-import { FrontArrowIcon } from "../icons/FrontArrowIcon.jsx";
+import { FrontArrowIcon } from "../../components/icons/FrontArrowIcon.jsx";
 import makeRequest from '../../api/useApi.js';
 import axios from 'axios';
-import { BackArrowIcon } from '../icons/BackArrowIcon.jsx';
+import { BackArrowIcon } from '../../components/icons/BackArrowIcon.jsx';
 
 const UserDetailsForm = ({ setPageNo }) => {
     // const email = useSelector((state) => state.user.email);
     // const fullName = useSelector((state) => state.user.name);
 
-    const email = localStorage.getItem('email');
-    const fullName = localStorage.getItem('fullName');
+    // const email = localStorage.getItem('email');
+    // const fullName = localStorage.getItem('fullName');
 
     const isMounted = useRef(true);
     const [userDetails, setUserDetails] = useState({
@@ -124,7 +124,21 @@ const UserDetailsForm = ({ setPageNo }) => {
             <form onSubmit={handleUserDetailSubmit}>
                 <div className="flex flex-col gap-4">
                     <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                        <Autocomplete
+                        <Input
+                            type="text"
+                            label="First Name"
+                            aria-label="First Name"
+                            placeholder="Enter your First Name"
+                            onChange={(e) => handleChange('firstName', e.target.value)}
+                        />
+                        <Input
+                            type="text"
+                            label="Last Name"
+                            aria-label="Last Name"
+                            placeholder="Enter your Last Name"
+                            onChange={(e) => handleChange('lastName', e.target.value)}
+                        />
+                        {/* <Autocomplete
                             allowsCustomValue
                             label="First Name"
                             aria-label="First Name"
@@ -145,10 +159,17 @@ const UserDetailsForm = ({ setPageNo }) => {
                             onInputChange={(value) => handleChange('lastName', value)}
                         >
                             {fullName && fullName.split(' ').slice(1).join(' ') && <AutocompleteItem>{fullName.split(' ').slice(1).join(' ')}</AutocompleteItem>}
-                        </Autocomplete>
+                        </Autocomplete> */}
                     </div>
                     <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                        <Autocomplete
+                        <Input
+                            type="text"
+                            label="Email"
+                            aria-label="Email"
+                            placeholder="Enter your Email"
+                            onChange={(e) => handleChange('email', e.target.value)}
+                        />
+                        {/* <Autocomplete
                             allowsCustomValue
                             label="Email"
                             aria-label="Email"
@@ -158,7 +179,7 @@ const UserDetailsForm = ({ setPageNo }) => {
                             onInputChange={(value) => handleChange('email', value)}
                         >
                             {email && <AutocompleteItem>{email}</AutocompleteItem>}
-                        </Autocomplete>
+                        </Autocomplete> */}
                     </div>
                     <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
                         <Select
@@ -252,7 +273,7 @@ const UserDetailsForm = ({ setPageNo }) => {
                         />
                     </div>
                     <div className="flex gap-2 sm:gap-4 mt-10 items-center">
-                        <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 1); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                        <button type="button" onClick={() => { setPageNo(prevPageNo => prevPageNo - 2); }} className="flex bg-primary leading-6 shadow-sm justify-center rounded-md px-2 sm:px-6 py-3 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                             <BackArrowIcon />
                         </button>
                         <button type="submit" className="flex w-full justify-center rounded-md bg-black text-white px-3 py-3 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">

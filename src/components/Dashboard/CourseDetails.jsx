@@ -8,7 +8,7 @@ import thumbnail from '../../assets/images/thumbnail.png';
 import courseList from '../../assets/images/course-list.png';
 import demoVideo from '../../assets/video/demo.mp4';
 import { useNavigate, useParams } from "react-router-dom";
-import Header from "../Header";
+import Header from "./Header";
 import axios from 'axios';
 
 const CourseDetails = () => {

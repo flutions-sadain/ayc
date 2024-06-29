@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CircularProgress, Progress } from "@nextui-org/react";
-import { BackArrowIcon } from "../icons/BackArrowIcon.jsx";
+import { BackArrowIcon } from "../../components/icons/BackArrowIcon.jsx";
 import makeRequest from '../../api/useApi.js';
 import { useSelector } from 'react-redux';
 import { FaExclamation } from "react-icons/fa";

@@ -11,19 +11,19 @@ import Apps from "./components/platform/Apps.jsx";
 import { NextUIProvider } from "@nextui-org/react";
 import NewResumeUpload from './components/Dashboard/ResumeUpload';
 import ProfileForm from "./components/Dashboard/ProfileForm";
-import AssessmentScreen from "./components/Dashboard/Assessment";
 import AssessmentScore from "./components/Dashboard/AssessmentScore";
 import NewDashboard from "./components/Dashboard/Dashboard";
 import CourseDetailsContent from "./components/Dashboard/CourseDetails";
 import RecommendedCourse from "./components/course/RecommendedCourse";
 import CourseDetails from './components/course/CourseDetails';
-import Interview from './components/interview';
-import InterviewSimulator from './components/interview/InterviewSimulator';
-import InterviewReport from './components/report/InterviewReport';
+import Interview from './pages/interview/index.jsx';
+import InterviewSimulator from './pages/interview/InterviewSimulator.jsx';
 import Login from './components/Login.jsx';
-import Home from "./components/Dashboardv2/Home.jsx";
+import Onboarding from "./pages/onboarding/index.jsx";
+import Profile from './pages/profile/index.jsx';
 import { Provider } from 'react-redux';
 import store from './store';
+import Assessment from './pages/assessment/index.jsx'
 
 
 
@@ -85,8 +85,8 @@ const router = createBrowserRouter([
         element: <ProtectedRoute Component={CourseDetailsContent} />,
     },
     {
-        path: "/home",
-        element: <ProtectedRoute Component={Home} />
+        path: "/onboarding",
+        element: <ProtectedRoute Component={Onboarding} />
     },
     {
         path: "/recommendedCourse",
@@ -105,8 +105,12 @@ const router = createBrowserRouter([
         element: <ProtectedRoute Component={InterviewSimulator} />
     },
     {
-        path: "/interviewReport",
-        element: <ProtectedRoute Component={InterviewReport} />
+        path: "/assessment",
+        element: <ProtectedRoute Component={Assessment} />
+    },
+    {
+        path: "/profile",
+        element: <ProtectedRoute Component={Profile} />
     },
 ]);
 

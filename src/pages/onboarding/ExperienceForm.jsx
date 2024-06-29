@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react';
 import { Input, AutocompleteItem, Autocomplete, DatePicker, Textarea, Select, SelectItem, Slider, Chip, Spinner } from "@nextui-org/react";
-import { BackArrowIcon } from "../icons/BackArrowIcon.jsx";
-import { FrontArrowIcon } from "../icons/FrontArrowIcon.jsx";
+import { BackArrowIcon } from "../../components/icons/BackArrowIcon.jsx";
+import { FrontArrowIcon } from "../../components/icons/FrontArrowIcon.jsx";
 import autoCompleteData from "../../data/autocompleteData.js"
 import makeRequest from '../../api/useApi.js';
 import { useSelector } from 'react-redux';
