@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-primary: #dbfe01;
+        --color-secondary: #232320;
+    }
+}
+
+.custom-autocomplete-field button {
+    display: none;
+}

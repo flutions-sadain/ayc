@@ -1,0 +1,15 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="8" cy="8" r="8" fill="url(#paint0_linear_1303_9)"/>
+<circle cx="1.58083" cy="1.58083" r="1.58083" transform="matrix(-0.788011 0.615662 0.615662 0.788011 11.0252 7.48172)" fill="black"/>
+<circle cx="1.58083" cy="1.58083" r="1.58083" transform="matrix(-0.788011 0.615662 0.615662 0.788011 8.34875 4.056)" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.66449 7.80124C8.84669 8.12022 9.14871 8.50679 9.17222 9.73104L11.1646 8.17445C9.98237 7.85547 9.68035 7.4689 9.65684 6.24464L7.66449 7.80124Z" fill="black"/>
+<circle cx="5.28167" cy="9.70069" r="1.58083" transform="rotate(38 5.28167 9.70069)" fill="black"/>
+<circle cx="7.95812" cy="6.27497" r="1.58083" transform="rotate(38 7.95812 6.27497)" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.36993 7.80124C7.18773 8.12022 6.88571 8.50679 6.86221 9.73104L4.86985 8.17445C6.05205 7.85547 6.35408 7.4689 6.37758 6.24464L8.36993 7.80124Z" fill="black"/>
+<defs>
+<linearGradient id="paint0_linear_1303_9" x1="2.92308" y1="2" x2="13.5385" y2="13.5385" gradientUnits="userSpaceOnUse">
+<stop stop-color="#BDF93F"/>
+<stop offset="1" stop-color="#37EA8E"/>
+</linearGradient>
+</defs>
+</svg>

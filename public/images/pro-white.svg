@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512"
+     height="512" x="0" y="0" viewBox="0 0 682.667 682.667" style="enable-background:new 0 0 512 512"
+     xml:space="preserve" class=""><g><defs stroke-width="12" style="stroke-width: 12;"><clipPath id="a" clipPathUnits="userSpaceOnUse" stroke-width="12" style="stroke-width: 12;"><path d="M0 512h512V0H0Z" fill="#dedede" opacity="1" data-original="#000000" stroke-width="12" style="stroke-width: 12;" class=""></path></clipPath></defs><g
+        clip-path="url(#a)" transform="matrix(1.33333 0 0 -1.33333 0 682.667)" stroke-width="12"
+        style="stroke-width: 12;"><path d="M0 0c65.137 47.059 149.481 47.059 214.619 0l40.589 40.589c-42.11 32.86-93.635 50.674-147.899 50.675-54.263 0-105.788-17.815-147.899-50.675Z" style="stroke-width: 12; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;" transform="translate(148.69 405.736)" fill="none" stroke="#dedede" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000" opacity="1" class=""></path>
+    <path d="M0 0c47.059-65.137 47.059-149.481 0-214.619l40.589-40.59c32.86 42.111 50.675 93.636 50.675 147.899C91.263-53.046 73.449-1.521 40.589 40.589Z"
+          style="stroke-width: 12; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;"
+          transform="translate(405.736 363.31)" fill="none" stroke="#dedede" stroke-width="12" stroke-linecap="butt"
+          stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity=""
+          data-original="#000000" opacity="1" class=""></path>
+    <path d="M0 0c-65.138-47.059-149.482-47.059-214.619 0l-40.589-40.589c42.11-32.86 93.635-50.674 147.898-50.675 54.264 0 105.789 17.815 147.9 50.675z"
+          style="stroke-width: 12; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;"
+          transform="translate(363.31 106.264)" fill="none" stroke="#dedede" stroke-width="12" stroke-linecap="butt"
+          stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity=""
+          data-original="#000000" opacity="1" class=""></path>
+    <path d="M0 0c-47.059 65.138-47.059 149.481 0 214.619l-40.589 40.59c-32.86-42.11-50.675-93.636-50.675-147.899.001-54.264 17.815-105.789 50.675-147.899Z"
+          style="stroke-width: 12; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;"
+          transform="translate(106.264 148.69)" fill="none" stroke="#dedede" stroke-width="12" stroke-linecap="butt"
+          stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity=""
+          data-original="#000000" opacity="1" class=""></path>
+    <path d="M336.896 190.363H175.845v120.316h161.051z"
+          style="stroke-width: 12; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;"
+          fill="none" stroke="#dedede" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"
+          stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000" opacity="1"
+          class=""></path>
+    <path d="M0 0v20.429c0 17.965 14.563 32.529 32.529 32.529 17.965 0 32.528-14.564 32.528-32.529V1.189"
+          style="stroke-width: 12; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;"
+          transform="translate(223.904 310.68)" fill="none" stroke="#dedede" stroke-width="12" stroke-linecap="butt"
+          stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity=""
+          data-original="#000000" opacity="1" class=""></path>
+    <path d="m0 0 80.765-20.625L161.375 0"
+          style="stroke-width: 12; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;"
+          transform="translate(175.103 263.512)" fill="none" stroke="#dedede" stroke-width="12" stroke-linecap="butt"
+          stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity=""
+          data-original="#000000" opacity="1" class=""></path></g></g></svg>

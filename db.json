@@ -1,0 +1,104 @@
+{
+    "uploadFile": {
+        "message": "uploaded to gcs successfully",
+        "status": "OK"
+    },
+    "linkedin": {
+        "status": "data fetched"
+    },
+    "phaseQuestions": {
+        "behavioural_questions": [
+            "Tell me about a time when you had to work on a project with a difficult team member?",
+            "Tell me about a time when you had to overcome a technical challenge?",
+            "Tell me about a time when you had to make a difficult decision?",
+            "Tell me about a time when you had to work under pressure?"
+        ],
+        "technical_questions": [
+            "What are the different data structures that you are familiar with?",
+            "What are the different algorithms that you are familiar with?",
+            "What are the different programming languages that you are familiar with?",
+            "What are the different software development methodologies that you are familiar with?"
+        ],
+        "past_industry_questions": [
+            "What are the latest trends in the software development industry?",
+            "What are the biggest challenges facing the software development industry?",
+            "What are the most important skills for a software developer to have?",
+            "What are the different career paths available to software developers?",
+            "What is the future of the software development industry?"
+        ],
+        "code_questions": [
+            "Write a function to find the prime numbers in a given range?",
+            "Write a function to implement the knapsack algorithm?",
+            "Write a function to find the longest common subsequence of two strings?",
+            "Write a function to find the minimum number of coins needed to make change for a given amount?"
+        ],
+        "scenario_questions": [
+            "How would you approach a situation where you are working on a project and you encounter a technical challenge that you are not familiar with?",
+            "How would you approach a situation where you are working on a project with a team member who is not performing well?",
+            "How would you approach a situation where you are working on a project and you are under a lot of pressure to meet a deadline?",
+            "How would you approach a situation where you are working on a project and you have to make a difficult decision?"
+        ],
+        "project_questions": [
+            "Tell me about a project that you are particularly proud of?",
+            "Tell me about a project that you worked on that was particularly challenging?",
+            "Tell me about a project that you worked on that was particularly successful?",
+            "Tell me about a project that you worked on that you learned a lot from?",
+            "Tell me about a project that you worked on that you would like to do again?"
+        ]
+    },
+    "assesProfile": {
+        "positive_feedback": [
+            "Correctly answered the capital of France.",
+            "Correctly identified the author of Romeo and Juliet.",
+            "Correctly provided the chemical symbol for water.",
+            "Correctly stated the year the Titanic sank.",
+            "Correctly named the tallest mountain in the world."
+        ],
+        "negative_feedback": ["Need to Imporove alot"],
+        "score": "100%"
+    },
+    "summaryGeneration": {
+        "status": "data fetched"
+    },
+    "courseRecommended": [
+        {
+            "name": "Data Science Essentials for Beginners",
+            "description": "Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. Topics covered include data analysis, machine learning, statistical modeling, and data visualization. Participants will gain practical skills through hands-on exercises and projects using popular data science tools and libraries.",
+            "price": "$129",
+            "reviews": "600",
+            "rating": "4.7"
+        },
+        {
+            "name": "Full-Stack Web Development Bootcamp",
+            "description": "Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. Topics covered include data analysis, machine learning, statistical modeling, and data visualization. Participants will gain practical skills through hands-on exercises and projects using popular data science tools and libraries.",
+            "price": "$129",
+            "reviews": "600",
+            "rating": "3.5"
+        },
+        {
+            "name": "Mastering Front-End Technologies",
+            "description": "Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. Topics covered include data analysis, machine learning, statistical modeling, and data visualization. Participants will gain practical skills through hands-on exercises and projects using popular data science tools and libraries.",
+            "price": "$129",
+            "reviews": "600",
+            "rating": "2.3"
+        },
+        {
+            "name": "Machine Learning for Beginners",
+            "description": "This course provides a comprehensive introduction to the fundamentals of artificial intelligence (AI). Students will learn about key concepts such as machine learning, neural networks, natural language processing, and computer vision. Through hands-on projects and real-world examples, participants will gain a deep understanding of AI techniques and their applications in various industries.",
+            "price": "$99",
+            "reviews": "500",
+            "rating": "4.5"
+        }
+    ],
+    "getCourseDetails":{
+        "name": "Data Science Essentials for Beginners",
+        "description": "Data science is a rapidly growing field with diverse applications across industries. This course is designed for beginners who want to learn the essential concepts and tools of data science. Topics covered include data analysis, machine learning, statistical modeling, and data visualization. Participants will gain practical skills through hands-on exercises and projects using popular data science tools and libraries.",
+        "price": "$129",
+        "duration": "8 weeks",
+        "rating": "4.7",
+        "languages": [
+            "English"
+        ],
+        "reviews": "600"
+    }
+}
