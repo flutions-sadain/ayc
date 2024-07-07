@@ -31,7 +31,7 @@ const Assessment = () => {
                 setLoading(true);
                 try {
                     const formData = new URLSearchParams();
-                    formData.append("email", "guruayc123456@gmail.com");
+                    formData.append("email", email);
                     const response = await makeRequest('POST', 'getAssessmentHistoryByEmail', formData);
                     setAssessmentHistory(response);
                 } catch (error) {
