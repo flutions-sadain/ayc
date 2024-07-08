@@ -121,7 +121,7 @@ const AssessmentReport = ({ assessmentID }) => {
                         Technical Skills
                       </dt>
                       <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        {reportData?.technicalSkills?.join(', ')}
+                        {reportData?.technicalSkills}
                       </dd>
                     </div>
                     <div className="bg-gray-50 px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
@@ -156,9 +156,9 @@ const AssessmentReport = ({ assessmentID }) => {
                         <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                           <Progress
                             size="sm"
-                            value={score.value}
+                            value={score.percentage}
                             maxValue={100}
-                            color={getColor(score.value)}
+                            color={getColor(score.percentage)}
                             showValueLabel={true}
                             classNames={{
                               base: "max-w-md py-1",
