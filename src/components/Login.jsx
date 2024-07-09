@@ -22,7 +22,11 @@ const Login = () => {
             setLoading(true);
             const data = await makeRequest('POST', 'login', { email, password });
             login(data.token);
-            setSuccessError(data.status);
+            if (data.status === 'success') {
+                setSuccessError("Successfully logged in")
+            } else {
+                setSuccessError(data?.message);
+            }
         } catch (error) {
             console.error('Login failed:', error);
             setSuccessError(error.message);

@@ -1,15 +1,15 @@
 runtime: nodejs20
 
 handlers:
-- url: /(.*\.(gif|png|jpg|css|js|ico|json|svg))$
-  static_files: build/\1
-  upload: build/(.*\.(gif|png|jpg|css|js|ico|json|svg))$
-  secure: always
+  - url: /(.*\.(gif|png|jpg|css|js|ico|json|svg|glb|fbx))$
+    static_files: build/\1
+    upload: build/.*\.(gif|png|jpg|css|js|ico|json|svg|glb|fbx)$
+    secure: always
 
-- url: /.*
-  static_files: build/index.html
-  upload: build/index.html
-  secure: always
-  http_headers:
-    Strict-Transport-Security: 'max-age=31556926; includeSubDomains'
-    X-Frame-Options: 'DENY'
+  - url: /.*
+    static_files: build/index.html
+    upload: build/index.html
+    secure: always
+    http_headers:
+      Strict-Transport-Security: 'max-age=31556926; includeSubDomains'
+      X-Frame-Options: 'DENY'

@@ -16,7 +16,9 @@ const Header = ({ children }) => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        localStorage.removeItem('userToken');
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('fullName');
+        localStorage.removeItem('email');
         navigate('/login');
     };
 
@@ -130,7 +132,7 @@ const Header = ({ children }) => {
                             />
                         </DropdownTrigger>
                         <DropdownMenu aria-label="Profile Actions" variant="flat">
-                            <DropdownItem key="profile" className="h-14 gap-2">
+                            <DropdownItem key="account" className="h-14 gap-2">
                                 <p className="font-semibold">Signed in as</p>
                                 <p className="font-semibold">{email}</p>
                             </DropdownItem>

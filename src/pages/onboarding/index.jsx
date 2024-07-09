@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import Header from './Header.jsx';
 import UserDetailsForm from './UserDetailsForm.jsx';
 import ResumeUploadForm from './ResumeUploadForm.jsx';
-import ExperienceForm from './ExperienceForm.jsx';
+import UserProfile from './UserProfile.jsx';
 import SkillTest from './SkillTest.jsx';
 import FinalReport from './FinalReport.jsx';
 import Certificate from '../../components/Certificate/Certificate.jsx';
@@ -516,10 +516,10 @@ const Onboarding = () => {
                                         <motion.div className={(wizard === 'userOnboarding' && pageNo === 1) ? 'visible' : 'hidden'} initial={{ x: '0' }} aria-label="User Onboarding component">
                                             <ResumeUploadForm setPageNo={setPageNo} />
                                         </motion.div>
-                                        <motion.div className={(wizard === 'professionalProfile' && pageNo === 2) ? "visible" : "hidden"} initial={{ x: '0' }} aria-label="Professional Profile contact component">
+                                        {/* <motion.div className={(wizard === 'professionalProfile' && pageNo === 2) ? "visible" : "hidden"} initial={{ x: '0' }} aria-label="Professional Profile contact component">
                                             <UserDetailsForm setPageNo={setPageNo} />
-                                        </motion.div>
-                                        <ExperienceForm wizard={wizard} pageNo={pageNo} setPageNo={setPageNo} />
+                                        </motion.div> */}
+                                        <UserProfile wizard={wizard} pageNo={pageNo} setPageNo={setPageNo} />
                                         <motion.div className={(wizard === 'skillTest' && pageNo === 6) ? "visible" : "hidden"} initial={{ x: '0' }} aria-label="Skill Test component">
                                             <SkillTest setPageNo={setPageNo} pageNo={pageNo} />
                                         </motion.div>

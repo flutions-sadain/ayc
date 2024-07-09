@@ -23,7 +23,11 @@ const Register = () => {
             setLoading(true);
             const data = await makeRequest('POST', 'signup', { username, email, category, password });
             register(data.token);
-            setSuccessError(data.status);
+            if (data.status === 'success') {
+                setSuccessError("Successfully registered")
+            } else {
+                setSuccessError(data?.message);
+            }
         } catch (error) {
             console.error('Registration failed:', error);
             setSuccessError(error.message);

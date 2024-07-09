@@ -231,7 +231,7 @@ const EducationForm = ({
                                 }
                             }}
                         >
-                            I currently work here
+                            I currently pursuing
                         </Checkbox>
                         <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
                             <Input

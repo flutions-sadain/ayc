@@ -11,7 +11,9 @@ const HeaderHome = () => {
   };
 
   const [isOpen, setIsOpen] = useState(false);
-  const [userDetails, setUserDetails] = useState(null);
+  const [userDetails, setUserDetails] = useState();
+
+  console.log("details: ", userDetails);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -29,6 +31,8 @@ const HeaderHome = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('fullName');
+    localStorage.removeItem('email');
     navigate('/login');
   };
 
@@ -60,9 +64,9 @@ const HeaderHome = () => {
             <div className="navigation-right">
               {!userDetails ? (
                 <>
-                <Button className="text-black" variant='light' radius="lg" size="lg" onClick={() => navigate('/login')}>Login</Button>
-                <Button color='primary' variant='shadow' radius="full"  size="lg" onClick={() => navigate('/register')}>Join for free</Button>
-                {/* <Link to="/register" className="button w-button">Register</Link> */}
+                  <Button className="text-black" variant='light' radius="lg" size="lg" onClick={() => navigate('/login')}>Login</Button>
+                  <Button color='primary' variant='shadow' radius="full" size="lg" onClick={() => navigate('/register')}>Join for free</Button>
+                  {/* <Link to="/register" className="button w-button">Register</Link> */}
                 </>
               ) : (
                 <Dropdown placement="bottom-end">
@@ -78,7 +82,7 @@ const HeaderHome = () => {
                     />
                   </DropdownTrigger>
                   <DropdownMenu aria-label="Profile Actions" variant="flat">
-                    <DropdownItem key="profile" className="h-14 gap-2">
+                    <DropdownItem key="account" className="h-14 gap-2">
                       <p className="font-semibold">Signed in as</p>
                       <p className="font-semibold">{userDetails.email}</p>
                     </DropdownItem>
