@@ -95,7 +95,7 @@ const HeaderHome = () => {
                         onClick={() => {
                           if (userDetails.category === 'student') {
                             navigate('/onboarding');
-                          } else if (userDetails.category === 'enterprise') {
+                          } else if (userDetails.category === 'corporate') {
                             navigate('/enterprise/onboarding');
                           }
                         }}

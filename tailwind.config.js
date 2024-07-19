@@ -26,6 +26,7 @@ export default {
             },
             secondary:{
               DEFAULT: "#dadada",
+              foreground: "#000000",
             },
             focus: "#dbfe01",
           },

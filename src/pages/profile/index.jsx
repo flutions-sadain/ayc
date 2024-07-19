@@ -80,57 +80,57 @@ const Profile = () => {
       //       },
       //     ],
       //     "work_experience": [
-      //       // {
-      //       //   "company": "Tech Corp",
-      //       //   "location": "City, Country",
-      //       //   "title": "Software Engineer",
-      //       //   "startDate": "2019-01-01",
-      //       //   "endDate": "present",
-      //       //   "description": "Developed and maintained web applications..."
-      //       // },
-      //       // {
-      //       //   "company": "Web Solutions",
-      //       //   "location": "City, Country",
-      //       //   "title": "Junior Developer",
-      //       //   "startDate": "2016-06-01",
-      //       //   "endDate": "2018-12-31",
-      //       //   "description": "Assisted in the development of e-commerce platforms..."
-      //       // }
+      //       {
+      //         "company": "Tech Corp",
+      //         "location": "City, Country",
+      //         "title": "Software Engineer",
+      //         "startDate": "2019-01-01",
+      //         "endDate": "present",
+      //         "description": "Developed and maintained web applications..."
+      //       },
+      //       {
+      //         "company": "Web Solutions",
+      //         "location": "City, Country",
+      //         "title": "Junior Developer",
+      //         "startDate": "2016-06-01",
+      //         "endDate": "2018-12-31",
+      //         "description": "Assisted in the development of e-commerce platforms..."
+      //       }
       //     ],
       //     "education": [
-      //       // {
-      //       //   "institution": "University of Technology",
-      //       //   "location": "City, Country",
-      //       //   "degree": "Bachelor of Science",
-      //       //   "major": "Computer Science",
-      //       //   "startDate": "2012-09-01",
-      //       //   "endDate": "2016-06-01",
-      //       //   "grade": "8.5/10"
-      //       // }
+      //       {
+      //         "institution": "University of Technology",
+      //         "location": "City, Country",
+      //         "degree": "Bachelor of Science",
+      //         "major": "Computer Science",
+      //         "startDate": "2012-09-01",
+      //         "endDate": "2016-06-01",
+      //         "grade": "8.5/10"
+      //       }
       //     ],
       //     "skills": [
-      //       // "JavaScript",
-      //       // "React",
-      //       // "Node.js",
-      //       // "CSS",
-      //       // "HTML"
+      //       "JavaScript",
+      //       "React",
+      //       "Node.js",
+      //       "CSS",
+      //       "HTML"
       //     ],
       //     "achievements": {
       //       "description": "Awarded for outstanding performance and contribution to the company's success."
       //     },
       //     "projects": [
-      //       // {
-      //       //   "title": "Project A",
-      //       //   "description": "Developed a full-stack web application...",
-      //       //   "technologies": "React, Node.js",
-      //       //   "link": "https://github.com/johndoe/project-a"
-      //       // },
-      //       // {
-      //       //   "title": "Project B",
-      //       //   "description": "Created a mobile app for tracking expenses...",
-      //       //   "technologies": "React Native, Firebase",
-      //       //   "link": "https://github.com/johndoe/project-b"
-      //       // }
+      //       {
+      //         "title": "Project A",
+      //         "description": "Developed a full-stack web application...",
+      //         "technologies": "React, Node.js",
+      //         "link": "https://github.com/johndoe/project-a"
+      //       },
+      //       {
+      //         "title": "Project B",
+      //         "description": "Created a mobile app for tracking expenses...",
+      //         "technologies": "React Native, Firebase",
+      //         "link": "https://github.com/johndoe/project-b"
+      //       }
       //     ]
       //   }
       // };

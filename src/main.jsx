@@ -22,6 +22,9 @@ import Login from './components/Login.jsx';
 import Onboarding from './pages/onboarding/index.jsx';
 import Profile from './pages/profile/index.jsx';
 import Enterprise from './pages/enterprise/index.jsx';
+import EnterpriseOnboarding from './pages/enterprise/onboarding/index.jsx';
+import ResumeFiltering from './pages/enterprise/ResumeFiltering.jsx';
+import AddingCandidates from './pages/enterprise/AddingCandidates.jsx';
 import { Provider } from 'react-redux';
 import store from './store';
 import Assessment from './pages/assessment/index.jsx';
@@ -57,8 +60,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                                     <Route path="/assessment" element={<ProtectedRoute Component={Assessment} category="student" />} />
                                     <Route path="/profile" element={<ProtectedRoute Component={Profile} category="student" />} />
 
-                                    <Route path="/enterprise" element={<ProtectedRoute Component={Enterprise} category="enterprise" />} />
-                                    <Route path="/enterprise/onboarding" element={<ProtectedRoute Component={Enterprise} category="enterprise" />} />
+                                    <Route path="/enterprise" element={<ProtectedRoute Component={Enterprise} category="corporate" />} />
+                                    <Route path="/enterprise/onboarding" element={<ProtectedRoute Component={EnterpriseOnboarding} category="corporate" />} />
+                                    <Route path="/enterprise/resumeFiltering" element={<ProtectedRoute Component={ResumeFiltering} category="corporate" />} />
+                                    <Route path="/enterprise/addingCandidates" element={<ProtectedRoute Component={AddingCandidates} category="corporate" />} />
                                 </Routes>
                             </div>
                         </div>

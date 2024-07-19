@@ -33,15 +33,15 @@ export const AuthProvider = ({ children }) => {
       // console.log(isLogin);
       if (category === 'student') {
         navigate(onBoardingStatus ? '/recommendedCourse' : '/');
-      } else if (category === 'enterprise') {
-        navigate('/enterprise/onboarding');
+      } else if (category === 'corporate') {
+        navigate(onBoardingStatus ? '/enterprise' : '/');
       } else {
         navigate('/');
       }
     } else {
       if (category === 'student') {
         navigate(onBoardingStatus ? '/recommendedCourse' : '/onboarding');
-      } else if (category === 'enterprise') {
+      } else if (category === 'corporate') {
         navigate(onBoardingStatus ? '/enterprise' : '/enterprise/onboarding');
       } else {
         navigate('/');
